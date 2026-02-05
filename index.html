@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Universo Dharani - Tienda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+    }
+
+    header {
+      background: #5a8f7b;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .producto {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    .producto img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .producto button {
+      background: #5a8f7b;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .producto button:hover {
+      background: #3f6b5a;
+    }
+
+    .carrito {
+      background: white;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .whatsapp {
+      background: #25d366;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🌿 Universo Dharani</h1>
+  <p>Almacén Natural</p>
+</header>
+
+<section class="productos">
+
+  <div class="producto">
+    <img src="https://via.placeholder.com/300">
+    <h3>Hierbas Medicinales</h3>
+    <p>$1500</p>
+    <button onclick="agregar('Hierbas Medicinales',1500)">
+      Agregar
+    </button>
+  </div>
+
+  <div class="producto">
+    <img src="https://via.placeholder.com/300">
+    <h3>Semillas</h3>
+    <p>$1200</p>
+    <button onclick="agregar('Semillas',1200)">
+      Agregar
+    </button>
+  </div>
+
+  <div class="producto">
+    <img src="https://via.placeholder.com/300">
+    <h3>Sahumerios</h3>
+    <p>$800</p>
+    <button onclick="agregar('Sahumerios',800)">
+      Agregar
+    </button>
+  </div>
+
+</section>
+
+<section class="carrito">
+  <h2>🛒 Mi Pedido</h2>
+
+  <ul id="lista"></ul>
+
+  <p id="total"></p>
+
+  <button onclick="enviarWhatsApp()" class="whatsapp">
+    Enviar por WhatsApp
+  </button>
+</section>
+
+<script>
+let carrito = [];
+let total = 0;
+
+function agregar(nombre, precio) {
+
+  carrito.push({nombre, precio});
+  total += precio;
+
+  mostrar();
+}
+
+function mostrar() {
+
+  let lista = document.getElementById("lista");
+  lista.innerHTML = "";
+
+  carrito.forEach(item => {
+    let li = document.createElement("li");
+    li.textContent = item.nombre + " - $" + item.precio;
+    lista.appendChild(li);
+  });
+
+  document.getElementById("total").textContent =
+    "Total: $" + total;
+}
+
+function enviarWhatsApp() {
+
+  if (carrito.length === 0) {
+    alert("No agregaste productos");
+    return;
+  }
+
+  let mensaje = "Hola 🌿 Quiero hacer este pedido:%0A%0A";
+
+  carrito.forEach(item => {
+    mensaje += "✔ " + item.nombre + " - $" + item.precio + "%0A";
+  });
+
+  mensaje += "%0A💰 Total: $" + total;
+
+  let telefono = "5492622465782"; // CAMBIAR
+
+  let url = "https://wa.me/" + telefono + "?text=" + mensaje;
+
+  window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
