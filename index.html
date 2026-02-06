@@ -766,29 +766,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🧅 Cebolla en Polvo
+  </div>
 
-  <h3>Cebolla en Polvo</h3>
+  <div class="producto-body">
 
-  <p>Condimento concentrado para realzar sabor en todo tipo de comidas.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="cebollaP-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="300">25g $300</option>
-    <option value="540">50g $540</option>
-    <option value="990">100g $990</option>
-  </select>
+    <p>Cebolla molida ideal para salsas, guisos y condimentos.</p>
 
-  <label>Cantidad</label>
-  <select id="cebollaP-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="cebollaP-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="300">25g $300</option>
+      <option value="540">50g $540</option>
+      <option value="990">100g $990</option>
+    </select>
 
-  <button onclick="agregarCebollaP()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="cebollaP-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarCebollaP()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -797,29 +803,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌿 Cedrón
+  </div>
 
-  <h3>Cedrón</h3>
+  <div class="producto-body">
 
-  <p>Hierba aromática suave, ideal para infusiones digestivas.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="cedron-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="560">25g $560</option>
-    <option value="1050">50g $1050</option>
-    <option value="1980">100g $1980</option>
-  </select>
+    <p>Planta aromática calmante para infusiones digestivas.</p>
 
-  <label>Cantidad</label>
-  <select id="cedron-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="cedron-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="560">25g $560</option>
+      <option value="1050">50g $1050</option>
+      <option value="1980">100g $1980</option>
+    </select>
 
-  <button onclick="agregarCedron()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="cedron-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarCedron()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -828,29 +840,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🍃 Centella Asiática
+  </div>
 
-  <h3>Centella Asiática</h3>
+  <div class="producto-body">
 
-  <p>Planta tradicional para bienestar integral y preparados naturales.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="centella-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="1030">25g $1030</option>
-    <option value="1975">50g $1975</option>
-    <option value="3740">100g $3740</option>
-  </select>
+    <p>Planta revitalizante para circulación y bienestar general.</p>
 
-  <label>Cantidad</label>
-  <select id="centella-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="centella-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="1030">25g $1030</option>
+      <option value="1975">50g $1975</option>
+      <option value="3740">100g $3740</option>
+    </select>
 
-  <button onclick="agregarCentella()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="centella-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarCentella()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -859,61 +877,75 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌶️ Chimichurri
+  </div>
 
-  <h3>Chimichurri</h3>
+  <div class="producto-body">
 
-  <p>Mezcla clásica de hierbas y especias para carnes y vegetales.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="chimi-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="200">25g $200</option>
-    <option value="360">50g $360</option>
-    <option value="575">100g $575</option>
-  </select>
+    <p>Mezcla clásica de hierbas para carnes y vegetales.</p>
 
-  <label>Cantidad</label>
-  <select id="chimi-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="chimi-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="200">25g $200</option>
+      <option value="360">50g $360</option>
+      <option value="575">100g $575</option>
+    </select>
 
-  <button onclick="agregarChimi()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="chimi-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarChimi()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
-      <!-- CITRONELA -->
+
+<!-- CITRONELA -->
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌼 Citronela
+  </div>
 
-  <h3>Citronela</h3>
+  <div class="producto-body">
 
-  <p>Hierba aromática fresca, ideal para infusiones y preparados naturales.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="citronela-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="1030">25g $1030</option>
-    <option value="1970">50g $1970</option>
-    <option value="3740">100g $3740</option>
-  </select>
+    <p>Planta aromática refrescante para infusiones y ambientes.</p>
 
-  <label>Cantidad</label>
-  <select id="citronela-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="citronela-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="1030">25g $1030</option>
+      <option value="1970">50g $1970</option>
+      <option value="3740">100g $3740</option>
+    </select>
 
-  <button onclick="agregarCitronela()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="citronela-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarCitronela()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
+
 
 
 <!-- CLAVO ENTERO -->
