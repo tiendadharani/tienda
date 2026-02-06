@@ -87,29 +87,32 @@
 }
 
 
-/* Bloque categoría */
+/* ===== CATEGORIAS ===== */
 
 .categoria {
-  display: none; /* Cerrada por defecto */
+  display: none;
   margin: 20px auto;
   max-width: 1100px;
-}
 
-/* Categoría abierta → grid */
-
-.categoria.activa {
-  display: grid;
+  /* Grid siempre listo */
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
-/* En celular: una columna */
+/* Cuando se muestra */
+
+.categoria.visible {
+  display: grid;
+}
+
+/* Mobile */
 
 @media (max-width: 600px) {
-  .categoria.activa {
+  .categoria {
     grid-template-columns: 1fr;
   }
 }
+
 
 
     
