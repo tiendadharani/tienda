@@ -952,29 +952,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌰 Clavo de Olor Entero
+  </div>
 
-  <h3>Clavo de Olor Entero</h3>
+  <div class="producto-body">
 
-  <p>Especia aromática intensa, ideal para infusiones y repostería.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="clavoE-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="1820">25g $1820</option>
-    <option value="3500">50g $3500</option>
-    <option value="6660">100g $6660</option>
-  </select>
+    <p>Especia intensa utilizada en infusiones, dulces y cocina.</p>
 
-  <label>Cantidad</label>
-  <select id="clavoE-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="clavoE-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="1820">25g $1820</option>
+      <option value="3500">50g $3500</option>
+      <option value="6660">100g $6660</option>
+    </select>
 
-  <button onclick="agregarClavoE()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="clavoE-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarClavoE()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -983,29 +989,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌰 Clavo de Olor Molido
+  </div>
 
-  <h3>Clavo de Olor Molido</h3>
+  <div class="producto-body">
 
-  <p>Especia molida para repostería, infusiones y mezclas aromáticas.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="clavoM-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="300">25g $300</option>
-    <option value="520">50g $520</option>
-    <option value="945">100g $945</option>
-  </select>
+    <p>Clavo en polvo ideal para repostería e infusiones.</p>
 
-  <label>Cantidad</label>
-  <select id="clavoM-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="clavoM-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="300">25g $300</option>
+      <option value="520">50g $520</option>
+      <option value="945">100g $945</option>
+    </select>
 
-  <button onclick="agregarClavoM()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="clavoM-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarClavoM()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -1014,29 +1026,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌾 Cola de Caballo
+  </div>
 
-  <h3>Cola de Caballo</h3>
+  <div class="producto-body">
 
-  <p>Planta tradicional utilizada en infusiones depurativas.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="cola-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="360">25g $360</option>
-    <option value="660">50g $660</option>
-    <option value="1225">100g $1225</option>
-  </select>
+    <p>Planta tradicional utilizada en infusiones depurativas.</p>
 
-  <label>Cantidad</label>
-  <select id="cola-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="cola-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="360">25g $360</option>
+      <option value="660">50g $660</option>
+      <option value="1225">100g $1225</option>
+    </select>
 
-  <button onclick="agregarCola()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="cola-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarCola()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -1045,61 +1063,75 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌿 Comino Molido Especial
+  </div>
 
-  <h3>Comino Molido Especial</h3>
+  <div class="producto-body">
 
-  <p>Especia intensa para realzar sabores en comidas y preparados.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="comino-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="250">25g $250</option>
-    <option value="450">50g $450</option>
-    <option value="825">100g $825</option>
-  </select>
+    <p>Condimento digestivo ideal para guisos y comidas caseras.</p>
 
-  <label>Cantidad</label>
-  <select id="comino-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="comino-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="250">25g $250</option>
+      <option value="450">50g $450</option>
+      <option value="825">100g $825</option>
+    </select>
 
-  <button onclick="agregarComino()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="comino-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarComino()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
+
 
 <!-- CONDIMENTO PIZZA -->
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🍕 Condimento para Pizza
+  </div>
 
-  <h3>Condimento para Pizza</h3>
+  <div class="producto-body">
 
-  <p>Mezcla especial de hierbas y especias para pizzas y comidas.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="pizza-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="200">25g $200</option>
-    <option value="350">50g $350</option>
-    <option value="640">100g $640</option>
-  </select>
+    <p>Mezcla de especias ideal para pizzas, tostados y pastas.</p>
 
-  <label>Cantidad</label>
-  <select id="pizza-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="pizza-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="200">25g $200</option>
+      <option value="350">50g $350</option>
+      <option value="640">100g $640</option>
+    </select>
 
-  <button onclick="agregarPizza()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="pizza-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarPizza()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
+
 
 
 <!-- CORIANDRO -->
