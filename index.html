@@ -352,35 +352,42 @@
 
 </div>
 
-  <!-- ALBAHACA -->
+<!-- ALBAHACA -->
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌿 Albahaca en Hojas
+  </div>
 
-  <h3>Albahaca en Hojas</h3>
+  <div class="producto-body">
 
-  <p>Hierba aromática ideal para cocinar, infusiones y mezclas naturales.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="albahaca-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="210">25g $210</option>
-    <option value="375">50g $375</option>
-    <option value="680">100g $680</option>
-  </select>
+    <p>Hierba aromática ideal para cocinar, infusiones y mezclas naturales.</p>
 
-  <label>Cantidad</label>
-  <select id="albahaca-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="albahaca-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="210">25g $210</option>
+      <option value="375">50g $375</option>
+      <option value="680">100g $680</option>
+    </select>
 
-  <button onclick="agregarAlbahaca()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="albahaca-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarAlbahaca()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
+
 
 
 <!-- ALCANFOR -->
