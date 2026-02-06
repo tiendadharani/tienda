@@ -103,8 +103,7 @@
 
 .categoria.visible {
   display: grid; 
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 20px; }
+  }
 
 /* Mobile */
 
@@ -2354,11 +2353,12 @@ function enviarWhatsApp() {
   let categorias = document.querySelectorAll('.categoria');
 
   categorias.forEach(c => {
-    c.style.display = "none";
+    c.classList.remove("visible");
   });
 
-  document.getElementById(id).style.display = "block";
+  document.getElementById(id).classList.add("visible");
 }
+
 
 
 function agregarManzanilla() {
