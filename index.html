@@ -299,6 +299,122 @@
 
 </div>
 
+  <!-- ALBAHACA -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Albahaca en Hojas</h3>
+
+  <p>Hierba aromática ideal para cocinar, infusiones y mezclas naturales.</p>
+
+  <label>Opción</label>
+  <select id="albahaca-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="210">25g $210</option>
+    <option value="375">50g $375</option>
+    <option value="680">100g $680</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="albahaca-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarAlbahaca()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- ALCANFOR -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Alcanfor</h3>
+
+  <p>Producto natural utilizado en preparados energéticos y aromáticos.</p>
+
+  <label>Opción</label>
+  <select id="alcanfor-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="495">25g $495</option>
+    <option value="925">50g $925</option>
+    <option value="1735">100g $1735</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="alcanfor-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarAlcanfor()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- ANIS ESTRELLADO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Anís Estrellado Entero</h3>
+
+  <p>Especia aromática para infusiones, dulces y preparados digestivos.</p>
+
+  <label>Opción</label>
+  <select id="anisE-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="1160">25g $1160</option>
+    <option value="2220">50g $2220</option>
+    <option value="4210">100g $4210</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="anisE-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarAnisE()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- ANIS MOLIDO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Anís Molido</h3>
+
+  <p>Especia molida ideal para repostería, infusiones y cocina natural.</p>
+
+  <label>Opción</label>
+  <select id="anisM-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="180">25g $180</option>
+    <option value="310">50g $310</option>
+    <option value="550">100g $550</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="anisM-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</
+
   
 </div>
 
@@ -540,6 +656,54 @@ function ordenarProductos() {
 
   });
 
+}
+
+  function agregarAlbahaca() {
+  agregarProducto("albahaca-opcion","albahaca-cant","Albahaca");
+}
+
+function agregarAlcanfor() {
+  agregarProducto("alcanfor-opcion","alcanfor-cant","Alcanfor");
+}
+
+function agregarAnisE() {
+  agregarProducto("anisE-opcion","anisE-cant","Anís Estrellado");
+}
+
+function agregarAnisM() {
+  agregarProducto("anisM-opcion","anisM-cant","Anís Molido");
+}
+
+function agregarArnica() {
+  agregarProducto("arnica-opcion","arnica-cant","Árnica");
+}
+
+
+/* Función base reutilizable */
+function agregarProducto(opcionId, cantId, nombre) {
+
+  let opcion = document.getElementById(opcionId);
+  let cantidad = document.getElementById(cantId);
+
+  if (opcion.value === "") {
+    alert("Elegí una opción");
+    return;
+  }
+
+  let precio = parseInt(opcion.value);
+  let texto = opcion.options[opcion.selectedIndex].text;
+  let cant = parseInt(cantidad.value);
+
+  let totalItem = precio * cant;
+
+  carrito.push({
+    nombre: nombre + " (" + texto + ") x" + cant,
+    precio: totalItem
+  });
+
+  total += totalItem;
+
+  mostrarCarrito();
 }
 
   
