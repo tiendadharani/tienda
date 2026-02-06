@@ -2247,29 +2247,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌿 Poleo
+  </div>
 
-  <h3>Poleo</h3>
+  <div class="producto-body">
 
-  <p>Hierba digestiva y calmante para infusiones.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="poleo-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="480">25g $480</option>
-    <option value="890">50g $890</option>
-    <option value="1670">100g $1670</option>
-  </select>
+    <p>Planta digestiva tradicional para infusiones suaves.</p>
 
-  <label>Cantidad</label>
-  <select id="poleo-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="poleo-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="480">25g $480</option>
+      <option value="890">50g $890</option>
+      <option value="1670">100g $1670</option>
+    </select>
 
-  <button onclick="agregarPoleo()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="poleo-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarPoleo()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -2278,60 +2284,72 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌿 Provenzal
+  </div>
 
-  <h3>Provenzal</h3>
+  <div class="producto-body">
 
-  <p>Mezcla clásica de ajo y perejil para carnes y verduras.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="provenzal-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="260">25g $260</option>
-    <option value="460">50g $460</option>
-    <option value="850">100g $850</option>
-  </select>
+    <p>Mezcla clásica de ajo y perejil para todo tipo de platos.</p>
 
-  <label>Cantidad</label>
-  <select id="provenzal-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="provenzal-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="260">25g $260</option>
+      <option value="460">50g $460</option>
+      <option value="850">100g $850</option>
+    </select>
 
-  <button onclick="agregarProvenzal()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="provenzal-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarProvenzal()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
 
-<!-- ROMERO MOLIDO -->
+<!-- ROMERO -->
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌱 Romero Molido
+  </div>
 
-  <h3>Romero Molido</h3>
+  <div class="producto-body">
 
-  <p>Hierba aromática estimulante para carnes y verduras.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="romero-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="400">25g $400</option>
-    <option value="750">50g $750</option>
-    <option value="1400">100g $1400</option>
-  </select>
+    <p>Hierba aromática estimulante para carnes y verduras.</p>
 
-  <label>Cantidad</label>
-  <select id="romero-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="romero-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="400">25g $400</option>
+      <option value="750">50g $750</option>
+      <option value="1400">100g $1400</option>
+    </select>
 
-  <button onclick="agregarRomero()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="romero-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarRomero()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -2340,61 +2358,75 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌿 Sen
+  </div>
 
-  <h3>Sen</h3>
+  <div class="producto-body">
 
-  <p>Planta laxante suave utilizada en infusiones depurativas.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="sen-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="220">25g $220</option>
-    <option value="395">50g $395</option>
-    <option value="720">100g $720</option>
-  </select>
+    <p>Planta utilizada tradicionalmente para infusiones depurativas.</p>
 
-  <label>Cantidad</label>
-  <select id="sen-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="sen-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="220">25g $220</option>
+      <option value="395">50g $395</option>
+      <option value="720">100g $720</option>
+    </select>
 
-  <button onclick="agregarSen()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="sen-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarSen()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
+
 
 <!-- STEVIA HOJAS -->
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🍃 Stevia en Hojas
+  </div>
 
-  <h3>Stevia en Hojas</h3>
+  <div class="producto-body">
 
-  <p>Endulzante natural ideal para infusiones sin azúcar.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="steviaH-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="940">25g $940</option>
-    <option value="1790">50g $1790</option>
-    <option value="3390">100g $3390</option>
-  </select>
+    <p>Endulzante natural ideal para infusiones sin azúcar.</p>
 
-  <label>Cantidad</label>
-  <select id="steviaH-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="steviaH-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="940">25g $940</option>
+      <option value="1790">50g $1790</option>
+      <option value="3390">100g $3390</option>
+    </select>
 
-  <button onclick="agregarSteviaH()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="steviaH-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarSteviaH()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
+
 
 
 <!-- STEVIA POLVO -->
