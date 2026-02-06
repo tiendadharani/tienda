@@ -70,14 +70,6 @@
 
     /* Categorías */
 
-.categoria {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px; /* antes era 15 o más */
-  max-width: 1100px;
-  margin: auto;
-}
-
 
 .categorias button {
   background: #5a8f7b;
@@ -97,10 +89,15 @@
 /* Bloque categoría */
 
 .categoria {
-  display: none;
-  margin-top: 20px;
-}
+  display: none;           /* Empieza cerrada */
+  margin: 20px auto;
+  max-width: 1100px;
 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+    
 /* Tarjeta producto */
 
 .categoria .producto {
@@ -182,11 +179,7 @@
   border-radius: 12px;
 }
 
-    .categoria {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
+
 
 /* En celular vuelve a una columna */
 @media (max-width: 600px) {
