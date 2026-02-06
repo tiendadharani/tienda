@@ -2986,10 +2986,11 @@ function enviarWhatsApp() {
     return;
   }
 
-  let nombre = document.getElementById("nombre").value;
-  let entrega = document.getElementById("entrega").value;
-  let direccion = document.getElementById("direccion").value;
-  let pago = document.getElementById("pago").value;
+ let nombre = document.getElementById("cliente-nombre").value;
+let entrega = document.getElementById("cliente-entrega").value;
+let direccion = document.getElementById("cliente-direccion").value;
+let pago = document.getElementById("cliente-pago").value;
+
 
   if (nombre === "" || entrega === "" || pago === "") {
     alert("Completá los datos");
@@ -3002,7 +3003,7 @@ function enviarWhatsApp() {
     "👤 Nombre: " + nombre + "\n" +
     "🚚 Entrega: " + entrega + "\n";
 
-  if (entrega === "Envío") {
+  if (entrega === "envio") {
 
     if (direccion === "") {
       alert("Ingresá la dirección");
