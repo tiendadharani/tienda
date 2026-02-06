@@ -154,6 +154,32 @@
   background: #3f6b5a;
 }
 
+.producto-header {
+  cursor: pointer;
+  font-weight: bold;
+  background: #e7f3ec;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+.producto-body {
+  display: none;
+  padding: 10px;
+}
+
+.producto.abierto .producto-body {
+  display: block;
+}
+
+    .categorias button {
+  font-size: 18px;
+  padding: 12px;
+  margin: 5px;
+  border-radius: 12px;
+}
+
+    
   </style>
 </head>
 
@@ -2694,6 +2720,10 @@ function agregarZarza() {
   agregarProducto("zarza-opcion","zarza-cant","Zarzaparrilla");
 }
   
+function toggleProducto(el) {
+  el.parentElement.classList.toggle("abierto");
+}
+
   
 </script>
 
