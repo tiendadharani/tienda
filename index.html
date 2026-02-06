@@ -207,6 +207,99 @@
 
   </div>
 
+<!-- AGUARIBAY -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Aguaribay</h3>
+
+  <p>Condimento aromático, ideal para carnes, verduras y mezclas naturales.</p>
+
+  <label>Opción</label>
+  <select id="aguaribay-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="360">25g $360</option>
+    <option value="660">50g $660</option>
+    <option value="1230">100g $1230</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="aguaribay-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarAguaribay()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- AJÍ CAYENA -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Ají Cayena Molido</h3>
+
+  <p>Condimento picante natural, ideal para dar sabor y calor a tus comidas.</p>
+
+  <label>Opción</label>
+  <select id="cayena-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="210">25g $210</option>
+    <option value="370">50g $370</option>
+    <option value="670">100g $670</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="cayena-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarCayena()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- AJO EN POLVO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Ajo en Polvo</h3>
+
+  <p>Condimento concentrado, práctico y natural para todo tipo de comidas.</p>
+
+  <label>Opción</label>
+  <select id="ajo-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="190">25g $190</option>
+    <option value="330">50g $330</option>
+    <option value="590">100g $590</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="ajo-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarAjo()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+  
 </div>
 
 
@@ -344,6 +437,87 @@ function mostrarCarrito() {
   document.getElementById("total").textContent =
     "Total: $" + total;
 }
+
+  function agregarAguaribay() {
+
+  let opcion = document.getElementById("aguaribay-opcion");
+  let cantidad = document.getElementById("aguaribay-cant");
+
+  if (opcion.value === "") {
+    alert("Elegí una opción");
+    return;
+  }
+
+  let precio = parseInt(opcion.value);
+  let texto = opcion.options[opcion.selectedIndex].text;
+  let cant = parseInt(cantidad.value);
+
+  let totalItem = precio * cant;
+
+  carrito.push({
+    nombre: "Aguaribay (" + texto + ") x" + cant,
+    precio: totalItem
+  });
+
+  total += totalItem;
+
+  mostrarCarrito();
+}
+
+
+function agregarCayena() {
+
+  let opcion = document.getElementById("cayena-opcion");
+  let cantidad = document.getElementById("cayena-cant");
+
+  if (opcion.value === "") {
+    alert("Elegí una opción");
+    return;
+  }
+
+  let precio = parseInt(opcion.value);
+  let texto = opcion.options[opcion.selectedIndex].text;
+  let cant = parseInt(cantidad.value);
+
+  let totalItem = precio * cant;
+
+  carrito.push({
+    nombre: "Ají Cayena (" + texto + ") x" + cant,
+    precio: totalItem
+  });
+
+  total += totalItem;
+
+  mostrarCarrito();
+}
+
+
+function agregarAjo() {
+
+  let opcion = document.getElementById("ajo-opcion");
+  let cantidad = document.getElementById("ajo-cant");
+
+  if (opcion.value === "") {
+    alert("Elegí una opción");
+    return;
+  }
+
+  let precio = parseInt(opcion.value);
+  let texto = opcion.options[opcion.selectedIndex].text;
+  let cant = parseInt(cantidad.value);
+
+  let totalItem = precio * cant;
+
+  carrito.push({
+    nombre: "Ajo en Polvo (" + texto + ") x" + cant,
+    precio: totalItem
+  });
+
+  total += totalItem;
+
+  mostrarCarrito();
+}
+
 
   
 </script>
