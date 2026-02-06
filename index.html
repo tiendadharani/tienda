@@ -877,6 +877,160 @@
 
 </div>
 
+      <!-- EQUINACEA -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Equinácea</h3>
+
+  <p>Planta fortalecedora del sistema inmunológico, ideal para infusiones.</p>
+
+  <label>Opción</label>
+  <select id="equi-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="1000">25g $1000</option>
+    <option value="1900">50g $1900</option>
+    <option value="3610">100g $3610</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="equi-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarEqui()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- EUCALIPTUS -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Eucaliptus</h3>
+
+  <p>Planta aromática utilizada en infusiones y vaporizaciones.</p>
+
+  <label>Opción</label>
+  <select id="euca-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="520">25g $520</option>
+    <option value="970">50g $970</option>
+    <option value="1820">100g $1820</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="euca-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarEuca()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- GINGKO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Gingko Biloba</h3>
+
+  <p>Planta tradicional para la memoria y circulación.</p>
+
+  <label>Opción</label>
+  <select id="gingko-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="1225">25g $1225</option>
+    <option value="2350">50g $2350</option>
+    <option value="4460">100g $4460</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="gingko-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarGingko()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- HIBISCUS -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Hibiscus</h3>
+
+  <p>Flor rica en antioxidantes, ideal para infusiones frutales.</p>
+
+  <label>Opción</label>
+  <select id="hibiscus-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="780">25g $780</option>
+    <option value="1490">50g $1490</option>
+    <option value="2800">100g $2800</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="hibiscus-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarHibiscus()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- JENGIBRE -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Jengibre en Polvo</h3>
+
+  <p>Raíz molida estimulante y digestiva para infusiones y cocina.</p>
+
+  <label>Opción</label>
+  <select id="jengi-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="590">25g $590</option>
+    <option value="1110">50g $1110</option>
+    <option value="2100">100g $2100</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="jengi-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarJengi()">
+    Agregar al pedido
+  </button>
+
+</div>
+
   
 </div>
 
@@ -1401,6 +1555,26 @@ function agregarCurry() {
 
 function agregarDiente() {
   agregarProducto("diente-opcion","diente-cant","Diente de León");
+}
+
+  function agregarEqui() {
+  agregarProducto("equi-opcion","equi-cant","Equinácea");
+}
+
+function agregarEuca() {
+  agregarProducto("euca-opcion","euca-cant","Eucaliptus");
+}
+
+function agregarGingko() {
+  agregarProducto("gingko-opcion","gingko-cant","Gingko Biloba");
+}
+
+function agregarHibiscus() {
+  agregarProducto("hibiscus-opcion","hibiscus-cant","Hibiscus");
+}
+
+function agregarJengi() {
+  agregarProducto("jengi-opcion","jengi-cant","Jengibre en Polvo");
 }
 
   
