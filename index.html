@@ -1185,6 +1185,159 @@
 
 </div>
 
+      <!-- LAUREL -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Laurel</h3>
+
+  <p>Hojas aromáticas para infusiones y cocina digestiva.</p>
+
+  <label>Opción</label>
+  <select id="laurel-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="675">25g $675</option>
+    <option value="1277">50g $1277</option>
+    <option value="2400">100g $2400</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="laurel-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarLaurel()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- MALVA -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Malva</h3>
+
+  <p>Planta suavizante para garganta y sistema digestivo.</p>
+
+  <label>Opción</label>
+  <select id="malva-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="410">25g $410</option>
+    <option value="770">50g $770</option>
+    <option value="1430">100g $1430</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="malva-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarMalva()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- MARCELA -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Marcela</h3>
+
+  <p>Hierba digestiva y relajante tradicional.</p>
+
+  <label>Opción</label>
+  <select id="marcela-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="400">25g $400</option>
+    <option value="730">50g $730</option>
+    <option value="1370">100g $1370</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="marcela-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarMarcela()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- MELISA -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Melisa</h3>
+
+  <p>Planta calmante para nervios y descanso.</p>
+
+  <label>Opción</label>
+  <select id="melisa-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="710">25g $710</option>
+    <option value="1340">50g $1340</option>
+    <option value="2530">100g $2530</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="melisa-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarMelisa()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- MORINGA -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Moringa</h3>
+
+  <p>Superalimento rico en nutrientes y antioxidantes.</p>
+
+  <label>Opción</label>
+  <select id="moringa-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="860">25g $860</option>
+    <option value="1640">50g $1640</option>
+    <option value="3100">100g $3100</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="moringa-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarMoringa()">
+    Agregar al pedido
+  </button>
+
+</div>
   
 </div>
 
@@ -1576,6 +1729,26 @@ function agregarHibiscus() {
 
 function agregarJengi() {
   agregarProducto("jengi-opcion","jengi-cant","Jengibre en Polvo");
+}
+
+  function agregarLaurel() {
+  agregarProducto("laurel-opcion","laurel-cant","Laurel");
+}
+
+function agregarMalva() {
+  agregarProducto("malva-opcion","malva-cant","Malva");
+}
+
+function agregarMarcela() {
+  agregarProducto("marcela-opcion","marcela-cant","Marcela");
+}
+
+function agregarMelisa() {
+  agregarProducto("melisa-opcion","melisa-cant","Melisa");
+}
+
+function agregarMoringa() {
+  agregarProducto("moringa-opcion","moringa-cant","Moringa");
 }
 
   
