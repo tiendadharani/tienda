@@ -168,15 +168,14 @@
 
 .producto-body {
   padding: 12px 8px;
-  display: block;
-  max-height: none;
-  overflow: visible;
+  display: none;
 }
-
 
 .producto.abierto .producto-body {
   display: block;
 }
+
+
 
     .categorias button {
   font-size: 18px;
@@ -236,6 +235,7 @@
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
+ 
     🌿 Aguaribay
   </div>
 
@@ -2776,6 +2776,7 @@ function toggleProducto(el) {
   el.parentElement.classList.toggle("abierto");
 }
 
+  
   
 </script>
 
