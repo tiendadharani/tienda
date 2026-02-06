@@ -215,34 +215,44 @@
     overflow-x: hidden;
   }
 
+  /* Contenedor general */
   .productos {
-    display: block !important;
-    width: 100% !important;
-    padding: 0 10px !important;
-    margin-bottom: 4px !important;
+    display: block;
+    width: 100%;
+    padding: 0 8px;
   }
 
+  /* Categoría */
   .categoria,
   .categoria.visible {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
     box-sizing: border-box;
   }
 
+  /* Grid en mobile */
   .categoria.visible {
-    grid-template-columns: 1fr !important;
-    gap: 4px !important;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px; /* separación real */
   }
 
+  /* Tarjetas */
   .categoria .producto {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 0 12px 0 !important;
-    padding: 6px 4px !important;
+    width: 100%;
+    margin: 0;
+    padding: 8px 6px;
   }
 
+  /* Header producto */
   .producto-header {
+    padding: 8px 6px;
+    font-size: 14px;
+  }
+
+  /* Body */
+  .producto-body {
     padding: 6px 4px;
   }
 
