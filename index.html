@@ -2798,18 +2798,58 @@
 </section>
 
 
+<!-- MI PEDIDO -->
 
-<section class="carrito">
-  <h2>🛒 Mi Pedido</h2>
+<div class="carrito">
 
-  <ul id="lista"></ul>
+  <div class="carrito-header" onclick="toggleCarrito()">
+    🛒 Ver pedido
+  </div>
 
-  <p id="total"></p>
+  <div class="carrito-body">
 
-  <button onclick="enviarWhatsApp()" class="whatsapp">
-    Enviar por WhatsApp
-  </button>
-</section>
+    <ul id="lista"></ul>
+
+    <p id="total">Total: $0</p>
+
+    <hr>
+
+    <h3>📋 Datos del pedido</h3>
+
+    <label>Nombre</label>
+    <input type="text" id="cliente-nombre">
+
+    <label>Entrega</label>
+    <select id="cliente-entrega" onchange="toggleDireccion()">
+      <option value="">Elegí una opción</option>
+      <option value="retiro">Retiro en tienda</option>
+      <option value="envio">Envío a domicilio</option>
+    </select>
+
+    <div id="direccion-box" style="display:none">
+
+      <label>Dirección</label>
+      <input type="text" id="cliente-direccion">
+
+    </div>
+
+    <label>Método de pago</label>
+    <select id="cliente-pago">
+      <option value="">Elegí una opción</option>
+      <option value="efectivo">Efectivo</option>
+      <option value="transferencia">Transferencia</option>
+      <option value="mercadopago">MercadoPago</option>
+    </select>
+
+    <button class="whatsapp" onclick="enviarWhatsApp()">
+      ¡Enviar mi pedido por WhatsApp!
+    </button>
+
+  </div>
+
+</div>
+
+
 
 <script>
 let carrito = [];
@@ -2834,20 +2874,48 @@ function enviarWhatsApp() {
     return;
   }
 
-  let mensaje = "Hola 🌿 Quiero hacer este pedido:%0A%0A";
+  let nombre = document.getElementById("cliente-nombre").value;
+  let entrega = document.getElementById("cliente-entrega").value;
+  let direccion = document.getElementById("cliente-direccion").value;
+  let pago = document.getElementById("cliente-pago").value;
+
+  if (nombre === "" || entrega === "" || pago === "") {
+    alert("Completá tus datos");
+    return;
+  }
+
+  if (entrega === "envio" && direccion === "") {
+    alert("Ingresá la dirección");
+    return;
+  }
+
+  let mensaje = "🌿 *Pedido Universo Dharani* 🌿%0A%0A";
+
+  mensaje += "👤 Nombre: " + nombre + "%0A";
+  mensaje += "📦 Entrega: " + entrega + "%0A";
+
+  if (entrega === "envio") {
+    mensaje += "📍 Dirección: " + direccion + "%0A";
+  }
+
+  mensaje += "💳 Pago: " + pago + "%0A%0A";
+
+  mensaje += "🛒 *Productos:*%0A";
 
   carrito.forEach(item => {
     mensaje += "✔ " + item.nombre + " - $" + item.precio + "%0A";
   });
 
-  mensaje += "%0A💰 Total: $" + total;
+  mensaje += "%0A💰 *Total: $" + total + "*";
 
-  let telefono = "5492622465782"; // CAMBIAR
+  let telefono = "5492622465782";
 
   let url = "https://wa.me/" + telefono + "?text=" + mensaje;
 
   window.open(url, "_blank");
+
 }
+
 
   function mostrar(id) {
 
@@ -3285,6 +3353,22 @@ function toggleProducto(el) {
   el.parentElement.classList.toggle("abierto");
 }
 
+function toggleCarrito() {
+  document.querySelector(".carrito").classList.toggle("abierto");
+}
+
+function toggleDireccion() {
+
+  let entrega = document.getElementById("cliente-entrega").value;
+  let box = document.getElementById("direccion-box");
+
+  if (entrega === "envio") {
+    box.style.display = "block";
+  } else {
+    box.style.display = "none";
+  }
+
+}
   
   
 </script>
