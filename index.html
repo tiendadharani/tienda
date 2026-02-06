@@ -1588,6 +1588,160 @@
 
 </div>
 
+      <!-- PEREJIL -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Perejil</h3>
+
+  <p>Hierba fresca y aromática para todo tipo de preparaciones.</p>
+
+  <label>Opción</label>
+  <select id="perejil-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="215">25g $215</option>
+    <option value="375">50g $375</option>
+    <option value="680">100g $680</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="perejil-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarPerejil()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- PEZUNA DE VACA -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Pezuña de Vaca</h3>
+
+  <p>Planta tradicional usada en infusiones depurativas.</p>
+
+  <label>Opción</label>
+  <select id="pezuna-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="315">25g $315</option>
+    <option value="575">50g $575</option>
+    <option value="1060">100g $1060</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="pezuna-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarPezuna()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- PIMENTON DULCE -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Pimentón Dulce</h3>
+
+  <p>Especia suave para dar color y sabor a las comidas.</p>
+
+  <label>Opción</label>
+  <select id="pimenton-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="225">25g $225</option>
+    <option value="400">50g $400</option>
+    <option value="720">100g $720</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="pimenton-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarPimenton()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- PIMIENTA BLANCA GRANO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Pimienta Blanca en Grano</h3>
+
+  <p>Especia intensa para moler al momento.</p>
+
+  <label>Opción</label>
+  <select id="pimBG-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="1425">25g $1425</option>
+    <option value="2740">50g $2740</option>
+    <option value="5210">100g $5210</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="pimBG-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarPimBG()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- PIMIENTA BLANCA MOLIDA -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Pimienta Blanca Molida</h3>
+
+  <p>Especia fina lista para condimentar.</p>
+
+  <label>Opción</label>
+  <select id="pimBM-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="1140">25g $1140</option>
+    <option value="2180">50g $2180</option>
+    <option value="4135">100g $4135</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="pimBM-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarPimBM()">
+    Agregar al pedido
+  </button>
+
+</div>
+
                         
 </div>
 
@@ -2031,6 +2185,26 @@ function agregarPasionaria() {
 
 function agregarPeperina() {
   agregarProducto("peperina-opcion","peperina-cant","Peperina");
+}
+
+  function agregarPerejil() {
+  agregarProducto("perejil-opcion","perejil-cant","Perejil");
+}
+
+function agregarPezuna() {
+  agregarProducto("pezuna-opcion","pezuna-cant","Pezuña de Vaca");
+}
+
+function agregarPimenton() {
+  agregarProducto("pimenton-opcion","pimenton-cant","Pimentón Dulce");
+}
+
+function agregarPimBG() {
+  agregarProducto("pimBG-opcion","pimBG-cant","Pimienta Blanca en Grano");
+}
+
+function agregarPimBM() {
+  agregarProducto("pimBM-opcion","pimBM-cant","Pimienta Blanca Molida");
 }
 
   
