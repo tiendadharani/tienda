@@ -1691,33 +1691,39 @@
 </div>
 
 
- <!-- MOSTAZA -->
+<!-- MOSTAZA -->
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌼 Mostaza en Granos
+  </div>
 
-  <h3>Mostaza en Granos</h3>
+  <div class="producto-body">
 
-  <p>Semillas aromáticas para salsas, encurtidos y cocina natural.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="mostaza-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="240">25g $240</option>
-    <option value="430">50g $430</option>
-    <option value="790">100g $790</option>
-  </select>
+    <p>Semillas aromáticas ideales para salsas, aderezos y cocina.</p>
 
-  <label>Cantidad</label>
-  <select id="mostaza-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="mostaza-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="240">25g $240</option>
+      <option value="430">50g $430</option>
+      <option value="790">100g $790</option>
+    </select>
 
-  <button onclick="agregarMostaza()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="mostaza-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarMostaza()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -1726,89 +1732,107 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌿 Muña
+  </div>
 
-  <h3>Muña</h3>
+  <div class="producto-body">
 
-  <p>Planta digestiva tradicional, ideal para infusiones después de comer.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="muna-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="420">25g $420</option>
-    <option value="770">50g $770</option>
-    <option value="1440">100g $1440</option>
-  </select>
+    <p>Planta andina digestiva y refrescante para infusiones.</p>
 
-  <label>Cantidad</label>
-  <select id="muna-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="muna-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="420">25g $420</option>
+      <option value="770">50g $770</option>
+      <option value="1440">100g $1440</option>
+    </select>
 
-  <button onclick="agregarMuna()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="muna-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarMuna()">
+      Agregar al pedido
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- NUEZ ENTERA -->
+
+<div class="producto">
+
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌰 Nuez Moscada en Grano
+  </div>
+
+  <div class="producto-body">
+
+    <img src="https://via.placeholder.com/300">
+
+    <p>Especia intensa entera para rallar al momento.</p>
+
+    <label>Opción</label>
+    <select id="nuez-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="1000">2 nueces $1000</option>
+    </select>
+
+    <label>Cantidad</label>
+    <select id="nuez-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarNuez()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
 
-<!-- NUEZ MOSCADA -->
+<!-- NUEZ MOLIDA -->
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌰 Nuez Moscada Molida
+  </div>
 
-  <h3>Nuez Moscada en Grano</h3>
+  <div class="producto-body">
 
-  <p>Especia intensa para repostería y platos especiados.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="nuez-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="1000">2 nueces $1000</option>
-  </select>
+    <p>Especia molida lista para repostería y cocina.</p>
 
-  <label>Cantidad</label>
-  <select id="nuez-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="nuezM-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="250">25g $250</option>
+      <option value="450">50g $450</option>
+      <option value="790">100g $790</option>
+    </select>
 
-  <button onclick="agregarNuez()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="nuezM-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
 
-</div>
+    <button onclick="agregarNuezM()">
+      Agregar al pedido
+    </button>
 
-   
-<!-- NUEZ MOSCADA MOLIDA -->
-
-<div class="producto">
-
-  <img src="https://via.placeholder.com/300">
-
-  <h3>Nuez Moscada Molida</h3>
-
-  <p>Especia molida para repostería y platos especiados.</p>
-
-  <label>Opción</label>
-  <select id="nuezM-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="250">25g $250</option>
-    <option value="450">50g $450</option>
-    <option value="790">100g $790</option>
-  </select>
-
-  <label>Cantidad</label>
-  <select id="nuezM-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
-
-  <button onclick="agregarNuezM()">
-    Agregar al pedido
-  </button>
+  </div>
 
 </div>
 
@@ -1817,34 +1841,38 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌿 Orégano en Hojas Especial
+  </div>
 
-  <h3>Orégano</h3>
+  <div class="producto-body">
 
-  <p>Hierba aromática clásica para cocina mediterránea.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="oregano-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="200">25g $200</option>
-    <option value="350">50g $350</option>
-    <option value="620">100g $620</option>
-  </select>
+    <p>Hierba aromática premium para pizzas, salsas y pastas.</p>
 
-  <label>Cantidad</label>
-  <select id="oregano-cant">
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="oregano-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="200">25g $200</option>
+      <option value="350">50g $350</option>
+      <option value="620">100g $620</option>
+    </select>
 
-  <button onclick="agregarOregano()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="oregano-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarOregano()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
+
 
 
 
