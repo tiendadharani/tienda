@@ -283,7 +283,69 @@
   }
 
 }
- 
+
+/* ===== CARRITO DESPLEGABLE ===== */
+
+.carrito {
+  background: white;
+  margin: 30px auto;
+  max-width: 900px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* Botón superior */
+
+.carrito-header {
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #f3f3f3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Contenido oculto */
+
+.carrito-body {
+  display: none;
+  padding: 20px;
+}
+
+/* Abierto */
+
+.carrito.abierto .carrito-body {
+  display: block;
+}
+
+/* Formulario */
+
+.carrito-body label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 500;
+}
+
+.carrito-body input,
+.carrito-body select,
+.carrito-body textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+/* Botón WhatsApp */
+
+.carrito-body .whatsapp {
+  margin-top: 20px;
+}
+    
     
   </style>
 </head>
@@ -2851,6 +2913,7 @@
 
 
 
+
 <script>
 let carrito = [];
 let total = 0;
@@ -3356,6 +3419,7 @@ function toggleProducto(el) {
 function toggleCarrito() {
   document.querySelector(".carrito").classList.toggle("abierto");
 }
+
 
 function toggleDireccion() {
 
