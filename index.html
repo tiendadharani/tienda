@@ -246,91 +246,110 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌿 Aguaribay
+  </div>
 
-  <h3>Aguaribay</h3>
+  <div class="producto-body">
 
-  <p>Condimento aromático, ideal para carnes, verduras y mezclas naturales.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="aguaribay-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="360">25g $360</option>
-    <option value="660">50g $660</option>
-    <option value="1230">100g $1230</option>
-  </select>
+    <p>Condimento aromático, ideal para carnes y verduras.</p>
 
-  <label>Cantidad</label>
-  <select id="aguaribay-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="aguaribay-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="360">25g $360</option>
+      <option value="660">50g $660</option>
+      <option value="1230">100g $1230</option>
+    </select>
 
-  <button onclick="agregarAguaribay()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="aguaribay-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
 
-</div>
+    <button onclick="agregarAguaribay()">
+      Agregar al pedido
+    </button>
 
-
-<!-- AJÍ CAYENA -->
-
-<div class="producto">
-
-  <img src="https://via.placeholder.com/300">
-
-  <h3>Ají Cayena Molido</h3>
-
-  <p>Condimento picante natural, ideal para dar sabor y calor a tus comidas.</p>
-
-  <label>Opción</label>
-  <select id="cayena-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="210">25g $210</option>
-    <option value="370">50g $370</option>
-    <option value="670">100g $670</option>
-  </select>
-
-  <label>Cantidad</label>
-  <select id="cayena-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
-
-  <button onclick="agregarCayena()">
-    Agregar al pedido
-  </button>
+  </div>
 
 </div>
 
 
-<!-- AJO EN POLVO -->
+
+<!-- CAYENA -->
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌶️ Ají Cayena Molido
+  </div>
 
-  <h3>Ajo en Polvo</h3>
+  <div class="producto-body">
 
-  <p>Condimento concentrado, práctico y natural para todo tipo de comidas.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="ajo-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="190">25g $190</option>
-    <option value="330">50g $330</option>
-    <option value="590">100g $590</option>
-  </select>
+    <p>Condimento picante natural para dar calor a tus platos.</p>
 
-  <label>Cantidad</label>
-  <select id="ajo-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="cayena-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="210">25g $210</option>
+      <option value="370">50g $370</option>
+      <option value="670">100g $670</option>
+    </select>
 
-  <button onclick="agregarAjo()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="cayena-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarCayena()">
+      Agregar al pedido
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- AJO -->
+
+<div class="producto">
+
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🧄 Ajo en Polvo
+  </div>
+
+  <div class="producto-body">
+
+    <img src="https://via.placeholder.com/300">
+
+    <p>Condimento concentrado para realzar tus comidas.</p>
+
+    <label>Opción</label>
+    <select id="ajo-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="190">25g $190</option>
+      <option value="330">50g $330</option>
+      <option value="590">100g $590</option>
+    </select>
+
+    <label>Cantidad</label>
+    <select id="ajo-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarAjo()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
