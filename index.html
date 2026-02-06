@@ -79,44 +79,49 @@
   <p>Almacén Natural</p>
 </header>
 
-<section class="productos">
+<section class="categorias">
+
+<button onclick="mostrar('hierbas')">
+🌿 Hierbas y Condimentos
+</button>
+
+<div id="hierbas" class="categoria">
 
   <div class="producto">
+
     <img src="https://via.placeholder.com/300">
-    <h3>Pan Arabe</h3>
-    <p>$500</p>
-    <button onclick="agregar('Pan Arabe',500)">
-      Agregar
+
+    <h3>Manzanilla</h3>
+
+    <p>Hierba calmante, ideal para digestión y descanso.</p>
+
+    <label>Opción</label>
+    <select id="manzanilla-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="1120">25gr $1120</option>
+      <option value="2130">50gr $2130</option>
+      <option value="4040">100gr $4040</option>
+    </select>
+
+    <label>Cantidad</label>
+    <select id="manzanilla-cant">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+
+    <button onclick="agregarManzanilla()">
+      Agregar al pedido
     </button>
+
   </div>
 
-  <div class="producto">
-    <img src="https://via.placeholder.com/300">
-    <h3>Prepizza integral</h3>
-    <p>$3300</p>
-    <button onclick="agregar('Prepizza integral',3300)">
-      Agregar
-    </button>
-  </div>
-
-  <div class="producto">
-    <img src="https://via.placeholder.com/300">
-    <h3>Pan integral</h3>
-    <p>$3600</p>
-    <button onclick="agregar('Pan integral',3600)">
-      Agregar
-    </button>
-  </div>
-  <div class="producto">
-    <img src="https://via.placeholder.com/300">
-    <h3>Sahumerios</h3>
-    <p>$800</p>
-    <button onclick="agregar('Sahumerios',800)">
-      Agregar
-    </button>
-  </div>
+</div>
 
 </section>
+
 
 <section class="carrito">
   <h2>🛒 Mi Pedido</h2>
@@ -142,20 +147,6 @@ function agregar(nombre, precio) {
   mostrar();
 }
 
-function mostrar() {
-
-  let lista = document.getElementById("lista");
-  lista.innerHTML = "";
-
-  carrito.forEach(item => {
-    let li = document.createElement("li");
-    li.textContent = item.nombre + " - $" + item.precio;
-    lista.appendChild(li);
-  });
-
-  document.getElementById("total").textContent =
-    "Total: $" + total;
-}
 
 function enviarWhatsApp() {
 
@@ -178,6 +169,62 @@ function enviarWhatsApp() {
 
   window.open(url, "_blank");
 }
+
+  function mostrar(id) {
+
+  let categorias = document.querySelectorAll('.categoria');
+
+  categorias.forEach(c => {
+    c.style.display = "none";
+  });
+
+  document.getElementById(id).style.display = "block";
+}
+
+
+function agregarManzanilla() {
+
+  let opcion = document.getElementById("manzanilla-opcion");
+  let cantidad = document.getElementById("manzanilla-cant");
+
+  if (opcion.value === "") {
+    alert("Elegí una opción");
+    return;
+  }
+
+  let precio = parseInt(opcion.value);
+  let texto = opcion.options[opcion.selectedIndex].text;
+  let cant = parseInt(cantidad.value);
+
+  let totalItem = precio * cant;
+
+  carrito.push({
+    nombre: "Manzanilla (" + texto + ") x" + cant,
+    precio: totalItem
+  });
+
+  total += totalItem;
+
+  mostrarCarrito();
+}
+
+
+function mostrarCarrito() {
+
+  let lista = document.getElementById("lista");
+  lista.innerHTML = "";
+
+  carrito.forEach(item => {
+    let li = document.createElement("li");
+    li.textContent = item.nombre + " - $" + item.precio;
+    lista.appendChild(li);
+  });
+
+  document.getElementById("total").textContent =
+    "Total: $" + total;
+}
+
+  
 </script>
 
 </body>
