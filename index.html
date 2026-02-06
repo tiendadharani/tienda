@@ -353,6 +353,9 @@
 let carrito = [];
 let total = 0;
 
+  window.onload = ordenarProductos;
+
+
 function agregar(nombre, precio) {
 
   carrito.push({nombre, precio});
@@ -518,6 +521,26 @@ function agregarAjo() {
   mostrarCarrito();
 }
 
+function ordenarProductos() {
+
+  document.querySelectorAll('.categoria').forEach(cat => {
+
+    let productos = Array.from(cat.querySelectorAll('.producto'));
+
+    productos.sort((a, b) => {
+
+      let nombreA = a.querySelector('h3').textContent.toLowerCase();
+      let nombreB = b.querySelector('h3').textContent.toLowerCase();
+
+      return nombreA.localeCompare(nombreB);
+
+    });
+
+    productos.forEach(p => cat.appendChild(p));
+
+  });
+
+}
 
   
 </script>
