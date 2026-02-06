@@ -86,17 +86,23 @@
   background: #3f6b5a;
 }
 
+
 /* Bloque categoría */
 
 .categoria {
-  display: none;           /* Empieza cerrada */
+  display: none; /* Cerrada por defecto */
   margin: 20px auto;
   max-width: 1100px;
+}
 
+/* Cuando está activa */
+
+.categoria.activa {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
+
     
 /* Tarjeta producto */
 
