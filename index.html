@@ -2931,6 +2931,72 @@ function agregar(nombre, precio) {
 
 
 <script>
+
+let carrito = [];
+let total = 0;
+
+window.onload = ordenarProductos;
+
+
+/* Mostrar categorías */
+function mostrar(id) {
+
+  let categorias = document.querySelectorAll('.categoria');
+
+  categorias.forEach(c => {
+    c.classList.remove("visible");
+  });
+
+  document.getElementById(id).classList.add("visible");
+}
+
+
+/* Carrito */
+function mostrarCarrito() {
+
+  let lista = document.getElementById("lista");
+  lista.innerHTML = "";
+
+  carrito.forEach(item => {
+    let li = document.createElement("li");
+    li.textContent = item.nombre + " - $" + item.precio;
+    lista.appendChild(li);
+  });
+
+  document.getElementById("total").textContent =
+    "Total: $" + total;
+}
+
+
+/* Función base */
+function agregarProducto(opcionId, cantId, nombre) {
+
+  let opcion = document.getElementById(opcionId);
+  let cantidad = document.getElementById(cantId);
+
+  if (opcion.value === "") {
+    alert("Elegí una opción");
+    return;
+  }
+
+  let precio = parseInt(opcion.value);
+  let texto = opcion.options[opcion.selectedIndex].text;
+  let cant = parseInt(cantidad.value);
+
+  let totalItem = precio * cant;
+
+  carrito.push({
+    nombre: nombre + " (" + texto + ") x" + cant,
+    precio: totalItem
+  });
+
+  total += totalItem;
+
+  mostrarCarrito();
+}
+
+
+/* WhatsApp */
 function enviarWhatsApp() {
 
   if (carrito.length === 0) {
@@ -2938,62 +3004,84 @@ function enviarWhatsApp() {
     return;
   }
 
-  // Datos del formulario
   let nombre = document.getElementById("nombre").value;
   let entrega = document.getElementById("entrega").value;
   let direccion = document.getElementById("direccion").value;
   let pago = document.getElementById("pago").value;
 
   if (nombre === "" || entrega === "" || pago === "") {
-    alert("Completá nombre, entrega y método de pago");
+    alert("Completá los datos");
     return;
   }
 
-  // Mensaje inicial
-  let mensaje = 
-`Hola Fer 🌿, te envío mi pedido:
+  let mensaje =
+    "Hola Fer 🌿, te envío mi pedido:\n\n" +
+    "🌿 Pedido Universo Dharani 🌿\n\n" +
+    "👤 Nombre: " + nombre + "\n" +
+    "🚚 Entrega: " + entrega + "\n";
 
-🌿 Pedido Universo Dharani 🌿
-
-👤 Nombre: ${nombre}
-🚚 Entrega: ${entrega}`;
-
-  // Solo muestra dirección si eligió envío
   if (entrega === "Envío") {
+
     if (direccion === "") {
       alert("Ingresá la dirección");
       return;
     }
-    mensaje += `\n📍 Dirección: ${direccion}`;
+
+    mensaje += "📍 Dirección: " + direccion + "\n";
   }
 
-  mensaje += `
-💳 Pago: ${pago}
+  mensaje +=
+    "💳 Pago: " + pago + "\n\n" +
+    "🛒 Productos:\n";
 
-🛒 Productos:
-`;
 
-  // Productos
   carrito.forEach(item => {
-    mensaje += `• ${item.nombre} — $${item.precio}\n`;
+    mensaje += "• " + item.nombre + " — $" + item.precio + "\n";
   });
 
-  // Total
-  mensaje += `
-💰 Total: $${total}
 
-Gracias 💚`;
+  mensaje += "\n💰 Total: $" + total + "\n\nGracias 💚";
 
-  // Codificar para WhatsApp
-  let mensajeFinal = encodeURIComponent(mensaje);
 
-  let telefono = "5492622465782"; // Tu número
+  let telefono = "5492622465782";
 
-  let url = `https://wa.me/${telefono}?text=${mensajeFinal}`;
+  let url = "https://wa.me/" + telefono + "?text=" +
+            encodeURIComponent(mensaje);
 
   window.open(url, "_blank");
 }
+
+
+/* Desplegar producto */
+function toggleProducto(el) {
+  el.parentElement.classList.toggle("abierto");
+}
+
+
+/* Ordenar productos */
+function ordenarProductos() {
+
+  document.querySelectorAll('.categoria').forEach(cat => {
+
+    let productos = Array.from(cat.querySelectorAll('.producto'));
+
+    productos.sort((a, b) => {
+
+      let nombreA = a.querySelector('.producto-header').textContent.toLowerCase();
+      let nombreB = b.querySelector('.producto-header').textContent.toLowerCase();
+
+      return nombreA.localeCompare(nombreB);
+
+    });
+
+    productos.forEach(p => cat.appendChild(p));
+
+  });
+
+}
+
 </script>
+
 
 
   function mostrar(id) {
