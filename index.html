@@ -1860,6 +1860,162 @@
       
 </div>
 
+<!-- SEN -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Sen</h3>
+
+  <p>Planta laxante suave utilizada en infusiones depurativas.</p>
+
+  <label>Opción</label>
+  <select id="sen-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="220">25g $220</option>
+    <option value="395">50g $395</option>
+    <option value="720">100g $720</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="sen-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarSen()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- STEVIA HOJAS -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Stevia en Hojas</h3>
+
+  <p>Endulzante natural ideal para infusiones sin azúcar.</p>
+
+  <label>Opción</label>
+  <select id="steviaH-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="940">25g $940</option>
+    <option value="1790">50g $1790</option>
+    <option value="3390">100g $3390</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="steviaH-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarSteviaH()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- STEVIA POLVO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Stevia en Polvo</h3>
+
+  <p>Endulzante concentrado natural sin calorías.</p>
+
+  <label>Opción</label>
+  <select id="steviaP-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="1050">25g $1050</option>
+    <option value="1990">50g $1990</option>
+    <option value="3770">100g $3770</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="steviaP-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarSteviaP()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- TE NEGRO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Té Negro</h3>
+
+  <p>Infusión estimulante rica en antioxidantes.</p>
+
+  <label>Opción</label>
+  <select id="ten-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="260">25g $260</option>
+    <option value="460">50g $460</option>
+    <option value="850">100g $850</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="ten-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarTeN()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- TE ROJO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Té Rojo</h3>
+
+  <p>Infusión depurativa ideal para metabolismo.</p>
+
+  <label>Opción</label>
+  <select id="ter-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="240">25g $240</option>
+    <option value="430">50g $430</option>
+    <option value="790">100g $790</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="ter-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarTeR()">
+    Agregar al pedido
+  </button>
+
+</div>
+      
+</div>
+
 
 <!-- FRUTOS -->
 
@@ -2340,6 +2496,26 @@ function agregarProvenzal() {
 
 function agregarRomero() {
   agregarProducto("romero-opcion","romero-cant","Romero Molido");
+}
+
+  function agregarSen() {
+  agregarProducto("sen-opcion","sen-cant","Sen");
+}
+
+function agregarSteviaH() {
+  agregarProducto("steviaH-opcion","steviaH-cant","Stevia en Hojas");
+}
+
+function agregarSteviaP() {
+  agregarProducto("steviaP-opcion","steviaP-cant","Stevia en Polvo");
+}
+
+function agregarTeN() {
+  agregarProducto("ten-opcion","ten-cant","Té Negro");
+}
+
+function agregarTeR() {
+  agregarProducto("ter-opcion","ter-cant","Té Rojo");
 }
 
   
