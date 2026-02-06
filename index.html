@@ -722,7 +722,161 @@
   </button>
 
 </div>
-     
+
+      <!-- CITRONELA -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Citronela</h3>
+
+  <p>Hierba aromática fresca, ideal para infusiones y preparados naturales.</p>
+
+  <label>Opción</label>
+  <select id="citronela-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="1030">25g $1030</option>
+    <option value="1970">50g $1970</option>
+    <option value="3740">100g $3740</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="citronela-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarCitronela()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- CLAVO ENTERO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Clavo de Olor Entero</h3>
+
+  <p>Especia aromática intensa, ideal para infusiones y repostería.</p>
+
+  <label>Opción</label>
+  <select id="clavoE-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="1820">25g $1820</option>
+    <option value="3500">50g $3500</option>
+    <option value="6660">100g $6660</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="clavoE-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarClavoE()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- CLAVO MOLIDO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Clavo de Olor Molido</h3>
+
+  <p>Especia molida para repostería, infusiones y mezclas aromáticas.</p>
+
+  <label>Opción</label>
+  <select id="clavoM-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="300">25g $300</option>
+    <option value="520">50g $520</option>
+    <option value="945">100g $945</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="clavoM-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarClavoM()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- COLA DE CABALLO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Cola de Caballo</h3>
+
+  <p>Planta tradicional utilizada en infusiones depurativas.</p>
+
+  <label>Opción</label>
+  <select id="cola-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="360">25g $360</option>
+    <option value="660">50g $660</option>
+    <option value="1225">100g $1225</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="cola-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarCola()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- COMINO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Comino Molido Especial</h3>
+
+  <p>Especia intensa para realzar sabores en comidas y preparados.</p>
+
+  <label>Opción</label>
+  <select id="comino-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="250">25g $250</option>
+    <option value="450">50g $450</option>
+    <option value="825">100g $825</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="comino-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarComino()">
+    Agregar al pedido
+  </button>
+
+</div>
+
   
 </div>
 
@@ -1052,6 +1206,26 @@ function agregarCentella() {
 
 function agregarChimi() {
   agregarProducto("chimi-opcion","chimi-cant","Chimichurri");
+}
+
+  function agregarCitronela() {
+  agregarProducto("citronela-opcion","citronela-cant","Citronela");
+}
+
+function agregarClavoE() {
+  agregarProducto("clavoE-opcion","clavoE-cant","Clavo Entero");
+}
+
+function agregarClavoM() {
+  agregarProducto("clavoM-opcion","clavoM-cant","Clavo Molido");
+}
+
+function agregarCola() {
+  agregarProducto("cola-opcion","cola-cant","Cola de Caballo");
+}
+
+function agregarComino() {
+  agregarProducto("comino-opcion","comino-cant","Comino Especial");
 }
 
   
