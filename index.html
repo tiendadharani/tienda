@@ -112,10 +112,7 @@
 
 @media (max-width: 700px) {
 
-  /* Quitar todo ancho forzado */
-
   .productos,
-  .categoria,
   .categoria.visible {
     width: 100% !important;
     max-width: 100% !important;
@@ -124,15 +121,11 @@
     box-sizing: border-box;
   }
 
-  /* Una sola columna */
-
   .categoria.visible {
     display: grid !important;
     grid-template-columns: 1fr !important;
     gap: 12px !important;
   }
-
-  /* Tarjetas centradas */
 
   .categoria .producto {
     width: 100% !important;
@@ -141,6 +134,7 @@
   }
 
 }
+
 
 
 
