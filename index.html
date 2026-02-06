@@ -415,6 +415,160 @@
     <option>1</option><option>2</option><option>3</option>
     <option>4</
 
+      <!-- BOLDO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Boldo</h3>
+
+  <p>Planta digestiva tradicional, ideal para infusiones depurativas.</p>
+
+  <label>Opción</label>
+  <select id="boldo-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="465">25g $465</option>
+    <option value="865">50g $865</option>
+    <option value="1615">100g $1615</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="boldo-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarBoldo()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- BURRITO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Burrito</h3>
+
+  <p>Hierba aromática suave, ideal para digestión y bienestar general.</p>
+
+  <label>Opción</label>
+  <select id="burrito-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="810">25g $810</option>
+    <option value="1545">50g $1545</option>
+    <option value="2915">100g $2915</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="burrito-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarBurrito()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- CALENDULA -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Caléndula</h3>
+
+  <p>Flor medicinal tradicional para preparados naturales y bienestar.</p>
+
+  <label>Opción</label>
+  <select id="calendula-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="670">25g $670</option>
+    <option value="1265">50g $1265</option>
+    <option value="2380">100g $2380</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="calendula-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarCalendula()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- CANELA -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Canela en Polvo</h3>
+
+  <p>Especia cálida y aromática, ideal para infusiones y repostería.</p>
+
+  <label>Opción</label>
+  <select id="canela-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="480">25g $480</option>
+    <option value="900">50g $900</option>
+    <option value="1680">100g $1680</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="canela-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarCanela()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- CARQUEJA -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Carqueja</h3>
+
+  <p>Hierba amarga utilizada en infusiones depurativas y digestivas.</p>
+
+  <label>Opción</label>
+  <select id="carqueja-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="400">25g $400</option>
+    <option value="740">50g $740</option>
+    <option value="1375">100g $1375</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="carqueja-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarCarqueja()">
+    Agregar al pedido
+  </button>
+
+</div>
+
   
 </div>
 
@@ -704,6 +858,26 @@ function agregarProducto(opcionId, cantId, nombre) {
   total += totalItem;
 
   mostrarCarrito();
+}
+
+  function agregarBoldo() {
+  agregarProducto("boldo-opcion","boldo-cant","Boldo");
+}
+
+function agregarBurrito() {
+  agregarProducto("burrito-opcion","burrito-cant","Burrito");
+}
+
+function agregarCalendula() {
+  agregarProducto("calendula-opcion","calendula-cant","Caléndula");
+}
+
+function agregarCanela() {
+  agregarProducto("canela-opcion","canela-cant","Canela");
+}
+
+function agregarCarqueja() {
+  agregarProducto("carqueja-opcion","carqueja-cant","Carqueja");
 }
 
   
