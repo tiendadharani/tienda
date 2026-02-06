@@ -2049,6 +2049,130 @@
   </button>
 
 </div>
+
+<!-- TE VERDE -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Té Verde</h3>
+
+  <p>Infusión antioxidante y estimulante natural.</p>
+
+  <label>Opción</label>
+  <select id="tev-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="270">25g $270</option>
+    <option value="490">50g $490</option>
+    <option value="900">100g $900</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="tev-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarTeV()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- TILO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Tilo</h3>
+
+  <p>Planta relajante profunda para ansiedad e insomnio.</p>
+
+  <label>Opción</label>
+  <select id="tilo-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="2520">25g $2520</option>
+    <option value="4870">50g $4870</option>
+    <option value="9280">100g $9280</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="tilo-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarTilo()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- TOMILLO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Tomillo</h3>
+
+  <p>Hierba antibacteriana y respiratoria natural.</p>
+
+  <label>Opción</label>
+  <select id="tomillo-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="470">25g $470</option>
+    <option value="880">50g $880</option>
+    <option value="1650">100g $1650</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="tomillo-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarTomillo()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- ZARZAPARRILLA -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Zarzaparrilla</h3>
+
+  <p>Planta depurativa para riñones y piel.</p>
+
+  <label>Opción</label>
+  <select id="zarza-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="315">25g $315</option>
+    <option value="570">50g $570</option>
+    <option value="1060">100g $1060</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="zarza-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarZarza()">
+    Agregar al pedido
+  </button>
+
+</div>
+
       
 </div>
 
@@ -2554,6 +2678,22 @@ function agregarTeR() {
   agregarProducto("ter-opcion","ter-cant","Té Rojo");
 }
 
+function agregarTeV() {
+  agregarProducto("tev-opcion","tev-cant","Té Verde");
+}
+
+function agregarTilo() {
+  agregarProducto("tilo-opcion","tilo-cant","Tilo");
+}
+
+function agregarTomillo() {
+  agregarProducto("tomillo-opcion","tomillo-cant","Tomillo");
+}
+
+function agregarZarza() {
+  agregarProducto("zarza-opcion","zarza-cant","Zarzaparrilla");
+}
+  
   
 </script>
 
