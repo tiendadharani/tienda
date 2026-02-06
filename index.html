@@ -166,9 +166,16 @@
 
 <section class="categorias">
 
-<button onclick="mostrar('hierbas')">
-🌿 Hierbas y Condimentos
-</button>
+<!-- BOTONES -->
+
+<button onclick="mostrar('hierbas')">🌿 Hierbas y Condimentos</button>
+<button onclick="mostrar('frutos')">🌰 Frutos, Frutas y Semillas</button>
+<button onclick="mostrar('harinas')">🌾 Harinas, Féculas</button>
+<button onclick="mostrar('aroma')">💧 Aromaterapia y Floral</button>
+<button onclick="mostrar('sahumerios')">🕯 Sahumerios</button>
+<button onclick="mostrar('panaderia')">🍞 Panadería Consciente</button>
+
+<!-- HIERBAS -->
 
 <div id="hierbas" class="categoria">
 
@@ -190,11 +197,8 @@
 
     <label>Cantidad</label>
     <select id="manzanilla-cant">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
     </select>
 
     <button onclick="agregarManzanilla()">
@@ -205,7 +209,39 @@
 
 </div>
 
+
+<!-- FRUTOS -->
+
+<div id="frutos" class="categoria">
+  <p style="text-align:center;">🌰 Próximamente productos de frutos secos</p>
+</div>
+
+<!-- HARINAS -->
+
+<div id="harinas" class="categoria">
+  <p style="text-align:center;">🌾 Próximamente harinas</p>
+</div>
+
+<!-- AROMA -->
+
+<div id="aroma" class="categoria">
+  <p style="text-align:center;">💧 Próximamente aromaterapia</p>
+</div>
+
+<!-- SAHUMERIOS -->
+
+<div id="sahumerios" class="categoria">
+  <p style="text-align:center;">🕯 Próximamente sahumerios</p>
+</div>
+
+<!-- PANADERIA -->
+
+<div id="panaderia" class="categoria">
+  <p style="text-align:center;">🍞 Próximamente panadería consciente</p>
+</div>
+
 </section>
+
 
 
 <section class="carrito">
