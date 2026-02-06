@@ -910,7 +910,162 @@
 <div id="panaderia" class="categoria">
   <p style="text-align:center;">🍞 Próximamente panadería consciente</p>
 </div>
+<!-- CONDIMENTO PIZZA -->
 
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Condimento para Pizza</h3>
+
+  <p>Mezcla especial de hierbas y especias para pizzas y comidas.</p>
+
+  <label>Opción</label>
+  <select id="pizza-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="200">25g $200</option>
+    <option value="350">50g $350</option>
+    <option value="640">100g $640</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="pizza-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarPizza()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- CORIANDRO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Coriandro Molido</h3>
+
+  <p>Especia aromática suave, ideal para mezclas y cocina natural.</p>
+
+  <label>Opción</label>
+  <select id="coriandro-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="150">25g $150</option>
+    <option value="250">50g $250</option>
+    <option value="390">100g $390</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="coriandro-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarCoriandro()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- CURCUMA -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Cúrcuma en Polvo</h3>
+
+  <p>Raíz molida con propiedades antioxidantes y antiinflamatorias.</p>
+
+  <label>Opción</label>
+  <select id="curcuma-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="440">25g $440</option>
+    <option value="820">50g $820</option>
+    <option value="1530">100g $1530</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="curcuma-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarCurcuma()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- CURRY -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Curry Molido</h3>
+
+  <p>Mezcla especiada aromática para platos orientales y vegetales.</p>
+
+  <label>Opción</label>
+  <select id="curry-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="230">25g $230</option>
+    <option value="410">50g $410</option>
+    <option value="740">100g $740</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="curry-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarCurry()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- DIENTE DE LEON -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Diente de León</h3>
+
+  <p>Planta depurativa tradicional para infusiones naturales.</p>
+
+  <label>Opción</label>
+  <select id="diente-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="420">25g $420</option>
+    <option value="780">50g $780</option>
+    <option value="1460">100g $1460</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="diente-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarDiente()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+  
 </section>
 
 
@@ -1226,6 +1381,26 @@ function agregarCola() {
 
 function agregarComino() {
   agregarProducto("comino-opcion","comino-cant","Comino Especial");
+}
+
+function agregarPizza() {
+  agregarProducto("pizza-opcion","pizza-cant","Condimento para Pizza");
+}
+
+function agregarCoriandro() {
+  agregarProducto("coriandro-opcion","coriandro-cant","Coriandro Molido");
+}
+
+function agregarCurcuma() {
+  agregarProducto("curcuma-opcion","curcuma-cant","Cúrcuma");
+}
+
+function agregarCurry() {
+  agregarProducto("curry-opcion","curry-cant","Curry");
+}
+
+function agregarDiente() {
+  agregarProducto("diente-opcion","diente-cant","Diente de León");
 }
 
   
