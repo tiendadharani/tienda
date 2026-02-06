@@ -1324,29 +1324,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌿 Eucaliptus
+  </div>
 
-  <h3>Eucaliptus</h3>
+  <div class="producto-body">
 
-  <p>Planta aromática utilizada en infusiones y vaporizaciones.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="euca-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="520">25g $520</option>
-    <option value="970">50g $970</option>
-    <option value="1820">100g $1820</option>
-  </select>
+    <p>Planta respiratoria ideal para infusiones y vaporizaciones.</p>
 
-  <label>Cantidad</label>
-  <select id="euca-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="euca-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="520">25g $520</option>
+      <option value="970">50g $970</option>
+      <option value="1820">100g $1820</option>
+    </select>
 
-  <button onclick="agregarEuca()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="euca-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarEuca()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -1355,29 +1361,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🍃 Gingko Biloba
+  </div>
 
-  <h3>Gingko Biloba</h3>
+  <div class="producto-body">
 
-  <p>Planta tradicional para la memoria y circulación.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="gingko-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="1225">25g $1225</option>
-    <option value="2350">50g $2350</option>
-    <option value="4460">100g $4460</option>
-  </select>
+    <p>Planta tradicional para memoria y circulación.</p>
 
-  <label>Cantidad</label>
-  <select id="gingko-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="gingko-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="1225">25g $1225</option>
+      <option value="2350">50g $2350</option>
+      <option value="4460">100g $4460</option>
+    </select>
 
-  <button onclick="agregarGingko()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="gingko-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarGingko()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -1386,29 +1398,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌺 Hibiscus
+  </div>
 
-  <h3>Hibiscus</h3>
+  <div class="producto-body">
 
-  <p>Flor rica en antioxidantes, ideal para infusiones frutales.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="hibiscus-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="780">25g $780</option>
-    <option value="1490">50g $1490</option>
-    <option value="2800">100g $2800</option>
-  </select>
+    <p>Flor antioxidante para infusiones frutales y refrescantes.</p>
 
-  <label>Cantidad</label>
-  <select id="hibiscus-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="hibiscus-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="780">25g $780</option>
+      <option value="1490">50g $1490</option>
+      <option value="2800">100g $2800</option>
+    </select>
 
-  <button onclick="agregarHibiscus()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="hibiscus-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarHibiscus()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -1417,61 +1435,75 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌿 Jengibre en Polvo
+  </div>
 
-  <h3>Jengibre en Polvo</h3>
+  <div class="producto-body">
 
-  <p>Raíz molida estimulante y digestiva para infusiones y cocina.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="jengi-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="590">25g $590</option>
-    <option value="1110">50g $1110</option>
-    <option value="2100">100g $2100</option>
-  </select>
+    <p>Raíz estimulante y digestiva para cocina e infusiones.</p>
 
-  <label>Cantidad</label>
-  <select id="jengi-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="jengi-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="590">25g $590</option>
+      <option value="1110">50g $1110</option>
+      <option value="2100">100g $2100</option>
+    </select>
 
-  <button onclick="agregarJengi()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="jengi-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarJengi()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
-      <!-- LAUREL -->
+
+<!-- LAUREL -->
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🍃 Laurel
+  </div>
 
-  <h3>Laurel</h3>
+  <div class="producto-body">
 
-  <p>Hojas aromáticas para infusiones y cocina digestiva.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="laurel-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="675">25g $675</option>
-    <option value="1277">50g $1277</option>
-    <option value="2400">100g $2400</option>
-  </select>
+    <p>Hoja aromática clásica para guisos y salsas.</p>
 
-  <label>Cantidad</label>
-  <select id="laurel-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="laurel-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="675">25g $675</option>
+      <option value="1277">50g $1277</option>
+      <option value="2400">100g $2400</option>
+    </select>
 
-  <button onclick="agregarLaurel()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="laurel-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarLaurel()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
+
 
 
 <!-- MALVA -->
