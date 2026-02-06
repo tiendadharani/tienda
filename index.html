@@ -2058,34 +2058,39 @@
 </div>
 
 
-
-<!-- PIMENTON DULCE -->
+<!-- PIMENTON -->
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌶️ Pimentón Dulce
+  </div>
 
-  <h3>Pimentón Dulce</h3>
+  <div class="producto-body">
 
-  <p>Especia suave para dar color y sabor a las comidas.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="pimenton-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="225">25g $225</option>
-    <option value="400">50g $400</option>
-    <option value="720">100g $720</option>
-  </select>
+    <p>Condimento suave y aromático para guisos, carnes y salsas.</p>
 
-  <label>Cantidad</label>
-  <select id="pimenton-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="pimenton-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="225">25g $225</option>
+      <option value="400">50g $400</option>
+      <option value="720">100g $720</option>
+    </select>
 
-  <button onclick="agregarPimenton()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="pimenton-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarPimenton()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -2094,29 +2099,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    ⚪ Pimienta Blanca en Grano
+  </div>
 
-  <h3>Pimienta Blanca en Grano</h3>
+  <div class="producto-body">
 
-  <p>Especia intensa para moler al momento.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="pimBG-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="1425">25g $1425</option>
-    <option value="2740">50g $2740</option>
-    <option value="5210">100g $5210</option>
-  </select>
+    <p>Especia suave y aromática para platos delicados.</p>
 
-  <label>Cantidad</label>
-  <select id="pimBG-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="pimBG-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="1425">25g $1425</option>
+      <option value="2740">50g $2740</option>
+      <option value="5210">100g $5210</option>
+    </select>
 
-  <button onclick="agregarPimBG()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="pimBG-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarPimBG()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -2125,59 +2136,72 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    ⚪ Pimienta Blanca Molida
+  </div>
 
-  <h3>Pimienta Blanca Molida</h3>
+  <div class="producto-body">
 
-  <p>Especia fina lista para condimentar.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="pimBM-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="1140">25g $1140</option>
-    <option value="2180">50g $2180</option>
-    <option value="4135">100g $4135</option>
-  </select>
+    <p>Pimienta fina ideal para salsas y preparaciones suaves.</p>
 
-  <label>Cantidad</label>
-  <select id="pimBM-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="pimBM-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="1140">25g $1140</option>
+      <option value="2180">50g $2180</option>
+      <option value="4135">100g $4135</option>
+    </select>
 
-  <button onclick="agregarPimBM()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="pimBM-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarPimBM()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
+
 
 <!-- PIMIENTA NEGRA GRANO -->
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    ⚫ Pimienta Negra en Grano
+  </div>
 
-  <h3>Pimienta Negra en Grano</h3>
+  <div class="producto-body">
 
-  <p>Especia intensa para moler al momento.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="pimNG-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="980">25g $980</option>
-    <option value="1860">50g $1860</option>
-    <option value="3530">100g $3530</option>
-  </select>
+    <p>Especia intensa para moler fresca al momento.</p>
 
-  <label>Cantidad</label>
-  <select id="pimNG-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="pimNG-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="980">25g $980</option>
+      <option value="1860">50g $1860</option>
+      <option value="3530">100g $3530</option>
+    </select>
 
-  <button onclick="agregarPimNG()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="pimNG-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarPimNG()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -2186,29 +2210,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    ⚫ Pimienta Negra Molida
+  </div>
 
-  <h3>Pimienta Negra Molida</h3>
+  <div class="producto-body">
 
-  <p>Especia lista para condimentar con aroma intenso.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="pimNM-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="585">25g $585</option>
-    <option value="1100">50g $1100</option>
-    <option value="2070">100g $2070</option>
-  </select>
+    <p>Pimienta lista para usar en todo tipo de comidas.</p>
 
-  <label>Cantidad</label>
-  <select id="pimNM-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="pimNM-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="585">25g $585</option>
+      <option value="1100">50g $1100</option>
+      <option value="2070">100g $2070</option>
+    </select>
 
-  <button onclick="agregarPimNM()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="pimNM-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarPimNM()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
