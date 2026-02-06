@@ -2930,6 +2930,7 @@ function agregar(nombre, precio) {
 }
 
 
+<script>
 function enviarWhatsApp() {
 
   if (carrito.length === 0) {
@@ -2937,47 +2938,62 @@ function enviarWhatsApp() {
     return;
   }
 
-  let nombre = document.getElementById("cliente-nombre").value;
-  let entrega = document.getElementById("cliente-entrega").value;
-  let direccion = document.getElementById("cliente-direccion").value;
-  let pago = document.getElementById("cliente-pago").value;
+  // Datos del formulario
+  let nombre = document.getElementById("nombre").value;
+  let entrega = document.getElementById("entrega").value;
+  let direccion = document.getElementById("direccion").value;
+  let pago = document.getElementById("pago").value;
 
   if (nombre === "" || entrega === "" || pago === "") {
-    alert("Completá tus datos");
+    alert("Completá nombre, entrega y método de pago");
     return;
   }
 
-  if (entrega === "envio" && direccion === "") {
-    alert("Ingresá la dirección");
-    return;
+  // Mensaje inicial
+  let mensaje = 
+`Hola Fer 🌿, te envío mi pedido:
+
+🌿 Pedido Universo Dharani 🌿
+
+👤 Nombre: ${nombre}
+🚚 Entrega: ${entrega}`;
+
+  // Solo muestra dirección si eligió envío
+  if (entrega === "Envío") {
+    if (direccion === "") {
+      alert("Ingresá la dirección");
+      return;
+    }
+    mensaje += `\n📍 Dirección: ${direccion}`;
   }
 
-  let mensaje = "🌿 *Pedido Universo Dharani* 🌿%0A%0A";
+  mensaje += `
+💳 Pago: ${pago}
 
-  mensaje += "👤 Nombre: " + nombre + "%0A";
-  mensaje += "📦 Entrega: " + entrega + "%0A";
+🛒 Productos:
+`;
 
-  if (entrega === "envio") {
-    mensaje += "📍 Dirección: " + direccion + "%0A";
-  }
-
-  mensaje += "💳 Pago: " + pago + "%0A%0A";
-
-  mensaje += "🛒 *Productos:*%0A";
-
+  // Productos
   carrito.forEach(item => {
-    mensaje += "✔ " + item.nombre + " - $" + item.precio + "%0A";
+    mensaje += `• ${item.nombre} — $${item.precio}\n`;
   });
 
-  mensaje += "%0A💰 *Total: $" + total + "*";
+  // Total
+  mensaje += `
+💰 Total: $${total}
 
-  let telefono = "5492622465782";
+Gracias 💚`;
 
-  let url = "https://wa.me/" + telefono + "?text=" + mensaje;
+  // Codificar para WhatsApp
+  let mensajeFinal = encodeURIComponent(mensaje);
+
+  let telefono = "5492622465782"; // Tu número
+
+  let url = `https://wa.me/${telefono}?text=${mensajeFinal}`;
 
   window.open(url, "_blank");
-
 }
+</script>
 
 
   function mostrar(id) {
