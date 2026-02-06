@@ -1138,29 +1138,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌿 Coriandro Molido
+  </div>
 
-  <h3>Coriandro Molido</h3>
+  <div class="producto-body">
 
-  <p>Especia aromática suave, ideal para mezclas y cocina natural.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="coriandro-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="150">25g $150</option>
-    <option value="250">50g $250</option>
-    <option value="390">100g $390</option>
-  </select>
+    <p>Especia aromática ideal para guisos, carnes y mezclas caseras.</p>
 
-  <label>Cantidad</label>
-  <select id="coriandro-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="coriandro-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="150">25g $150</option>
+      <option value="250">50g $250</option>
+      <option value="390">100g $390</option>
+    </select>
 
-  <button onclick="agregarCoriandro()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="coriandro-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarCoriandro()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -1169,29 +1175,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌼 Cúrcuma en Polvo
+  </div>
 
-  <h3>Cúrcuma en Polvo</h3>
+  <div class="producto-body">
 
-  <p>Raíz molida con propiedades antioxidantes y antiinflamatorias.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="curcuma-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="440">25g $440</option>
-    <option value="820">50g $820</option>
-    <option value="1530">100g $1530</option>
-  </select>
+    <p>Raíz antioxidante y antiinflamatoria para cocina e infusiones.</p>
 
-  <label>Cantidad</label>
-  <select id="curcuma-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="curcuma-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="440">25g $440</option>
+      <option value="820">50g $820</option>
+      <option value="1530">100g $1530</option>
+    </select>
 
-  <button onclick="agregarCurcuma()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="curcuma-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarCurcuma()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -1200,29 +1212,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌶️ Curry Molido
+  </div>
 
-  <h3>Curry Molido</h3>
+  <div class="producto-body">
 
-  <p>Mezcla especiada aromática para platos orientales y vegetales.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="curry-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="230">25g $230</option>
-    <option value="410">50g $410</option>
-    <option value="740">100g $740</option>
-  </select>
+    <p>Mezcla especiada oriental para platos intensos y aromáticos.</p>
 
-  <label>Cantidad</label>
-  <select id="curry-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="curry-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="230">25g $230</option>
+      <option value="410">50g $410</option>
+      <option value="740">100g $740</option>
+    </select>
 
-  <button onclick="agregarCurry()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="curry-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarCurry()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -1231,61 +1249,75 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌾 Diente de León
+  </div>
 
-  <h3>Diente de León</h3>
+  <div class="producto-body">
 
-  <p>Planta depurativa tradicional para infusiones naturales.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="diente-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="420">25g $420</option>
-    <option value="780">50g $780</option>
-    <option value="1460">100g $1460</option>
-  </select>
+    <p>Planta depurativa tradicional para infusiones naturales.</p>
 
-  <label>Cantidad</label>
-  <select id="diente-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="diente-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="420">25g $420</option>
+      <option value="780">50g $780</option>
+      <option value="1460">100g $1460</option>
+    </select>
 
-  <button onclick="agregarDiente()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="diente-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarDiente()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
-      
-      <!-- EQUINACEA -->
+
+
+<!-- EQUINACEA -->
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌿 Equinácea
+  </div>
 
-  <h3>Equinácea</h3>
+  <div class="producto-body">
 
-  <p>Planta fortalecedora del sistema inmunológico, ideal para infusiones.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="equi-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="1000">25g $1000</option>
-    <option value="1900">50g $1900</option>
-    <option value="3610">100g $3610</option>
-  </select>
+    <p>Planta fortalecedora del sistema inmunológico.</p>
 
-  <label>Cantidad</label>
-  <select id="equi-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="equi-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="1000">25g $1000</option>
+      <option value="1900">50g $1900</option>
+      <option value="3610">100g $3610</option>
+    </select>
 
-  <button onclick="agregarEqui()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="equi-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarEqui()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
+
 
 
 <!-- EUCALIPTUS -->
