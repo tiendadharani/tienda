@@ -580,29 +580,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌿 Burrito
+  </div>
 
-  <h3>Burrito</h3>
+  <div class="producto-body">
 
-  <p>Hierba aromática suave, ideal para digestión y bienestar general.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="burrito-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="810">25g $810</option>
-    <option value="1545">50g $1545</option>
-    <option value="2915">100g $2915</option>
-  </select>
+    <p>Planta aromática tradicional para infusiones digestivas.</p>
 
-  <label>Cantidad</label>
-  <select id="burrito-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="burrito-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="810">25g $810</option>
+      <option value="1545">50g $1545</option>
+      <option value="2915">100g $2915</option>
+    </select>
 
-  <button onclick="agregarBurrito()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="burrito-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarBurrito()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -611,29 +617,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌼 Caléndula
+  </div>
 
-  <h3>Caléndula</h3>
+  <div class="producto-body">
 
-  <p>Flor medicinal tradicional para preparados naturales y bienestar.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="calendula-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="670">25g $670</option>
-    <option value="1265">50g $1265</option>
-    <option value="2380">100g $2380</option>
-  </select>
+    <p>Flor tradicional con propiedades calmantes y regeneradoras.</p>
 
-  <label>Cantidad</label>
-  <select id="calendula-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="calendula-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="670">25g $670</option>
+      <option value="1265">50g $1265</option>
+      <option value="2380">100g $2380</option>
+    </select>
 
-  <button onclick="agregarCalendula()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="calendula-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarCalendula()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -642,29 +654,35 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🍂 Canela en Polvo
+  </div>
 
-  <h3>Canela en Polvo</h3>
+  <div class="producto-body">
 
-  <p>Especia cálida y aromática, ideal para infusiones y repostería.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="canela-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="480">25g $480</option>
-    <option value="900">50g $900</option>
-    <option value="1680">100g $1680</option>
-  </select>
+    <p>Especia cálida ideal para repostería, infusiones y cocina.</p>
 
-  <label>Cantidad</label>
-  <select id="canela-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="canela-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="480">25g $480</option>
+      <option value="900">50g $900</option>
+      <option value="1680">100g $1680</option>
+    </select>
 
-  <button onclick="agregarCanela()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="canela-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarCanela()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
@@ -673,61 +691,75 @@
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🌱 Carqueja
+  </div>
 
-  <h3>Carqueja</h3>
+  <div class="producto-body">
 
-  <p>Hierba amarga utilizada en infusiones depurativas y digestivas.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="carqueja-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="400">25g $400</option>
-    <option value="740">50g $740</option>
-    <option value="1375">100g $1375</option>
-  </select>
+    <p>Planta amarga tradicional para infusiones depurativas.</p>
 
-  <label>Cantidad</label>
-  <select id="carqueja-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="carqueja-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="400">25g $400</option>
+      <option value="740">50g $740</option>
+      <option value="1375">100g $1375</option>
+    </select>
 
-  <button onclick="agregarCarqueja()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="carqueja-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarCarqueja()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
 
- <!-- CEBOLLA ESCAMAS -->
+
+<!-- CEBOLLA ESCAMAS -->
 
 <div class="producto">
 
-  <img src="https://via.placeholder.com/300">
+  <div class="producto-header" onclick="toggleProducto(this)">
+    🧅 Cebolla en Escamas
+  </div>
 
-  <h3>Cebolla en Escamas</h3>
+  <div class="producto-body">
 
-  <p>Condimento deshidratado ideal para sopas, guisos y mezclas.</p>
+    <img src="https://via.placeholder.com/300">
 
-  <label>Opción</label>
-  <select id="cebollaE-opcion">
-    <option value="">Elegí una opción</option>
-    <option value="460">25g $460</option>
-    <option value="850">50g $850</option>
-    <option value="1590">100g $1590</option>
-  </select>
+    <p>Cebolla deshidratada ideal para guisos, sopas y condimentos.</p>
 
-  <label>Cantidad</label>
-  <select id="cebollaE-cant">
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option>
-  </select>
+    <label>Opción</label>
+    <select id="cebollaE-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="460">25g $460</option>
+      <option value="850">50g $850</option>
+      <option value="1590">100g $1590</option>
+    </select>
 
-  <button onclick="agregarCebollaE()">
-    Agregar al pedido
-  </button>
+    <label>Cantidad</label>
+    <select id="cebollaE-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button onclick="agregarCebollaE()">
+      Agregar al pedido
+    </button>
+
+  </div>
 
 </div>
+
 
 
 <!-- CEBOLLA POLVO -->
