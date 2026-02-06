@@ -1742,7 +1742,122 @@
 
 </div>
 
-                        
+<!-- PIMIENTA NEGRA GRANO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Pimienta Negra en Grano</h3>
+
+  <p>Especia intensa para moler al momento.</p>
+
+  <label>Opción</label>
+  <select id="pimNG-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="980">25g $980</option>
+    <option value="1860">50g $1860</option>
+    <option value="3530">100g $3530</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="pimNG-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarPimNG()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- PIMIENTA NEGRA MOLIDA -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Pimienta Negra Molida</h3>
+
+  <p>Especia lista para condimentar con aroma intenso.</p>
+
+  <label>Opción</label>
+  <select id="pimNM-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="585">25g $585</option>
+    <option value="1100">50g $1100</option>
+    <option value="2070">100g $2070</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="pimNM-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarPimNM()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- POLEO -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Poleo</h3>
+
+  <p>Hierba digestiva y calmante para infusiones.</p>
+
+  <label>Opción</label>
+  <select id="poleo-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="480">25g $480</option>
+    <option value="890">50g $890</option>
+    <option value="1670">100g $1670</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="poleo-cant">
+    <option>1</option><option>2</option><option>3</option>
+    <option>4</option><option>5</option>
+  </select>
+
+  <button onclick="agregarPoleo()">
+    Agregar al pedido
+  </button>
+
+</div>
+
+
+<!-- PROVENZAL -->
+
+<div class="producto">
+
+  <img src="https://via.placeholder.com/300">
+
+  <h3>Provenzal</h3>
+
+  <p>Mezcla clásica de ajo y perejil para carnes y verduras.</p>
+
+  <label>Opción</label>
+  <select id="provenzal-opcion">
+    <option value="">Elegí una opción</option>
+    <option value="260">25g $260</option>
+    <option value="460">50g $460</option>
+    <option value="850">100g $850</option>
+  </select>
+
+  <label>Cantidad</label>
+  <select id="provenzal-cant">
+    <option>1</option><option>2</option><option>3</option>
+
+      
 </div>
 
 
@@ -2205,6 +2320,26 @@ function agregarPimBG() {
 
 function agregarPimBM() {
   agregarProducto("pimBM-opcion","pimBM-cant","Pimienta Blanca Molida");
+}
+
+  function agregarPimNG() {
+  agregarProducto("pimNG-opcion","pimNG-cant","Pimienta Negra en Grano");
+}
+
+function agregarPimNM() {
+  agregarProducto("pimNM-opcion","pimNM-cant","Pimienta Negra Molida");
+}
+
+function agregarPoleo() {
+  agregarProducto("poleo-opcion","poleo-cant","Poleo");
+}
+
+function agregarProvenzal() {
+  agregarProducto("provenzal-opcion","provenzal-cant","Provenzal");
+}
+
+function agregarRomero() {
+  agregarProducto("romero-opcion","romero-cant","Romero Molido");
 }
 
   
