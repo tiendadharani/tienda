@@ -179,6 +179,19 @@
   border-radius: 12px;
 }
 
+    .categoria {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+/* En celular vuelve a una columna */
+@media (max-width: 600px) {
+  .categoria {
+    grid-template-columns: 1fr;
+  }
+}
+
     
   </style>
 </head>
