@@ -2915,22 +2915,6 @@
 
 
 <script>
-let carrito = [];
-let total = 0;
-
-  window.onload = ordenarProductos;
-
-
-function agregar(nombre, precio) {
-
-  carrito.push({nombre, precio});
-  total += precio;
-
-  mostrar();
-}
-
-
-<script>
 
 let carrito = [];
 let total = 0;
@@ -2941,9 +2925,7 @@ window.onload = ordenarProductos;
 /* Mostrar categorías */
 function mostrar(id) {
 
-  let categorias = document.querySelectorAll('.categoria');
-
-  categorias.forEach(c => {
+  document.querySelectorAll('.categoria').forEach(c => {
     c.classList.remove("visible");
   });
 
@@ -2951,7 +2933,7 @@ function mostrar(id) {
 }
 
 
-/* Carrito */
+/* Mostrar carrito */
 function mostrarCarrito() {
 
   let lista = document.getElementById("lista");
@@ -2968,13 +2950,13 @@ function mostrarCarrito() {
 }
 
 
-/* Función base */
+/* Agregar producto genérico */
 function agregarProducto(opcionId, cantId, nombre) {
 
   let opcion = document.getElementById(opcionId);
   let cantidad = document.getElementById(cantId);
 
-  if (opcion.value === "") {
+  if (!opcion || opcion.value === "") {
     alert("Elegí una opción");
     return;
   }
@@ -3045,8 +3027,8 @@ function enviarWhatsApp() {
 
   let telefono = "5492622465782";
 
-  let url = "https://wa.me/" + telefono + "?text=" +
-            encodeURIComponent(mensaje);
+  let url = "https://wa.me/" + telefono +
+            "?text=" + encodeURIComponent(mensaje);
 
   window.open(url, "_blank");
 }
@@ -3055,6 +3037,27 @@ function enviarWhatsApp() {
 /* Desplegar producto */
 function toggleProducto(el) {
   el.parentElement.classList.toggle("abierto");
+}
+
+
+/* Mostrar carrito */
+function toggleCarrito() {
+  document.querySelector(".carrito")
+    .classList.toggle("abierto");
+}
+
+
+/* Dirección */
+function toggleDireccion() {
+
+  let entrega = document.getElementById("entrega").value;
+  let box = document.getElementById("direccion-box");
+
+  if (entrega === "Envío") {
+    box.style.display = "block";
+  } else {
+    box.style.display = "none";
+  }
 }
 
 
@@ -3067,10 +3070,13 @@ function ordenarProductos() {
 
     productos.sort((a, b) => {
 
-      let nombreA = a.querySelector('.producto-header').textContent.toLowerCase();
-      let nombreB = b.querySelector('.producto-header').textContent.toLowerCase();
+      let aName = a.querySelector('.producto-header')
+        .textContent.toLowerCase();
 
-      return nombreA.localeCompare(nombreB);
+      let bName = b.querySelector('.producto-header')
+        .textContent.toLowerCase();
+
+      return aName.localeCompare(bName);
 
     });
 
@@ -3081,6 +3087,7 @@ function ordenarProductos() {
 }
 
 </script>
+
 
 
 
