@@ -2923,8 +2923,14 @@ let total = 0;
 /* ================== INICIO ================== */
 
 window.onload = function () {
-  ordenarProductos();
+
+  // Espera a que todo cargue bien
+  setTimeout(() => {
+    ordenarProductos();
+  }, 300);
+
 };
+
 
 
 /* ================== CATEGORÍAS ================== */
