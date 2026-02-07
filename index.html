@@ -3048,13 +3048,6 @@ let carrito = [];
 let total = 0;
 
 
-/* Al cargar */
-window.onload = function () {
-  setTimeout(() => {
-    ordenarProductos();
-  }, 300);
-};
-
 
 /* Mostrar categorías */
 function mostrar(id) {
@@ -3241,7 +3234,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-  
+  document.addEventListener("DOMContentLoaded", () => {
+  ordenarProductos();
+});
+
 
   
 </script>
