@@ -2956,10 +2956,17 @@ function agregarProducto(opcionId, cantId, nombre) {
   let opcion = document.getElementById(opcionId);
   let cantidad = document.getElementById(cantId);
 
-  if (!opcion || opcion.value === "") {
-    alert("Elegí una opción");
-    return;
-  }
+  if (!opcion) {
+  alert("Error: no se encuentra el producto");
+  console.log("No existe:", opcionId);
+  return;
+}
+
+if (opcion.value === "") {
+  alert("Elegí una opción");
+  return;
+}
+
 
   let precio = parseInt(opcion.value);
   let texto = opcion.options[opcion.selectedIndex].text;
