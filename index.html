@@ -2920,50 +2920,34 @@ let carrito = [];
 let total = 0;
 
 
-/* ================== INICIO ================== */
-
+/* Al cargar */
 window.onload = function () {
-
-  // Espera a que todo cargue bien
   setTimeout(() => {
     ordenarProductos();
   }, 300);
-
 };
 
 
-
-/* ================== CATEGORÍAS ================== */
-
+/* Mostrar categorías */
 function mostrar(id) {
 
-  document.querySelectorAll(".categoria").forEach(c => {
+  document.querySelectorAll('.categoria').forEach(c => {
     c.classList.remove("visible");
   });
 
-  let cat = document.getElementById(id);
-
-  if (!cat) {
-    alert("No existe categoría: " + id);
-    return;
-  }
-
-  cat.classList.add("visible");
-
-  ordenarCategoria(cat);
+  document.getElementById(id).classList.add("visible");
 }
 
 
-/* ================== CARRITO ================== */
-
+/* Mostrar carrito */
 function mostrarCarrito() {
 
   let lista = document.getElementById("lista");
   lista.innerHTML = "";
 
-  carrito.forEach(p => {
+  carrito.forEach(item => {
     let li = document.createElement("li");
-    li.textContent = p.nombre + " - $" + p.precio;
+    li.textContent = item.nombre + " - $" + item.precio;
     lista.appendChild(li);
   });
 
@@ -2972,46 +2956,39 @@ function mostrarCarrito() {
 }
 
 
-/* ================== AGREGAR ================== */
-
+/* Agregar producto genérico */
 function agregarProducto(opcionId, cantId, nombre) {
 
   let opcion = document.getElementById(opcionId);
-  let cant = document.getElementById(cantId);
+  let cantidad = document.getElementById(cantId);
 
-  if (!opcion || !cant) {
-    alert("Error en " + nombre);
-    return;
-  }
-
-  if (opcion.value === "") {
+  if (!opcion || opcion.value === "") {
     alert("Elegí una opción");
     return;
   }
 
   let precio = parseInt(opcion.value);
   let texto = opcion.options[opcion.selectedIndex].text;
-  let cantidad = parseInt(cant.value);
+  let cant = parseInt(cantidad.value);
 
-  let subtotal = precio * cantidad;
+  let totalItem = precio * cant;
 
   carrito.push({
-    nombre: nombre + " (" + texto + ") x" + cantidad,
-    precio: subtotal
+    nombre: nombre + " (" + texto + ") x" + cant,
+    precio: totalItem
   });
 
-  total += subtotal;
+  total += totalItem;
 
   mostrarCarrito();
 }
 
 
-/* ================== WHATSAPP ================== */
-
+/* WhatsApp */
 function enviarWhatsApp() {
 
   if (carrito.length === 0) {
-    alert("Carrito vacío");
+    alert("No agregaste productos");
     return;
   }
 
@@ -3025,112 +3002,98 @@ function enviarWhatsApp() {
     return;
   }
 
-  let msg =
-    "Hola Fer 🌿\n\n" +
-    "Pedido Universo Dharani\n\n" +
-    "Nombre: " + nombre + "\n" +
-    "Entrega: " + entrega + "\n";
+  let mensaje =
+    "Hola Fer 🌿, te envío mi pedido:\n\n" +
+    "🌿 Pedido Universo Dharani 🌿\n\n" +
+    "👤 Nombre: " + nombre + "\n" +
+    "🚚 Entrega: " + entrega + "\n";
 
   if (entrega === "envio") {
+
     if (direccion === "") {
-      alert("Falta dirección");
+      alert("Ingresá la dirección");
       return;
     }
-    msg += "Dirección: " + direccion + "\n";
+
+    mensaje += "📍 Dirección: " + direccion + "\n";
   }
 
-  msg += "Pago: " + pago + "\n\nProductos:\n";
+  mensaje +=
+    "💳 Pago: " + pago + "\n\n" +
+    "🛒 Productos:\n";
 
-  carrito.forEach(p => {
-    msg += "- " + p.nombre + " $" + p.precio + "\n";
+
+  carrito.forEach(item => {
+    mensaje += "• " + item.nombre + " — $" + item.precio + "\n";
   });
 
-  msg += "\nTotal: $" + total;
 
-  let tel = "5492622465782";
+  mensaje += "\n💰 Total: $" + total + "\n\nGracias 💚";
 
-  window.open(
-    "https://wa.me/" + tel + "?text=" + encodeURIComponent(msg),
-    "_blank"
-  );
+
+  let telefono = "5492622465782";
+
+  let url = "https://wa.me/" + telefono +
+            "?text=" + encodeURIComponent(mensaje);
+
+  window.open(url, "_blank");
 }
 
 
-/* ================== DESPLEGABLE ================== */
-
+/* Abrir producto */
 function toggleProducto(el) {
   el.parentElement.classList.toggle("abierto");
 }
 
+
+/* Abrir carrito */
 function toggleCarrito() {
-  document.querySelector(".carrito").classList.toggle("abierto");
+  document.querySelector(".carrito")
+    .classList.toggle("abierto");
 }
 
+
+/* Dirección */
 function toggleDireccion() {
 
-  let e = document.getElementById("cliente-entrega").value;
+  let entrega = document.getElementById("cliente-entrega").value;
   let box = document.getElementById("direccion-box");
 
-  box.style.display = (e === "envio") ? "block" : "none";
+  if (entrega === "envio") {
+    box.style.display = "block";
+  } else {
+    box.style.display = "none";
+  }
 }
 
 
-/* ================== ORDEN ================== */
-
+/* Ordenar productos */
 function ordenarProductos() {
 
-  document.querySelectorAll(".categoria").forEach(cat => {
-    ordenarCategoria(cat);
+  document.querySelectorAll('.categoria').forEach(cat => {
+
+    let productos = Array.from(cat.querySelectorAll('.producto'));
+
+    productos.sort((a, b) => {
+
+      let aName = a.querySelector('.producto-header')
+        .textContent.trim().toLowerCase();
+
+      let bName = b.querySelector('.producto-header')
+        .textContent.trim().toLowerCase();
+
+      return aName.localeCompare(bName, "es");
+
+    });
+
+    productos.forEach(p => cat.appendChild(p));
+
   });
-}
 
-function ordenarCategoria(cat) {
-
-  let items = [...cat.querySelectorAll(".producto")];
-
-  items.sort((a, b) => {
-
-    let A = a.querySelector(".producto-header").textContent.toLowerCase();
-    let B = b.querySelector(".producto-header").textContent.toLowerCase();
-
-    return A.localeCompare(B, "es");
-  });
-
-  items.forEach(i => cat.appendChild(i));
-}
-
-
-/* ================== PRODUCTOS ================== */
-
-function agregarAguaribay() {
-  agregarProducto("aguaribay-opcion","aguaribay-cant","Aguaribay");
-}
-
-function agregarAlbahaca() {
-  agregarProducto("albahaca-opcion","albahaca-cant","Albahaca");
-}
-
-function agregarAlcanfor() {
-  agregarProducto("alcanfor-opcion","alcanfor-cant","Alcanfor");
-}
-
-function agregarAnisE() {
-  agregarProducto("anisE-opcion","anisE-cant","Anís Estrellado");
-}
-
-function agregarAnisM() {
-  agregarProducto("anisM-opcion","anisM-cant","Anís Molido");
-}
-
-function agregarArnica() {
-  agregarProducto("arnica-opcion","arnica-cant","Árnica");
-}
-
-function agregarBoldo() {
-  agregarProducto("boldo-opcion","boldo-cant","Boldo");
 }
 
 </script>
+
 
 
 
