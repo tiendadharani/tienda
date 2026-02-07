@@ -345,7 +345,38 @@
 .carrito-body .whatsapp {
   margin-top: 20px;
 }
-    
+
+   /* ===== TOAST MENSAJE ===== */
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: #4CAF50;
+  color: white;
+  padding: 14px 26px;
+  border-radius: 25px;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+
+  z-index: 9999;
+}
+
+/* Cuando se muestra */
+.toast.mostrar {
+  opacity: 1;
+  bottom: 50px;
+}
+ 
     
   </style>
 </head>
@@ -3144,7 +3175,8 @@ function agregarProducto(opcionId, cantId, nombre) {
 
   mostrarCarrito();
 
-  alert("✅ Producto agregado");
+ mostrarToast("✅ Se agregó al carrito");
+
 }
 
 
@@ -3279,9 +3311,25 @@ document.addEventListener("DOMContentLoaded", () => {
   ordenarProductos();
 });
 
+  function mostrarToast(mensaje) {
+
+  const toast = document.getElementById("toast");
+
+  toast.textContent = mensaje;
+  toast.classList.add("mostrar");
+
+  setTimeout(() => {
+    toast.classList.remove("mostrar");
+  }, 2000); // dura 2 segundos
+}
+
 
   
 </script>
+<!-- Toast mensaje -->
+<div id="toast" class="toast">
+  ✅ Se agregó al carrito
+</div>
 
 
 </body>
