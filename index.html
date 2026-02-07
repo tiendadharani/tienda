@@ -2919,42 +2919,45 @@
 let carrito = [];
 let total = 0;
 
-/* Al iniciar */
-window.onload = ordenarProductos;
+
+/* ================== INICIO ================== */
+
+window.onload = function () {
+  ordenarProductos();
+};
 
 
-/* ================= MOSTRAR CATEGORÍAS ================= */
+/* ================== CATEGORÍAS ================== */
 
 function mostrar(id) {
 
-  document.querySelectorAll('.categoria').forEach(c => {
+  document.querySelectorAll(".categoria").forEach(c => {
     c.classList.remove("visible");
   });
 
-  let categoria = document.getElementById(id);
+  let cat = document.getElementById(id);
 
-  if (!categoria) {
-    console.error("No existe categoría:", id);
-    alert("Error: categoría no encontrada");
+  if (!cat) {
+    alert("No existe categoría: " + id);
     return;
   }
 
-  categoria.classList.add("visible");
+  cat.classList.add("visible");
 
-  ordenarCategoria(categoria);
+  ordenarCategoria(cat);
 }
 
 
-/* ================= CARRITO ================= */
+/* ================== CARRITO ================== */
 
 function mostrarCarrito() {
 
   let lista = document.getElementById("lista");
   lista.innerHTML = "";
 
-  carrito.forEach(item => {
+  carrito.forEach(p => {
     let li = document.createElement("li");
-    li.textContent = item.nombre + " - $" + item.precio;
+    li.textContent = p.nombre + " - $" + p.precio;
     lista.appendChild(li);
   });
 
@@ -2963,16 +2966,15 @@ function mostrarCarrito() {
 }
 
 
-/* ================= AGREGAR PRODUCTO ================= */
+/* ================== AGREGAR ================== */
 
 function agregarProducto(opcionId, cantId, nombre) {
 
   let opcion = document.getElementById(opcionId);
-  let cantidad = document.getElementById(cantId);
+  let cant = document.getElementById(cantId);
 
-  if (!opcion || !cantidad) {
-    alert("Error: producto mal configurado");
-    console.log("Falta:", opcionId, cantId);
+  if (!opcion || !cant) {
+    alert("Error en " + nombre);
     return;
   }
 
@@ -2983,27 +2985,27 @@ function agregarProducto(opcionId, cantId, nombre) {
 
   let precio = parseInt(opcion.value);
   let texto = opcion.options[opcion.selectedIndex].text;
-  let cant = parseInt(cantidad.value);
+  let cantidad = parseInt(cant.value);
 
-  let totalItem = precio * cant;
+  let subtotal = precio * cantidad;
 
   carrito.push({
-    nombre: nombre + " (" + texto + ") x" + cant,
-    precio: totalItem
+    nombre: nombre + " (" + texto + ") x" + cantidad,
+    precio: subtotal
   });
 
-  total += totalItem;
+  total += subtotal;
 
   mostrarCarrito();
 }
 
 
-/* ================= WHATSAPP ================= */
+/* ================== WHATSAPP ================== */
 
 function enviarWhatsApp() {
 
   if (carrito.length === 0) {
-    alert("No agregaste productos");
+    alert("Carrito vacío");
     return;
   }
 
@@ -3017,98 +3019,82 @@ function enviarWhatsApp() {
     return;
   }
 
-  let mensaje =
-    "Hola Fer 🌿, te envío mi pedido:\n\n" +
-    "🌿 Pedido Universo Dharani 🌿\n\n" +
-    "👤 Nombre: " + nombre + "\n" +
-    "🚚 Entrega: " + entrega + "\n";
+  let msg =
+    "Hola Fer 🌿\n\n" +
+    "Pedido Universo Dharani\n\n" +
+    "Nombre: " + nombre + "\n" +
+    "Entrega: " + entrega + "\n";
 
   if (entrega === "envio") {
-
     if (direccion === "") {
-      alert("Ingresá la dirección");
+      alert("Falta dirección");
       return;
     }
-
-    mensaje += "📍 Dirección: " + direccion + "\n";
+    msg += "Dirección: " + direccion + "\n";
   }
 
-  mensaje +=
-    "💳 Pago: " + pago + "\n\n" +
-    "🛒 Productos:\n";
+  msg += "Pago: " + pago + "\n\nProductos:\n";
 
-  carrito.forEach(item => {
-    mensaje += "• " + item.nombre + " — $" + item.precio + "\n";
+  carrito.forEach(p => {
+    msg += "- " + p.nombre + " $" + p.precio + "\n";
   });
 
-  mensaje += "\n💰 Total: $" + total + "\n\nGracias 💚";
+  msg += "\nTotal: $" + total;
 
-  let telefono = "5492622465782";
+  let tel = "5492622465782";
 
-  let url = "https://wa.me/" + telefono +
-            "?text=" + encodeURIComponent(mensaje);
-
-  window.open(url, "_blank");
+  window.open(
+    "https://wa.me/" + tel + "?text=" + encodeURIComponent(msg),
+    "_blank"
+  );
 }
 
 
-/* ================= DESPLEGABLES ================= */
+/* ================== DESPLEGABLE ================== */
 
 function toggleProducto(el) {
   el.parentElement.classList.toggle("abierto");
 }
 
 function toggleCarrito() {
-  document.querySelector(".carrito")
-    .classList.toggle("abierto");
+  document.querySelector(".carrito").classList.toggle("abierto");
 }
-
-
-/* Dirección dinámica */
 
 function toggleDireccion() {
 
-  let entrega = document.getElementById("cliente-entrega").value;
+  let e = document.getElementById("cliente-entrega").value;
   let box = document.getElementById("direccion-box");
 
-  if (entrega === "envio") {
-    box.style.display = "block";
-  } else {
-    box.style.display = "none";
-  }
+  box.style.display = (e === "envio") ? "block" : "none";
 }
 
 
-/* ================= ORDEN ================= */
+/* ================== ORDEN ================== */
 
 function ordenarProductos() {
 
-  document.querySelectorAll('.categoria').forEach(cat => {
+  document.querySelectorAll(".categoria").forEach(cat => {
     ordenarCategoria(cat);
   });
 }
 
-
 function ordenarCategoria(cat) {
 
-  let productos = Array.from(cat.querySelectorAll('.producto'));
+  let items = [...cat.querySelectorAll(".producto")];
 
-  productos.sort((a, b) => {
+  items.sort((a, b) => {
 
-    let aName = a.querySelector('.producto-header')
-      .textContent.trim().toLowerCase();
+    let A = a.querySelector(".producto-header").textContent.toLowerCase();
+    let B = b.querySelector(".producto-header").textContent.toLowerCase();
 
-    let bName = b.querySelector('.producto-header')
-      .textContent.trim().toLowerCase();
-
-    return aName.localeCompare(bName, "es");
+    return A.localeCompare(B, "es");
   });
 
-  productos.forEach(p => cat.appendChild(p));
+  items.forEach(i => cat.appendChild(i));
 }
 
 
-/* ================= PRODUCTOS ================= */
+/* ================== PRODUCTOS ================== */
 
 function agregarAguaribay() {
   agregarProducto("aguaribay-opcion","aguaribay-cant","Aguaribay");
@@ -3138,19 +3124,8 @@ function agregarBoldo() {
   agregarProducto("boldo-opcion","boldo-cant","Boldo");
 }
 
-function agregarBurrito() {
-  agregarProducto("burrito-opcion","burrito-cant","Burrito");
-}
-
-function agregarCalendula() {
-  agregarProducto("calendula-opcion","calendula-cant","Caléndula");
-}
-
-function agregarCanela() {
-  agregarProducto("canela-opcion","canela-cant","Canela");
-}
-
 </script>
+
 
 
 
