@@ -3096,6 +3096,25 @@ function ordenarProductos() {
 
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+
+  document.querySelectorAll(".btn-agregar").forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+      const opcion = btn.dataset.opcion;
+      const cant = btn.dataset.cant;
+      const nombre = btn.dataset.nombre;
+
+      agregarProducto(opcion, cant, nombre);
+
+    });
+
+  });
+
+});
+
+  
 </script>
 
 
