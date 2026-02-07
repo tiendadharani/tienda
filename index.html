@@ -402,9 +402,13 @@
       <option>4</option><option>5</option>
     </select>
 
-    <button onclick="agregarAguaribay()">
-      Agregar al pedido
-    </button>
+    <button 
+  class="btn-agregar"
+  data-opcion="aguaribay-opcion"
+  data-cant="aguaribay-cant"
+  data-nombre="Aguaribay">
+  Agregar al pedido
+</button>
 
   </div>
 
@@ -440,9 +444,13 @@
       <option>4</option><option>5</option>
     </select>
 
-    <button onclick="agregarCayena()">
-      Agregar al pedido
-    </button>
+   <button 
+  class="btn-agregar"
+  data-opcion="cayena-opcion"
+  data-cant="cayena-cant"
+  data-nombre="Ají Cayena Molido">
+  Agregar al pedido
+</button>
 
   </div>
 
@@ -477,9 +485,14 @@
       <option>4</option><option>5</option>
     </select>
 
-    <button onclick="agregarAjo()">
-      Agregar al pedido
-    </button>
+   <button 
+  class="btn-agregar"
+  data-opcion="ajo-opcion"
+  data-cant="ajo-cant"
+  data-nombre="Ajo en Polvo">
+  Agregar al pedido
+</button>
+
 
   </div>
 
@@ -1704,9 +1717,14 @@
       <option>4</option><option>5</option>
     </select>
 
-    <button onclick="agregarManzanilla()">
-      Agregar al pedido
-    </button>
+   <button 
+  class="btn-agregar"
+  data-opcion="manzanilla-opcion"
+  data-cant="manzanilla-cant"
+  data-nombre="Manzanilla Flor">
+  Agregar al pedido
+</button>
+
 
   </div>
 
@@ -1778,9 +1796,14 @@
       <option>4</option><option>5</option>
     </select>
 
-    <button onclick="agregarMelisa()">
-      Agregar al pedido
-    </button>
+   <button 
+  class="btn-agregar"
+  data-opcion="melisa-opcion"
+  data-cant="melisa-cant"
+  data-nombre="Melisa">
+  Agregar al pedido
+</button>
+
 
   </div>
 
@@ -3096,6 +3119,25 @@ function ordenarProductos() {
 
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+
+  document.querySelectorAll(".btn-agregar").forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+      const opcion = btn.dataset.opcion;
+      const cant = btn.dataset.cant;
+      const nombre = btn.dataset.nombre;
+
+      agregarProducto(opcion, cant, nombre);
+
+    });
+
+  });
+
+});
+
+  /* === BOTONES AUTOMÁTICOS === */
 document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".btn-agregar").forEach(btn => {
