@@ -2919,27 +2919,34 @@
 let carrito = [];
 let total = 0;
 
+/* Al iniciar */
+window.onload = ordenarProductos;
 
 
-/* Mostrar categorías */
+/* ================= MOSTRAR CATEGORÍAS ================= */
+
 function mostrar(id) {
 
-  // Oculta todas
   document.querySelectorAll('.categoria').forEach(c => {
     c.classList.remove("visible");
   });
 
-  // Muestra la actual
   let categoria = document.getElementById(id);
+
+  if (!categoria) {
+    console.error("No existe categoría:", id);
+    alert("Error: categoría no encontrada");
+    return;
+  }
+
   categoria.classList.add("visible");
 
-  // Ordena SOLO esta categoría
   ordenarCategoria(categoria);
 }
 
 
+/* ================= CARRITO ================= */
 
-/* Mostrar carrito */
 function mostrarCarrito() {
 
   let lista = document.getElementById("lista");
@@ -2956,23 +2963,23 @@ function mostrarCarrito() {
 }
 
 
-/* Agregar producto genérico */
+/* ================= AGREGAR PRODUCTO ================= */
+
 function agregarProducto(opcionId, cantId, nombre) {
 
   let opcion = document.getElementById(opcionId);
   let cantidad = document.getElementById(cantId);
 
-  if (!opcion) {
-  alert("Error: no se encuentra el producto");
-  console.log("No existe:", opcionId);
-  return;
-}
+  if (!opcion || !cantidad) {
+    alert("Error: producto mal configurado");
+    console.log("Falta:", opcionId, cantId);
+    return;
+  }
 
-if (opcion.value === "") {
-  alert("Elegí una opción");
-  return;
-}
-
+  if (opcion.value === "") {
+    alert("Elegí una opción");
+    return;
+  }
 
   let precio = parseInt(opcion.value);
   let texto = opcion.options[opcion.selectedIndex].text;
@@ -2991,7 +2998,8 @@ if (opcion.value === "") {
 }
 
 
-/* WhatsApp */
+/* ================= WHATSAPP ================= */
+
 function enviarWhatsApp() {
 
   if (carrito.length === 0) {
@@ -2999,11 +3007,10 @@ function enviarWhatsApp() {
     return;
   }
 
- let nombre = document.getElementById("cliente-nombre").value;
-let entrega = document.getElementById("cliente-entrega").value;
-let direccion = document.getElementById("cliente-direccion").value;
-let pago = document.getElementById("cliente-pago").value;
-
+  let nombre = document.getElementById("cliente-nombre").value;
+  let entrega = document.getElementById("cliente-entrega").value;
+  let direccion = document.getElementById("cliente-direccion").value;
+  let pago = document.getElementById("cliente-pago").value;
 
   if (nombre === "" || entrega === "" || pago === "") {
     alert("Completá los datos");
@@ -3030,14 +3037,11 @@ let pago = document.getElementById("cliente-pago").value;
     "💳 Pago: " + pago + "\n\n" +
     "🛒 Productos:\n";
 
-
   carrito.forEach(item => {
     mensaje += "• " + item.nombre + " — $" + item.precio + "\n";
   });
 
-
   mensaje += "\n💰 Total: $" + total + "\n\nGracias 💚";
-
 
   let telefono = "5492622465782";
 
@@ -3048,26 +3052,26 @@ let pago = document.getElementById("cliente-pago").value;
 }
 
 
-/* Desplegar producto */
+/* ================= DESPLEGABLES ================= */
+
 function toggleProducto(el) {
   el.parentElement.classList.toggle("abierto");
 }
 
-
-/* Mostrar carrito */
 function toggleCarrito() {
   document.querySelector(".carrito")
     .classList.toggle("abierto");
 }
 
 
-/* Dirección */
+/* Dirección dinámica */
+
 function toggleDireccion() {
 
-  let entrega = document.getElementById("entrega").value;
+  let entrega = document.getElementById("cliente-entrega").value;
   let box = document.getElementById("direccion-box");
 
-  if (entrega === "Envío") {
+  if (entrega === "envio") {
     box.style.display = "block";
   } else {
     box.style.display = "none";
@@ -3075,7 +3079,36 @@ function toggleDireccion() {
 }
 
 
-  /* ===== FUNCIONES PRODUCTOS ===== */
+/* ================= ORDEN ================= */
+
+function ordenarProductos() {
+
+  document.querySelectorAll('.categoria').forEach(cat => {
+    ordenarCategoria(cat);
+  });
+}
+
+
+function ordenarCategoria(cat) {
+
+  let productos = Array.from(cat.querySelectorAll('.producto'));
+
+  productos.sort((a, b) => {
+
+    let aName = a.querySelector('.producto-header')
+      .textContent.trim().toLowerCase();
+
+    let bName = b.querySelector('.producto-header')
+      .textContent.trim().toLowerCase();
+
+    return aName.localeCompare(bName, "es");
+  });
+
+  productos.forEach(p => cat.appendChild(p));
+}
+
+
+/* ================= PRODUCTOS ================= */
 
 function agregarAguaribay() {
   agregarProducto("aguaribay-opcion","aguaribay-cant","Aguaribay");
@@ -3115,26 +3148,6 @@ function agregarCalendula() {
 
 function agregarCanela() {
   agregarProducto("canela-opcion","canela-cant","Canela");
-}
-
-/* (Después seguimos sumando las demás si falta alguna) */
-
-function ordenarCategoria(cat) {
-
-  let productos = Array.from(cat.querySelectorAll('.producto'));
-
-  productos.sort((a, b) => {
-
-    let aName = a.querySelector('.producto-header')
-      .textContent.trim().toLowerCase();
-
-    let bName = b.querySelector('.producto-header')
-      .textContent.trim().toLowerCase();
-
-    return aName.localeCompare(bName, "es");
-  });
-
-  productos.forEach(p => cat.appendChild(p));
 }
 
 </script>
