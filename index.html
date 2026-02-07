@@ -2960,29 +2960,32 @@ function mostrarCarrito() {
 /* Agregar producto genérico */
 function agregarProducto(opcionId, cantId, nombre) {
 
-  let opcion = document.getElementById(opcionId);
-  let cantidad = document.getElementById(cantId);
+  const opcion = document.getElementById(opcionId);
+  const cantidad = document.getElementById(cantId);
 
   if (!opcion || opcion.value === "") {
     alert("Elegí una opción");
     return;
   }
 
-  let precio = parseInt(opcion.value);
-  let texto = opcion.options[opcion.selectedIndex].text;
-  let cant = parseInt(cantidad.value);
+  const precio = Number(opcion.value);
+  const texto = opcion.options[opcion.selectedIndex].text;
+  const cant = Number(cantidad.value);
 
-  let totalItem = precio * cant;
+  const totalItem = precio * cant;
 
   carrito.push({
-    nombre: nombre + " (" + texto + ") x" + cant,
+    nombre: `${nombre} (${texto}) x${cant}`,
     precio: totalItem
   });
 
   total += totalItem;
 
   mostrarCarrito();
+
+  alert("✅ Producto agregado");
 }
+
 
 
 /* WhatsApp */
