@@ -431,6 +431,68 @@ will-change: opacity, transform;
   width: 100%;
   font-size: 15px;
 }
+
+/* ===== BARRA FIJA CARRITO ===== */
+
+.barra-carrito {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  background: #5a8f7b;
+  color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 16px;
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.barra-carrito .ver-carrito {
+  background: white;
+  color: #5a8f7b;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+
+/* ===== PANEL CARRITO ===== */
+
+.carrito-panel {
+  position: fixed;
+  bottom: 60px;
+  left: 0;
+  width: 100%;
+  max-height: 70vh;
+
+  background: white;
+
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+  box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+
+  padding: 15px;
+
+  overflow-y: auto;
+
+  display: none;
+
+  z-index: 9998;
+}
+
+.carrito-panel.abierto {
+  display: block;
+}
+
     
   </style>
 </head>
@@ -3248,7 +3310,7 @@ will-change: opacity, transform;
 
 <!-- MI PEDIDO -->
 
-<div class="carrito">
+<div class="carrito-panel">
 
   <div class="carrito-header" onclick="toggleCarrito()">
     🛒 Ver pedido
@@ -3373,8 +3435,26 @@ function mostrarCarrito() {
 
   document.getElementById("total").textContent =
     "Total: $" + total;
+
+  actualizarBarraCarrito(total);
+  
 }
 
+function actualizarBarraCarrito(total) {
+
+  const resumen = document.getElementById("resumen-carrito");
+
+  if (!resumen) return;
+
+  let cantidad = carrito.reduce((sum, p) => {
+    return sum + p.cantidad;
+  }, 0);
+
+  resumen.textContent =
+    "🛒 Mi Pedido (" + cantidad + ") — $" + total;
+}
+
+  
 /* Agregar producto genérico */
 function agregarProducto(opcionId, cantId, nombre) {
 
@@ -3486,9 +3566,11 @@ function toggleProducto(el) {
 
 /* Abrir carrito */
 function toggleCarrito() {
-  document.querySelector(".carrito")
+
+  document.querySelector(".carrito-panel")
     .classList.toggle("abierto");
 }
+
 
 
 /* Dirección */
@@ -3703,6 +3785,18 @@ function eliminarProducto(i) {
 <!-- Toast mensaje -->
 <div id="toast">
   ✅ Se agregó al carrito
+</div>
+
+  <div class="barra-carrito" onclick="toggleCarrito()">
+
+  <span id="resumen-carrito">
+    🛒 Mi Pedido (0) — $0
+  </span>
+
+  <span class="ver-carrito">
+    Ver
+  </span>
+
 </div>
 
 
