@@ -3204,9 +3204,12 @@ function agregarProducto(opcionId, cantId, nombre) {
 
   total += totalItem;
 
-  mostrarCarrito();
+guardarCarrito(); // 👈 GUARDAMOS
 
- mostrarToast("🛒 Producto agregado 💚");
+mostrarCarrito();
+
+mostrarToast("🛒 Producto agregado 💚");
+
 
 }
 
@@ -3354,6 +3357,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 2000); // dura 2 segundos
 }
 
+function guardarCarrito() {
+  localStorage.setItem("dharani_carrito", JSON.stringify(carrito));
+  localStorage.setItem("dharani_total", total);
+}
+
+  document.addEventListener("DOMContentLoaded", () => {
+
+  const carritoGuardado = localStorage.getItem("dharani_carrito");
+  const totalGuardado = localStorage.getItem("dharani_total");
+
+  if (carritoGuardado && totalGuardado) {
+    carrito = JSON.parse(carritoGuardado);
+    total = Number(totalGuardado);
+
+    mostrarCarrito();
+  }
+
+});
 
   
 </script>
