@@ -3308,13 +3308,22 @@ let carrito = [];
 /* Mostrar categorías */
 function mostrar(id) {
 
+  let categoria = document.getElementById(id);
+  let estaAbierta = categoria.classList.contains("visible");
+
+  // Cerrar todas
   document.querySelectorAll('.categoria').forEach(c => {
     c.classList.remove("visible");
   });
 
-  document.getElementById(id).classList.add("visible");
+  // Si NO estaba abierta → abrir
+  if (!estaAbierta) {
 
-  ordenarProductos(); // 👈 reordena cada vez
+    categoria.classList.add("visible");
+
+    // Ordenar SOLO esta categoría
+    ordenarCategoria(categoria);
+  }
 }
 
 
