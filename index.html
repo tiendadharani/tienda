@@ -9,31 +9,37 @@
 
     /* SLIDER */
 
+    .slider img {
+  border-radius: 0;
+}
+
 .slider {
-  width: 100%;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 20px auto;
+  padding: 0 15px;
   overflow: hidden;
-  border-radius: 16px;
 }
 
 .slides {
-  position: relative;
-  height: 200px;
+  width: 100%;
 }
 
 .slide {
-  position: absolute;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+  height: auto;        /* 👈 importante */
+  display: none;
+  border-radius: 20px;
 }
 
 .slide.active {
-  opacity: 1;
+  display: block;
 }
+
+.slide img,
+.slide {
+  object-fit: contain; /* 👈 evita recorte */
+}
+
 
    body {
   font-family: Arial, sans-serif;
