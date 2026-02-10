@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -3551,10 +3550,15 @@ function cargarCarrito() {
 
 function buscarProductos(texto) {
 
-  texto = texto.toLowerCase();
+  texto = texto.toLowerCase().trim();
 
-  document.querySelectorAll(".categoria.visible .producto")
-    .forEach(prod => {
+  let encontrados = 0;
+
+  document.querySelectorAll(".categoria").forEach(cat => {
+
+    let mostrarCategoria = false;
+
+    cat.querySelectorAll(".producto").forEach(prod => {
 
       const nombre = prod
         .querySelector(".producto-header")
@@ -3562,12 +3566,68 @@ function buscarProductos(texto) {
         .toLowerCase();
 
       if (nombre.includes(texto)) {
+
         prod.style.display = "block";
+        mostrarCategoria = true;
+        encontrados++;
+
       } else {
+
         prod.style.display = "none";
+
       }
 
     });
+
+    // Mostrar solo categorías con resultados
+    if (texto !== "" && mostrarCategoria) {
+      cat.classList.add("visible");
+    }
+
+    // Restaurar cuando no hay búsqueda
+    if (texto === "") {
+
+      cat.classList.remove("visible");
+
+      cat.querySelectorAll(".producto").forEach(prod => {
+        prod.style.display = "block";
+      });
+
+    }
+
+  });
+
+  mostrarMensajeBusqueda(encontrados, texto);
+}
+
+function mostrarMensajeBusqueda(cantidad, texto) {
+
+  let mensaje = document.getElementById("mensaje-busqueda");
+
+  if (!mensaje) {
+
+    mensaje = document.createElement("div");
+    mensaje.id = "mensaje-busqueda";
+
+    mensaje.style.textAlign = "center";
+    mensaje.style.margin = "15px";
+    mensaje.style.fontSize = "16px";
+    mensaje.style.color = "#555";
+
+    document.querySelector(".categorias")
+      .appendChild(mensaje);
+  }
+
+  if (texto === "") {
+    mensaje.textContent = "";
+    return;
+  }
+
+  if (cantidad === 0) {
+    mensaje.textContent = "😕 No se encontraron productos";
+  } else {
+    mensaje.textContent = `🔍 ${cantidad} resultado(s) encontrado(s)`;
+  }
 }
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -3575,6 +3635,7 @@ function buscarProductos(texto) {
   cargarCarrito();
   ordenarProductos();
 
+  // Botones agregar
   document.querySelectorAll(".btn-agregar").forEach(btn => {
 
     btn.addEventListener("click", () => {
@@ -3585,18 +3646,18 @@ function buscarProductos(texto) {
 
       agregarProducto(opcion, cant, nombre);
 
-// Buscador
-const buscador = document.getElementById("buscador");
-
-buscador.addEventListener("input", () => {
-  buscarProductos(buscador.value);
-});
     });
 
   });
 
-});
+  // 🔍 Buscador
+  const buscador = document.getElementById("buscador");
 
+  buscador.addEventListener("input", () => {
+    buscarProductos(buscador.value);
+  });
+
+});
 function sumarProducto(i) {
   carrito[i].cantidad++;
   mostrarCarrito();
@@ -3630,3 +3691,4 @@ function eliminarProducto(i) {
 
 </body>
 </html>
+
