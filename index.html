@@ -436,41 +436,43 @@ will-change: opacity, transform;
   font-size: 15px;
 }
 
-/* ===== BARRA FIJA CARRITO ===== */
+/* ===== BARRA CARRITO ESTILO BOTÓN ===== */
 
 .barra-carrito {
   position: fixed;
 
-  bottom: 15px;
-  left: 15px;
-  right: 15px;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
 
-  width: auto;
+  width: calc(100% - 40px);
+  max-width: 420px;
 
   background: #5a8f7b;
   color: white;
 
   padding: 14px 18px;
 
-  border-radius: 20px;
+  border-radius: 30px;
 
-  box-shadow: 0 -3px 12px rgba(0,0,0,0.18);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.22);
 
   z-index: 9999;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  cursor: pointer;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-
-.barra-carrito .ver-carrito {
-  background: white;
-  color: #5a8f7b;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 14px;
+.barra-carrito:hover {
+  transform: translateX(-50%) scale(1.02);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.28);
 }
+
 
 
 /* ===== PANEL CARRITO ===== */
