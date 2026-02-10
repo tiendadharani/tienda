@@ -346,7 +346,7 @@
   margin-top: 20px;
 }
 
-/* ===== TOAST MENSAJE SUAVE DHARANI ===== */
+/* ===== TOAST AJUSTADO AL TEXTO ===== */
 
 .toast {
   position: fixed;
@@ -354,18 +354,21 @@
   left: 50%;
   transform: translate(-50%, -50%) scale(0.9);
 
-  background: linear-gradient(135deg, #15771c, #299120);
+  background: linear-gradient(135deg, #187833, 17841f);
   color: white;
 
-  padding: 14px 26px;
-  border-radius: 22px;
+  padding: 12px 22px;
+  border-radius: 20px;
 
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 600;
 
-  min-width: auto;
-  max-width: 90%;
-  width: 18px;
+  /* 🔑 CLAVES */
+  display: inline-block;
+  width: auto;
+  height: auto;
+  max-width: fit-content;
+  white-space: nowrap;
 
   text-align: center;
 
@@ -379,13 +382,12 @@
   z-index: 9999;
 }
 
-/* Mostrar */
-
 .toast.mostrar {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
   animation: vibrar 0.25s ease;
 }
+
 
 /* Vibración */
 
