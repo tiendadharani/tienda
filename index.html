@@ -6,11 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-    }
+   body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+
+  padding-bottom: 110px; /* espacio para la barra flotante */
+}
+
+
 
     header {
       background: #5a8f7b;
@@ -436,24 +440,29 @@ will-change: opacity, transform;
 
 .barra-carrito {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+
+  width: auto;
 
   background: #5a8f7b;
   color: white;
 
+  padding: 14px 18px;
+
+  border-radius: 20px;
+
+  box-shadow: 0 -3px 12px rgba(0,0,0,0.18);
+
+  z-index: 9999;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  padding: 12px 16px;
-  font-size: 15px;
-  font-weight: 600;
-
-  cursor: pointer;
-  z-index: 9999;
 }
+
 
 .barra-carrito .ver-carrito {
   background: white;
