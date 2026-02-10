@@ -479,17 +479,21 @@ will-change: opacity, transform;
 
 .carrito-panel {
   position: fixed;
-  bottom: 60px;
-  left: 0;
-  width: 100%;
-  max-height: 70vh;
+
+  bottom: 90px; /* 👈 sube el panel arriba de la barra */
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: calc(100% - 40px);
+  max-width: 420px;
+
+  max-height: 65vh;
 
   background: white;
 
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-radius: 20px;
 
-  box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 -5px 18px rgba(0,0,0,0.25);
 
   padding: 15px;
 
@@ -503,6 +507,7 @@ will-change: opacity, transform;
 .carrito-panel.abierto {
   display: block;
 }
+
 
     
   </style>
