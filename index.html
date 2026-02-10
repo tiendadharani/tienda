@@ -3291,7 +3291,13 @@ function enviarWhatsApp() {
   });
 
 
-  mensaje += "\n💰 Total: $" + total + "\n\nGracias 💚";
+  let totalFinal = 0;
+
+carrito.forEach(item => {
+  totalFinal += item.precio * item.cantidad;
+});
+
+mensaje += "\n💰 Total: $" + totalFinal + "\n\nGracias 💚";
 
 
   let telefono = "5492622465782";
@@ -3382,10 +3388,10 @@ function cargarCarrito() {
   }
 }
   document.addEventListener("DOMContentLoaded", () => {
-  cargarCarrito();
-});
 
-  // Activar botones
+  cargarCarrito();
+  ordenarProductos();
+
   document.querySelectorAll(".btn-agregar").forEach(btn => {
 
     btn.addEventListener("click", () => {
@@ -3399,20 +3405,6 @@ function cargarCarrito() {
     });
 
   });
-
-  // Ordenar productos al cargar
-  ordenarProductos();
-
-  // Cargar carrito guardado
-  const carritoGuardado = localStorage.getItem("dharani_carrito");
-  const totalGuardado = localStorage.getItem("dharani_total");
-
-  if (carritoGuardado && totalGuardado) {
-    carrito = JSON.parse(carritoGuardado);
-    total = Number(totalGuardado);
-
-    mostrarCarrito();
-  }
 
 });
 
@@ -3439,7 +3431,7 @@ function eliminarProducto(i) {
   mostrarCarrito();
   guardarCarrito();
 }
-  
+
 </script>
 <!-- Toast mensaje -->
 <div id="toast">
