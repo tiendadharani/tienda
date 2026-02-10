@@ -358,7 +358,6 @@ will-change: opacity, transform;
 
   top: 45%;
   left: 50%;
-  transform: translateX(-50%);
 
   background: #186d47;
   color: white;
@@ -3286,10 +3285,13 @@ function enviarWhatsApp() {
     "🛒 Productos:\n";
 
 
-  carrito.forEach(item => {
-    mensaje += "• " + item.nombre + " — $" + item.precio + "\n";
-  });
-
+carrito.forEach(item => {
+  mensaje += 
+    "• " + item.nombre +
+    " x" + item.cantidad +
+    " — $" + (item.precio * item.cantidad) +
+    "\n";
+});
 
   let totalFinal = 0;
 
