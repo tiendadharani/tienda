@@ -346,58 +346,48 @@
   margin-top: 20px;
 }
 
-/* ===== TOAST AJUSTADO AL TEXTO ===== */
+/* ===== TOAST FINAL DHARANI ===== */
 
 .toast {
   position: fixed;
-  top: 50%;
+  top: 60px; /* debajo del header */
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
+  transform: translateX(-50%);
 
-  background: linear-gradient(135deg, #187833, 17841f);
+  background: #6fa996;
   color: white;
 
-  padding: 12px 22px;
+  padding: 10px 22px;
   border-radius: 20px;
 
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
 
-  /* 🔑 CLAVES */
   display: inline-block;
   width: auto;
   height: auto;
-  max-width: fit-content;
   white-space: nowrap;
 
   text-align: center;
 
-  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
 
   opacity: 0;
   pointer-events: none;
 
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, top 0.3s ease;
 
   z-index: 9999;
 }
 
+/* Visible */
+
 .toast.mostrar {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-  animation: vibrar 0.25s ease;
+  top: 90px;
 }
 
 
-/* Vibración */
-
-@keyframes vibrar {
-  0%   { transform: translate(-50%, -50%) scale(1) translateX(0); }
-  25%  { transform: translate(-50%, -50%) scale(1) translateX(-3px); }
-  50%  { transform: translate(-50%, -50%) scale(1) translateX(3px); }
-  75%  { transform: translate(-50%, -50%) scale(1) translateX(-2px); }
-  100% { transform: translate(-50%, -50%) scale(1) translateX(0); }
-}
 
 
 /* Cuando se muestra */
