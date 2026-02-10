@@ -3548,9 +3548,18 @@ function cargarCarrito() {
   }
 }
 
+function normalizarTexto(texto) {
+  return texto
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+  
 function buscarProductos(texto) {
 
-  texto = texto.toLowerCase().trim();
+ texto = normalizarTexto(texto).trim();
+
 
   let encontrados = 0;
 
@@ -3560,10 +3569,9 @@ function buscarProductos(texto) {
 
     cat.querySelectorAll(".producto").forEach(prod => {
 
-      const nombre = prod
-        .querySelector(".producto-header")
-        .textContent
-        .toLowerCase();
+   const nombre = normalizarTexto(
+  prod.querySelector(".producto-header").textContent
+);
 
       if (nombre.includes(texto)) {
 
