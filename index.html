@@ -3146,8 +3146,6 @@ will-change: opacity, transform;
 <script>
 
 let carrito = [];
-let total = 0;
-
 
 
 /* Mostrar categorías */
@@ -3169,16 +3167,47 @@ function mostrarCarrito() {
   let lista = document.getElementById("lista");
   lista.innerHTML = "";
 
-  carrito.forEach(item => {
-    let li = document.createElement("li");
-    li.textContent = item.nombre + " - $" + item.precio;
+  let total = 0;
+
+  carrito.forEach((item, index) => {
+
+    const subtotal = item.precio * item.cantidad;
+    total += subtotal;
+
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      <div style="margin-bottom:15px">
+
+        <strong>${item.nombre}</strong><br>
+
+        <button onclick="restarProducto(${index})">➖</button>
+
+        <span style="margin:0 8px">
+          ${item.cantidad}
+        </span>
+
+        <button onclick="sumarProducto(${index})">➕</button>
+
+        <span style="margin-left:12px">
+          $${subtotal}
+        </span>
+
+        <button onclick="eliminarProducto(${index})"
+          style="margin-left:10px">
+          🗑
+        </button>
+
+      </div>
+    `;
+
     lista.appendChild(li);
+
   });
 
   document.getElementById("total").textContent =
     "Total: $" + total;
 }
-
 
 /* Agregar producto genérico */
 function agregarProducto(opcionId, cantId, nombre) {
@@ -3195,24 +3224,27 @@ function agregarProducto(opcionId, cantId, nombre) {
   const texto = opcion.options[opcion.selectedIndex].text;
   const cant = Number(cantidad.value);
 
-  const totalItem = precio * cant;
+  const id = nombre + "-" + texto;
 
-  carrito.push({
-    nombre: `${nombre} (${texto}) x${cant}`,
-    precio: totalItem
-  });
+  const existente = carrito.find(p => p.id === id);
 
-  total += totalItem;
+  if (existente) {
+    existente.cantidad += cant;
+  } else {
 
-guardarCarrito(); // 👈 GUARDAMOS
+    carrito.push({
+      id: id,
+      nombre: `${nombre} (${texto})`,
+      precio: precio,
+      cantidad: cant
+    });
 
-mostrarCarrito();
+  }
 
-mostrarToast("🛒 Producto agregado 💚");
-
-
+  mostrarCarrito();
+  guardarCarrito();
+  mostrarToast("🛒 Producto agregado 💚");
 }
-
 
 
 /* WhatsApp */
@@ -3337,11 +3369,21 @@ function ordenarProductos() {
 }
 
 function guardarCarrito() {
-  localStorage.setItem("dharani_carrito", JSON.stringify(carrito));
-  localStorage.setItem("dharani_total", total);
+  localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
+function cargarCarrito() {
+
+  const data = localStorage.getItem("carrito");
+
+  if (data) {
+    carrito = JSON.parse(data);
+    mostrarCarrito();
+  }
+}
   document.addEventListener("DOMContentLoaded", () => {
+  cargarCarrito();
+});
 
   // Activar botones
   document.querySelectorAll(".btn-agregar").forEach(btn => {
@@ -3374,6 +3416,29 @@ function guardarCarrito() {
 
 });
 
+function sumarProducto(i) {
+  carrito[i].cantidad++;
+  mostrarCarrito();
+  guardarCarrito();
+}
+
+function restarProducto(i) {
+
+  if (carrito[i].cantidad > 1) {
+    carrito[i].cantidad--;
+  } else {
+    carrito.splice(i, 1);
+  }
+
+  mostrarCarrito();
+  guardarCarrito();
+}
+
+function eliminarProducto(i) {
+  carrito.splice(i, 1);
+  mostrarCarrito();
+  guardarCarrito();
+}
   
 </script>
 <!-- Toast mensaje -->
