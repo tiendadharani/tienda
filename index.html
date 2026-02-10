@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -406,7 +407,31 @@ will-change: opacity, transform;
 
 }
 
- 
+ /* ===== BUSCADOR ===== */
+
+.buscador {
+  max-width: 600px;
+  margin: 15px auto 10px;
+  padding: 8px 14px;
+
+  background: white;
+  border-radius: 25px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+
+  font-size: 16px;
+}
+
+.buscador input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 15px;
+}
     
   </style>
 </head>
@@ -419,7 +444,16 @@ will-change: opacity, transform;
 </header>
 
 <section class="categorias">
+<!-- Buscador -->
 
+<div class="buscador">
+  🔍
+  <input 
+    type="text" 
+    id="buscador"
+    placeholder="Buscar producto..."
+  >
+</div>
 <!-- BOTONES -->
 
 <button onclick="mostrar('hierbas')">🌿 Hierbas y Condimentos</button>
@@ -3514,6 +3548,28 @@ function cargarCarrito() {
     mostrarCarrito();
   }
 }
+
+function buscarProductos(texto) {
+
+  texto = texto.toLowerCase();
+
+  document.querySelectorAll(".categoria.visible .producto")
+    .forEach(prod => {
+
+      const nombre = prod
+        .querySelector(".producto-header")
+        .textContent
+        .toLowerCase();
+
+      if (nombre.includes(texto)) {
+        prod.style.display = "block";
+      } else {
+        prod.style.display = "none";
+      }
+
+    });
+}
+
   document.addEventListener("DOMContentLoaded", () => {
 
   cargarCarrito();
@@ -3529,6 +3585,12 @@ function cargarCarrito() {
 
       agregarProducto(opcion, cant, nombre);
 
+// Buscador
+const buscador = document.getElementById("buscador");
+
+buscador.addEventListener("input", () => {
+  buscarProductos(buscador.value);
+});
     });
 
   });
