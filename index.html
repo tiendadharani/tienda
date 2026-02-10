@@ -3526,24 +3526,24 @@ function enviarWhatsApp() {
   }
 
   let mensaje =
-    "Hola Fer 🌿, te envío mi pedido:\n\n" +
-    "🌿 Pedido Universo Dharani 🌿\n\n" +
-    "👤 Nombre: " + nombre + "\n" +
-    "🚚 Entrega: " + entrega + "\n";
+  "Hola Fer, te envío mi pedido:\n\n" +
+  "Universo Dharani – Almacén Natural\n\n" +
+  "Nombre: " + nombre + "\n" +
+  "Entrega: " + entrega + "\n";
 
-  if (entrega === "envio") {
+if (entrega === "envio") {
 
-    if (direccion === "") {
-      alert("Ingresá la dirección");
-      return;
-    }
-
-    mensaje += "📍 Dirección: " + direccion + "\n";
+  if (direccion === "") {
+    alert("Ingresá la dirección");
+    return;
   }
 
-  mensaje +=
-    "💳 Pago: " + pago + "\n\n" +
-    "🛒 Productos:\n";
+  mensaje += "Dirección: " + direccion + "\n";
+}
+
+mensaje +=
+  "Pago: " + pago + "\n\n" +
+  "Productos:\n";
 
 
 carrito.forEach(item => {
@@ -3560,7 +3560,11 @@ carrito.forEach(item => {
   totalFinal += item.precio * item.cantidad;
 });
 
-mensaje += "\n💰 Total: $" + totalFinal + "\n\nGracias 💚";
+mensaje +=
+  "\nTotal: $" + totalFinal +
+  "\n\nGracias por tu compra.\n" +
+  "Universo Dharani 🌿";
+
 
 
   let telefono = "5492622465782";
