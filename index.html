@@ -351,6 +351,10 @@
 #toast {
   position: fixed !important;
 
+  box-sizing: border-box;
+will-change: opacity, transform;
+
+
   top: 90px;
   left: 50%;
   transform: translateX(-50%);
@@ -395,15 +399,6 @@
   top: 120px;
 }
 
-
-
-
-
-/* Cuando se muestra */
-.toast.mostrar {
-  opacity: 1;
-  bottom: 50px;
-}
  
     
   </style>
@@ -1386,7 +1381,7 @@
       <option>4</option><option>5</option>
     </select>
 
-    <<button 
+    <button 
   class="btn-agregar"
   data-opcion="comino-opcion"
   data-cant="comino-cant"
@@ -3355,7 +3350,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
 </script>
 <!-- Toast mensaje -->
-<div id="toast" class="toast">
+<div id="toast">
   ✅ Se agregó al carrito
 </div>
 
