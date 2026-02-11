@@ -346,19 +346,21 @@
     justify-content: center;
   }
 
-    /* Grilla categorías móvil */
-  .categorias {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    padding: 0 10px;
-  }
+  /* Grilla solo para botones */
+.botones-categorias {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 0 10px;
+}
 
-  .categorias button {
-    width: 100%;
-    margin: 0;
-    text-align: center;
-  }
+.botones-categorias button {
+  width: 100%;
+  margin: 0;
+  font-size: 14px;
+  padding: 10px 6px;
+  border-radius: 14px;
+}
 
   
 }
@@ -670,7 +672,10 @@ will-change: opacity, transform;
     placeholder="Buscar producto..."
   >
 </div>
+  
 <!-- BOTONES -->
+
+<div class="botones-categorias">
 
 <button onclick="mostrar('hierbas')">🌿 Hierbas y Condimentos</button>
 <button onclick="mostrar('frutos')">🌰 Frutos, Frutas y Semillas</button>
@@ -678,6 +683,9 @@ will-change: opacity, transform;
 <button onclick="mostrar('aroma')">💧 Aromaterapia y Terapia Floral</button>
 <button onclick="mostrar('sahumerios')">🕯 Sahumerios</button>
 <button onclick="mostrar('panaderia')">🍞 Panificados</button>
+
+</div>
+
 
 
 <!-- HIERBAS -->
