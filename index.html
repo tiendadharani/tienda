@@ -547,6 +547,38 @@ will-change: opacity, transform;
   display: block;
 }
 
+/* HEADER CON LOGO */
+
+.header {
+  background: #5c8f78;
+  padding: 25px 20px;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  height: 70px;
+  width: auto;
+}
+
+.header-text h1 {
+  margin: 0;
+  font-size: 32px;
+  color: white;
+}
+
+.header-text p {
+  margin: 0;
+  font-size: 16px;
+  color: #e8f3ee;
+}
 
     
   </style>
@@ -554,10 +586,25 @@ will-change: opacity, transform;
 
 <body>
 
-<header>
-  <h1>🌿 Universo Dharani</h1>
-  <p>Almacén Natural</p>
+<header class="header">
+
+  <div class="header-content">
+
+    <img 
+      src="img/logo/logo1.png"
+      alt="Universo Dharani"
+      class="logo"
+    >
+
+    <div class="header-text">
+      <h1>Universo Dharani</h1>
+      <p>Almacén Natural</p>
+    </div>
+
+  </div>
+
 </header>
+
 
 <!-- SLIDER BANNERS -->
 <div class="slider">
