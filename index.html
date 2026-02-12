@@ -3843,29 +3843,9 @@ function toggleDireccion() {
 }
 
 
-/* Ordenar productos */
+/* Ordenar productos (desactivado por subcategorías) */
 function ordenarProductos() {
-
-  document.querySelectorAll('.categoria').forEach(cat => {
-
-    let productos = Array.from(cat.querySelectorAll('.producto'));
-
-    productos.sort((a, b) => {
-
-      let aName = a.querySelector('.producto-header')
-        .textContent.trim().toLowerCase();
-
-      let bName = b.querySelector('.producto-header')
-        .textContent.trim().toLowerCase();
-
-      return aName.localeCompare(bName, "es");
-
-    });
-
-    productos.forEach(p => cat.appendChild(p));
-
-  });
-
+  console.log("Orden automático desactivado para mantener subcategorías");
 }
 
 
