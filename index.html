@@ -1326,19 +1326,48 @@ will-change: opacity, transform;
 
 <h3 class="subcategoria">Respiratorias y Descongestivas</h3>
 
-<h3 class="subcategoria">Relajantes, Sedantes y Sueño</h3>
+  <!-- EUCALIPTUS -->
 
-<h3 class="subcategoria">Sistema Inmunológico</h3>
+<div class="producto">
 
-<h3 class="subcategoria">Circulatorias y Cognitivas</h3>
+  <div class="producto-header" onclick="toggleProducto(this)">
+     Eucaliptus 
+  </div>
 
-<h3 class="subcategoria">Femeninas y Reguladoras</h3>
+  <div class="producto-body">
 
-<h3 class="subcategoria">Antiinflamatorias, Piel y Golpes</h3>
+    <img src="https://via.placeholder.com/300">
 
-<h3 class="subcategoria">Reguladores Intestinales</h3>
+    <p>Planta respiratoria ideal para infusiones y vaporizaciones.</p>
 
-  
+    <label>Opción</label>
+    <select id="euca-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="520">25g $520</option>
+      <option value="970">50g $970</option>
+      <option value="1820">100g $1820</option>
+    </select>
+
+    <label>Cantidad</label>
+    <select id="euca-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+   <button 
+  class="btn-agregar"
+  data-opcion="euca-opcion"
+  data-cant="euca-cant"
+  data-nombre="Eucaliptus">
+  Agregar al pedido
+</button>
+
+
+  </div>
+
+</div>
+
+
 <!-- AGUARIBAY -->
 
 <div class="producto">
@@ -1380,6 +1409,270 @@ will-change: opacity, transform;
 
 </div>
 
+
+<!-- ALCANFOR -->
+
+<div class="producto">
+
+  <div class="producto-header" onclick="toggleProducto(this)">
+     Alcanfor 
+  </div>
+
+  <div class="producto-body">
+
+    <img src="https://via.placeholder.com/300">
+
+    <p>Planta aromática utilizada tradicionalmente para usos externos y ambientales.</p>
+
+    <label>Opción</label>
+    <select id="alcanfor-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="495">25g $495</option>
+      <option value="925">50g $925</option>
+      <option value="1735">100g $1735</option>
+    </select>
+
+    <label>Cantidad</label>
+    <select id="alcanfor-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button 
+  class="btn-agregar"
+  data-opcion="alcanfor-opcion"
+  data-cant="alcanfor-cant"
+  data-nombre="Alcanfor">
+  Agregar al pedido
+</button>
+
+
+  </div>
+
+</div>
+
+	
+
+<!-- CITRONELA -->
+
+<div class="producto">
+
+  <div class="producto-header" onclick="toggleProducto(this)">
+     Citronela 
+  </div>
+
+  <div class="producto-body">
+
+    <img src="https://via.placeholder.com/300">
+
+    <p>Planta aromática refrescante para infusiones y ambientes.</p>
+
+    <label>Opción</label>
+    <select id="citronela-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="1030">25g $1030</option>
+      <option value="1970">50g $1970</option>
+      <option value="3740">100g $3740</option>
+    </select>
+
+    <label>Cantidad</label>
+    <select id="citronela-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+    <button 
+  class="btn-agregar"
+  data-opcion="citronela-opcion"
+  data-cant="citronela-cant"
+  data-nombre="Citronela">
+  Agregar al pedido
+</button>
+
+
+  </div>
+
+</div>
+
+
+<h3 class="subcategoria">Relajantes, Sedantes y Sueño</h3>
+
+  <!-- PASIONARIA -->
+
+<div class="producto">
+
+  <div class="producto-header" onclick="toggleProducto(this)">
+     Pasionaria 
+  </div>
+
+  <div class="producto-body">
+
+    <img src="https://via.placeholder.com/300">
+
+    <p>Planta relajante para ansiedad, estrés e insomnio.</p>
+
+    <label>Opción</label>
+    <select id="pasionaria-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="340">25g $340</option>
+      <option value="620">50g $620</option>
+      <option value="1150">100g $1150</option>
+    </select>
+
+    <label>Cantidad</label>
+    <select id="pasionaria-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+   <button 
+  class="btn-agregar"
+  data-opcion="pasionaria-opcion"
+  data-cant="pasionaria-cant"
+  data-nombre="Pasionaria">
+  Agregar al pedido
+</button>
+
+  </div>
+
+</div>
+
+<!-- TILO -->
+
+<div class="producto">
+
+  <div class="producto-header" onclick="toggleProducto(this)">
+     Tilo 
+  </div>
+
+  <div class="producto-body">
+
+    <img src="https://via.placeholder.com/300">
+
+    <p>Planta relajante ideal para estrés, nervios e insomnio.</p>
+
+    <label>Opción</label>
+    <select id="tilo-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="2520">25g $2520</option>
+      <option value="4870">50g $4870</option>
+      <option value="9280">100g $9280</option>
+    </select>
+
+    <label>Cantidad</label>
+    <select id="tilo-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+  <button 
+  class="btn-agregar"
+  data-opcion="tilo-opcion"
+  data-cant="tilo-cant"
+  data-nombre="Tilo">
+  Agregar al pedido
+</button>
+
+  </div>
+
+</div>
+
+
+<!-- MELISA -->
+
+<div class="producto">
+
+  <div class="producto-header" onclick="toggleProducto(this)">
+     Melisa 
+  </div>
+
+  <div class="producto-body">
+
+    <img src="https://via.placeholder.com/300">
+
+    <p>Planta calmante para estrés, ansiedad e insomnio.</p>
+
+    <label>Opción</label>
+    <select id="melisa-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="710">25g $710</option>
+      <option value="1340">50g $1340</option>
+      <option value="2530">100g $2530</option>
+    </select>
+
+    <label>Cantidad</label>
+    <select id="melisa-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+   <button 
+  class="btn-agregar"
+  data-opcion="melisa-opcion"
+  data-cant="melisa-cant"
+  data-nombre="Melisa">
+  Agregar al pedido
+</button>
+
+
+  </div>
+
+</div>
+
+
+<!-- MANZANILLA -->
+
+<div class="producto">
+
+  <div class="producto-header" onclick="toggleProducto(this)">
+     Manzanilla Flor 
+  </div>
+
+  <div class="producto-body">
+
+    <img src="https://via.placeholder.com/300">
+
+    <p>Flor relajante y digestiva, ideal para infusiones nocturnas.</p>
+
+    <label>Opción</label>
+    <select id="manzanilla-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="1120">25g $1120</option>
+      <option value="2130">50g $2130</option>
+      <option value="4040">100g $4040</option>
+    </select>
+
+    <label>Cantidad</label>
+    <select id="manzanilla-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+   <button 
+  class="btn-agregar"
+  data-opcion="manzanilla-opcion"
+  data-cant="manzanilla-cant"
+  data-nombre="Manzanilla Flor">
+  Agregar al pedido
+</button>
+
+
+  </div>
+
+</div>
+
+
+<h3 class="subcategoria">Sistema Inmunológico</h3>
+
+<h3 class="subcategoria">Circulatorias y Cognitivas</h3>
+
+<h3 class="subcategoria">Femeninas y Reguladoras</h3>
+
+<h3 class="subcategoria">Antiinflamatorias, Piel y Golpes</h3>
+
+<h3 class="subcategoria">Reguladores Intestinales</h3>
+
+  
 
 
 <!-- CAYENA -->
@@ -1507,46 +1800,7 @@ will-change: opacity, transform;
 
 
 
-<!-- ALCANFOR -->
 
-<div class="producto">
-
-  <div class="producto-header" onclick="toggleProducto(this)">
-     Alcanfor 
-  </div>
-
-  <div class="producto-body">
-
-    <img src="https://via.placeholder.com/300">
-
-    <p>Planta aromática utilizada tradicionalmente para usos externos y ambientales.</p>
-
-    <label>Opción</label>
-    <select id="alcanfor-opcion">
-      <option value="">Elegí una opción</option>
-      <option value="495">25g $495</option>
-      <option value="925">50g $925</option>
-      <option value="1735">100g $1735</option>
-    </select>
-
-    <label>Cantidad</label>
-    <select id="alcanfor-cant">
-      <option>1</option><option>2</option><option>3</option>
-      <option>4</option><option>5</option>
-    </select>
-
-    <button 
-  class="btn-agregar"
-  data-opcion="alcanfor-opcion"
-  data-cant="alcanfor-cant"
-  data-nombre="Alcanfor">
-  Agregar al pedido
-</button>
-
-
-  </div>
-
-</div>
 
 
 <!-- ANIS ESTRELLADO -->
@@ -1932,46 +2186,7 @@ will-change: opacity, transform;
 </div>
 
 
-<!-- CITRONELA -->
 
-<div class="producto">
-
-  <div class="producto-header" onclick="toggleProducto(this)">
-     Citronela 🌼
-  </div>
-
-  <div class="producto-body">
-
-    <img src="https://via.placeholder.com/300">
-
-    <p>Planta aromática refrescante para infusiones y ambientes.</p>
-
-    <label>Opción</label>
-    <select id="citronela-opcion">
-      <option value="">Elegí una opción</option>
-      <option value="1030">25g $1030</option>
-      <option value="1970">50g $1970</option>
-      <option value="3740">100g $3740</option>
-    </select>
-
-    <label>Cantidad</label>
-    <select id="citronela-cant">
-      <option>1</option><option>2</option><option>3</option>
-      <option>4</option><option>5</option>
-    </select>
-
-    <button 
-  class="btn-agregar"
-  data-opcion="citronela-opcion"
-  data-cant="citronela-cant"
-  data-nombre="Citronela">
-  Agregar al pedido
-</button>
-
-
-  </div>
-
-</div>
 
 
 
@@ -2317,46 +2532,7 @@ will-change: opacity, transform;
 
 
 
-<!-- EUCALIPTUS -->
 
-<div class="producto">
-
-  <div class="producto-header" onclick="toggleProducto(this)">
-     Eucaliptus 🌿
-  </div>
-
-  <div class="producto-body">
-
-    <img src="https://via.placeholder.com/300">
-
-    <p>Planta respiratoria ideal para infusiones y vaporizaciones.</p>
-
-    <label>Opción</label>
-    <select id="euca-opcion">
-      <option value="">Elegí una opción</option>
-      <option value="520">25g $520</option>
-      <option value="970">50g $970</option>
-      <option value="1820">100g $1820</option>
-    </select>
-
-    <label>Cantidad</label>
-    <select id="euca-cant">
-      <option>1</option><option>2</option><option>3</option>
-      <option>4</option><option>5</option>
-    </select>
-
-   <button 
-  class="btn-agregar"
-  data-opcion="euca-opcion"
-  data-cant="euca-cant"
-  data-nombre="Eucaliptus">
-  Agregar al pedido
-</button>
-
-
-  </div>
-
-</div>
 
 
 <!-- GINGKO -->
@@ -2566,95 +2742,6 @@ will-change: opacity, transform;
 </div>
 
 
-<!-- MANZANILLA -->
-
-<div class="producto">
-
-  <div class="producto-header" onclick="toggleProducto(this)">
-     Manzanilla Flor 🌼
-  </div>
-
-  <div class="producto-body">
-
-    <img src="https://via.placeholder.com/300">
-
-    <p>Flor relajante y digestiva, ideal para infusiones nocturnas.</p>
-
-    <label>Opción</label>
-    <select id="manzanilla-opcion">
-      <option value="">Elegí una opción</option>
-      <option value="1120">25g $1120</option>
-      <option value="2130">50g $2130</option>
-      <option value="4040">100g $4040</option>
-    </select>
-
-    <label>Cantidad</label>
-    <select id="manzanilla-cant">
-      <option>1</option><option>2</option><option>3</option>
-      <option>4</option><option>5</option>
-    </select>
-
-   <button 
-  class="btn-agregar"
-  data-opcion="manzanilla-opcion"
-  data-cant="manzanilla-cant"
-  data-nombre="Manzanilla Flor">
-  Agregar al pedido
-</button>
-
-
-  </div>
-
-</div>
-
-
-
-
-
-<!-- MELISA -->
-
-<div class="producto">
-
-  <div class="producto-header" onclick="toggleProducto(this)">
-     Melisa 🌿
-  </div>
-
-  <div class="producto-body">
-
-    <img src="https://via.placeholder.com/300">
-
-    <p>Planta calmante para estrés, ansiedad e insomnio.</p>
-
-    <label>Opción</label>
-    <select id="melisa-opcion">
-      <option value="">Elegí una opción</option>
-      <option value="710">25g $710</option>
-      <option value="1340">50g $1340</option>
-      <option value="2530">100g $2530</option>
-    </select>
-
-    <label>Cantidad</label>
-    <select id="melisa-cant">
-      <option>1</option><option>2</option><option>3</option>
-      <option>4</option><option>5</option>
-    </select>
-
-   <button 
-  class="btn-agregar"
-  data-opcion="melisa-opcion"
-  data-cant="melisa-cant"
-  data-nombre="Melisa">
-  Agregar al pedido
-</button>
-
-
-  </div>
-
-</div>
-
-
-
-
 
 <!-- MOSTAZA -->
 
@@ -2858,56 +2945,13 @@ will-change: opacity, transform;
 </div>
 
 
-<!-- PASIONARIA -->
-
-<div class="producto">
-
-  <div class="producto-header" onclick="toggleProducto(this)">
-     Pasionaria 🌸
-  </div>
-
-  <div class="producto-body">
-
-    <img src="https://via.placeholder.com/300">
-
-    <p>Planta relajante para ansiedad, estrés e insomnio.</p>
-
-    <label>Opción</label>
-    <select id="pasionaria-opcion">
-      <option value="">Elegí una opción</option>
-      <option value="340">25g $340</option>
-      <option value="620">50g $620</option>
-      <option value="1150">100g $1150</option>
-    </select>
-
-    <label>Cantidad</label>
-    <select id="pasionaria-cant">
-      <option>1</option><option>2</option><option>3</option>
-      <option>4</option><option>5</option>
-    </select>
-
-   <button 
-  class="btn-agregar"
-  data-opcion="pasionaria-opcion"
-  data-cant="pasionaria-cant"
-  data-nombre="Pasionaria">
-  Agregar al pedido
-</button>
-
-  </div>
-
-</div>
-
-
-
-
 
 <!-- PEREJIL -->
 
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Perejil 🌿
+     Perejil 
   </div>
 
   <div class="producto-body">
@@ -3438,45 +3482,7 @@ will-change: opacity, transform;
 </div>
 
 
-<!-- TILO -->
 
-<div class="producto">
-
-  <div class="producto-header" onclick="toggleProducto(this)">
-     Tilo 🌼
-  </div>
-
-  <div class="producto-body">
-
-    <img src="https://via.placeholder.com/300">
-
-    <p>Planta relajante ideal para estrés, nervios e insomnio.</p>
-
-    <label>Opción</label>
-    <select id="tilo-opcion">
-      <option value="">Elegí una opción</option>
-      <option value="2520">25g $2520</option>
-      <option value="4870">50g $4870</option>
-      <option value="9280">100g $9280</option>
-    </select>
-
-    <label>Cantidad</label>
-    <select id="tilo-cant">
-      <option>1</option><option>2</option><option>3</option>
-      <option>4</option><option>5</option>
-    </select>
-
-  <button 
-  class="btn-agregar"
-  data-opcion="tilo-opcion"
-  data-cant="tilo-cant"
-  data-nombre="Tilo">
-  Agregar al pedido
-</button>
-
-  </div>
-
-</div>
 
 
 <!-- TOMILLO -->
