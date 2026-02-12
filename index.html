@@ -626,15 +626,18 @@ will-change: opacity, transform;
   /* Subcategorías */
 
 .subcategoria {
-  margin: 25px 0 15px;
-  padding: 0 0 6px 5px; /* espacio a la izquierda */
-  
+  grid-column: 1 / -1; /* ocupa todo el ancho */
+
+  margin: 20px 0 12px;
+  padding: 0 0 6px 5px;
+
   border-bottom: 1px solid #ddd;
 
-  font-size: 17px; /* más chica */
+  font-size: 17px;
   font-weight: 600;
   color: #3f6b5a;
 }
+
 
  .bloque-subcategoria {
   grid-column: 1 / -1; /* ocupa toda la fila */
