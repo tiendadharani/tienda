@@ -2002,8 +2002,135 @@ will-change: opacity, transform;
 
 </div>
 
-  
+ <!-- TÉS -->
 
+<div id="tés" class="categoria"> 
+
+<!-- TE NEGRO -->
+
+<div class="producto">
+
+  <div class="producto-header" onclick="toggleProducto(this)">
+    Té Negro  
+  </div>
+
+  <div class="producto-body">
+
+    <img src="https://via.placeholder.com/300">
+
+    <p>Infusión estimulante clásica, ideal para comenzar el día.</p>
+
+    <label>Opción</label>
+    <select id="ten-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="260">25g $260</option>
+      <option value="460">50g $460</option>
+      <option value="850">100g $850</option>
+    </select>
+
+    <label>Cantidad</label>
+    <select id="ten-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+   <button 
+  class="btn-agregar"
+  data-opcion="ten-opcion"
+  data-cant="ten-cant"
+  data-nombre="Té Negro">
+  Agregar al pedido
+</button>
+
+  </div>
+
+</div>
+
+
+<!-- TE ROJO -->
+
+<div class="producto">
+
+  <div class="producto-header" onclick="toggleProducto(this)">
+     Té Rojo 
+  </div>
+
+  <div class="producto-body">
+
+    <img src="https://via.placeholder.com/300">
+
+    <p>Infusión depurativa y digestiva tradicional.</p>
+
+    <label>Opción</label>
+    <select id="ter-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="240">25g $240</option>
+      <option value="430">50g $430</option>
+      <option value="790">100g $790</option>
+    </select>
+
+    <label>Cantidad</label>
+    <select id="ter-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+   <button 
+  class="btn-agregar"
+  data-opcion="ter-opcion"
+  data-cant="ter-cant"
+  data-nombre="Té Rojo">
+  Agregar al pedido
+</button>
+
+  </div>
+
+</div>
+
+
+<!-- TE VERDE -->
+
+<div class="producto">
+
+  <div class="producto-header" onclick="toggleProducto(this)">
+     Té Verde 
+  </div>
+
+  <div class="producto-body">
+
+    <img src="https://via.placeholder.com/300">
+
+    <p>Infusión antioxidante para bienestar y energía suave.</p>
+
+    <label>Opción</label>
+    <select id="tev-opcion">
+      <option value="">Elegí una opción</option>
+      <option value="270">25g $270</option>
+      <option value="490">50g $490</option>
+      <option value="900">100g $900</option>
+    </select>
+
+    <label>Cantidad</label>
+    <select id="tev-cant">
+      <option>1</option><option>2</option><option>3</option>
+      <option>4</option><option>5</option>
+    </select>
+
+  <button 
+  class="btn-agregar"
+  data-opcion="tev-opcion"
+  data-cant="tev-cant"
+  data-nombre="Té Verde">
+  Agregar al pedido
+</button>
+
+  </div>
+
+</div>	
+
+<!-- CONDIMENTOS -->
+
+<div id="condimentos" class="categoria"> 	
 
 <!-- CAYENA -->
 
@@ -2127,10 +2254,6 @@ will-change: opacity, transform;
   </div>
 
 </div>
-
-
-
-
 
 
 <!-- ANIS ESTRELLADO -->
@@ -2259,9 +2382,6 @@ will-change: opacity, transform;
 </div>
 
 
-
-
-
 <!-- CEBOLLA ESCAMAS -->
 
 <div class="producto">
@@ -2348,15 +2468,12 @@ will-change: opacity, transform;
 
 
 
-
-
-
 <!-- CHIMICHURRI -->
 
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Chimichurri 🌶️
+     Chimichurri 
   </div>
 
   <div class="producto-body">
@@ -2393,16 +2510,12 @@ will-change: opacity, transform;
 </div>
 
 
-
-
-
-
 <!-- CLAVO ENTERO -->
 
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-    Clavo de Olor Entero  🌰
+    Clavo de Olor Entero  
   </div>
 
   <div class="producto-body">
@@ -2444,7 +2557,7 @@ will-change: opacity, transform;
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Clavo de Olor Molido 🌰
+     Clavo de Olor Molido 
   </div>
 
   <div class="producto-body">
@@ -2482,14 +2595,12 @@ will-change: opacity, transform;
 
 
 
-
-
 <!-- COMINO -->
 
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Comino Molido Especial 🌿
+     Comino Molido Especial
   </div>
 
   <div class="producto-body">
@@ -2531,7 +2642,7 @@ will-change: opacity, transform;
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Condimento para Pizza 🍕
+     Condimento para Pizza 
   </div>
 
   <div class="producto-body">
@@ -2574,7 +2685,7 @@ will-change: opacity, transform;
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Coriandro Molido 🌿
+     Coriandro Molido 
   </div>
 
   <div class="producto-body">
@@ -2616,7 +2727,7 @@ will-change: opacity, transform;
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Cúrcuma en Polvo 🌼
+     Cúrcuma en Polvo 
   </div>
 
   <div class="producto-body">
@@ -2658,7 +2769,7 @@ will-change: opacity, transform;
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Curry Molido 🌶️
+     Curry Molido 
   </div>
 
   <div class="producto-body">
@@ -2695,17 +2806,12 @@ will-change: opacity, transform;
 </div>
 
 
-
-
-
-
-
 <!-- JENGIBRE -->
 
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Jengibre en Polvo 🌿
+     Jengibre en Polvo 
   </div>
 
   <div class="producto-body">
@@ -2746,7 +2852,7 @@ will-change: opacity, transform;
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Laurel 🍃
+     Laurel 
   </div>
 
   <div class="producto-body">
@@ -2783,16 +2889,12 @@ will-change: opacity, transform;
 
 
 
-
-
-
-
 <!-- MOSTAZA -->
 
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Mostaza en Granos 🌼
+     Mostaza en Granos 
   </div>
 
   <div class="producto-body">
@@ -2833,7 +2935,7 @@ will-change: opacity, transform;
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Nuez Moscada en Grano 🌰
+     Nuez Moscada en Grano 
   </div>
 
   <div class="producto-body">
@@ -2872,7 +2974,7 @@ will-change: opacity, transform;
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Nuez Moscada Molida 🌰
+     Nuez Moscada Molida 
   </div>
 
   <div class="producto-body">
@@ -2913,7 +3015,7 @@ will-change: opacity, transform;
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Orégano en Hojas 🌿
+     Orégano en Hojas 
   </div>
 
   <div class="producto-body">
@@ -2953,7 +3055,7 @@ will-change: opacity, transform;
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Paprika 🌶️
+     Paprika 
   </div>
 
   <div class="producto-body">
@@ -3032,14 +3134,12 @@ will-change: opacity, transform;
 
 
 
-
-
 <!-- PIMENTON -->
 
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Pimentón Dulce 🌶️
+     Pimentón Dulce 
   </div>
 
   <div class="producto-body">
@@ -3080,7 +3180,7 @@ will-change: opacity, transform;
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Pimienta Blanca en Grano ⚪
+     Pimienta Blanca en Grano 
   </div>
 
   <div class="producto-body">
@@ -3121,7 +3221,7 @@ will-change: opacity, transform;
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Pimienta Blanca Molida ⚪
+     Pimienta Blanca Molida 
   </div>
 
   <div class="producto-body">
@@ -3162,7 +3262,7 @@ will-change: opacity, transform;
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-    Pimienta Negra en Grano  ⚫
+    Pimienta Negra en Grano  
   </div>
 
   <div class="producto-body">
@@ -3203,7 +3303,7 @@ will-change: opacity, transform;
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Pimienta Negra Molida ⚫
+     Pimienta Negra Molida 
   </div>
 
   <div class="producto-body">
@@ -3243,7 +3343,7 @@ will-change: opacity, transform;
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Provenzal 🌿
+     Provenzal 
   </div>
 
   <div class="producto-body">
@@ -3284,7 +3384,7 @@ will-change: opacity, transform;
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Romero Molido 🌱
+     Romero Molido 
   </div>
 
   <div class="producto-body">
@@ -3327,7 +3427,7 @@ will-change: opacity, transform;
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Stevia en Polvo 🍃
+     Stevia en Polvo 
   </div>
 
   <div class="producto-body">
@@ -3363,138 +3463,12 @@ will-change: opacity, transform;
 </div>
 
 
-<!-- TE NEGRO -->
-
-<div class="producto">
-
-  <div class="producto-header" onclick="toggleProducto(this)">
-    Té Negro ☕ 
-  </div>
-
-  <div class="producto-body">
-
-    <img src="https://via.placeholder.com/300">
-
-    <p>Infusión estimulante clásica, ideal para comenzar el día.</p>
-
-    <label>Opción</label>
-    <select id="ten-opcion">
-      <option value="">Elegí una opción</option>
-      <option value="260">25g $260</option>
-      <option value="460">50g $460</option>
-      <option value="850">100g $850</option>
-    </select>
-
-    <label>Cantidad</label>
-    <select id="ten-cant">
-      <option>1</option><option>2</option><option>3</option>
-      <option>4</option><option>5</option>
-    </select>
-
-   <button 
-  class="btn-agregar"
-  data-opcion="ten-opcion"
-  data-cant="ten-cant"
-  data-nombre="Té Negro">
-  Agregar al pedido
-</button>
-
-  </div>
-
-</div>
-
-
-<!-- TE ROJO -->
-
-<div class="producto">
-
-  <div class="producto-header" onclick="toggleProducto(this)">
-     Té Rojo 🍵
-  </div>
-
-  <div class="producto-body">
-
-    <img src="https://via.placeholder.com/300">
-
-    <p>Infusión depurativa y digestiva tradicional.</p>
-
-    <label>Opción</label>
-    <select id="ter-opcion">
-      <option value="">Elegí una opción</option>
-      <option value="240">25g $240</option>
-      <option value="430">50g $430</option>
-      <option value="790">100g $790</option>
-    </select>
-
-    <label>Cantidad</label>
-    <select id="ter-cant">
-      <option>1</option><option>2</option><option>3</option>
-      <option>4</option><option>5</option>
-    </select>
-
-   <button 
-  class="btn-agregar"
-  data-opcion="ter-opcion"
-  data-cant="ter-cant"
-  data-nombre="Té Rojo">
-  Agregar al pedido
-</button>
-
-  </div>
-
-</div>
-
-
-<!-- TE VERDE -->
-
-<div class="producto">
-
-  <div class="producto-header" onclick="toggleProducto(this)">
-     Té Verde 🍃
-  </div>
-
-  <div class="producto-body">
-
-    <img src="https://via.placeholder.com/300">
-
-    <p>Infusión antioxidante para bienestar y energía suave.</p>
-
-    <label>Opción</label>
-    <select id="tev-opcion">
-      <option value="">Elegí una opción</option>
-      <option value="270">25g $270</option>
-      <option value="490">50g $490</option>
-      <option value="900">100g $900</option>
-    </select>
-
-    <label>Cantidad</label>
-    <select id="tev-cant">
-      <option>1</option><option>2</option><option>3</option>
-      <option>4</option><option>5</option>
-    </select>
-
-  <button 
-  class="btn-agregar"
-  data-opcion="tev-opcion"
-  data-cant="tev-cant"
-  data-nombre="Té Verde">
-  Agregar al pedido
-</button>
-
-  </div>
-
-</div>
-
-
-
-
-
 <!-- TOMILLO -->
 
 <div class="producto">
 
   <div class="producto-header" onclick="toggleProducto(this)">
-     Tomillo 🌿
+     Tomillo 
   </div>
 
   <div class="producto-body">
@@ -3530,10 +3504,7 @@ will-change: opacity, transform;
 </div>
 
 
-
-
-
-      
+	
 </div>
 
 
