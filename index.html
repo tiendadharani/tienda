@@ -747,6 +747,12 @@ will-change: opacity, transform;
   }
 }
 
+	  /* Ocultar botones en desktop */
+@media (min-width: 901px) {
+  .categorias {
+    display: none;
+  }
+}
 
     
   </style>
@@ -760,6 +766,17 @@ will-change: opacity, transform;
 
     <img src="img/logo/logo1.png" class="logo">
 
+	  <!-- Buscador -->
+
+<div class="buscador">
+  🔍
+  <input 
+    type="text" 
+    id="buscador"
+    placeholder="Buscar producto..."
+  >
+</div>
+	  
     <!-- Botón hamburguesa -->
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
@@ -802,16 +819,7 @@ will-change: opacity, transform;
 
   
 <section class="categorias">
-<!-- Buscador -->
 
-<div class="buscador">
-  🔍
-  <input 
-    type="text" 
-    id="buscador"
-    placeholder="Buscar producto..."
-  >
-</div>
   
 <!-- BOTONES -->
 
