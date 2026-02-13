@@ -753,6 +753,125 @@ will-change: opacity, transform;
     display: none;
   }
 }
+/* ===== HEADER NUEVO ===== */
+
+.header-principal {
+  background: white;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+/* Fila superior */
+
+.header-top {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+/* Buscador en header */
+
+.header-top .buscador {
+  margin: 0;
+  max-width: 400px;
+  flex: 1;
+}
+
+/* Barra menú */
+
+.menu-barra {
+  background: #5a8f7b;
+}
+
+.menu-barra .menu {
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px 20px;
+
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.menu-barra a,
+.menu-barra span {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ===== SUBMENU ===== */
+
+.submenu {
+  position: relative;
+}
+
+.submenu-contenido {
+  display: none;
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  background: white;
+  min-width: 200px;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  border-radius: 8px;
+
+  overflow: hidden;
+  z-index: 999;
+}
+
+.submenu-contenido a {
+  display: block;
+  padding: 10px 14px;
+
+  color: #3f6b5a;
+}
+
+.submenu-contenido a:hover {
+  background: #f2f2f2;
+}
+
+/* Mostrar submenu */
+
+.submenu:hover .submenu-contenido {
+  display: block;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 900px) {
+
+  .menu-barra {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+    font-size: 26px;
+  }
+
+  .header-top {
+    flex-wrap: wrap;
+  }
+
+  .header-top .buscador {
+    order: 3;
+    width: 100%;
+    max-width: 100%;
+  }
+
+}
 
     
   </style>
@@ -760,48 +879,61 @@ will-change: opacity, transform;
 
 <body>
 
-<header class="topbar">
+<header class="header-principal">
 
-  <div class="topbar-content">
+  <!-- Fila superior -->
+  <div class="header-top">
 
     <img src="img/logo/logo1.png" class="logo">
 
-	  <!-- Buscador -->
+    <div class="buscador">
+      🔍
+      <input 
+        type="text" 
+        id="buscador"
+        placeholder="Buscar producto..."
+      >
+    </div>
 
-<div class="buscador">
-  🔍
-  <input 
-    type="text" 
-    id="buscador"
-    placeholder="Buscar producto..."
-  >
-</div>
-	  
-    <!-- Botón hamburguesa -->
+    <!-- Hamburguesa -->
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-    <!-- Menú -->
-    <nav class="menu">
+  </div>
 
-      <a onclick="mostrar('almacen')">Almacén</a>
-      <a onclick="mostrar('hierbas')">Hierbas</a>
-      <a onclick="mostrar('tes')">Tés</a>
-      <a onclick="mostrar('condimentos')">Condimentos</a>
-      <a onclick="mostrar('aroma')">Aromaterapia</a>
-      <a onclick="mostrar('bienestar')">Bienestar</a>
-      <a onclick="mostrar('envasados')">Envasados</a>
-      <a onclick="mostrar('panificados')">Panificados</a>
-      <a onclick="mostrar('regaleria')">Regalería</a>
+
+  <!-- Fila menú -->
+  <nav class="menu-barra">
+
+    <div class="menu">
+
+      <a onclick="mostrar('almacen')">Inicio</a>
+
+      <div class="submenu">
+        <span>Productos ▾</span>
+
+        <div class="submenu-contenido">
+          <a onclick="mostrar('almacen')">Almacén</a>
+          <a onclick="mostrar('hierbas')">Hierbas</a>
+          <a onclick="mostrar('tes')">Tés</a>
+          <a onclick="mostrar('condimentos')">Condimentos</a>
+          <a onclick="mostrar('aroma')">Aromaterapia</a>
+          <a onclick="mostrar('bienestar')">Bienestar</a>
+          <a onclick="mostrar('envasados')">Envasados</a>
+          <a onclick="mostrar('panificados')">Panificados</a>
+          <a onclick="mostrar('regaleria')">Regalería</a>
+        </div>
+      </div>
+
       <a onclick="mostrar('ofertas')">Ofertas</a>
 
-    </nav>
+    </div>
 
-  </div>
+  </nav>
 
 </header>
 
 
-
+ 
 <!-- SLIDER BANNERS -->
 <div class="slider">
 
