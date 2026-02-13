@@ -951,33 +951,31 @@ will-change: opacity, transform;
 
 
   <!-- Fila menú -->
-  <nav class="menu-barra">
+  <nav class="menu" id="menu">
 
-    <div class="menu">
+  <a href="#" onclick="mostrar('inicio')">Inicio</a>
 
-      <a onclick="mostrar('almacen')">Inicio</a>
+  <div class="dropdown">
+    <a href="#">Productos ▾</a>
+    <div class="dropdown-content">
 
-      <div class="submenu">
-        <span>Productos ▾</span>
-
-        <div class="submenu-contenido">
-          <a onclick="mostrar('almacen')">Almacén</a>
-          <a onclick="mostrar('hierbas')">Hierbas</a>
-          <a onclick="mostrar('tes')">Tés</a>
-          <a onclick="mostrar('condimentos')">Condimentos</a>
-          <a onclick="mostrar('aroma')">Aromaterapia</a>
-          <a onclick="mostrar('bienestar')">Bienestar</a>
-          <a onclick="mostrar('envasados')">Envasados</a>
-          <a onclick="mostrar('panificados')">Panificados</a>
-          <a onclick="mostrar('regaleria')">Regalería</a>
-        </div>
-      </div>
-
-      <a onclick="mostrar('ofertas')">Ofertas</a>
+      <a onclick="mostrar('almacen')">Almacén</a>
+      <a onclick="mostrar('hierbas')">Hierbas</a>
+      <a onclick="mostrar('tes')">Tés</a>
+      <a onclick="mostrar('condimentos')">Condimentos</a>
+      <a onclick="mostrar('aroma')">Aromaterapia</a>
+      <a onclick="mostrar('bienestar')">Bienestar</a>
+      <a onclick="mostrar('envasados')">Envasados</a>
+      <a onclick="mostrar('panificados')">Panificados</a>
+      <a onclick="mostrar('regaleria')">Regalería</a>
 
     </div>
+  </div>
 
-  </nav>
+  <a onclick="mostrar('ofertas')">Ofertas</a>
+
+</nav>
+
 
 	<button class="hamburger" onclick="toggleMenu()">
   ☰
