@@ -672,6 +672,80 @@ will-change: opacity, transform;
   padding: 8px 6px;
 }
 
+/* ===== MENÚ RESPONSIVE ===== */
+
+.topbar {
+  background: white;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+.topbar-content {
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu {
+  display: flex;
+  gap: 18px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #3f6b5a;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.menu a:hover {
+  color: #5a8f7b;
+}
+
+/* Hamburguesa */
+
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+  .menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 260px;
+    height: 100vh;
+
+    background: white;
+
+    flex-direction: column;
+    padding: 80px 20px;
+    gap: 15px;
+
+    box-shadow: -5px 0 15px rgba(0,0,0,0.15);
+
+    transition: 0.3s;
+  }
+
+  .menu.activo {
+    right: 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
 
 
     
@@ -680,20 +754,35 @@ will-change: opacity, transform;
 
 <body>
 
-<header class="header">
+<header class="topbar">
 
-  <div class="header-content">
+  <div class="topbar-content">
 
-    <img 
-      src="img/logo/logo1.png"
-      alt="Universo Dharani"
-      class="logo"
-    >
+    <img src="img/logo/logo1.png" class="logo">
 
+    <!-- Botón hamburguesa -->
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <!-- Menú -->
+    <nav class="menu">
+
+      <a onclick="mostrar('almacen')">Almacén</a>
+      <a onclick="mostrar('hierbas')">Hierbas</a>
+      <a onclick="mostrar('tes')">Tés</a>
+      <a onclick="mostrar('condimentos')">Condimentos</a>
+      <a onclick="mostrar('aroma')">Aromaterapia</a>
+      <a onclick="mostrar('bienestar')">Bienestar</a>
+      <a onclick="mostrar('envasados')">Envasados</a>
+      <a onclick="mostrar('panificados')">Panificados</a>
+      <a onclick="mostrar('regaleria')">Regalería</a>
+      <a onclick="mostrar('ofertas')">Ofertas</a>
+
+    </nav>
 
   </div>
 
 </header>
+
 
 
 <!-- SLIDER BANNERS -->
@@ -4082,6 +4171,11 @@ function mostrarSlide() {
 
 setInterval(mostrarSlide, 4000); // cambia cada 4 segundos
 
+function toggleMenu() {
+  document.querySelector('.menu').classList.toggle('activo');
+}
+
+	
 </script>
 <!-- Toast mensaje -->
 <div id="toast">
