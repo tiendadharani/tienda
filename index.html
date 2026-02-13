@@ -873,6 +873,55 @@ will-change: opacity, transform;
 
 }
 
+/* Botón hamburguesa */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #4f7f6c;
+}
+
+/* Menú principal */
+.menu {
+  display: flex;
+  gap: 20px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  /* Mostrar hamburguesa */
+  .hamburger {
+    display: block;
+  }
+
+  /* Ocultar menú normal */
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 999;
+  }
+
+  /* Menú abierto */
+  .menu.active {
+    display: flex;
+  }
+
+  /* Ocultar botones viejos */
+  .categorias {
+    display: none;
+  }
+}
+	  
     
   </style>
 </head>
@@ -929,6 +978,10 @@ will-change: opacity, transform;
     </div>
 
   </nav>
+
+	<button class="hamburger" onclick="toggleMenu()">
+  ☰
+</button>
 
 </header>
 
@@ -4334,6 +4387,12 @@ function toggleMenu() {
 
 </div>
 
+<script>
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+}
+</script>
+	
 
 </body>
 </html>
