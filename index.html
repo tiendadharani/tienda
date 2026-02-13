@@ -672,25 +672,7 @@ will-change: opacity, transform;
   padding: 8px 6px;
 }
 
-/* ===== MENÚ RESPONSIVE ===== */
 
-.topbar {
-  background: white;
-  border-bottom: 1px solid #eee;
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-}
-
-.topbar-content {
-  max-width: 1200px;
-  margin: auto;
-  padding: 10px 20px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
 .menu {
   display: flex;
@@ -708,13 +690,6 @@ will-change: opacity, transform;
   color: #5a8f7b;
 }
 
-/* Hamburguesa */
-
-.menu-toggle {
-  display: none;
-  font-size: 26px;
-  cursor: pointer;
-}
 
 /* MOBILE */
 
@@ -784,11 +759,6 @@ will-change: opacity, transform;
   flex: 1;
 }
 
-/* Barra menú */
-
-.menu-barra {
-  background: #5a8f7b;
-}
 
 .menu-barra .menu {
   max-width: 1200px;
@@ -808,28 +778,6 @@ will-change: opacity, transform;
   cursor: pointer;
 }
 
-/* ===== SUBMENU ===== */
-
-.submenu {
-  position: relative;
-}
-
-.submenu-contenido {
-  display: none;
-
-  position: absolute;
-  top: 100%;
-  left: 0;
-
-  background: white;
-  min-width: 200px;
-
-  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-  border-radius: 8px;
-
-  overflow: hidden;
-  z-index: 999;
-}
 
 .submenu-contenido a {
   display: block;
@@ -873,55 +821,133 @@ will-change: opacity, transform;
 
 }
 
-/* Botón hamburguesa */
-.hamburger {
-  display: none;
+/* ===== HEADER LIMPIO ===== */
+
+.menu-btn {
   background: none;
   border: none;
-  font-size: 28px;
+  font-size: 26px;
   cursor: pointer;
   color: #4f7f6c;
+  display: none;
 }
 
-/* Menú principal */
+.menu-close {
+  display: none;
+  text-align: right;
+  font-size: 22px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+/* Menú base */
+
 .menu {
   display: flex;
-  gap: 20px;
+  gap: 25px;
+  align-items: center;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
+/* Submenu */
 
-  /* Mostrar hamburguesa */
-  .hamburger {
+.submenu {
+  position: relative;
+  cursor: pointer;
+}
+
+.submenu-lista {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  background: white;
+  min-width: 220px;
+  border-radius: 8px;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.submenu:hover .submenu-lista {
+  display: block;
+}
+
+.submenu-lista a {
+  display: block;
+  padding: 10px 14px;
+  color: #3f6b5a;
+}
+
+/* Buscador */
+
+.buscador-mobile {
+  display: none;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 900px) {
+
+  .menu-btn {
     display: block;
   }
 
-  /* Ocultar menú normal */
   .menu {
-    display: none;
-    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+
     background: white;
-    position: absolute;
-    top: 80px;
-    left: 0;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 25px;
+
+    transition: 0.3s;
+
+    z-index: 9999;
+  }
+
+  .menu.activo {
+    right: 0;
+  }
+
+  .menu-close {
+    display: block;
     width: 100%;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    z-index: 999;
   }
 
-  /* Menú abierto */
-  .menu.active {
-    display: flex;
+  .submenu-lista {
+    position: static;
+    box-shadow: none;
+    margin-left: 15px;
   }
 
-  /* Ocultar botones viejos */
-  .categorias {
+  .submenu:hover .submenu-lista {
     display: none;
   }
+
+  .submenu.activo .submenu-lista {
+    display: block;
+  }
+
+  .buscador-desktop {
+    display: none;
+  }
+
+  .buscador-mobile {
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
 }
+
 	  
+ 
     
   </style>
 </head>
@@ -930,58 +956,60 @@ will-change: opacity, transform;
 
 <header class="header-principal">
 
-  <!-- Fila superior -->
   <div class="header-top">
 
+    <!-- Hamburguesa -->
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <!-- Logo -->
     <img src="img/logo/logo1.png" class="logo">
 
-    <div class="buscador">
+    <!-- Buscador desktop -->
+    <div class="buscador buscador-desktop">
       🔍
-      <input 
-        type="text" 
-        id="buscador"
-        placeholder="Buscar producto..."
-      >
+      <input type="text" id="buscador" placeholder="Buscar producto...">
     </div>
-
-    <!-- Hamburguesa -->
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
   </div>
 
-
-  <!-- Fila menú -->
+  <!-- Menú -->
   <nav class="menu" id="menu">
 
-  <a href="#" onclick="mostrar('inicio')">Inicio</a>
+    <!-- Cerrar mobile -->
+    <div class="menu-close" onclick="toggleMenu()">✕</div>
 
-  <div class="dropdown">
-    <a href="#">Productos ▾</a>
-    <div class="dropdown-content">
-
-      <a onclick="mostrar('almacen')">Almacén</a>
-      <a onclick="mostrar('hierbas')">Hierbas</a>
-      <a onclick="mostrar('tes')">Tés</a>
-      <a onclick="mostrar('condimentos')">Condimentos</a>
-      <a onclick="mostrar('aroma')">Aromaterapia</a>
-      <a onclick="mostrar('bienestar')">Bienestar</a>
-      <a onclick="mostrar('envasados')">Envasados</a>
-      <a onclick="mostrar('panificados')">Panificados</a>
-      <a onclick="mostrar('regaleria')">Regalería</a>
-
+    <!-- Buscador mobile -->
+    <div class="buscador buscador-mobile">
+      🔍
+      <input type="text" placeholder="Buscar producto...">
     </div>
-  </div>
 
-  <a onclick="mostrar('ofertas')">Ofertas</a>
+    <a onclick="mostrar('inicio')">Inicio</a>
 
-</nav>
+    <div class="submenu">
+      <span>Productos ▾</span>
 
+      <div class="submenu-lista">
 
-	<button class="hamburger" onclick="toggleMenu()">
-  ☰
-</button>
+        <a onclick="mostrar('almacen')">Almacén</a>
+        <a onclick="mostrar('hierbas')">Hierbas</a>
+        <a onclick="mostrar('tes')">Tés</a>
+        <a onclick="mostrar('condimentos')">Condimentos</a>
+        <a onclick="mostrar('aroma')">Aromaterapia</a>
+        <a onclick="mostrar('bienestar')">Bienestar</a>
+        <a onclick="mostrar('envasados')">Envasados</a>
+        <a onclick="mostrar('panificados')">Panificados</a>
+        <a onclick="mostrar('regaleria')">Regalería</a>
+
+      </div>
+    </div>
+
+    <a onclick="mostrar('ofertas')">Ofertas</a>
+
+  </nav>
 
 </header>
+
 
 
  
@@ -1001,24 +1029,6 @@ will-change: opacity, transform;
 
 
   
-<section class="categorias">
-
-  
-<!-- BOTONES -->
-
-<section class="categorias">
-
-<button onclick="mostrar('almacen')">Almacén Natural</button>
-<button onclick="mostrar('hierbas')">Hierbas, Tés y Condimentos</button>
-<button onclick="mostrar('aroma')">Aromaterapia y Terapia Floral</button>
-<button onclick="mostrar('bienestar')">Bienestar</button>
-<button onclick="mostrar('envasados')">Envasados</button>
-<button onclick="mostrar('panificados')">Panificados Artesanales</button>
-<button onclick="mostrar('regaleria')">Regalería & Energía</button>
-<button onclick="mostrar('ofertas')">Ofertas</button>
-
-
-</div>
 
 
 
@@ -4389,6 +4399,20 @@ function toggleMenu() {
 function toggleMenu() {
   document.getElementById("menu").classList.toggle("active");
 }
+
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("activo");
+}
+
+/* Submenu mobile */
+
+document.querySelectorAll(".submenu span").forEach(item => {
+  item.addEventListener("click", () => {
+    item.parentElement.classList.toggle("activo");
+  });
+});
+
+	
 </script>
 	
 
