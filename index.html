@@ -1024,15 +1024,16 @@ button:focus {
 
 
   <div class="submenu-lista">
-    <a onclick="irASeccion('almacen')">Almacén</a>
-    <a onclick="irASeccion('hierbas')">Hierbas</a>
-    <a onclick="irASeccion('tes')">Tés</a>
-    <a onclick="irASeccion('condimentos')">Condimentos</a>
-    <a onclick="irASeccion('aroma')">Aromaterapia</a>
-    <a onclick="irASeccion('bienestar')">Bienestar</a>
-    <a onclick="irASeccion('envasados')">Envasados</a>
-    <a onclick="irASeccion('panificados')">Panificados</a>
-    <a onclick="irASeccion('regaleria')">Regalería</a>
+    <a href="#" onclick="irASeccion('almacen'); return false;">Almacén</a>
+    <a href="#" onclick="irASeccion('hierbas'); return false;">Hierbas</a>
+	<a href="#" onclick="irASeccion('tes'); return false;">Tés</a>
+	<a href="#" onclick="irASeccion('condimentos'); return false;">Condimentos</a>
+    <a href="#" onclick="irASeccion('aromaterapia'); return false;">Aromaterapia y Terapia Floral</a>
+    <a href="#" onclick="irASeccion('bienestar'); return false;">Bienestar</a>
+    <a href="#" onclick="irASeccion('envasados'); return false;">Envasados</a>
+	<a href="#" onclick="irASeccion('panificados'); return false;">Panificados</a>
+	<a href="#" onclick="irASeccion('regaleria'); return false;">Regalería</a>
+  
   </div>
 </div>
 
@@ -4421,6 +4422,7 @@ function toggleMenu() {
 }
 
 
+
 	
 </script>
 <!-- Toast mensaje -->
@@ -4479,9 +4481,18 @@ function irASeccion(seccion) {
   const menu = document.getElementById("menu");
   const overlay = document.getElementById("overlay");
 
+  // Cerrar menú lateral
   menu.classList.remove("activo");
+
+  // Cerrar overlay
   overlay.classList.remove("visible");
+
+  // Cerrar cualquier submenu abierto
+  document.querySelectorAll(".submenu").forEach(sub => {
+    sub.classList.remove("activo");
+  });
 }
+
 
 
 
