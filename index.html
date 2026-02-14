@@ -980,8 +980,8 @@ will-change: opacity, transform;
     <div class="menu-close" onclick="toggleMenu()">✕</div>
 
     <!-- Buscador mobile -->
-    <div class="buscador buscador-mobile limpio">
-  <input type="text" placeholder="Búsqueda de productos">
+  <div class="buscador buscador-mobile limpio">
+  <input type="text" id="buscador-mobile" placeholder="Búsqueda de productos">
   <span class="icono">🔍</span>
 </div>
 
@@ -4332,13 +4332,23 @@ function mostrarMensajeBusqueda(cantidad, texto) {
   });
 
   // 🔍 Buscador
-  const buscador = document.getElementById("buscador");
+ // 🔍 Buscadores
+const buscadorDesktop = document.getElementById("buscador");
+const buscadorMobile = document.getElementById("buscador-mobile");
 
-  buscador.addEventListener("input", () => {
-    buscarProductos(buscador.value);
+function conectarBuscadores(origen, destino) {
+  if (!origen || !destino) return;
+
+  origen.addEventListener("input", function() {
+    destino.value = origen.value;
+    buscarProductos(origen.value);
   });
+}
 
-});
+// Conectar ambos
+conectarBuscadores(buscadorDesktop, buscadorMobile);
+conectarBuscadores(buscadorMobile, buscadorDesktop);
+
 function sumarProducto(i) {
   carrito[i].cantidad++;
   mostrarCarrito();
