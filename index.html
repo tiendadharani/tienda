@@ -4390,23 +4390,24 @@ function toggleSubmenu(e) {
 
 function irASeccion(seccion, e) {
 
-  // 🔥 DETENER propagación
   if (e) {
     e.preventDefault();
     e.stopPropagation();
   }
 
-  mostrar(seccion);
-
   const menu = document.getElementById("menu");
   const overlay = document.getElementById("overlay");
 
+  // 🔥 PRIMERO cerrar menú
   menu.classList.remove("activo");
   overlay.classList.remove("visible");
 
   document.querySelectorAll(".submenu").forEach(sub => {
     sub.classList.remove("activo");
   });
+
+  // 🔥 DESPUÉS mostrar sección
+  mostrar(seccion);
 }
 
 
