@@ -674,10 +674,6 @@ will-change: opacity, transform;
 
 
 
-.menu {
-  display: flex;
-  gap: 18px;
-}
 
 .menu a {
   text-decoration: none;
@@ -893,7 +889,7 @@ will-change: opacity, transform;
   .menu {
     position: fixed;
     top: 0;
-    right: -100%;
+    left: -100%;
     width: 280px;
     height: 100vh;
 
@@ -910,7 +906,7 @@ will-change: opacity, transform;
   }
 
   .menu.activo {
-    right: 0;
+    left: 0;
   }
 
   .menu-close {
@@ -987,9 +983,7 @@ will-change: opacity, transform;
   <!-- Menú -->
   <nav class="menu" id="menu">
 
-	    <div id="overlay" onclick="toggleMenu()"></div>  
-
-	    <!-- Cerrar mobile -->
+	 	    <!-- Cerrar mobile -->
     <div class="menu-close" onclick="toggleMenu()">✕</div>
 
     <!-- Buscador mobile -->
@@ -1001,9 +995,10 @@ will-change: opacity, transform;
     <a onclick="mostrar('inicio')">Inicio</a>
 
 <div class="submenu">
-  <a href="#" onclick="toggleSubmenu(event)">
-    Productos ▾
-  </a>
+  <button class="submenu-btn" onclick="toggleSubmenu(event)">
+  Productos ▾
+</button>
+
 
   <div class="submenu-lista">
     <a onclick="mostrar('almacen')">Almacén</a>
@@ -1023,7 +1018,7 @@ will-change: opacity, transform;
 	
 	  
   </nav>
-
+   <div id="overlay" onclick="toggleMenu()"></div>  
 </header>
 
 
@@ -4445,8 +4440,9 @@ function toggleMenu() {
 
 function toggleSubmenu(e) {
   e.preventDefault();
-  const contenedor = e.currentTarget.parentElement;
-  contenedor.classList.toggle("activo");
+
+  const submenu = e.currentTarget.closest(".submenu");
+  submenu.classList.toggle("activo");
 }
 
 
