@@ -935,7 +935,7 @@ will-change: opacity, transform;
 
   <div class="submenu-lista">
     <a href="#" onclick="irASeccion('almacen'); return false;">Almacén</a>
-    <a href="#" onclick="irASeccion('hierbas'); return false;">Hierbas</a>
+    <a href="#" onclick="irASeccion('hierbas', event); return false;">Hierbas</a>
 	<a href="#" onclick="irASeccion('tes'); return false;">Tés</a>
 	<a href="#" onclick="irASeccion('condimentos'); return false;">Condimentos</a>
     <a href="#" onclick="irASeccion('aromaterapia'); return false;">Aromaterapia y Terapia Floral</a>
@@ -4385,25 +4385,27 @@ function toggleSubmenu(e) {
   submenu.classList.toggle("activo");
 }
 
-function irASeccion(seccion) {
+function irASeccion(seccion, e) {
+
+  // 🔥 DETENER propagación
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
   mostrar(seccion);
 
   const menu = document.getElementById("menu");
   const overlay = document.getElementById("overlay");
 
-  // Cerrar menú lateral
   menu.classList.remove("activo");
-
-  // Cerrar overlay
   overlay.classList.remove("visible");
 
-  // Cerrar submenu Productos
   document.querySelectorAll(".submenu").forEach(sub => {
     sub.classList.remove("activo");
   });
-	void menu.offsetWidth;
-
 }
+
 
 
 
