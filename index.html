@@ -669,36 +669,6 @@ will-change: opacity, transform;
 }
 
 
-/* MOBILE */
-
-@media (max-width: 900px) {
-
-  .menu {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 260px;
-    height: 100vh;
-
-    background: white;
-
-    flex-direction: column;
-    padding: 80px 20px;
-    gap: 15px;
-
-    box-shadow: -5px 0 15px rgba(0,0,0,0.15);
-
-    transition: 0.3s;
-  }
-
-  .menu.activo {
-    left: 0;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-}
 
 	  /* Ocultar botones en desktop */
 @media (min-width: 901px) {
@@ -789,15 +759,6 @@ will-change: opacity, transform;
 
 }
 @media (max-width: 900px) {
-
-  .menu-barra {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: block;
-    font-size: 26px;
-  }
 
   .header-top {
     flex-wrap: wrap;
