@@ -948,20 +948,14 @@ will-change: opacity, transform;
 }
 
 	#overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.4);
   display: none;
-  z-index: 9998;
 }
 
-.menu.activo + #overlay {
+#overlay.visible {
   display: block;
 }
-  
+
+
  submenu-btn {
   text-decoration: none;
   color: #3f6b5a;
@@ -4427,8 +4421,13 @@ function mostrarSlide() {
 setInterval(mostrarSlide, 4000); // cambia cada 4 segundos
 
 function toggleMenu() {
-  document.querySelector('.menu').classList.toggle('activo');
+  const menu = document.getElementById("menu");
+  const overlay = document.getElementById("overlay");
+
+  menu.classList.toggle("activo");
+  overlay.classList.toggle("visible");
 }
+
 
 	
 </script>
@@ -4485,12 +4484,10 @@ function toggleSubmenu(e) {
 function irASeccion(seccion) {
   mostrar(seccion);
 
-  const menu = document.getElementById("menu");
-  const overlay = document.getElementById("overlay");
-
-  menu.classList.remove("activo");
-  overlay.style.display = "none";
+  document.getElementById("menu").classList.remove("activo");
+  document.getElementById("overlay").classList.remove("visible");
 }
+
 
 
 </script>
