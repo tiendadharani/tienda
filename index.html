@@ -4482,9 +4482,14 @@ function toggleSubmenu(e) {
   submenu.classList.toggle("activo");
 }
 
-		function irASeccion(seccion) {
+function irASeccion(seccion) {
   mostrar(seccion);
-  toggleMenu(); // Cierra menú mobile
+
+  const menu = document.getElementById("menu");
+  const overlay = document.getElementById("overlay");
+
+  menu.classList.remove("activo");
+  overlay.style.display = "none";
 }
 
 
