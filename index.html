@@ -909,7 +909,7 @@ will-change: opacity, transform;
   display: block;
 }
 
- submenu-btn {
+ .submenu-btn {
   text-decoration: none;
   color: #3f6b5a;
   font-weight: 600;
@@ -4448,12 +4448,11 @@ function irASeccion(seccion) {
   // Cerrar overlay
   overlay.classList.remove("visible");
 
-  // Cerrar cualquier submenu abierto
+  // Cerrar submenu Productos
   document.querySelectorAll(".submenu").forEach(sub => {
     sub.classList.remove("activo");
   });
 }
-
 
 
 
