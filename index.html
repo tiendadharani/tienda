@@ -793,7 +793,19 @@ will-change: opacity, transform;
 }
 
 /* ===== MOBILE ===== */
+@media (max-width: 900px) {
 
+  .menu-close {
+    display: block;
+    width: 100%;
+    text-align: right;
+    font-size: 22px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    color: #3f6b5a;
+  }
+
+}
 @media (max-width: 900px) {
 
   .menu-barra {
@@ -828,13 +840,7 @@ will-change: opacity, transform;
   display: none;
 }
 
-.menu-close {
-  display: none;
-  text-align: right;
-  font-size: 22px;
-  cursor: pointer;
-  margin-bottom: 15px;
-}
+
 
 /* Menú base */
 
@@ -909,11 +915,7 @@ will-change: opacity, transform;
     left: 0;
   }
 
-  .menu-close {
-    display: block;
-    width: 100%;
-  }
-
+ 
   .submenu-lista {
     position: static;
     box-shadow: none;
@@ -955,7 +957,36 @@ will-change: opacity, transform;
   display: block;
 }
   
- 
+ submenu-btn {
+  text-decoration: none;
+  color: #3f6b5a;
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: inherit;
+  padding: 0;
+}
+
+.submenu-btn:hover {
+  color: #5a8f7b;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus,
+button:focus {
+  outline: none;
+}
+
+.submenu-lista a:active {
+  background: #e8f3ee;
+}
+
+	  
     
   </style>
 </head>
@@ -995,9 +1026,10 @@ will-change: opacity, transform;
     <a onclick="mostrar('inicio')">Inicio</a>
 
 <div class="submenu">
-  <button class="submenu-btn" onclick="toggleSubmenu(event)">
+<a href="#" class="submenu-btn" onclick="toggleSubmenu(event)">
   Productos ▾
-</button>
+</a>
+
 
 
   <div class="submenu-lista">
