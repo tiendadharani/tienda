@@ -854,29 +854,34 @@ will-change: opacity, transform;
 
 .submenu {
   position: relative;
-  cursor: pointer;
 }
 
 .submenu-lista {
   display: none;
-  margin-left: 15px;
-  margin-top: 8px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  background: white;
+  min-width: 200px;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  border-radius: 10px;
+
+  padding: 10px 0;
+  z-index: 999;
+}
+
+.submenu-lista a {
+  display: block;
+  padding: 10px 16px;
+  white-space: nowrap;
 }
 
 .submenu:hover .submenu-lista {
   display: block;
 }
 
-.submenu.activo .submenu-lista {
-  display: flex;
-  flex-direction: column;
-}	  
-	  
-.submenu-lista a {
-  display: block;
-  padding: 10px 14px;
-  color: #3f6b5a;
-}
 
 /* Buscador */
 
@@ -1033,15 +1038,15 @@ button:focus {
 
 
   <div class="submenu-lista">
-    <a onclick="mostrar('almacen')">Almacén</a>
-    <a onclick="mostrar('hierbas')">Hierbas</a>
-    <a onclick="mostrar('tes')">Tés</a>
-    <a onclick="mostrar('condimentos')">Condimentos</a>
-    <a onclick="mostrar('aroma')">Aromaterapia</a>
-    <a onclick="mostrar('bienestar')">Bienestar</a>
-    <a onclick="mostrar('envasados')">Envasados</a>
-    <a onclick="mostrar('panificados')">Panificados</a>
-    <a onclick="mostrar('regaleria')">Regalería</a>
+    <a onclick="irASeccion('almacen')">Almacén</a>
+    <a onclick="irASeccion('hierbas')">Hierbas</a>
+    <a onclick="irASeccion('tes')">Tés</a>
+    <a onclick="irASeccion('condimentos')">Condimentos</a>
+    <a onclick="irASeccion('aroma')">Aromaterapia</a>
+    <a onclick="irASeccion('bienestar')">Bienestar</a>
+    <a onclick="irASeccion('envasados')">Envasados</a>
+    <a onclick="irASeccion('panificados')">Panificados</a>
+    <a onclick="irASeccion('regaleria')">Regalería</a>
   </div>
 </div>
 
@@ -4475,6 +4480,11 @@ function toggleSubmenu(e) {
 
   const submenu = e.currentTarget.closest(".submenu");
   submenu.classList.toggle("activo");
+}
+
+		function irASeccion(seccion) {
+  mostrar(seccion);
+  toggleMenu(); // Cierra menú mobile
 }
 
 
