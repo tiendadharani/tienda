@@ -740,9 +740,12 @@ will-change: opacity, transform;
 
 /* Mostrar submenu */
 
-.submenu:hover .submenu-contenido {
-  display: block;
+@media (min-width: 901px) {
+  .submenu:hover .submenu-lista {
+    display: block;
+  }
 }
+
 
 /* ===== MOBILE ===== */
 @media (max-width: 900px) {
