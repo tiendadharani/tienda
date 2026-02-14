@@ -698,7 +698,7 @@ will-change: opacity, transform;
   .menu {
     position: fixed;
     top: 0;
-    right: -100%;
+    left: -100%;
     width: 260px;
     height: 100vh;
 
@@ -714,7 +714,7 @@ will-change: opacity, transform;
   }
 
   .menu.activo {
-    right: 0;
+    left: 0;
   }
 
   .menu-toggle {
@@ -946,7 +946,21 @@ will-change: opacity, transform;
 
 }
 
-	  
+	#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  z-index: 9998;
+}
+
+.menu.activo + #overlay {
+  display: block;
+}
+  
  
     
   </style>
@@ -975,6 +989,7 @@ will-change: opacity, transform;
   <!-- Menú -->
   <nav class="menu" id="menu">
 
+	<div id="overlay" onclick="toggleMenu()"></div>  
     <!-- Cerrar mobile -->
     <div class="menu-close" onclick="toggleMenu()">✕</div>
 
@@ -986,9 +1001,9 @@ will-change: opacity, transform;
 
     <a onclick="mostrar('inicio')">Inicio</a>
 
-    <div class="submenu">
-      <span>Productos ▾</span>
-
+<div class="submenu">
+  <span onclick="toggleSubmenu(this)">Productos ▾</span>
+	
       <div class="submenu-lista">
 
         <a onclick="mostrar('almacen')">Almacén</a>
@@ -1026,10 +1041,6 @@ will-change: opacity, transform;
   </div>
 
 </div>
-
-
-  
-
 
 
 <!-- HIERBAS -->
@@ -4414,7 +4425,20 @@ document.querySelectorAll(".submenu span").forEach(item => {
 
 	
 </script>
-	
+
+	<script>
+
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("activo");
+}
+
+function toggleSubmenu(element) {
+  const submenu = element.parentElement;
+  submenu.classList.toggle("activo");
+}
+
+</script>
+
 
 </body>
 </html>
