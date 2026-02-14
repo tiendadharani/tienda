@@ -827,13 +827,36 @@ will-change: opacity, transform;
 .submenu:hover .submenu-lista {
   display: block;
 }
+	  
+@media (max-width: 900px) {
 
+  .buscador-desktop {
+    display: none;
+  }
+
+}
 
 /* Buscador */
 
 .buscador-mobile {
   display: none;
 }
+
+.buscador-mobile input {
+  width: 100%;
+}
+	  
+
+@media (max-width: 900px) {
+
+  .buscador-mobile {
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+}
+
 
 /* ===== MOBILE ===== */
 
