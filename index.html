@@ -251,24 +251,6 @@
 
    /* === FIX SCROLL HORIZONTAL MOBILE === */
 
-@media (max-width: 700px) {
-
-  
-  /* Descripción */
-  .producto-body p {
-    font-size: 15px;
-    line-height: 1.4;
-  }
-
-  /* Labels */
-  .producto-body label {
-    font-size: 14px;
-  }
-
-  /* Selects */
-  .producto-body select {
-    font-size: 14px;
-  }
 
   /* Botón agregar */
   .producto-body button {
@@ -948,13 +930,23 @@ will-change: opacity, transform;
 }
 
 	#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.4);
+
   display: none;
+
+  z-index: 9998;
 }
 
 #overlay.visible {
   display: block;
 }
-
 
  submenu-btn {
   text-decoration: none;
@@ -4484,8 +4476,11 @@ function toggleSubmenu(e) {
 function irASeccion(seccion) {
   mostrar(seccion);
 
-  document.getElementById("menu").classList.remove("activo");
-  document.getElementById("overlay").classList.remove("visible");
+  const menu = document.getElementById("menu");
+  const overlay = document.getElementById("overlay");
+
+  menu.classList.remove("activo");
+  overlay.classList.remove("visible");
 }
 
 
