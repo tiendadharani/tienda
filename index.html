@@ -857,21 +857,19 @@ will-change: opacity, transform;
 
 .submenu-lista {
   display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-
-  background: white;
-  min-width: 220px;
-  border-radius: 8px;
-
-  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  margin-left: 15px;
+  margin-top: 8px;
 }
 
 .submenu:hover .submenu-lista {
   display: block;
 }
 
+.submenu.activo .submenu-lista {
+  display: flex;
+  flex-direction: column;
+}	  
+	  
 .submenu-lista a {
   display: block;
   padding: 10px 14px;
@@ -989,8 +987,9 @@ will-change: opacity, transform;
   <!-- Menú -->
   <nav class="menu" id="menu">
 
-	<div id="overlay" onclick="toggleMenu()"></div>  
-    <!-- Cerrar mobile -->
+	    <div id="overlay" onclick="toggleMenu()"></div>  
+
+	    <!-- Cerrar mobile -->
     <div class="menu-close" onclick="toggleMenu()">✕</div>
 
     <!-- Buscador mobile -->
@@ -1002,25 +1001,27 @@ will-change: opacity, transform;
     <a onclick="mostrar('inicio')">Inicio</a>
 
 <div class="submenu">
-	<a onclick="mostrar('Productos')">Productos</a>
-  
-      <div class="submenu-lista">
+  <a href="#" onclick="toggleSubmenu(event)">
+    Productos ▾
+  </a>
 
-        <a onclick="mostrar('almacen')">Almacén</a>
-        <a onclick="mostrar('hierbas')">Hierbas</a>
-        <a onclick="mostrar('tes')">Tés</a>
-        <a onclick="mostrar('condimentos')">Condimentos</a>
-        <a onclick="mostrar('aroma')">Aromaterapia</a>
-        <a onclick="mostrar('bienestar')">Bienestar</a>
-        <a onclick="mostrar('envasados')">Envasados</a>
-        <a onclick="mostrar('panificados')">Panificados</a>
-        <a onclick="mostrar('regaleria')">Regalería</a>
-
-      </div>
-    </div>
+  <div class="submenu-lista">
+    <a onclick="mostrar('almacen')">Almacén</a>
+    <a onclick="mostrar('hierbas')">Hierbas</a>
+    <a onclick="mostrar('tes')">Tés</a>
+    <a onclick="mostrar('condimentos')">Condimentos</a>
+    <a onclick="mostrar('aroma')">Aromaterapia</a>
+    <a onclick="mostrar('bienestar')">Bienestar</a>
+    <a onclick="mostrar('envasados')">Envasados</a>
+    <a onclick="mostrar('panificados')">Panificados</a>
+    <a onclick="mostrar('regaleria')">Regalería</a>
+  </div>
+</div>
 
     <a onclick="mostrar('ofertas')">Ofertas</a>
 
+	
+	  
   </nav>
 
 </header>
@@ -3984,6 +3985,16 @@ function mostrar(id) {
   }
 }
 
+document.addEventListener("click", function(e) {
+  const menu = document.getElementById("menu");
+  const boton = document.querySelector(".hamburguesa");
+
+  if (!menu.contains(e.target) && !boton.contains(e.target)) {
+    menu.classList.remove("activo");
+  }
+});
+
+	
 
 /* Mostrar carrito */
 function mostrarCarrito() {
@@ -4432,10 +4443,12 @@ function toggleMenu() {
   document.getElementById("menu").classList.toggle("activo");
 }
 
-function toggleSubmenu(element) {
-  const submenu = element.parentElement;
-  submenu.classList.toggle("activo");
+function toggleSubmenu(e) {
+  e.preventDefault();
+  const contenedor = e.currentTarget.parentElement;
+  contenedor.classList.toggle("activo");
 }
+
 
 </script>
 
