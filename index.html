@@ -150,22 +150,6 @@
   display: grid;
 }
 
-/* Cuando se muestra */
-
-.categoria.visible {
-  display: grid;
-
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-
-  gap: 20px;
-
-  padding: 10px;
-}
-
-
-
-
-
 
     
 /* Tarjeta producto */
@@ -324,12 +308,12 @@
     box-sizing: border-box;
   }
 
-  /* Grid en mobile */
-  .categoria.visible {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 6px; /* separación real */
-  }
+/* Grid base */
+.categoria.visible {
+  display: grid;
+  gap: 20px;
+}
+
 
   /* Tarjetas */
   .categoria .producto {
@@ -665,19 +649,44 @@ will-change: opacity, transform;
 }
 
 
- .bloque-subcategoria {
-  grid-column: 1 / -1;
-
+.bloque-subcategoria {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 8px 36px; /* vertical | horizontal */
-
-  margin-bottom: 28px;
-
-  padding-left: 15px;
-  padding-right: 10px;
+  gap: 20px;
 }
+
+/* Grid base categorias */
+.categoria.visible {
+  display: grid;
+  gap: 20px;
+}
+	  
+/* MOBILE */
+@media (max-width: 600px) {
+
+  .bloque-subcategoria {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* TABLET */
+@media (min-width: 601px) and (max-width: 1000px) {
+
+  .bloque-subcategoria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+/* DESKTOP */
+@media (min-width: 1001px) {
+
+  .bloque-subcategoria {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+}
+
 
 /* === AJUSTE PRODUCTOS EN SUBCATEGORÍAS === */
 
