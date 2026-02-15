@@ -4272,7 +4272,7 @@ function mostrarMensajeBusqueda(cantidad, texto) {
   }
 }
 
-  document.addEventListener("DOMContentLoaded", () => {
+ document.addEventListener("DOMContentLoaded", () => {
 
   cargarCarrito();
   ordenarProductos();
@@ -4291,8 +4291,34 @@ function mostrarMensajeBusqueda(cantidad, texto) {
     });
 
   });
-	  
- });
+
+  // 🔍 Cerrar menú al presionar Enter en buscador mobile
+  const buscadorMobile = document.getElementById("buscador-mobile");
+
+  if (buscadorMobile) {
+
+    buscadorMobile.addEventListener("keydown", function(e) {
+
+      if (e.key === "Enter") {
+
+        e.preventDefault(); // evita comportamientos inesperados
+
+        const menu = document.getElementById("menu");
+        const overlay = document.getElementById("overlay");
+
+        if (menu) menu.classList.remove("activo");
+        if (overlay) overlay.classList.remove("visible");
+
+        buscadorMobile.blur(); // cierra el teclado
+
+      }
+
+    });
+
+  }
+
+});
+
 
 /* Mostrar categorías */
 function mostrar(id) {
