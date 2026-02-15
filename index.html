@@ -309,11 +309,9 @@
 
 /* Grid base */
 .categoria.visible {
-  display: grid;
-  gap: 24px;
-
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  display: block;
 }
+
 
 
 
@@ -660,10 +658,7 @@ will-change: opacity, transform;
 
   width: 100%;
 
-  padding-left: clamp(16px, 3vw, 40px);
-  padding-right: clamp(16px, 3vw, 40px);
-
-  box-sizing: border-box;
+  grid-template-columns: repeat(4, 1fr);
 
 }
 
@@ -1034,12 +1029,18 @@ will-change: opacity, transform;
 	  
 
 .contenedor-productos {
+
   width: 100%;
-  max-width: 100%;
-  margin: 0;
+  max-width: 1400px;
+
+  margin-left: auto;
+  margin-right: auto;
+
   padding-left: clamp(16px, 3vw, 40px);
   padding-right: clamp(16px, 3vw, 40px);
+
   box-sizing: border-box;
+
 }
 
 
