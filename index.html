@@ -652,18 +652,21 @@ will-change: opacity, transform;
 
 
 .bloque-subcategoria {
+
   display: grid;
   gap: 24px;
 
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  width: 100%;
+
+  margin: 0;
+
+  padding-left: clamp(16px, 3vw, 40px);
+  padding-right: clamp(16px, 3vw, 40px);
+
+  box-sizing: border-box;
+
 }
 
-
-/* Grid base categorias */
-.categoria.visible {
-  display: grid;
-  gap: 20px;
-}
 	  
 .bloque-subcategoria {
 
