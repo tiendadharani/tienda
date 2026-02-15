@@ -1073,6 +1073,88 @@ will-change: opacity, transform;
 
 }
 
+.pesos {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.peso-btn {
+
+  border: 2px solid #5b8f7b;
+  background: transparent;
+
+  padding: 6px 14px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-weight: 500;
+
+  color: #5b8f7b;
+
+}
+
+.peso-btn.active {
+
+  background: #5b8f7b;
+  color: white;
+
+}
+
+.precio {
+
+  font-size: 26px;
+  font-weight: bold;
+
+  color: #5b8f7b;
+
+  margin: 10px 0;
+
+}
+
+.cantidad-control {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 10px;
+
+}
+
+.cantidad-btn {
+
+  width: 32px;
+  height: 32px;
+
+  border: none;
+
+  background: #5b8f7b;
+
+  color: white;
+
+  font-size: 18px;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+
+}
+
+.cantidad-valor {
+
+  font-size: 18px;
+  font-weight: bold;
+
+  width: 20px;
+  text-align: center;
+
+}
 
 	  
     
@@ -1180,7 +1262,7 @@ will-change: opacity, transform;
 
   <!-- BOLDO -->
 
-<div class="tarjeta-producto">
+<div class="tarjeta-producto" data-producto="Boldo">
 
   <h4 class="nombre-producto">Boldo</h4>
 
@@ -1189,31 +1271,46 @@ will-change: opacity, transform;
   <p class="descripcion">
     Planta digestiva tradicional para infusiones depurativas.
   </p>
-	
-    <label>Opción</label>
-    <select id="boldo-opcion">
-      <option value="">Elegí una opción</option>
-      <option value="465">25g $465</option>
-      <option value="865">50g $865</option>
-      <option value="1615">100g $1615</option>
-    </select>
 
-    <label>Cantidad</label>
-    <select id="boldo-cant">
-      <option>1</option><option>2</option><option>3</option>
-      <option>4</option><option>5</option>
-    </select>
+  <!-- Selector de peso -->
+  <div class="pesos">
 
-  <button 
-  class="btn-agregar"
-  data-opcion="boldo-opcion"
-  data-cant="boldo-cant"
-  data-nombre="Boldo">
-  Agregar al pedido
-</button>
+    <button class="peso-btn active" data-precio="465" data-peso="25g">
+      25g
+    </button>
 
+    <button class="peso-btn" data-precio="865" data-peso="50g">
+      50g
+    </button>
+
+    <button class="peso-btn" data-precio="1615" data-peso="100g">
+      100g
+    </button>
 
   </div>
+
+  <!-- Precio dinámico -->
+  <div class="precio">
+    $<span class="precio-valor">465</span>
+  </div>
+
+  <!-- Cantidad -->
+  <div class="cantidad-control">
+
+    <button class="cantidad-btn menos">−</button>
+
+    <span class="cantidad-valor">1</span>
+
+    <button class="cantidad-btn mas">+</button>
+
+  </div>
+
+  <!-- Botón carrito -->
+  <button class="btn-agregar">
+    Agregar al pedido
+  </button>
+
+</div>
 
 
 
@@ -4647,6 +4744,55 @@ function irASeccion(seccion, e) {
   mostrar(seccion);
 }
 
+document.querySelectorAll(".tarjeta-producto").forEach(tarjeta => {
+
+  const botonesPeso = tarjeta.querySelectorAll(".peso-btn");
+  const precioElemento = tarjeta.querySelector(".precio-valor");
+
+  const cantidadValor = tarjeta.querySelector(".cantidad-valor");
+  const btnMas = tarjeta.querySelector(".cantidad-btn.mas");
+  const btnMenos = tarjeta.querySelector(".cantidad-btn.menos");
+
+  let precioActual = 465;
+  let cantidad = 1;
+
+  botonesPeso.forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+      botonesPeso.forEach(b => b.classList.remove("active"));
+
+      btn.classList.add("active");
+
+      precioActual = parseInt(btn.dataset.precio);
+
+      precioElemento.textContent = precioActual;
+
+    });
+
+  });
+
+  btnMas.addEventListener("click", () => {
+
+    cantidad++;
+
+    cantidadValor.textContent = cantidad;
+
+  });
+
+  btnMenos.addEventListener("click", () => {
+
+    if (cantidad > 1) {
+
+      cantidad--;
+
+      cantidadValor.textContent = cantidad;
+
+    }
+
+  });
+
+});
 
 
 
