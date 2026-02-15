@@ -4228,7 +4228,11 @@ function buscarProductos(texto) {
 
   document.querySelectorAll(".producto").forEach(prod => {
 
-    const nombre = prod.innerText.toLowerCase();
+    const titulo = prod.querySelector("h3");
+
+    if (!titulo) return;
+
+    const nombre = titulo.innerText.toLowerCase();
 
     if (nombre.includes(texto)) {
 
@@ -4251,6 +4255,7 @@ function buscarProductos(texto) {
   }
 
 }
+
 
 
 
