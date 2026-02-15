@@ -4202,10 +4202,17 @@ function normalizarTexto(texto) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
+function normalizar(texto) {
+  return texto
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
   
 function buscarProductos(texto) {
 
-  texto = texto.toLowerCase().trim();
+ texto = normalizar(texto.trim());
+
 
   const contenedor = document.getElementById("resultados-busqueda");
   const lista = document.getElementById("lista-resultados");
@@ -4230,9 +4237,10 @@ function buscarProductos(texto) {
 
     const titulo = prod.querySelector("h3");
 
-    if (!titulo) return;
+    if (!titulo) return; 
 
-    const nombre = titulo.innerText.toLowerCase();
+   const nombre = normalizar(titulo.innerText);
+
 
     if (nombre.includes(texto)) {
 
