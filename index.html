@@ -142,6 +142,14 @@
   gap: 20px;
 }
 
+	  #resultados-busqueda {
+  display: none;
+}
+
+#resultados-busqueda.visible {
+  display: grid;
+}
+
 /* Cuando se muestra */
 
 .categoria.visible {
@@ -965,12 +973,7 @@ will-change: opacity, transform;
   <span class="icono">🔍</span>
 </div>
 
-	  <div id="resultados-busqueda" class="categoria" style="display:none;">
-  <h2>Resultados de búsqueda</h2>
-  <div id="lista-resultados"></div>
-</div>
-
-
+	  
     <a onclick="mostrar('inicio')">Inicio</a>
 
 <div class="submenu">
@@ -1018,8 +1021,13 @@ will-change: opacity, transform;
   </div>
 
 </div>
-
-
+	
+<!-- RESULTADOS DE BUSQUEDA -->
+<div id="resultados-busqueda" class="categoria" style="display:none;">
+  <h2>Resultados de búsqueda</h2>
+  <div id="lista-resultados"></div>
+</div>
+	
 <!-- HIERBAS -->
 
 <div id="hierbas" class="categoria">
@@ -4199,17 +4207,22 @@ function buscarProductos(texto) {
 
   texto = texto.toLowerCase().trim();
 
-  const resultadosContainer = document.getElementById("resultados-busqueda");
-  const listaResultados = document.getElementById("lista-resultados");
+  const contenedor = document.getElementById("resultados-busqueda");
+  const lista = document.getElementById("lista-resultados");
 
-  listaResultados.innerHTML = "";
+  if (!contenedor || !lista) return;
 
+  lista.innerHTML = "";
+
+  // Si está vacío → restaurar vista normal
   if (texto === "") {
 
-    resultadosContainer.style.display = "none";
+    contenedor.classList.remove("visible");
 
     document.querySelectorAll(".categoria").forEach(cat => {
-      cat.classList.remove("visible");
+      if (cat.id !== "resultados-busqueda") {
+        cat.classList.remove("visible");
+      }
     });
 
     return;
@@ -4219,31 +4232,34 @@ function buscarProductos(texto) {
 
   document.querySelectorAll(".producto").forEach(prod => {
 
-    const nombre = prod.textContent.toLowerCase();
+    const nombre = prod.innerText.toLowerCase();
 
     if (nombre.includes(texto)) {
 
       const clon = prod.cloneNode(true);
-      listaResultados.appendChild(clon);
+      lista.appendChild(clon);
       encontrados++;
 
     }
 
   });
 
-  if (encontrados > 0) {
+  // Ocultar todas las categorías
+  document.querySelectorAll(".categoria").forEach(cat => {
+    cat.classList.remove("visible");
+  });
 
-    document.querySelectorAll(".categoria").forEach(cat => {
-      cat.classList.remove("visible");
-    });
+  // Mostrar resultados
+  contenedor.classList.add("visible");
 
-    resultadosContainer.style.display = "block";
-    resultadosContainer.classList.add("visible");
+  // Si no hay resultados
+  if (encontrados === 0) {
 
-  } else {
-
-    resultadosContainer.style.display = "block";
-    resultadosContainer.innerHTML = "<p>No se encontraron productos</p>";
+    lista.innerHTML = `
+      <div style="padding:20px; text-align:center; color:#666;">
+        No se encontraron productos
+      </div>
+    `;
 
   }
 
