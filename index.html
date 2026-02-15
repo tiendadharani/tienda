@@ -3935,24 +3935,7 @@ will-change: opacity, transform;
 let carrito = [];
 
 
-/* Mostrar categorías */
-function mostrar(id) {
 
-  const categoria = document.getElementById(id);
-
-  if (!categoria) return;
-
-  // Cerrar todas las categorías
-  document.querySelectorAll('.categoria').forEach(c => {
-    c.classList.remove("visible");
-  });
-
-  // Abrir la categoría solicitada
-  categoria.classList.add("visible");
-
-  // Ordenar esta categoría
-  ordenarCategoria(categoria);
-}
 
 document.addEventListener("click", function(e) {
   const menu = document.getElementById("menu");
@@ -4308,7 +4291,27 @@ function mostrarMensajeBusqueda(cantidad, texto) {
     });
 
   });
+	  
+ });
 
+/* Mostrar categorías */
+function mostrar(id) {
+
+  const categoria = document.getElementById(id);
+
+  if (!categoria) return;
+
+  // Cerrar todas las categorías
+  document.querySelectorAll('.categoria').forEach(c => {
+    c.classList.remove("visible");
+  });
+
+  // Abrir la categoría solicitada
+  categoria.classList.add("visible");
+
+  // Ordenar esta categoría
+  ordenarCategoria(categoria);
+}
   // 🔍 Buscador
  // 🔍 Buscadores
 const buscadorDesktop = document.getElementById("buscador");
