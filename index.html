@@ -3938,22 +3938,20 @@ let carrito = [];
 /* Mostrar categorías */
 function mostrar(id) {
 
-  let categoria = document.getElementById(id);
-  let estaAbierta = categoria.classList.contains("visible");
+  const categoria = document.getElementById(id);
 
-  // Cerrar todas
+  if (!categoria) return;
+
+  // Cerrar todas las categorías
   document.querySelectorAll('.categoria').forEach(c => {
     c.classList.remove("visible");
   });
 
-  // Si NO estaba abierta → abrir
-  if (!estaAbierta) {
+  // Abrir la categoría solicitada
+  categoria.classList.add("visible");
 
-    categoria.classList.add("visible");
-
-    // Ordenar SOLO esta categoría
-    ordenarCategoria(categoria);
-  }
+  // Ordenar esta categoría
+  ordenarCategoria(categoria);
 }
 
 document.addEventListener("click", function(e) {
