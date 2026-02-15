@@ -965,6 +965,11 @@ will-change: opacity, transform;
   <span class="icono">🔍</span>
 </div>
 
+	  <div id="resultados-busqueda" class="categoria" style="display:none;">
+  <h2>Resultados de búsqueda</h2>
+  <div id="lista-resultados"></div>
+</div>
+
 
     <a onclick="mostrar('inicio')">Inicio</a>
 
@@ -4192,85 +4197,58 @@ function normalizarTexto(texto) {
   
 function buscarProductos(texto) {
 
- texto = normalizarTexto(texto).trim();
+  texto = texto.toLowerCase().trim();
 
+  const resultadosContainer = document.getElementById("resultados-busqueda");
+  const listaResultados = document.getElementById("lista-resultados");
+
+  listaResultados.innerHTML = "";
+
+  if (texto === "") {
+
+    resultadosContainer.style.display = "none";
+
+    document.querySelectorAll(".categoria").forEach(cat => {
+      cat.classList.remove("visible");
+    });
+
+    return;
+  }
 
   let encontrados = 0;
 
-  document.querySelectorAll(".categoria").forEach(cat => {
+  document.querySelectorAll(".producto").forEach(prod => {
 
-    let mostrarCategoria = false;
+    const nombre = prod.textContent.toLowerCase();
 
-    cat.querySelectorAll(".producto").forEach(prod => {
+    if (nombre.includes(texto)) {
 
-   const nombre = normalizarTexto(
-  prod.querySelector(".producto-header").textContent
-);
-
-      if (nombre.includes(texto)) {
-
-        prod.style.display = "block";
-        mostrarCategoria = true;
-        encontrados++;
-
-      } else {
-
-        prod.style.display = "none";
-
-      }
-
-    });
-
-    // Mostrar solo categorías con resultados
-    if (texto !== "" && mostrarCategoria) {
-      cat.classList.add("visible");
-    }
-
-    // Restaurar cuando no hay búsqueda
-    if (texto === "") {
-
-      cat.classList.remove("visible");
-
-      cat.querySelectorAll(".producto").forEach(prod => {
-        prod.style.display = "block";
-      });
+      const clon = prod.cloneNode(true);
+      listaResultados.appendChild(clon);
+      encontrados++;
 
     }
 
   });
 
-  mostrarMensajeBusqueda(encontrados, texto);
-}
+  if (encontrados > 0) {
 
-function mostrarMensajeBusqueda(cantidad, texto) {
+    document.querySelectorAll(".categoria").forEach(cat => {
+      cat.classList.remove("visible");
+    });
 
-  let mensaje = document.getElementById("mensaje-busqueda");
+    resultadosContainer.style.display = "block";
+    resultadosContainer.classList.add("visible");
 
-  if (!mensaje) {
-
-    mensaje = document.createElement("div");
-    mensaje.id = "mensaje-busqueda";
-
-    mensaje.style.textAlign = "center";
-    mensaje.style.margin = "15px";
-    mensaje.style.fontSize = "16px";
-    mensaje.style.color = "#555";
-
-    document.querySelector(".categorias")
-      .appendChild(mensaje);
-  }
-
-  if (texto === "") {
-    mensaje.textContent = "";
-    return;
-  }
-
-  if (cantidad === 0) {
-    mensaje.textContent = "😕 No se encontraron productos";
   } else {
-    mensaje.textContent = `🔍 ${cantidad} resultado(s) encontrado(s)`;
+
+    resultadosContainer.style.display = "block";
+    resultadosContainer.innerHTML = "<p>No se encontraron productos</p>";
+
   }
+
 }
+
 
  document.addEventListener("DOMContentLoaded", () => {
 
