@@ -1055,6 +1055,24 @@ will-change: opacity, transform;
 
 }
 
+	  .tarjeta-producto {
+
+  background: white;
+
+  border-radius: 16px;
+
+  padding: 14px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
 
 	  
     
@@ -1162,18 +1180,16 @@ will-change: opacity, transform;
 
   <!-- BOLDO -->
 
-<div class="producto">
+<div class="tarjeta-producto">
 
-  <div class="producto-header" onclick="toggleProducto(this)">
-     Boldo 
-  </div>
+  <h4 class="nombre-producto">Boldo</h4>
 
-  <div class="producto-body">
+  <img src="imagenes/boldo.jpg" alt="Boldo">
 
-    <img src="https://via.placeholder.com/300">
-
-    <p>Planta digestiva tradicional para infusiones depurativas.</p>
-
+  <p class="descripcion">
+    Planta digestiva tradicional para infusiones depurativas.
+  </p>
+	
     <label>Opción</label>
     <select id="boldo-opcion">
       <option value="">Elegí una opción</option>
@@ -1199,7 +1215,7 @@ will-change: opacity, transform;
 
   </div>
 
-</div>
+
 
 <!-- CARQUEJA -->
 
