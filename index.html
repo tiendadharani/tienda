@@ -1023,11 +1023,11 @@ will-change: opacity, transform;
 </div>
 	
 <!-- RESULTADOS DE BUSQUEDA -->
-<div id="resultados-busqueda" class="categoria" style="display:none;">
+<<div id="resultados-busqueda" class="categoria">
   <h2>Resultados de búsqueda</h2>
   <div id="lista-resultados"></div>
 </div>
-	
+
 <!-- HIERBAS -->
 
 <div id="hierbas" class="categoria">
@@ -4210,19 +4210,15 @@ function buscarProductos(texto) {
   const contenedor = document.getElementById("resultados-busqueda");
   const lista = document.getElementById("lista-resultados");
 
-  if (!contenedor || !lista) return;
-
   lista.innerHTML = "";
 
-  // Si está vacío → restaurar vista normal
   if (texto === "") {
 
     contenedor.classList.remove("visible");
 
     document.querySelectorAll(".categoria").forEach(cat => {
-      if (cat.id !== "resultados-busqueda") {
+      if (cat.id !== "resultados-busqueda")
         cat.classList.remove("visible");
-      }
     });
 
     return;
@@ -4244,26 +4240,18 @@ function buscarProductos(texto) {
 
   });
 
-  // Ocultar todas las categorías
-  document.querySelectorAll(".categoria").forEach(cat => {
-    cat.classList.remove("visible");
-  });
+  if (encontrados > 0) {
 
-  // Mostrar resultados
-  contenedor.classList.add("visible");
+    document.querySelectorAll(".categoria").forEach(cat => {
+      cat.classList.remove("visible");
+    });
 
-  // Si no hay resultados
-  if (encontrados === 0) {
-
-    lista.innerHTML = `
-      <div style="padding:20px; text-align:center; color:#666;">
-        No se encontraron productos
-      </div>
-    `;
+    contenedor.classList.add("visible");
 
   }
 
 }
+
 
 
  document.addEventListener("DOMContentLoaded", () => {
