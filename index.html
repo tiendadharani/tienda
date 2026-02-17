@@ -1181,8 +1181,6 @@ will-change: opacity, transform;
 
   justify-content: space-between;
 
-  gap: 10px;
-
   margin-top: 12px;
 
 }
@@ -1230,24 +1228,27 @@ will-change: opacity, transform;
 .producto-imagen-container {
 
   width: 100%;
+
   display: flex;
+
   justify-content: center;
+
+  align-items: center;
+
+  margin: 10px 0 15px 0;
 
 }
 
 .producto-imagen {
 
   width: 140px;
+
   height: 140px;
 
   object-fit: contain;
 
-  background: #fafafa;
-  border-radius: 12px;
-
-  padding: 10px;
-
 }
+
 
 
 /* =========================
@@ -1277,50 +1278,60 @@ will-change: opacity, transform;
 
   align-items: center;
 
-  flex: 1;
-
-  border: 1px solid #ddd;
-
-  border-radius: 10px;
-
-  overflow: hidden;
-
-  background: white;
+  gap: 6px;
 
 }
 
 .cantidad-btn {
 
-  width: 36px;
-  height: 36px;
+  width: 28px;
+
+  height: 28px;
 
   border: none;
 
-  background: #f3f3f3;
+  border-radius: 8px;
+
+  background: #5b8f7b;
+
+  color: white;
+
+  font-size: 16px;
 
   cursor: pointer;
 
-  font-size: 18px;
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
 
 }
 
 .cantidad-btn:hover {
 
-  background: #e5e5e5;
+  background: #4a7665;
 
 }
 
 .cantidad-valor {
 
-  flex: 1;
+  width: 28px;
 
-  text-align: center;
+  height: 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
 
   font-weight: 600;
 
-  font-size: 16px;
+  font-size: 15px;
 
 }
+
 
 
 /* =========================
@@ -1329,9 +1340,9 @@ will-change: opacity, transform;
 
 .btn-agregar-icono {
 
-  flex: 1;
+  width: 42px;
 
-  height: 40px;
+  height: 42px;
 
   border-radius: 10px;
 
@@ -1351,25 +1362,16 @@ will-change: opacity, transform;
 
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 
-  transition: all 0.2s ease;
-
-}
-
-.btn-agregar-icono:hover {
-
-  background: #4a7665;
-
-  transform: translateY(-1px);
-
 }
 
 .btn-agregar-icono svg {
 
-  width: 20px;
+  width: 18px;
 
-  height: 20px;
+  height: 18px;
 
 }
+
 
 
 
