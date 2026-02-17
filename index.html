@@ -1069,7 +1069,7 @@ will-change: opacity, transform;
 
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 
 }
 
@@ -1115,6 +1115,13 @@ will-change: opacity, transform;
 
 }
 
+.descripcion {
+
+  margin: 4px 0;
+
+  font-size: 14px;
+
+}
 
 
 
@@ -1151,6 +1158,22 @@ will-change: opacity, transform;
 
 }
 
+.nombre-producto {
+
+  font-size: 26px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.5px;
+
+  color: #3f6b5a;
+
+  margin: 4px 0 6px 0;
+
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+}
+	  
 
 /* =========================
    IMAGEN PRODUCTO (CUADRADA Y CENTRADA)
@@ -1187,13 +1210,17 @@ will-change: opacity, transform;
 .footer-compra {
 
   display: flex;
+
   align-items: center;
-  justify-content: center;
+
+  justify-content: space-between;
+
   gap: 10px;
 
-  margin-top: 8px;
+  margin-top: 6px;
 
 }
+
 
 
 /* =========================
@@ -1203,8 +1230,12 @@ will-change: opacity, transform;
 .cantidad-control {
 
   display: flex;
+
   align-items: center;
-  gap: 4px;
+
+  gap: 6px;
+
+  flex: 0 0 auto;
 
 }
 
@@ -1213,10 +1244,10 @@ will-change: opacity, transform;
 
 .cantidad-btn {
 
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
 
-  border-radius: 6px;
+  border-radius: 7px;
   border: none;
 
   background: #5b8f7b;
@@ -1233,19 +1264,18 @@ will-change: opacity, transform;
 
 }
 
-
 /* Número */
 
 .cantidad-valor {
 
-  width: 26px;
-  height: 26px;
+  width: 32px;
+  height: 28px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
 
 }
@@ -1257,13 +1287,16 @@ will-change: opacity, transform;
 
 .btn-agregar-icono {
 
-  width: 36px;
+  flex: 1;
+
   height: 36px;
 
-  border-radius: 8px;
+  border-radius: 9px;
+
   border: none;
 
   background: #5b8f7b;
+
   color: white;
 
   display: flex;
@@ -1275,7 +1308,6 @@ will-change: opacity, transform;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 
 }
-
 
 .btn-agregar-icono svg {
 
