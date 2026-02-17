@@ -1055,7 +1055,7 @@ will-change: opacity, transform;
 
 }
 
-	  .tarjeta-producto {
+ .tarjeta-producto {
 
   background: white;
 
@@ -1069,7 +1069,7 @@ will-change: opacity, transform;
 
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
 
 }
 
@@ -1115,75 +1115,6 @@ will-change: opacity, transform;
 
 }
 
-.cantidad-control {
-
-  display: flex;
-  align-items: center;
-
-  border: 1px solid #ddd;
-  border-radius: 10px;
-
-  overflow: hidden;
-
-  background: white;
-
-}
-
-.cantidad-btn {
-
-  width: 36px;
-  height: 36px;
-
-  border: none;
-
-  background: #f3f3f3;
-
-  color: #333;
-
-  font-size: 18px;
-
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.cantidad-btn:hover {
-
-  background: #e5e5e5;
-
-}
-
-.cantidad-valor {
-
-  width: 40px;
-
-  text-align: center;
-
-  font-weight: 600;
-
-  font-size: 16px;
-
-}
-
-
-	  /* =========================
-   FOOTER DE COMPRA
-========================= */
-
-.footer-compra {
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  margin-top: 12px;
-
-}
 
 
 
@@ -1235,7 +1166,7 @@ will-change: opacity, transform;
 
   align-items: center;
 
-  margin: 10px 0 15px 0;
+  margin: 6px 0 6px 0;
 
 }
 
@@ -1249,125 +1180,106 @@ will-change: opacity, transform;
 
 }
 
-
-
 /* =========================
-   FOOTER COMPRA
+   FOOTER COMPRA LIMPIO
 ========================= */
 
 .footer-compra {
 
   display: flex;
-
   align-items: center;
+  justify-content: center;
+  gap: 10px;
 
-  gap: 12px;
-
-  margin-top: 12px;
+  margin-top: 8px;
 
 }
 
 
 /* =========================
-   CONTROL CANTIDAD
+   CONTROL CANTIDAD COMPACTO
 ========================= */
 
 .cantidad-control {
 
   display: flex;
-
   align-items: center;
-
-  gap: 6px;
+  gap: 4px;
 
 }
+
+
+/* Botones + y − */
 
 .cantidad-btn {
 
-  width: 28px;
+  width: 26px;
+  height: 26px;
 
-  height: 28px;
-
+  border-radius: 6px;
   border: none;
 
-  border-radius: 8px;
-
   background: #5b8f7b;
-
   color: white;
 
   font-size: 16px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   cursor: pointer;
 
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
 }
 
-.cantidad-btn:hover {
 
-  background: #4a7665;
-
-}
+/* Número */
 
 .cantidad-valor {
 
-  width: 28px;
-
-  height: 28px;
+  width: 26px;
+  height: 26px;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
-  font-weight: 600;
-
   font-size: 15px;
+  font-weight: 600;
 
 }
 
 
-
 /* =========================
-   BOTON CARRITO PROFESIONAL
+   BOTON CARRITO PROPORCIONAL
 ========================= */
 
 .btn-agregar-icono {
 
-  width: 42px;
+  width: 36px;
+  height: 36px;
 
-  height: 42px;
-
-  border-radius: 10px;
-
+  border-radius: 8px;
   border: none;
 
   background: #5b8f7b;
-
   color: white;
 
-  cursor: pointer;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
+
+  cursor: pointer;
 
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 
 }
 
+
 .btn-agregar-icono svg {
 
   width: 18px;
-
   height: 18px;
 
 }
