@@ -1118,43 +1118,56 @@ will-change: opacity, transform;
 .cantidad-control {
 
   display: flex;
-  justify-content: center;
   align-items: center;
 
-  gap: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
 
-  margin-bottom: 10px;
+  overflow: hidden;
+
+  background: white;
 
 }
 
 .cantidad-btn {
 
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
 
   border: none;
 
-  background: #5b8f7b;
+  background: #f3f3f3;
 
-  color: white;
+  color: #333;
 
   font-size: 18px;
 
-  border-radius: 6px;
-
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.cantidad-btn:hover {
+
+  background: #e5e5e5;
 
 }
 
 .cantidad-valor {
 
-  font-size: 18px;
-  font-weight: bold;
+  width: 40px;
 
-  width: 20px;
   text-align: center;
 
+  font-weight: 600;
+
+  font-size: 16px;
+
 }
+
 
 	  /* =========================
    FOOTER DE COMPRA
@@ -1275,15 +1288,31 @@ will-change: opacity, transform;
 
 .btn-agregar-icono {
 
-  width: 42px;
-
-  height: 42px;
+  width: 44px;
+  height: 44px;
 
   border-radius: 10px;
 
-  font-size: 18px;
+  background: #5b8f7b;
+
+  color: white;
+
+  font-size: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 
 }
+
+.btn-agregar-icono:hover {
+
+  background: #4a7665;
+
+}
+
 
 
 /* =========================
@@ -1477,7 +1506,7 @@ will-change: opacity, transform;
   </button>
 
 </div>
-
+</div>
 
 
 
