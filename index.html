@@ -1641,37 +1641,6 @@ btnAgregar.addEventListener("click", () => {
 
 });
 
-/* Agregar producto genérico */
-function agregarProducto(opcionId, cantId, nombre) {
-
-  const opcion = document.getElementById(opcionId);
-  const cantidad = document.getElementById(cantId);
-
-  if (!opcion || opcion.value === "") {
-    alert("Elegí una opción");
-    return;
-  }
-
-  const precio = Number(opcion.value);
-  const texto = opcion.options[opcion.selectedIndex].text;
-  const cant = Number(cantidad.value);
-
-  const id = nombre + "-" + texto;
-
-  const existente = carrito.find(p => p.id === id);
-
-  if (existente) {
-    existente.cantidad += cant;
-  } else {
-
-    carrito.push({
-      id: id,
-      nombre: `${nombre} (${texto})`,
-      precio: precio,
-      cantidad: cant
-    });
-
-  }
 
   mostrarCarrito();
   guardarCarrito();
