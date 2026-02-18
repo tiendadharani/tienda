@@ -1344,27 +1344,22 @@ padding-left: clamp(20px, 3vw, 40px);
 	  
 	  
 @media (max-width: 768px) {
+
   .detalle-producto {
     grid-template-columns: 1fr;
     padding: 20px;
   }
+
+  .detalle-imagen img {
+    max-width: 260px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+
 }
 
-.descripcion-detalle {
-  margin: 20px 0;
-  line-height: 1.6;
-  font-size: 15px;
-  color: #444;
-}
-
-.descripcion-detalle ul {
-  padding-left: 18px;
-  margin: 10px 0;
-}
-
-.descripcion-detalle li {
-  margin-bottom: 6px;
-}
 
 	  
     
@@ -1662,13 +1657,24 @@ let carrito = [];
 
 
 document.addEventListener("click", function(e) {
-  const menu = document.getElementById("menu");
-  const boton = document.querySelector(".hamburguesa");
 
-  if (!menu.contains(e.target) && !boton.contains(e.target)) {
-    menu.classList.remove("activo");
+  const menu = document.getElementById("menu");
+  const boton = document.querySelector(".menu-btn"); // ← esta sí existe
+
+  if (!menu) return;
+
+  if (boton) {
+    if (!menu.contains(e.target) && !boton.contains(e.target)) {
+      menu.classList.remove("activo");
+    }
+  } else {
+    if (!menu.contains(e.target)) {
+      menu.classList.remove("activo");
+    }
   }
+
 });
+
 
 	
 
