@@ -637,8 +637,8 @@ will-change: opacity, transform;
   margin-left: auto;
   margin-right: auto;
 
-  padding-left: clamp(16px, 3vw, 40px);
-  padding-right: clamp(16px, 3vw, 40px);
+  padding-left: clamp(20px, 3vw, 40px);
+  padding-right: clamp(20px, 3vw, 40px);
 
   margin-top: 30px;
   margin-bottom: 12px;
@@ -687,10 +687,13 @@ letter-spacing: 0.5px;
 @media (min-width: 1001px) {
 
   .bloque-subcategoria {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, 300px);
+    justify-content: start;
+    gap: 28px;
   }
 
 }
+
 
 
 
