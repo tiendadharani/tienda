@@ -517,42 +517,6 @@ will-change: opacity, transform;
   font-size: 15px;
 }
 
-/* ===== BARRA CARRITO ESTILO BOTÓN ===== */
-
-.barra-carrito {
-  position: fixed;
-
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  width: calc(100% - 40px);
-  max-width: 420px;
-
-  background: #5a8f7b;
-  color: white;
-
-  padding: 14px 18px;
-
-  border-radius: 30px;
-
-  box-shadow: 0 6px 18px rgba(0,0,0,0.22);
-
-  z-index: 9999;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  cursor: pointer;
-
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.barra-carrito:hover {
-  transform: translateX(-50%) scale(1.02);
-  box-shadow: 0 8px 22px rgba(0,0,0,0.28);
-}
 
 
 
@@ -1364,6 +1328,58 @@ padding-left: clamp(20px, 3vw, 40px);
 
 }
 
+.barra-carrito-mobile {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: #5f8f7b;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 -3px 12px rgba(0,0,0,0.15);
+  z-index: 999;
+}
+
+.barra-contenido {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-weight: 600;
+}
+
+.barra-icono {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+}
+
+.barra-icono span {
+  background: white;
+  color: #5f8f7b;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 2px 7px;
+  border-radius: 50px;
+}
+
+.barra-total {
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .barra-carrito-mobile {
+    display: flex;
+  }
+
+  body {
+    padding-bottom: 70px;
+  }
+}
 
 	  
     
@@ -1747,17 +1763,22 @@ function mostrarCarrito() {
 
 function actualizarBarraCarrito(total) {
 
-  const resumen = document.getElementById("resumen-carrito");
-
-  if (!resumen) return;
-
-  let cantidad = carrito.reduce((sum, p) => {
+  let cantidadTotal = carrito.reduce((sum, p) => {
     return sum + p.cantidad;
   }, 0);
 
-  resumen.textContent =
-    "🛒 Mi Pedido (" + cantidad + ") — $" + total;
+  const cantidadSpan = document.getElementById("barra-cantidad");
+  const totalSpan = document.getElementById("barra-total");
+
+  if (cantidadSpan) {
+    cantidadSpan.textContent = cantidadTotal;
+  }
+
+  if (totalSpan) {
+    totalSpan.textContent = "$" + total;
+  }
 }
+
 
 
 
@@ -1978,7 +1999,7 @@ function buscarProductos(texto) {
   cargarCarrito();
   ordenarProductos();
 
-  // Botones agregar
+  // Botones agregar (si aún usás alguno viejo)
   document.querySelectorAll(".btn-agregar").forEach(btn => {
 
     btn.addEventListener("click", () => {
@@ -1992,6 +2013,16 @@ function buscarProductos(texto) {
     });
 
   });
+
+  // 👉 Conectar barra carrito mobile
+  const barra = document.getElementById("barra-carrito-mobile");
+
+  if (barra) {
+    barra.addEventListener("click", toggleCarrito);
+  }
+
+});
+
 
   // 🔍 Cerrar menú al presionar Enter en buscador mobile
   const buscadorMobile = document.getElementById("buscador-mobile");
@@ -2120,17 +2151,7 @@ function toggleMenu() {
   ✅ Se agregó al carrito
 </div>
 
-  <div class="barra-carrito" onclick="toggleCarrito()">
-
-  <span id="resumen-carrito">
-    🛒 Mi Pedido (0) — $0
-  </span>
-
-  <span class="ver-carrito">
-    Ver
-  </span>
-
-</div>
+  
 
 <script>
 function toggleMenu() {
@@ -2474,6 +2495,17 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 </script>
+<div id="barra-carrito-mobile" class="barra-carrito-mobile">
+  <div class="barra-contenido">
+    <div class="barra-icono">
+      🛒
+      <span id="barra-cantidad">0</span>
+    </div>
+    <div class="barra-total" id="barra-total">
+      $0
+    </div>
+  </div>
+</div>
 
 
 </body>
