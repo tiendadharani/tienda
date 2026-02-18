@@ -661,8 +661,8 @@ letter-spacing: 0.5px;
 .bloque-subcategoria {
   display: grid;
   grid-template-columns: repeat(auto-fit, 300px);
-  gap: 24px;
-  justify-content: center;
+  gap: 20px;
+  justify-content: start;
 }
 
 /* MOBILE */
@@ -1041,8 +1041,8 @@ font-family: "Cormorant Garamond", serif;
   margin-left: auto;
   margin-right: auto;
 
- padding-left: clamp(24px, 4vw, 60px);
-padding-right: clamp(24px, 4vw, 60px);
+padding-left: clamp(20px, 3vw, 40px);
+  padding-right: clamp(20px, 3vw, 40px);
 
 
   box-sizing: border-box;
@@ -1615,7 +1615,32 @@ function actualizarBarraCarrito(total) {
     "🛒 Mi Pedido (" + cantidad + ") — $" + total;
 }
 
-  
+  const btnAgregar = tarjeta.querySelector(".btn-agregar-icono");
+
+btnAgregar.addEventListener("click", () => {
+
+  const existente = carrito.find(p =>
+    p.nombre === producto.nombre &&
+    p.precio === precioActual
+  );
+
+  if (existente) {
+    existente.cantidad += cantidad;
+  } else {
+    carrito.push({
+      id: producto.id + "-" + precioActual,
+      nombre: producto.nombre + " (" + precioActual + ")",
+      precio: precioActual,
+      cantidad: cantidad
+    });
+  }
+
+  mostrarCarrito();
+  guardarCarrito();
+  mostrarToast("🛒 Producto agregado 💚");
+
+});
+
 /* Agregar producto genérico */
 function agregarProducto(opcionId, cantId, nombre) {
 
