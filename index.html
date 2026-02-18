@@ -1615,37 +1615,10 @@ function actualizarBarraCarrito(total) {
     "🛒 Mi Pedido (" + cantidad + ") — $" + total;
 }
 
-  const btnAgregar = tarjeta.querySelector(".btn-agregar-icono");
-
-btnAgregar.addEventListener("click", () => {
-
-  const existente = carrito.find(p =>
-    p.nombre === producto.nombre &&
-    p.precio === precioActual
-  );
-
-  if (existente) {
-    existente.cantidad += cantidad;
-  } else {
-    carrito.push({
-      id: producto.id + "-" + precioActual,
-      nombre: producto.nombre + " (" + precioActual + ")",
-      precio: precioActual,
-      cantidad: cantidad
-    });
-  }
-
-  mostrarCarrito();
-  guardarCarrito();
-  mostrarToast("🛒 Producto agregado 💚");
-
-});
 
 
-  mostrarCarrito();
-  guardarCarrito();
-  mostrarToast("🛒 Producto agregado 💚");
-}
+
+ 
 
 
 /* WhatsApp */
@@ -2070,56 +2043,7 @@ function irASeccion(seccion, e) {
   mostrar(seccion);
 }
 
-document.querySelectorAll(".tarjeta-producto").forEach(tarjeta => {
-
-  const botonesPeso = tarjeta.querySelectorAll(".peso-btn");
-  const precioElemento = tarjeta.querySelector(".precio-valor");
-
-  const cantidadValor = tarjeta.querySelector(".cantidad-valor");
-  const btnMas = tarjeta.querySelector(".cantidad-btn.mas");
-  const btnMenos = tarjeta.querySelector(".cantidad-btn.menos");
-
-  let precioActual = 465;
-  let cantidad = 1;
-
-  botonesPeso.forEach(btn => {
-
-    btn.addEventListener("click", () => {
-
-      botonesPeso.forEach(b => b.classList.remove("active"));
-
-      btn.classList.add("active");
-
-      precioActual = parseInt(btn.dataset.precio);
-
-      precioElemento.textContent = precioActual;
-
-    });
-
-  });
-
-  btnMas.addEventListener("click", () => {
-
-    cantidad++;
-
-    cantidadValor.textContent = cantidad;
-
-  });
-
-  btnMenos.addEventListener("click", () => {
-
-    if (cantidad > 1) {
-
-      cantidad--;
-
-      cantidadValor.textContent = cantidad;
-
-    }
-
-  });
-
-});
-
+ 
 function renderProductos() {
 
   const contenedores = {};
@@ -2136,15 +2060,12 @@ function renderProductos() {
     if (!contenedores[claveSub]) {
 
       const bloqueSub = document.createElement("div");
-      bloqueSub.classList.add("subcategoria-bloque");
-
       bloqueSub.innerHTML = `
         <h3 class="subcategoria">${producto.subcategoria}</h3>
         <div class="bloque-subcategoria"></div>
       `;
 
       contenedorCategoria.appendChild(bloqueSub);
-
       contenedores[claveSub] = bloqueSub.querySelector(".bloque-subcategoria");
     }
 
@@ -2155,7 +2076,7 @@ function renderProductos() {
       <h3 class="nombre-producto">${producto.nombre}</h3>
 
       <div class="producto-imagen-container">
-       <img src="${producto.imagen}" alt="${producto.nombre}" class="producto-imagen">
+        <img src="${producto.imagen}" class="producto-imagen">
       </div>
 
       <p class="descripcion">${producto.descripcion}</p>
@@ -2179,54 +2100,79 @@ function renderProductos() {
           <button class="cantidad-btn mas">+</button>
         </div>
 
-       <button class="btn-agregar-icono">
-  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-    <circle cx="9" cy="21" r="1"></circle>
-    <circle cx="20" cy="21" r="1"></circle>
-    <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
-  </svg>
-</button>
+        <button class="btn-agregar-icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
+          </svg>
+        </button>
       </div>
     `;
 
     contenedores[claveSub].appendChild(tarjeta);
 
-/* ===== ACTIVAR INTERACCIONES ===== */
+    // ===== INTERACCIONES =====
 
-const botonesPeso = tarjeta.querySelectorAll(".peso-btn");
-const precioElemento = tarjeta.querySelector(".precio-valor");
-const cantidadValor = tarjeta.querySelector(".cantidad-valor");
-const btnMas = tarjeta.querySelector(".cantidad-btn.mas");
-const btnMenos = tarjeta.querySelector(".cantidad-btn.menos");
+    let precioActual = producto.opciones[0].precio;
+    let cantidad = 1;
 
-let precioActual = producto.opciones[0].precio;
-let cantidad = 1;
+    const precioSpan = tarjeta.querySelector(".precio-valor");
+    const botonesPeso = tarjeta.querySelectorAll(".peso-btn");
+    const btnMas = tarjeta.querySelector(".mas");
+    const btnMenos = tarjeta.querySelector(".menos");
+    const cantidadValor = tarjeta.querySelector(".cantidad-valor");
+    const btnAgregar = tarjeta.querySelector(".btn-agregar-icono");
 
-botonesPeso.forEach(btn => {
-  btn.addEventListener("click", () => {
+    botonesPeso.forEach(btn => {
+      btn.addEventListener("click", () => {
 
-    botonesPeso.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
+        botonesPeso.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
 
-    precioActual = parseInt(btn.dataset.precio);
-    precioElemento.textContent = precioActual;
+        precioActual = Number(btn.dataset.precio);
+        precioSpan.textContent = precioActual;
+      });
+    });
+
+    btnMas.addEventListener("click", () => {
+      cantidad++;
+      cantidadValor.textContent = cantidad;
+    });
+
+    btnMenos.addEventListener("click", () => {
+      if (cantidad > 1) {
+        cantidad--;
+        cantidadValor.textContent = cantidad;
+      }
+    });
+
+    btnAgregar.addEventListener("click", () => {
+
+      const existente = carrito.find(p =>
+        p.id === producto.id + "-" + precioActual
+      );
+
+      if (existente) {
+        existente.cantidad += cantidad;
+      } else {
+        carrito.push({
+          id: producto.id + "-" + precioActual,
+          nombre: producto.nombre + " (" +
+            producto.opciones.find(o => o.precio == precioActual).peso +
+            ")",
+          precio: precioActual,
+          cantidad: cantidad
+        });
+      }
+
+      mostrarCarrito();
+      guardarCarrito();
+      mostrarToast("🛒 Producto agregado 💚");
+    });
+
   });
-});
-
-btnMas.addEventListener("click", () => {
-  cantidad++;
-  cantidadValor.textContent = cantidad;
-});
-
-btnMenos.addEventListener("click", () => {
-  if (cantidad > 1) {
-    cantidad--;
-    cantidadValor.textContent = cantidad;
-  }
-});
-
-}); 
-} 
+}
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -2238,5 +2184,3 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
-
-
