@@ -1994,12 +1994,12 @@ function buscarProductos(texto) {
 
 
 
- document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
   cargarCarrito();
   ordenarProductos();
 
-  // Botones agregar (si aún usás alguno viejo)
+  // Botones agregar
   document.querySelectorAll(".btn-agregar").forEach(btn => {
 
     btn.addEventListener("click", () => {
@@ -2021,9 +2021,6 @@ function buscarProductos(texto) {
     barra.addEventListener("click", toggleCarrito);
   }
 
-});
-
-
   // 🔍 Cerrar menú al presionar Enter en buscador mobile
   const buscadorMobile = document.getElementById("buscador-mobile");
 
@@ -2033,7 +2030,7 @@ function buscarProductos(texto) {
 
       if (e.key === "Enter") {
 
-        e.preventDefault(); // evita comportamientos inesperados
+        e.preventDefault();
 
         const menu = document.getElementById("menu");
         const overlay = document.getElementById("overlay");
@@ -2041,11 +2038,16 @@ function buscarProductos(texto) {
         if (menu) menu.classList.remove("activo");
         if (overlay) overlay.classList.remove("visible");
 
-        buscadorMobile.blur(); // cierra el teclado
+        buscadorMobile.blur();
 
       }
 
     });
+
+  }
+
+});
+
 
 
 
