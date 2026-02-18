@@ -2414,26 +2414,44 @@ tarjeta.querySelector(".producto-imagen")
       }
     });
 
-    btnAgregar.addEventListener("click", () => {
+  let pesoActual = producto.opciones[0].peso;
 
-     const existente = carrito.find(p => p.id === idProducto);
+botonesPeso.forEach(btn => {
+  btn.addEventListener("click", () => {
 
-if (existente) {
-  existente.cantidad += cantidad;
-} else {
-  carrito.push({
-    id: idProducto,
-    nombre: producto.nombre + " (" + pesoActual + ")",
-    precio: precioActual,
-    cantidad: cantidad
+    botonesPeso.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    precioActual = Number(btn.dataset.precio);
+    pesoActual = btn.textContent;
+
+    precioSpan.textContent = precioActual;
   });
-}
+});
 
+btnAgregar.addEventListener("click", () => {
 
-      mostrarCarrito();
-      guardarCarrito();
-      mostrarToast("🛒 Producto agregado 💚");
+  const idProducto = producto.id + "-" + pesoActual;
+
+  const existente = carrito.find(p => p.id === idProducto);
+
+  if (existente) {
+    existente.cantidad += cantidad;
+  } else {
+    carrito.push({
+      id: idProducto,
+      nombre: `${producto.nombre} (${pesoActual})`,
+      precio: precioActual,
+      cantidad: cantidad
     });
+  }
+
+  mostrarCarrito();
+  guardarCarrito();
+  mostrarToast("🛒 Producto agregado 💚");
+
+});
+
 
   });
 }
