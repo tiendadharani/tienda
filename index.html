@@ -1278,17 +1278,19 @@ padding-left: clamp(20px, 3vw, 40px);
 
 .detalle-producto {
   max-width: 1100px;
-	width: 100%;
+  width: 100%;
+  box-sizing: border-box; /* 🔥 clave */
   margin: 40px auto;
   background: white;
   border-radius: 20px;
-  padding: 40px;
+  padding: clamp(20px, 4vw, 40px); /* adaptable */
   box-shadow: 0 8px 25px rgba(0,0,0,0.08);
 
-   display: grid;
-  grid-template-columns: minmax(280px, 450px) 1fr;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: minmax(260px, 420px) 1fr;
+  gap: clamp(20px, 4vw, 40px);
 }
+
 
 .detalle-imagen img {
   width: 100%;
@@ -1300,7 +1302,8 @@ padding-left: clamp(20px, 3vw, 40px);
   font-family: "Cormorant Garamond", serif;
   font-size: 34px;
   color: #3f6b5a;
-  margin-bottom: 6px;
+	 margin-top: 0;
+  margin-bottom: 12px;
 }
 
 .btn-volver {
@@ -1340,6 +1343,7 @@ padding-left: clamp(20px, 3vw, 40px);
   display: flex;
   align-items: center;
   justify-content: center;
+	margin-bottom: 10px;
 }
 	  
 	  
@@ -2173,6 +2177,8 @@ function irASeccion(seccion, e) {
 
 function abrirProducto(id) {
 
+	console.log("abrirProducto ejecutado");
+
   const producto = productos.find(p => p.id === id);
   if (!producto) return;
 
@@ -2224,6 +2230,9 @@ function abrirProducto(id) {
               <circle cx="20" cy="21" r="1"></circle>
               <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
             </svg>
+			btnAgregar.addEventListener("click", () => {
+  console.log("CLICK EN DETALLE");
+
           </button>
 
         </div>
@@ -2411,22 +2420,19 @@ tarjeta.querySelector(".producto-imagen")
 
     btnAgregar.addEventListener("click", () => {
 
-      const existente = carrito.find(p =>
-        p.id === producto.id + "-" + precioActual
-      );
+     const existente = carrito.find(p => p.id === idProducto);
 
-      if (existente) {
-        existente.cantidad += cantidad;
-      } else {
-        carrito.push({
-          id: producto.id + "-" + precioActual,
-          nombre: producto.nombre + " (" +
-            producto.opciones.find(o => o.precio == precioActual).peso +
-            ")",
-          precio: precioActual,
-          cantidad: cantidad
-        });
-      }
+if (existente) {
+  existente.cantidad += cantidad;
+} else {
+  carrito.push({
+    id: idProducto,
+    nombre: producto.nombre + " (" + pesoActual + ")",
+    precio: precioActual,
+    cantidad: cantidad
+  });
+}
+
 
       mostrarCarrito();
       guardarCarrito();
