@@ -667,12 +667,15 @@ letter-spacing: 0.5px;
 
 	  
 .bloque-subcategoria {
-
   display: grid;
   gap: 24px;
   width: 100%;
   grid-template-columns: repeat(4, 1fr);
 
+  padding-left: clamp(24px, 4vw, 50px);
+  padding-right: clamp(24px, 4vw, 50px);
+
+  box-sizing: border-box;
 }
 
 
@@ -1066,7 +1069,7 @@ padding-right: clamp(24px, 4vw, 50px);
 
   border-radius: 14px;
 
-  padding: 16px;
+  padding: 20px;
 
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 
@@ -1074,7 +1077,7 @@ padding-right: clamp(24px, 4vw, 50px);
 
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 
 }
 
@@ -1195,9 +1198,9 @@ padding-right: clamp(24px, 4vw, 50px);
 
 .producto-imagen {
 
-  width: 140px;
+  width: 130px;
 
-  height: 140px;
+  height: 130px;
 
   object-fit: contain;
 
