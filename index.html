@@ -2177,8 +2177,6 @@ function irASeccion(seccion, e) {
 
 function abrirProducto(id) {
 
-	console.log("abrirProducto ejecutado");
-
   const producto = productos.find(p => p.id === id);
   if (!producto) return;
 
@@ -2230,9 +2228,6 @@ function abrirProducto(id) {
               <circle cx="20" cy="21" r="1"></circle>
               <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
             </svg>
-			btnAgregar.addEventListener("click", () => {
-  console.log("CLICK EN DETALLE");
-
           </button>
 
         </div>
@@ -2241,48 +2236,45 @@ function abrirProducto(id) {
     </div>
   `;
 
-  mostrar("producto-detalle");
+  // 👇 AHORA sí agregamos los eventos correctamente
 
-  // ================================
-  // 🔥 LÓGICA INTERNA BLINDADA
-  // ================================
+  const precioSpan = contenedor.querySelector(".precio-valor");
+  const pesoBtns = contenedor.querySelectorAll(".peso-btn");
+  const cantidadSpan = contenedor.querySelector(".cantidad-valor");
+  const btnMas = contenedor.querySelector(".cantidad-btn.mas");
+  const btnMenos = contenedor.querySelector(".cantidad-btn.menos");
+  const btnAgregar = contenedor.querySelector(".btn-agregar-icono");
 
-  let precioActual = producto.opciones[0].precio;
+  let precioActual = Number(producto.opciones[0].precio);
   let pesoActual = producto.opciones[0].peso;
   let cantidad = 1;
 
-  const precioSpan = contenedor.querySelector(".precio-valor");
-  const botonesPeso = contenedor.querySelectorAll(".peso-btn");
-  const btnMas = contenedor.querySelector(".mas");
-  const btnMenos = contenedor.querySelector(".menos");
-  const cantidadValor = contenedor.querySelector(".cantidad-valor");
-  const btnAgregar = contenedor.querySelector(".btn-agregar-icono");
-
-  botonesPeso.forEach(btn => {
+  // Selector de peso
+  pesoBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-
-      botonesPeso.forEach(b => b.classList.remove("active"));
+      pesoBtns.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
 
       precioActual = Number(btn.dataset.precio);
       pesoActual = btn.dataset.peso;
-
       precioSpan.textContent = precioActual;
     });
   });
 
+  // Cantidad
   btnMas.addEventListener("click", () => {
     cantidad++;
-    cantidadValor.textContent = cantidad;
+    cantidadSpan.textContent = cantidad;
   });
 
   btnMenos.addEventListener("click", () => {
     if (cantidad > 1) {
       cantidad--;
-      cantidadValor.textContent = cantidad;
+      cantidadSpan.textContent = cantidad;
     }
   });
 
+  // Agregar al carrito
   btnAgregar.addEventListener("click", () => {
 
     const idProducto = producto.id + "-" + pesoActual;
@@ -2303,8 +2295,12 @@ function abrirProducto(id) {
     mostrarCarrito();
     guardarCarrito();
     mostrarToast("🛒 Producto agregado 💚");
+
   });
+
+  mostrar("producto-detalle");
 }
+
 
 
 		
