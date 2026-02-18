@@ -1068,7 +1068,7 @@ font-family: "Cormorant Garamond", serif;
 
   border-radius: 14px;
 
-  padding: 20px;
+  padding: 16px;
 
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 
@@ -1076,7 +1076,7 @@ font-family: "Cormorant Garamond", serif;
 
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 8px;
 
 }
 
@@ -1084,7 +1084,7 @@ font-family: "Cormorant Garamond", serif;
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin: 10px 0;
+  margin: 6px 0;
 }
 
 .peso-btn {
@@ -1115,15 +1115,15 @@ font-family: "Cormorant Garamond", serif;
  font-family: "Roboto", sans-serif;
 	color: #3f6b5a;
   font-weight: 700;
-  font-size: 22px;
-  margin: 12px 0;
+  font-size: 20px;
+  margin: 6px 0 8px 0;
 	
 }
 
-descripcion {
+.descripcion {
   font-size: 14px;
   line-height: 1.4;
-  margin: 8px 0;
+ margin: 4px 0 6px 0;
 }
 
 
@@ -1162,7 +1162,7 @@ descripcion {
 
 .nombre-producto {
 
-  font-size: 24px;
+  font-size: 26px;
 
   font-weight: 600;
 
@@ -1170,7 +1170,7 @@ descripcion {
 
   color: #3f6b5a;
 
-  margin: 4px 0 6px 0;
+  margin: 2px 0 4px 0;
 
   font-family: "Cormorant Garamond", serif;
 
@@ -1191,7 +1191,7 @@ descripcion {
 
   align-items: center;
 
-  margin: 6px 0 6px 0;
+  margin: 4px 0 6px 0;
 
 }
 
@@ -1210,16 +1210,11 @@ descripcion {
 ========================= */
 
 .footer-compra {
-
   display: flex;
-
   align-items: center;
-
- justify-content: flex-start;
-  gap: 14px;
-
-  margin-top: 14px;
-
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 8px;
 }
 
 
@@ -1229,27 +1224,25 @@ descripcion {
 ========================= */
 
 .cantidad-control {
-
   display: flex;
-
   align-items: center;
-
-  gap: 12px;
-
-
+  gap: 8px;
 }
 
 
 /* Botones + y − */
 
 .cantidad-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
   border: none;
   background: #5b8f7b;
   color: white;
-  font-size: 16px;
+  font-size: 18px;   /* signos más grandes */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 }
 
@@ -1257,17 +1250,10 @@ descripcion {
 /* Número */
 
 .cantidad-valor {
-
-  width: 32px;
-  height: 28px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 16px;
+  min-width: 28px;
+  text-align: center;
+  font-size: 18px;
   font-weight: 600;
-
 }
 
 
