@@ -1276,6 +1276,47 @@ padding-left: clamp(20px, 3vw, 40px);
 }
 
 
+.detalle-producto {
+  max-width: 900px;
+  margin: 40px auto;
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.detalle-imagen img {
+  width: 100%;
+  max-width: 350px;
+  object-fit: contain;
+}
+
+.detalle-info h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 34px;
+  color: #3f6b5a;
+  margin-bottom: 10px;
+}
+
+.btn-volver {
+  margin-bottom: 25px;
+  background: none;
+  border: none;
+  color: #3f6b5a;
+  font-weight: 600;
+  cursor: pointer;
+}
+	  
+@media (max-width: 768px) {
+  .detalle-producto {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
 
 
 	  
@@ -1464,6 +1505,12 @@ padding-left: clamp(20px, 3vw, 40px);
   
 </section>
 
+<!-- VISTA PRODUCTO INDIVIDUAL -->
+<div class="categoria" id="producto-detalle">
+  <div class="contenedor-productos">
+    <div id="detalle-contenido"></div>
+  </div>
+</div>
 
 <!-- MI PEDIDO -->
 
@@ -2058,7 +2105,61 @@ function irASeccion(seccion, e) {
   mostrar(seccion);
 }
 
- 
+function abrirProducto(id) {
+
+  const producto = productos.find(p => p.id === id);
+  if (!producto) return;
+
+  const contenedor = document.getElementById("detalle-contenido");
+
+  contenedor.innerHTML = `
+    <button class="btn-volver" onclick="mostrar('${producto.categoria}')">
+      ← Volver
+    </button>
+
+    <div class="detalle-producto">
+
+      <div class="detalle-imagen">
+        <img src="${producto.imagen}">
+      </div>
+
+      <div class="detalle-info">
+
+        <h2>${producto.nombre}</h2>
+        <p>${producto.descripcion}</p>
+
+        <div class="pesos">
+          ${producto.opciones.map((op, i) => `
+            <button class="peso-btn ${i === 0 ? 'active' : ''}" data-precio="${op.precio}">
+              ${op.peso}
+            </button>
+          `).join("")}
+        </div>
+
+        <div class="precio">
+          $<span class="precio-valor">${producto.opciones[0].precio}</span>
+        </div>
+
+        <div class="footer-compra">
+          <div class="cantidad-control">
+            <button class="cantidad-btn menos">−</button>
+            <span class="cantidad-valor">1</span>
+            <button class="cantidad-btn mas">+</button>
+          </div>
+
+          <button class="btn-agregar-icono">
+            🛒
+          </button>
+        </div>
+
+      </div>
+    </div>
+  `;
+
+  mostrar("producto-detalle");
+}
+
+		
 function renderProductos() {
 
   const contenedores = {};
@@ -2126,6 +2227,13 @@ function renderProductos() {
     `;
 
     contenedores[claveSub].appendChild(tarjeta);
+
+	  tarjeta.querySelector(".nombre-producto")
+  .addEventListener("click", () => abrirProducto(producto.id));
+
+tarjeta.querySelector(".producto-imagen")
+  .addEventListener("click", () => abrirProducto(producto.id));
+
 
     // ===== INTERACCIONES =====
 
