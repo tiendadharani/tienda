@@ -1310,6 +1310,31 @@ padding-left: clamp(20px, 3vw, 40px);
   font-weight: 600;
   cursor: pointer;
 }
+
+.detalle-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detalle-info h2,
+.detalle-info p {
+  text-align: left;
+  width: 100%;
+}
+
+.detalle-info .pesos,
+.detalle-info .precio,
+.detalle-info .footer-compra {
+  justify-content: center;
+}
+
+.detalle-info .precio {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 15px 0;
+}
+
 	  
 @media (max-width: 768px) {
   .detalle-producto {
@@ -1587,12 +1612,16 @@ const productos = [
     subcategoria: "Digestivas y Hepáticas",
     descripcion: "Potente estimulante hepático y digestivo.",
 	descripcionLarga: `
-    <p>El boldo es una planta tradicional utilizada para:</p>
+   descripcionLarga: `
+  <p>
+    Favorece la función del hígado, estimula la secreción biliar y ayuda en digestiones pesadas, grasas o lentas.
+    Ideal para sensación de empacho o hígado “cargado”.
+  </p>
 
-    <ul>
-      <li>Estimular la función hepática</li>
-      <li>Favorecer la digestión</li>
-      <li>Aliviar pesadez estomacal</li>
+  <p><strong>Uso:</strong> Infusión suave (1 cdita por taza). 
+  No más de 1–2 tazas por día y evitar uso prolongado.</p>
+`,
+
     </ul>
 
     <p>Se recomienda en infusión, utilizando una cucharadita por taza de agua caliente.</p>
@@ -2175,9 +2204,14 @@ function abrirProducto(id) {
             <button class="cantidad-btn mas">+</button>
           </div>
 
-          <button class="btn-agregar-icono">
-            🛒
-          </button>
+         <button class="btn-agregar-icono">
+  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+    <circle cx="9" cy="21" r="1"></circle>
+    <circle cx="20" cy="21" r="1"></circle>
+    <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
+  </svg>
+</button>
+
         </div>
 
       </div>
