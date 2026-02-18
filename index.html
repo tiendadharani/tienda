@@ -1092,17 +1092,31 @@ font-family: "Cormorant Garamond", serif;
   border: 2px solid #5b8f7b;
   background: transparent;
 
-  padding: 6px 14px;
+  padding: 6px 16px;
 
-  border-radius: 10px;
+  border-radius: 12px;
 
   cursor: pointer;
 
-  font-weight: 500;
+  font-weight: 600;
 
   color: #5b8f7b;
 
+  transition: all 0.2s ease;
+
 }
+
+.peso-btn:hover {
+  background: rgba(91,143,123,0.08);
+}
+
+.peso-btn.active {
+
+  background: #5b8f7b;
+  color: white;
+
+}
+
 
 .peso-btn.active {
 
@@ -1536,7 +1550,7 @@ const productos = [
     imagen: "img/HIERBAS/carqueja.webp",
     opciones: [
       { peso: "25g", precio: 340 },
-      { peso: "50g", precio: 740 }
+      { peso: "50g", precio: 740 },
 	  { peso: "100g", precio: 1370 }
     ]
   }
@@ -2206,9 +2220,41 @@ function renderProductos() {
     `;
 
     contenedores[claveSub].appendChild(tarjeta);
-  });
 
-}
+/* ===== ACTIVAR INTERACCIONES ===== */
+
+const botonesPeso = tarjeta.querySelectorAll(".peso-btn");
+const precioElemento = tarjeta.querySelector(".precio-valor");
+const cantidadValor = tarjeta.querySelector(".cantidad-valor");
+const btnMas = tarjeta.querySelector(".cantidad-btn.mas");
+const btnMenos = tarjeta.querySelector(".cantidad-btn.menos");
+
+let precioActual = producto.opciones[0].precio;
+let cantidad = 1;
+
+botonesPeso.forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    botonesPeso.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    precioActual = parseInt(btn.dataset.precio);
+    precioElemento.textContent = precioActual;
+  });
+});
+
+btnMas.addEventListener("click", () => {
+  cantidad++;
+  cantidadValor.textContent = cantidad;
+});
+
+btnMenos.addEventListener("click", () => {
+  if (cantidad > 1) {
+    cantidad--;
+    cantidadValor.textContent = cantidad;
+  }
+});
+
 
 document.addEventListener("DOMContentLoaded", function() {
   renderProductos();
