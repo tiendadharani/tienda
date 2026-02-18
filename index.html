@@ -660,10 +660,12 @@ letter-spacing: 0.5px;
 	  
 .bloque-subcategoria {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 300px);
-  gap: 20px;
-  justify-content: start;
+  grid-template-columns: repeat(auto-fill, 300px);
+  gap: 24px;
+
+  justify-content: start;   /* alineadas a la izquierda */
 }
+
 
 /* MOBILE */
 @media (max-width: 600px) {
@@ -1052,15 +1054,14 @@ padding-left: clamp(20px, 3vw, 40px);
 
 }
 
- .tarjeta-producto {
-
+.tarjeta-producto {
   background: white;
-
   border-radius: 14px;
 
   padding: 18px 18px 20px 18px;
-  width: 300px;
-  margin: auto;
+
+  width: 300px;     /* fijo */
+  margin: 0;        /* 🔥 eliminar auto */
 
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 
@@ -1069,8 +1070,8 @@ padding-left: clamp(20px, 3vw, 40px);
   display: flex;
   flex-direction: column;
   gap: 10px;
-
 }
+
 
 .pesos {
   display: flex;
@@ -1372,82 +1373,93 @@ padding-left: clamp(20px, 3vw, 40px);
 <!-- HIERBAS -->
 
 <div class="categoria" id="hierbas">
+	div class="contenedor-productos">
   <div id="contenedor-hierbas"></div>
 </div>
-
-
+</div>
 
 
 	
 <!-- FRUTOS -->
 
 <div class="categoria" id="frutos">
+	div class="contenedor-productos">
   <div id="contenedor-frutos"></div>
 </div>
-
+</div>
+	
 <!-- HARINAS -->
 
 <div class="categoria" id="harinas">
+	div class="contenedor-productos">
   <div id="contenedor-harinas"></div>
 </div>
-
+</div>
 
 <!-- AROMA -->
 
 <div class="categoria" id="aromaterapia">
+	div class="contenedor-productos">
   <div id="contenedor-arompaterapia"></div>
 </div>
-
+</div>
 
 <!-- SAHUMERIOS -->
 
 <div class="categoria" id="sahumerios">
+	div class="contenedor-productos">
   <div id="contenedor-sahumerios"></div>
 </div>
-
+</div>
 
 <!-- PANADERIA -->
 
 <div class="categoria" id="panificados">
+	div class="contenedor-productos">
   <div id="contenedor-panificados"></div>
 </div>
-
+</div>
 
 <!-- ALMACEN -->
 
 <div class="categoria" id="almacen">
+	div class="contenedor-productos">
   <div id="contenedor-almacen"></div>
 </div>
-
+</div>
 
 <!-- BIENESTAR -->
 
 <div class="categoria" id="bienestar">
+	div class="contenedor-productos">
   <div id="contenedor-bienestar"></div>
 </div>
-
+</div>
 
 <!-- ENVASADOS -->
 
 <div class="categoria" id="envasados">
+	div class="contenedor-productos">
   <div id="contenedor-envasados"></div>
 </div>
-
+</div>
 
 
 <!-- REGALERIA -->
 
 <div class="categoria" id="regaleria">
+	div class="contenedor-productos">
   <div id="contenedor-regaleria"></div>
 </div>
-
+</div>
 
 <!-- OFERTAS -->
 
 <div class="categoria" id="ofertas">
+	div class="contenedor-productos">
   <div id="contenedor-ofertas"></div>
 </div>
-
+</div>
 
   
 </section>
