@@ -1277,15 +1277,16 @@ padding-left: clamp(20px, 3vw, 40px);
 
 
 .detalle-producto {
-  max-width: 900px;
+  max-width: 1100px;
+	width: 100%;
   margin: 40px auto;
   background: white;
   border-radius: 20px;
   padding: 40px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.08);
 
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+   display: grid;
+  grid-template-columns: minmax(280px, 450px) 1fr;
   gap: 40px;
 }
 
@@ -1299,7 +1300,7 @@ padding-left: clamp(20px, 3vw, 40px);
   font-family: "Cormorant Garamond", serif;
   font-size: 34px;
   color: #3f6b5a;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .btn-volver {
@@ -1335,6 +1336,12 @@ padding-left: clamp(20px, 3vw, 40px);
   margin: 15px 0;
 }
 
+.detalle-imagen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+	  
 	  
 @media (max-width: 768px) {
   .detalle-producto {
@@ -2217,6 +2224,65 @@ function abrirProducto(id) {
   `;
 
   mostrar("producto-detalle");
+
+let precioActual = producto.opciones[0].precio;
+let cantidad = 1;
+
+const precioSpan = contenedor.querySelector(".precio-valor");
+const botonesPeso = contenedor.querySelectorAll(".peso-btn");
+const btnMas = contenedor.querySelector(".mas");
+const btnMenos = contenedor.querySelector(".menos");
+const cantidadValor = contenedor.querySelector(".cantidad-valor");
+const btnAgregar = contenedor.querySelector(".btn-agregar-icono");
+
+botonesPeso.forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    botonesPeso.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    precioActual = Number(btn.dataset.precio);
+    precioSpan.textContent = precioActual;
+  });
+});
+
+btnMas.addEventListener("click", () => {
+  cantidad++;
+  cantidadValor.textContent = cantidad;
+});
+
+btnMenos.addEventListener("click", () => {
+  if (cantidad > 1) {
+    cantidad--;
+    cantidadValor.textContent = cantidad;
+  }
+});
+
+btnAgregar.addEventListener("click", () => {
+
+  const existente = carrito.find(p =>
+    p.id === producto.id + "-" + precioActual
+  );
+
+  if (existente) {
+    existente.cantidad += cantidad;
+  } else {
+    carrito.push({
+      id: producto.id + "-" + precioActual,
+      nombre: producto.nombre + " (" +
+        producto.opciones.find(o => o.precio == precioActual).peso +
+        ")",
+      precio: precioActual,
+      cantidad: cantidad
+    });
+  }
+
+  mostrarCarrito();
+  guardarCarrito();
+  mostrarToast("🛒 Producto agregado 💚");
+});
+	
+	
 }
 
 		
