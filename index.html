@@ -1318,6 +1318,21 @@ padding-left: clamp(20px, 3vw, 40px);
   }
 }
 
+.descripcion-detalle {
+  margin: 20px 0;
+  line-height: 1.6;
+  font-size: 15px;
+  color: #444;
+}
+
+.descripcion-detalle ul {
+  padding-left: 18px;
+  margin: 10px 0;
+}
+
+.descripcion-detalle li {
+  margin-bottom: 6px;
+}
 
 	  
     
@@ -1571,6 +1586,17 @@ const productos = [
     categoria: "hierbas",
     subcategoria: "Digestivas y Hepáticas",
     descripcion: "Potente estimulante hepático y digestivo.",
+	descripcionLarga: `
+    <p>El boldo es una planta tradicional utilizada para:</p>
+
+    <ul>
+      <li>Estimular la función hepática</li>
+      <li>Favorecer la digestión</li>
+      <li>Aliviar pesadez estomacal</li>
+    </ul>
+
+    <p>Se recomienda en infusión, utilizando una cucharadita por taza de agua caliente.</p>
+  `,  
     imagen: "img/HIERBAS/boldo.webp",
     opciones: [
       { peso: "25g", precio: 460 },
@@ -2126,7 +2152,9 @@ function abrirProducto(id) {
       <div class="detalle-info">
 
         <h2>${producto.nombre}</h2>
-        <p>${producto.descripcion}</p>
+       <div class="descripcion-detalle">
+  ${producto.descripcionLarga || producto.descripcion}
+</div>
 
         <div class="pesos">
           ${producto.opciones.map((op, i) => `
