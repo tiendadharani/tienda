@@ -1615,37 +1615,10 @@ function actualizarBarraCarrito(total) {
     "🛒 Mi Pedido (" + cantidad + ") — $" + total;
 }
 
-  const btnAgregar = tarjeta.querySelector(".btn-agregar-icono");
-
-btnAgregar.addEventListener("click", () => {
-
-  const existente = carrito.find(p =>
-    p.nombre === producto.nombre &&
-    p.precio === precioActual
-  );
-
-  if (existente) {
-    existente.cantidad += cantidad;
-  } else {
-    carrito.push({
-      id: producto.id + "-" + precioActual,
-      nombre: producto.nombre + " (" + precioActual + ")",
-      precio: precioActual,
-      cantidad: cantidad
-    });
-  }
-
-  mostrarCarrito();
-  guardarCarrito();
-  mostrarToast("🛒 Producto agregado 💚");
-
-});
 
 
-  mostrarCarrito();
-  guardarCarrito();
-  mostrarToast("🛒 Producto agregado 💚");
-}
+
+ 
 
 
 /* WhatsApp */
@@ -2120,77 +2093,110 @@ document.querySelectorAll(".tarjeta-producto").forEach(tarjeta => {
 
 });
 
-function renderProductos() {
+const tarjeta = document.createElement("div");
+tarjeta.classList.add("tarjeta-producto");
 
-  const contenedores = {};
+tarjeta.innerHTML = `
+  <h3 class="nombre-producto">${producto.nombre}</h3>
 
-  productos.forEach(producto => {
+  <div class="producto-imagen-container">
+    <img src="${producto.imagen}" alt="${producto.nombre}" class="producto-imagen">
+  </div>
 
-    const categoriaId = "contenedor-" + producto.categoria;
-    const contenedorCategoria = document.getElementById(categoriaId);
+  <p class="descripcion">${producto.descripcion}</p>
 
-    if (!contenedorCategoria) return;
+  <div class="pesos">
+    ${producto.opciones.map((op, i) => `
+      <button class="peso-btn ${i === 0 ? 'active' : ''}" data-precio="${op.precio}">
+        ${op.peso}
+      </button>
+    `).join("")}
+  </div>
 
-    const claveSub = producto.categoria + "-" + producto.subcategoria;
+  <div class="precio">
+    $<span class="precio-valor">${producto.opciones[0].precio}</span>
+  </div>
 
-    if (!contenedores[claveSub]) {
+  <div class="footer-compra">
+    <div class="cantidad-control">
+      <button class="cantidad-btn menos">−</button>
+      <span class="cantidad-valor">1</span>
+      <button class="cantidad-btn mas">+</button>
+    </div>
 
-      const bloqueSub = document.createElement("div");
-      bloqueSub.classList.add("subcategoria-bloque");
+    <button class="btn-agregar-icono">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+        <circle cx="9" cy="21" r="1"></circle>
+        <circle cx="20" cy="21" r="1"></circle>
+        <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
+      </svg>
+    </button>
+  </div>
+`;
 
-      bloqueSub.innerHTML = `
-        <h3 class="subcategoria">${producto.subcategoria}</h3>
-        <div class="bloque-subcategoria"></div>
-      `;
+contenedores[claveSub].appendChild(tarjeta);
+;
 
-      contenedorCategoria.appendChild(bloqueSub);
+let precioActual = producto.opciones[0].precio;
+let cantidad = 1;
 
-      contenedores[claveSub] = bloqueSub.querySelector(".bloque-subcategoria");
-    }
+const precioSpan = tarjeta.querySelector(".precio-valor");
+const botonesPeso = tarjeta.querySelectorAll(".peso-btn");
 
-    const tarjeta = document.createElement("div");
-    tarjeta.classList.add("tarjeta-producto");
+botonesPeso.forEach(btn => {
+  btn.addEventListener("click", () => {
+    botonesPeso.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
 
-    tarjeta.innerHTML = `
-      <h3 class="nombre-producto">${producto.nombre}</h3>
+    precioActual = Number(btn.dataset.precio);
+    precioSpan.textContent = precioActual;
+  });
+});
 
-      <div class="producto-imagen-container">
-       <img src="${producto.imagen}" alt="${producto.nombre}" class="producto-imagen">
-      </div>
+const btnMenos = tarjeta.querySelector(".menos");
+const btnMas = tarjeta.querySelector(".mas");
+const cantidadValor = tarjeta.querySelector(".cantidad-valor");
 
-      <p class="descripcion">${producto.descripcion}</p>
+btnMas.addEventListener("click", () => {
+  cantidad++;
+  cantidadValor.textContent = cantidad;
+});
 
-      <div class="pesos">
-        ${producto.opciones.map((op, i) => `
-          <button class="peso-btn ${i === 0 ? 'active' : ''}" data-precio="${op.precio}">
-            ${op.peso}
-          </button>
-        `).join("")}
-      </div>
+btnMenos.addEventListener("click", () => {
+  if (cantidad > 1) {
+    cantidad--;
+    cantidadValor.textContent = cantidad;
+  }
+});
 
-      <div class="precio">
-        $<span class="precio-valor">${producto.opciones[0].precio}</span>
-      </div>
+const btnAgregar = tarjeta.querySelector(".btn-agregar-icono");
 
-      <div class="footer-compra">
-        <div class="cantidad-control">
-          <button class="cantidad-btn menos">−</button>
-          <span class="cantidad-valor">1</span>
-          <button class="cantidad-btn mas">+</button>
-        </div>
+btnAgregar.addEventListener("click", () => {
 
-       <button class="btn-agregar-icono">
-  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-    <circle cx="9" cy="21" r="1"></circle>
-    <circle cx="20" cy="21" r="1"></circle>
-    <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
-  </svg>
-</button>
-      </div>
-    `;
+  const existente = carrito.find(p =>
+    p.id === producto.id + "-" + precioActual
+  );
 
-    contenedores[claveSub].appendChild(tarjeta);
+  if (existente) {
+    existente.cantidad += cantidad;
+  } else {
+    carrito.push({
+      id: producto.id + "-" + precioActual,
+      nombre: producto.nombre + " (" +
+        producto.opciones.find(o => o.precio == precioActual).peso +
+        ")",
+      precio: precioActual,
+      cantidad: cantidad
+    });
+  }
 
+  mostrarCarrito();
+  guardarCarrito();
+  mostrarToast("🛒 Producto agregado 💚");
+});
+
+
+		
 /* ===== ACTIVAR INTERACCIONES ===== */
 
 const botonesPeso = tarjeta.querySelectorAll(".peso-btn");
