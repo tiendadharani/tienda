@@ -1597,6 +1597,75 @@ padding-left: clamp(20px, 3vw, 40px);
   font-size: 15px;
 }
 
+/* ===== CARRITO LATERAL MEJORADO ===== */
+
+.carrito-lateral-item {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  align-items: center;
+  gap: 14px;
+
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.carrito-lateral-img img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+.carrito-lateral-nombre {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.carrito-lateral-controles {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.carrito-lateral-controles button {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  border: none;
+  background: #5b8f7b;
+  color: white;
+  cursor: pointer;
+}
+
+.carrito-lateral-precio {
+  font-weight: 700;
+  text-align: right;
+  font-size: 15px;
+}
+
+.carrito-lateral-precio button {
+  display: block;
+  margin-top: 6px;
+  border: none;
+  background: none;
+  color: #999;
+  cursor: pointer;
+}
+
+.carrito-lateral-precio button:hover {
+  color: #c0392b;
+}
+
+/* Total más centrado */
+#total {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 18px;
+  color: #3f6b5a;
+}
+
+	  
 	  
   </style>
 </head>
@@ -1883,7 +1952,7 @@ padding-left: clamp(20px, 3vw, 40px);
 
     <p id="total">Total: $0</p>
 
-    <button class="btn-ver-completo" onclick="abrirCarritoCompleto()">
+    <button class="btn-finalizar" onclick="abrirCarritoCompleto()">
       Ver carrito completo →
     </button>
 
@@ -1982,7 +2051,7 @@ document.addEventListener("click", function(e) {
 /* Mostrar carrito */
 function mostrarCarrito() {
 
-  let lista = document.getElementById("lista");
+  const lista = document.getElementById("lista");
   lista.innerHTML = "";
 
   let total = 0;
@@ -1995,40 +2064,40 @@ function mostrarCarrito() {
     const li = document.createElement("li");
 
     li.innerHTML = `
-      <div style="margin-bottom:15px">
+      <div class="carrito-lateral-item">
 
-        <strong>${item.nombre}</strong><br>
+        <div class="carrito-lateral-img">
+          <img src="${obtenerImagenProducto(item.id)}">
+        </div>
 
-        <button onclick="restarProducto(${index})">➖</button>
+        <div class="carrito-lateral-info">
+          <div class="carrito-lateral-nombre">
+            ${item.nombre}
+          </div>
 
-        <span style="margin:0 8px">
-          ${item.cantidad}
-        </span>
+          <div class="carrito-lateral-controles">
+            <button onclick="restarProducto(${index})">−</button>
+            <span>${item.cantidad}</span>
+            <button onclick="sumarProducto(${index})">+</button>
+          </div>
+        </div>
 
-        <button onclick="sumarProducto(${index})">➕</button>
-
-        <span style="margin-left:12px">
+        <div class="carrito-lateral-precio">
           $${subtotal}
-        </span>
-
-        <button onclick="eliminarProducto(${index})"
-          style="margin-left:10px">
-          🗑
-        </button>
+          <button onclick="eliminarProducto(${index})">✕</button>
+        </div>
 
       </div>
     `;
 
     lista.appendChild(li);
-
   });
 
-  document.getElementById("total").textContent =
-    "Total: $" + total;
+  document.getElementById("total").textContent = "$" + total;
 
   actualizarBarraCarrito(total);
-  
 }
+
 
 function actualizarBarraCarrito(total) {
 
