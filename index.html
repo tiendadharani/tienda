@@ -1621,7 +1621,14 @@ padding-left: clamp(20px, 3vw, 40px);
   border: 1px solid #ddd;
   font-size: 15px;
 }
+.direccion-box {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+}
 
+	  
+	  
 /* ===== CARRITO LATERAL MEJORADO ===== */
 
 .carrito-lateral-item {
@@ -1944,7 +1951,7 @@ padding-left: clamp(20px, 3vw, 40px);
         <option value="envio">Envío a domicilio</option>
       </select>
 
-      <div id="direccion-box" style="display:none">
+     <div id="direccion-box" class="direccion-box">
         <label>Dirección</label>
         <input type="text" id="cliente-direccion">
       </div>
@@ -2274,12 +2281,12 @@ function toggleDireccion() {
   let entrega = document.getElementById("cliente-entrega").value;
   let box = document.getElementById("direccion-box");
 
-  if (entrega === "envio") {
-    box.style.display = "block";
-  } else {
-    box.style.display = "none";
-  }
+if (entrega === "envio") {
+  box.style.display = "flex";
+} else {
+  box.style.display = "none";
 }
+
 
 
 /* Ordenar productos (desactivado por subcategorías) */
