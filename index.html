@@ -1489,16 +1489,23 @@ padding-left: clamp(20px, 3vw, 40px);
   padding: 18px;
   margin-bottom: 18px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-
-  display: flex;
+   gap: 20px;
+  display: grid;
+  grid-template-columns: 90px 1fr auto;
   justify-content: space-between;
   align-items: center;
 }
 
+.carrito-item-imagen img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+	  
 .carrito-item-info h3 {
-  margin: 0 0 10px 0;
+  margin: 0 0 8px 0;
   font-size: 18px;
-  color: #3f6b5a;
+
 }
 
 .carrito-controles {
@@ -1520,7 +1527,6 @@ padding-left: clamp(20px, 3vw, 40px);
 .carrito-item-precio {
   font-weight: 700;
   font-size: 18px;
-  color: #3f6b5a;
   text-align: right;
 }
 
@@ -1537,6 +1543,36 @@ padding-left: clamp(20px, 3vw, 40px);
   color: #c0392b;
 }
 
+.carrito-resumen {
+  margin-top: 30px;
+  padding: 25px;
+  background: #f7f7f7;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resumen-total {
+  font-size: 22px;
+  font-weight: 700;
+  color: #3f6b5a;
+}
+
+.btn-finalizar {
+  background: #5b8f7b;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-finalizar:hover {
+  background: #4a7665;
+}
 
 	  
   </style>
@@ -1751,6 +1787,17 @@ padding-left: clamp(20px, 3vw, 40px);
 
     <div id="carrito-completo-contenido"></div>
 
+<div class="carrito-resumen">
+  <div class="resumen-total">
+    Total: <span id="total-carrito-completo">$0</span>
+  </div>
+
+  <button class="btn-finalizar" onclick="mostrar('checkout')">
+    Finalizar compra
+  </button>
+</div>
+
+	  
     <!-- Botón volver inferior -->
     <button class="btn-volver-tienda inferior" onclick="mostrar('hierbas')">
       ← Seguir comprando
@@ -1773,46 +1820,14 @@ padding-left: clamp(20px, 3vw, 40px);
 
     <p id="total">Total: $0</p>
 
-	  <button class="btn-ver-completo" onclick="abrirCarritoCompleto()">
-  Ver carrito completo →
-</button>
-
-    <hr>
-
-    <h3>📋 Datos del pedido</h3>
-
-    <label>Nombre</label>
-    <input type="text" id="cliente-nombre">
-
-    <label>Entrega</label>
-    <select id="cliente-entrega" onchange="toggleDireccion()">
-      <option value="">Elegí una opción</option>
-      <option value="retiro">Retiro en tienda</option>
-      <option value="envio">Envío a domicilio</option>
-    </select>
-
-    <div id="direccion-box" style="display:none">
-
-      <label>Dirección</label>
-      <input type="text" id="cliente-direccion">
-
-    </div>
-
-    <label>Método de pago</label>
-    <select id="cliente-pago">
-      <option value="">Elegí una opción</option>
-      <option value="efectivo">Efectivo</option>
-      <option value="transferencia">Transferencia</option>
-      <option value="mercadopago">MercadoPago</option>
-    </select>
-
-    <button class="whatsapp" onclick="enviarWhatsApp()">
-      ¡Enviar mi pedido por WhatsApp!
+    <button class="btn-ver-completo" onclick="abrirCarritoCompleto()">
+      Ver carrito completo →
     </button>
 
   </div>
 
 </div>
+
 
 
 <script>
@@ -2652,32 +2667,56 @@ function abrirCarritoCompleto() {
       div.classList.add("carrito-item");
 
       div.innerHTML = `
-        <div class="carrito-item-info">
-          <h3>${item.nombre}</h3>
+  <div class="carrito-item-imagen">
+    <img src="${obtenerImagenProducto(item.id)}">
+  </div>
 
-          <div class="carrito-controles">
-            <button onclick="restarProducto(${index})">−</button>
-            <span>${item.cantidad}</span>
-            <button onclick="sumarProducto(${index})">+</button>
-          </div>
-        </div>
+  <div class="carrito-item-info">
+    <h3>${item.nombre}</h3>
 
-        <div class="carrito-item-precio">
-          $${item.precio * item.cantidad}
-          <button onclick="eliminarProducto(${index})" class="eliminar">
-            ✕
-          </button>
-        </div>
-      `;
+    <div class="carrito-controles">
+      <button onclick="restarProducto(${index})">−</button>
+      <span>${item.cantidad}</span>
+      <button onclick="sumarProducto(${index})">+</button>
+    </div>
+  </div>
+
+  <div class="carrito-item-precio">
+    $${item.precio * item.cantidad}
+    <button onclick="eliminarProducto(${index})" class="eliminar">
+      ✕
+    </button>
+  </div>
+`;
+
 
       contenedor.appendChild(div);
     });
   }
 
   mostrar("carrito-completo");
+
+	let totalGeneral = 0;
+carrito.forEach(item => {
+  totalGeneral += item.precio * item.cantidad;
+});
+
+const totalSpan = document.getElementById("total-carrito-completo");
+if (totalSpan) {
+  totalSpan.textContent = "$" + totalGeneral;
+}
+
 }
 
 
+function obtenerImagenProducto(idCarrito) {
+
+  const idBase = idCarrito.split("-")[0];
+
+  const producto = productos.find(p => p.id === idBase);
+
+  return producto ? producto.imagen : "";
+}
 
 		
 function renderProductos() {
@@ -2831,6 +2870,48 @@ btnAgregar.addEventListener("click", () => {
 
   });
 }
+
+		<div class="categoria" id="checkout">
+  <div class="contenedor-productos">
+
+    <button class="btn-volver-tienda" onclick="mostrar('carrito-completo')">
+      ← Volver al carrito
+    </button>
+
+    <h2>Finalizar compra</h2>
+
+    <div class="checkout-form">
+
+      <label>Nombre</label>
+      <input type="text" id="cliente-nombre">
+
+      <label>Entrega</label>
+      <select id="cliente-entrega" onchange="toggleDireccion()">
+        <option value="">Elegí una opción</option>
+        <option value="retiro">Retiro en tienda</option>
+        <option value="envio">Envío a domicilio</option>
+      </select>
+
+      <div id="direccion-box" style="display:none">
+        <label>Dirección</label>
+        <input type="text" id="cliente-direccion">
+      </div>
+
+      <label>Método de pago</label>
+      <select id="cliente-pago">
+        <option value="">Elegí una opción</option>
+        <option value="efectivo">Efectivo</option>
+        <option value="transferencia">Transferencia</option>
+        <option value="mercadopago">MercadoPago</option>
+      </select>
+
+      <button class="whatsapp" onclick="enviarWhatsApp()">
+        Enviar pedido por WhatsApp
+      </button>
+
+    </div>
+  </div>
+</div>
 
 
 document.addEventListener("DOMContentLoaded", function() {
