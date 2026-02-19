@@ -2035,30 +2035,129 @@ function buscarProductos(texto) {
   lista.innerHTML = "";
 
   if (textoNormalizado === "") {
-
     contenedor.classList.remove("visible");
-
     return;
   }
 
   let encontrados = 0;
 
- document.querySelectorAll(".tarjeta-producto").forEach(prod => {
+  productos.forEach(producto => {
 
+    const nombreNormalizado = normalizar(producto.nombre);
 
-   const header = prod.querySelector(".nombre-producto");
+    if (nombreNormalizado.includes(textoNormalizado)) {
 
+      // Crear tarjeta NUEVA completamente funcional
+      const tarjeta = document.createElement("div");
+      tarjeta.classList.add("tarjeta-producto");
 
-    if (!header) return;
+      tarjeta.innerHTML = `
+        <h3 class="nombre-producto">${producto.nombre}</h3>
 
-    const nombreProducto = normalizar(header.innerText);
+        <div class="producto-imagen-container">
+          <img src="${producto.imagen}" class="producto-imagen">
+        </div>
 
-    if (nombreProducto.includes(textoNormalizado)) {
+        <p class="descripcion">${producto.descripcion}</p>
 
-      const clon = prod.cloneNode(true);
-      lista.appendChild(clon);
+        <div class="pesos">
+          ${producto.opciones.map((op, i) => `
+            <button class="peso-btn ${i === 0 ? 'active' : ''}" data-precio="${op.precio}">
+              ${op.peso}
+            </button>
+          `).join("")}
+        </div>
+
+        <div class="precio">
+          $<span class="precio-valor">${producto.opciones[0].precio}</span>
+        </div>
+
+        <div class="footer-compra">
+          <div class="cantidad-control">
+            <button class="cantidad-btn menos">−</button>
+            <span class="cantidad-valor">1</span>
+            <button class="cantidad-btn mas">+</button>
+          </div>
+
+          <button class="btn-agregar-icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
+            </svg>
+          </button>
+        </div>
+      `;
+
+      lista.appendChild(tarjeta);
+
+      // 🔧 Ahora agregamos los mismos eventos que en renderProductos
+
+      let precioActual = producto.opciones[0].precio;
+      let pesoActual = producto.opciones[0].peso;
+      let cantidad = 1;
+
+      const precioSpan = tarjeta.querySelector(".precio-valor");
+      const botonesPeso = tarjeta.querySelectorAll(".peso-btn");
+      const btnMas = tarjeta.querySelector(".mas");
+      const btnMenos = tarjeta.querySelector(".menos");
+      const cantidadValor = tarjeta.querySelector(".cantidad-valor");
+      const btnAgregar = tarjeta.querySelector(".btn-agregar-icono");
+
+      tarjeta.querySelector(".nombre-producto")
+        .addEventListener("click", () => abrirProducto(producto.id));
+
+      tarjeta.querySelector(".producto-imagen")
+        .addEventListener("click", () => abrirProducto(producto.id));
+
+      botonesPeso.forEach(btn => {
+        btn.addEventListener("click", () => {
+
+          botonesPeso.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          precioActual = Number(btn.dataset.precio);
+          pesoActual = btn.textContent;
+
+          precioSpan.textContent = precioActual;
+        });
+      });
+
+      btnMas.addEventListener("click", () => {
+        cantidad++;
+        cantidadValor.textContent = cantidad;
+      });
+
+      btnMenos.addEventListener("click", () => {
+        if (cantidad > 1) {
+          cantidad--;
+          cantidadValor.textContent = cantidad;
+        }
+      });
+
+      btnAgregar.addEventListener("click", () => {
+
+        const idProducto = producto.id + "-" + pesoActual;
+
+        const existente = carrito.find(p => p.id === idProducto);
+
+        if (existente) {
+          existente.cantidad += cantidad;
+        } else {
+          carrito.push({
+            id: idProducto,
+            nombre: `${producto.nombre} (${pesoActual})`,
+            precio: precioActual,
+            cantidad: cantidad
+          });
+        }
+
+        mostrarCarrito();
+        guardarCarrito();
+        mostrarToast("🛒 Producto agregado 💚");
+      });
+
       encontrados++;
-
     }
 
   });
@@ -2075,9 +2174,9 @@ function buscarProductos(texto) {
 
     contenedor.classList.add("visible");
     lista.innerHTML = "<p>No se encontraron productos</p>";
-
   }
 }
+
 
 
 
