@@ -1428,6 +1428,8 @@ padding-left: clamp(20px, 3vw, 40px);
 .buscador-desktop {
   flex: 1;
   max-width: 420px;
+  justify-self: center;
+	
 }
 
 	  #carrito-cantidad-desktop {
@@ -2041,9 +2043,11 @@ function buscarProductos(texto) {
 
   let encontrados = 0;
 
-  document.querySelectorAll(".producto").forEach(prod => {
+ document.querySelectorAll(".tarjeta-producto").forEach(prod => {
 
-    const header = prod.querySelector(".producto-header");
+
+   const header = prod.querySelector(".nombre-producto");
+
 
     if (!header) return;
 
