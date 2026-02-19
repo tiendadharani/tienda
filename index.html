@@ -2247,6 +2247,25 @@ function toggleCarrito() {
     .classList.toggle("abierto");
 }
 
+	// Cerrar carrito al hacer click fuera
+document.addEventListener("click", function(e) {
+
+  const panel = document.querySelector(".carrito-panel");
+  const botonCarritoDesktop = document.querySelector(".carrito-desktop");
+  const barraMobile = document.getElementById("barra-carrito-mobile");
+
+  if (!panel) return;
+
+  const clickDentroPanel = panel.contains(e.target);
+  const clickEnBotonDesktop = botonCarritoDesktop && botonCarritoDesktop.contains(e.target);
+  const clickEnBarraMobile = barraMobile && barraMobile.contains(e.target);
+
+  if (!clickDentroPanel && !clickEnBotonDesktop && !clickEnBarraMobile) {
+    panel.classList.remove("abierto");
+  }
+
+});
+
 
 
 /* Dirección */
