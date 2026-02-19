@@ -739,6 +739,7 @@ font-family: "Cormorant Garamond", serif;
   flex: 1;
 }
 
+	  
 
 .menu-barra .menu {
   max-width: 1200px;
@@ -758,6 +759,15 @@ font-family: "Cormorant Garamond", serif;
   cursor: pointer;
 }
 
+<div class="carrito-desktop" onclick="toggleCarrito()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#3f6b5a" stroke-width="2">
+    <circle cx="9" cy="21" r="1"></circle>
+    <circle cx="20" cy="21" r="1"></circle>
+    <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
+  </svg>
+  <span id="carrito-cantidad-desktop">0</span>
+  <span id="carrito-total-desktop">$0</span>
+</div>
 
 .submenu-contenido a {
   display: block;
@@ -1343,10 +1353,11 @@ padding-left: clamp(20px, 3vw, 40px);
 }
 
 .barra-contenido {
-  width: 90%;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+	gap: 40px;
   color: white;
   font-weight: 600;
 }
@@ -1381,8 +1392,31 @@ padding-left: clamp(20px, 3vw, 40px);
   }
 }
 
+	  .barra-icono svg {
+  width: 22px;
+  height: 22px;
+}
 	  
-    
+ .carrito-desktop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #3f6b5a;
+}
+
+.carrito-desktop svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 900px) {
+  .carrito-desktop {
+    display: none;
+  }
+}
+   
   </style>
 </head>
 
@@ -1777,6 +1811,18 @@ function actualizarBarraCarrito(total) {
   if (totalSpan) {
     totalSpan.textContent = "$" + total;
   }
+
+const cantDesktop = document.getElementById("carrito-cantidad-desktop");
+const totalDesktop = document.getElementById("carrito-total-desktop");
+
+if (cantDesktop) {
+  cantDesktop.textContent = cantidadTotal;
+}
+
+if (totalDesktop) {
+  totalDesktop.textContent = "$" + total;
+}
+	
 }
 
 
@@ -2498,10 +2544,15 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <div id="barra-carrito-mobile" class="barra-carrito-mobile">
   <div class="barra-contenido">
-    <div class="barra-icono">
-      🛒
-      <span id="barra-cantidad">0</span>
-    </div>
+   <div class="barra-icono">
+  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+    <circle cx="9" cy="21" r="1"></circle>
+    <circle cx="20" cy="21" r="1"></circle>
+    <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
+  </svg>
+  <span id="barra-cantidad">0</span>
+</div>
+
     <div class="barra-total" id="barra-total">
       $0
     </div>
