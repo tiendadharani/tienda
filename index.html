@@ -546,6 +546,31 @@ will-change: opacity, transform;
   z-index: 9999;
 }
 
+.carrito-header-lateral {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.carrito-header-lateral h3 {
+  margin: 0;
+}
+
+.cerrar-carrito {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #3f6b5a;
+  font-weight: 600;
+}
+
+.cerrar-carrito:hover {
+  color: #c0392b;
+}
+	  
+
 .carrito-panel.abierto {
   transform: translateX(0);
 }
@@ -1944,9 +1969,13 @@ padding-left: clamp(20px, 3vw, 40px);
 
 <div class="carrito-panel">
 
+  <div class="carrito-header-lateral">
+    <h3>🛒 Mi Pedido</h3>
+    <button class="cerrar-carrito" onclick="toggleCarrito()">✕</button>
+  </div>
+
   <div class="carrito-body">
 
-    <h3>🛒 Mi Pedido</h3>
 
     <ul id="lista"></ul>
 
