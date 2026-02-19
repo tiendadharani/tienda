@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
 
+
   <style>
 
     /* SLIDER */
@@ -759,15 +760,6 @@ font-family: "Cormorant Garamond", serif;
   cursor: pointer;
 }
 
-<div class="carrito-desktop" onclick="toggleCarrito()">
-  <svg viewBox="0 0 24 24" fill="none" stroke="#3f6b5a" stroke-width="2">
-    <circle cx="9" cy="21" r="1"></circle>
-    <circle cx="20" cy="21" r="1"></circle>
-    <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
-  </svg>
-  <span id="carrito-cantidad-desktop">0</span>
-  <span id="carrito-total-desktop">$0</span>
-</div>
 
 .submenu-contenido a {
   display: block;
@@ -1357,7 +1349,7 @@ padding-left: clamp(20px, 3vw, 40px);
   display: flex;
   justify-content: center;
   align-items: center;
-	gap: 40px;
+	gap: 50px;
   color: white;
   font-weight: 600;
 }
@@ -1379,7 +1371,9 @@ padding-left: clamp(20px, 3vw, 40px);
 }
 
 .barra-total {
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 @media (max-width: 768px) {
@@ -1416,7 +1410,21 @@ padding-left: clamp(20px, 3vw, 40px);
     display: none;
   }
 }
-   
+
+	  .header-top {
+  justify-content: space-between;
+}
+
+.logo {
+  margin: 0;
+}
+
+.buscador-desktop {
+  flex: 1;
+  max-width: 420px;
+}
+
+	  
   </style>
 </head>
 
@@ -1438,6 +1446,15 @@ padding-left: clamp(20px, 3vw, 40px);
       <input type="text" id="buscador" placeholder="Buscar producto...">
     </div>
 
+	  <div class="carrito-desktop" onclick="toggleCarrito()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#3f6b5a" stroke-width="2">
+      <circle cx="9" cy="21" r="1"></circle>
+      <circle cx="20" cy="21" r="1"></circle>
+      <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
+    </svg>
+    <span id="carrito-cantidad-desktop">0</span>
+    <span id="carrito-total-desktop">$0</span>
+  </div>
   </div>
 
   <!-- Menú -->
@@ -2103,20 +2120,16 @@ document.addEventListener("DOMContentLoaded", () => {
 function mostrar(id) {
 
   const categoria = document.getElementById(id);
-
   if (!categoria) return;
 
-  // Cerrar todas las categorías
   document.querySelectorAll('.categoria').forEach(c => {
     c.classList.remove("visible");
   });
 
-  // Abrir la categoría solicitada
   categoria.classList.add("visible");
-
-  // Ordenar esta categoría
-  ordenarCategoria(categoria);
 }
+
+	
   // 🔍 Buscador
  // 🔍 Buscadores
 const buscadorDesktop = document.getElementById("buscador");
