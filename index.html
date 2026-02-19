@@ -331,9 +331,7 @@
   }
   
   /* Logo más chico en móvil */
-  .logo {
-    height: 55px;
-  }
+ 
 
     /* Botones de categorías en móvil */
   .categorias button {
@@ -577,6 +575,9 @@ will-change: opacity, transform;
   width: auto;
   display: block;
   margin: auto;
+
+  justify-self: center;
+
 }
 
 
@@ -1372,7 +1373,7 @@ padding-left: clamp(20px, 3vw, 40px);
 
 .barra-total {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.5px;
 }
 
@@ -1411,19 +1412,40 @@ padding-left: clamp(20px, 3vw, 40px);
   }
 }
 
-	  .header-top {
-  justify-content: space-between;
+	.header-top {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 20px;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
 }
 
-.logo {
-  margin: 0;
-}
+
+
 
 .buscador-desktop {
   flex: 1;
   max-width: 420px;
 }
 
+	  #carrito-cantidad-desktop {
+  background: #3f6b5a;
+  color: white;
+
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 13px;
+  font-weight: 700;
+}
 	  
   </style>
 </head>
