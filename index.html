@@ -1806,7 +1806,47 @@ padding-left: clamp(20px, 3vw, 40px);
   </div>
 </div>
 
-	
+<div class="categoria" id="checkout">
+  <div class="contenedor-productos">
+
+    <button class="btn-volver-tienda" onclick="mostrar('carrito-completo')">
+      ← Volver al carrito
+    </button>
+
+    <h2>Finalizar compra</h2>
+
+    <div class="checkout-form">
+
+      <label>Nombre</label>
+      <input type="text" id="cliente-nombre">
+
+      <label>Entrega</label>
+      <select id="cliente-entrega" onchange="toggleDireccion()">
+        <option value="">Elegí una opción</option>
+        <option value="retiro">Retiro en tienda</option>
+        <option value="envio">Envío a domicilio</option>
+      </select>
+
+      <div id="direccion-box" style="display:none">
+        <label>Dirección</label>
+        <input type="text" id="cliente-direccion">
+      </div>
+
+      <label>Método de pago</label>
+      <select id="cliente-pago">
+        <option value="">Elegí una opción</option>
+        <option value="efectivo">Efectivo</option>
+        <option value="transferencia">Transferencia</option>
+        <option value="mercadopago">MercadoPago</option>
+      </select>
+
+      <button class="whatsapp" onclick="enviarWhatsApp()">
+        Enviar pedido por WhatsApp
+      </button>
+
+    </div>
+  </div>
+</div>	
 	
 <!-- MI PEDIDO -->
 
@@ -2871,54 +2911,13 @@ btnAgregar.addEventListener("click", () => {
   });
 }
 
-		<div class="categoria" id="checkout">
-  <div class="contenedor-productos">
-
-    <button class="btn-volver-tienda" onclick="mostrar('carrito-completo')">
-      ← Volver al carrito
-    </button>
-
-    <h2>Finalizar compra</h2>
-
-    <div class="checkout-form">
-
-      <label>Nombre</label>
-      <input type="text" id="cliente-nombre">
-
-      <label>Entrega</label>
-      <select id="cliente-entrega" onchange="toggleDireccion()">
-        <option value="">Elegí una opción</option>
-        <option value="retiro">Retiro en tienda</option>
-        <option value="envio">Envío a domicilio</option>
-      </select>
-
-      <div id="direccion-box" style="display:none">
-        <label>Dirección</label>
-        <input type="text" id="cliente-direccion">
-      </div>
-
-      <label>Método de pago</label>
-      <select id="cliente-pago">
-        <option value="">Elegí una opción</option>
-        <option value="efectivo">Efectivo</option>
-        <option value="transferencia">Transferencia</option>
-        <option value="mercadopago">MercadoPago</option>
-      </select>
-
-      <button class="whatsapp" onclick="enviarWhatsApp()">
-        Enviar pedido por WhatsApp
-      </button>
-
-    </div>
-  </div>
-</div>
-
-
+	
 document.addEventListener("DOMContentLoaded", function() {
   renderProductos();
 });
 
 </script>
+	
 <div id="barra-carrito-mobile" class="barra-carrito-mobile">
   <div class="barra-contenido">
    <div class="barra-icono">
