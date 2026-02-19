@@ -521,36 +521,51 @@ will-change: opacity, transform;
 
 /* ===== PANEL CARRITO ===== */
 
+/* ===== PANEL CARRITO LATERAL ===== */
+
 .carrito-panel {
   position: fixed;
+  top: 0;
+  right: 0;
 
-  bottom: 90px; /* 👈 sube el panel arriba de la barra */
-  left: 50%;
-  transform: translateX(-50%);
-
-  width: calc(100% - 40px);
-  max-width: 420px;
-
-  max-height: 65vh;
+  width: 380px;
+  max-width: 95%;
+  height: 100vh;
 
   background: white;
 
-  border-radius: 20px;
+  box-shadow: -5px 0 25px rgba(0,0,0,0.15);
 
-  box-shadow: 0 -5px 18px rgba(0,0,0,0.25);
-
-  padding: 15px;
+  padding: 20px;
 
   overflow-y: auto;
 
-  display: none;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
 
-  z-index: 9998;
+  z-index: 9999;
 }
 
 .carrito-panel.abierto {
-  display: block;
+  transform: translateX(0);
 }
+
+	  .btn-ver-completo {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #5b8f7b;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-ver-completo:hover {
+  background: #4a7665;
+}
+
 
 /* HEADER CON LOGO */
 
@@ -1649,6 +1664,14 @@ padding-left: clamp(20px, 3vw, 40px);
   </div>
 </div>
 
+<div class="categoria" id="carrito-completo">
+  <div class="contenedor-productos">
+    <h2>🛒 Carrito completo</h2>
+    <div id="carrito-completo-contenido"></div>
+  </div>
+</div>
+	
+	
 <!-- MI PEDIDO -->
 
 <div class="carrito-panel">
@@ -1660,6 +1683,10 @@ padding-left: clamp(20px, 3vw, 40px);
     <ul id="lista"></ul>
 
     <p id="total">Total: $0</p>
+
+	  <button class="btn-ver-completo" onclick="abrirCarritoCompleto()">
+  Ver carrito completo →
+</button>
 
     <hr>
 
@@ -2519,6 +2546,34 @@ function abrirProducto(id) {
   mostrar("producto-detalle");
 }
 
+function abrirCarritoCompleto() {
+
+	document.querySelector(".carrito-panel").classList.remove("abierto");
+
+  const contenedor = document.getElementById("carrito-completo-contenido");
+  contenedor.innerHTML = "";
+
+  if (carrito.length === 0) {
+    contenedor.innerHTML = "<p>No hay productos en el carrito.</p>";
+  } else {
+
+    carrito.forEach(item => {
+
+      const div = document.createElement("div");
+      div.classList.add("tarjeta-producto");
+
+      div.innerHTML = `
+        <h3>${item.nombre}</h3>
+        <p>Cantidad: ${item.cantidad}</p>
+        <p>Subtotal: $${item.precio * item.cantidad}</p>
+      `;
+
+      contenedor.appendChild(div);
+    });
+  }
+
+  mostrar("carrito-completo");
+}
 
 
 		
