@@ -1544,14 +1544,16 @@ padding-left: clamp(20px, 3vw, 40px);
 }
 
 .carrito-resumen {
-  margin-top: 30px;
-  padding: 25px;
+  margin-top: 40px;
+  padding: 28px;
   background: #f7f7f7;
   border-radius: 18px;
+
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 18px;
 }
+
 
 .resumen-total {
   font-size: 22px;
@@ -1560,10 +1562,11 @@ padding-left: clamp(20px, 3vw, 40px);
 }
 
 .btn-finalizar {
+  width: 100%;
   background: #5b8f7b;
   color: white;
   border: none;
-  padding: 14px 28px;
+  padding: 16px;
   border-radius: 14px;
   font-size: 16px;
   font-weight: 600;
@@ -1572,6 +1575,26 @@ padding-left: clamp(20px, 3vw, 40px);
 
 .btn-finalizar:hover {
   background: #4a7665;
+}
+
+.checkout-form {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checkout-form label {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.checkout-form input,
+.checkout-form select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 15px;
 }
 
 	  
@@ -1837,7 +1860,7 @@ padding-left: clamp(20px, 3vw, 40px);
         <option value="">Elegí una opción</option>
         <option value="efectivo">Efectivo</option>
         <option value="transferencia">Transferencia</option>
-        <option value="mercadopago">MercadoPago</option>
+        <option value="billetera">Billetera virtual</option>
       </select>
 
       <button class="whatsapp" onclick="enviarWhatsApp()">
