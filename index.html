@@ -1463,6 +1463,81 @@ padding-left: clamp(20px, 3vw, 40px);
   font-size: 13px;
   font-weight: 700;
 }
+
+.btn-volver-tienda {
+  background: none;
+  border: none;
+  color: #3f6b5a;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 15px 0 25px 0;
+  text-align: left;
+}
+
+.btn-volver-tienda:hover {
+  text-decoration: underline;
+}
+
+.btn-volver-tienda.inferior {
+  margin-top: 40px;
+}
+
+	  .carrito-item {
+  background: white;
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carrito-item-info h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #3f6b5a;
+}
+
+.carrito-controles {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.carrito-controles button {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: none;
+  background: #5b8f7b;
+  color: white;
+  cursor: pointer;
+}
+
+.carrito-item-precio {
+  font-weight: 700;
+  font-size: 18px;
+  color: #3f6b5a;
+  text-align: right;
+}
+
+.carrito-item-precio .eliminar {
+  display: block;
+  margin-top: 8px;
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+}
+
+.carrito-item-precio .eliminar:hover {
+  color: #c0392b;
+}
+
+
 	  
   </style>
 </head>
@@ -1666,10 +1741,24 @@ padding-left: clamp(20px, 3vw, 40px);
 
 <div class="categoria" id="carrito-completo">
   <div class="contenedor-productos">
+
+    <!-- Botón volver superior -->
+    <button class="btn-volver-tienda" onclick="mostrar('hierbas')">
+      ← Volver a la tienda
+    </button>
+
     <h2>🛒 Carrito completo</h2>
+
     <div id="carrito-completo-contenido"></div>
+
+    <!-- Botón volver inferior -->
+    <button class="btn-volver-tienda inferior" onclick="mostrar('hierbas')">
+      ← Seguir comprando
+    </button>
+
   </div>
 </div>
+
 	
 	
 <!-- MI PEDIDO -->
@@ -2548,7 +2637,7 @@ function abrirProducto(id) {
 
 function abrirCarritoCompleto() {
 
-	document.querySelector(".carrito-panel").classList.remove("abierto");
+  document.querySelector(".carrito-panel").classList.remove("abierto");
 
   const contenedor = document.getElementById("carrito-completo-contenido");
   contenedor.innerHTML = "";
@@ -2557,15 +2646,28 @@ function abrirCarritoCompleto() {
     contenedor.innerHTML = "<p>No hay productos en el carrito.</p>";
   } else {
 
-    carrito.forEach(item => {
+    carrito.forEach((item, index) => {
 
       const div = document.createElement("div");
-      div.classList.add("tarjeta-producto");
+      div.classList.add("carrito-item");
 
       div.innerHTML = `
-        <h3>${item.nombre}</h3>
-        <p>Cantidad: ${item.cantidad}</p>
-        <p>Subtotal: $${item.precio * item.cantidad}</p>
+        <div class="carrito-item-info">
+          <h3>${item.nombre}</h3>
+
+          <div class="carrito-controles">
+            <button onclick="restarProducto(${index})">−</button>
+            <span>${item.cantidad}</span>
+            <button onclick="sumarProducto(${index})">+</button>
+          </div>
+        </div>
+
+        <div class="carrito-item-precio">
+          $${item.precio * item.cantidad}
+          <button onclick="eliminarProducto(${index})" class="eliminar">
+            ✕
+          </button>
+        </div>
       `;
 
       contenedor.appendChild(div);
@@ -2574,6 +2676,7 @@ function abrirCarritoCompleto() {
 
   mostrar("carrito-completo");
 }
+
 
 
 		
