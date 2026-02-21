@@ -1715,7 +1715,7 @@ padding-left: clamp(20px, 3vw, 40px);
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
     <!-- Logo -->
-    <img src="img/logo/logo1.png" class="logo">
+    <img src="img/logo/logo1.png" class="logo" onclick="irAlInicio()" style="cursor:pointer;">
 
     <!-- Buscador desktop -->
     <div class="buscador buscador-desktop">
@@ -2315,7 +2315,24 @@ function ordenarProductos() {
   console.log("Orden automático desactivado para mantener subcategorías");
 }
 
+function irAlInicio() {
 
+  // Cerrar carrito lateral si está abierto
+  const panel = document.querySelector(".carrito-panel");
+  if (panel) {
+    panel.classList.remove("abierto");
+  }
+
+  // Ocultar todas las secciones
+  document.querySelectorAll('.categoria').forEach(c => {
+    c.classList.remove("visible");
+  });
+
+  // Quitar hash de la URL (opcional pero prolijo)
+  history.pushState({}, "", "#");
+
+}
+	
   function mostrarToast(mensaje) {
 
   const toast = document.getElementById("toast");
