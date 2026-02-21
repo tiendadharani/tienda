@@ -763,21 +763,23 @@ font-family: "Cormorant Garamond", serif;
   padding: 12px 20px;
 
   display: grid;
-  grid-template-columns: auto auto 1fr auto auto;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 18px;
 }
 
 .logo {
   justify-self: start;
 }
 
-.instagram-header {
-  justify-self: center;
-}
-
 .buscador-desktop {
   justify-self: center;
+  max-width: 420px;
+  width: 100%;
+}
+
+.instagram-header {
+  justify-self: end;
+  margin-right: 10px;
 }
 
 .carrito-desktop {
@@ -804,13 +806,7 @@ font-family: "Cormorant Garamond", serif;
   align-items: center;
 }
 	  
-.menu-barra a,
-.menu-barra span {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  cursor: pointer;
-}
+
 
 
 .submenu-contenido a {
@@ -1464,15 +1460,7 @@ padding-left: clamp(20px, 3vw, 40px);
   }
 }
 
-	.header-top {
-  max-width: 1200px;
-  margin: auto;
-  padding: 12px 20px;
-
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-}
+	
 
 .instagram-header {
   display: flex;
