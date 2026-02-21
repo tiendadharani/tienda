@@ -612,10 +612,6 @@ will-change: opacity, transform;
   height: 85px;
   width: auto;
   display: block;
-  margin: auto;
-
-  justify-self: center;
-
 }
 
 
@@ -761,14 +757,15 @@ font-family: "Cormorant Garamond", serif;
 /* Fila superior */
 
 .header-top {
+ .header-top {
   max-width: 1200px;
   margin: auto;
   padding: 12px 20px;
 
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto auto;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  gap: 18px;
 }
 
 /* Buscador en header */
@@ -1437,6 +1434,7 @@ padding-left: clamp(20px, 3vw, 40px);
   cursor: pointer;
   font-weight: 600;
   color: #3f6b5a;
+  justify-self: end;	 
 }
 
 .carrito-desktop svg {
@@ -1464,7 +1462,6 @@ padding-left: clamp(20px, 3vw, 40px);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 15px;
 }
 
 .instagram-header svg {
@@ -1481,10 +1478,9 @@ padding-left: clamp(20px, 3vw, 40px);
 
 
 .buscador-desktop {
-  flex: 1;
   max-width: 420px;
+  width: 100%;
   justify-self: center;
-	
 }
 
 	  #carrito-cantidad-desktop {
