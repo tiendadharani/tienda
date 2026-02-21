@@ -1462,7 +1462,24 @@ padding-left: clamp(20px, 3vw, 40px);
   align-items: center;
 }
 
+.instagram-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
+}
 
+.instagram-header svg {
+  width: 22px;
+  height: 22px;
+  stroke: #3f6b5a;
+  transition: transform 0.2s ease, stroke 0.2s ease;
+}
+
+.instagram-header:hover svg {
+  transform: scale(1.1);
+  stroke: #5b8f7b;
+}
 
 
 .buscador-desktop {
@@ -1700,7 +1717,46 @@ padding-left: clamp(20px, 3vw, 40px);
   color: #3f6b5a;
 }
 
-	  
+.footer-dharani {
+  background: #3f6b5a;
+  color: white;
+  padding: 25px 20px;
+  margin-top: 60px;
+}
+
+.footer-contenido {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-marca {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.instagram-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.instagram-footer svg {
+  width: 20px;
+  height: 20px;
+}
+
+.instagram-footer:hover {
+  opacity: 0.8;
+}	  
 	  
   </style>
 </head>
@@ -1731,6 +1787,19 @@ padding-left: clamp(20px, 3vw, 40px);
     </svg>
     <span id="carrito-cantidad-desktop">0</span>
     <span id="carrito-total-desktop">$0</span>
+	
+		  <a href="https://instagram.com/universodharani" 
+   target="_blank" 
+   class="instagram-header"
+   aria-label="Instagram Universo Dharani">
+
+  <svg viewBox="0 0 24 24" fill="none" stroke="#3f6b5a" stroke-width="2">
+    <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+    <circle cx="12" cy="12" r="4"></circle>
+    <circle cx="18" cy="6" r="1"></circle>
+  </svg>
+
+</a>
   </div>
   </div>
 
@@ -3150,6 +3219,34 @@ if (hash) {
 
 	<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
+
+<footer class="footer-dharani">
+
+  <div class="footer-contenido">
+
+    <div class="footer-marca">
+      Universo Dharani – Almacén Natural
+    </div>
+
+    <a href="https://instagram.com/universodharani" 
+       target="_blank" 
+       class="instagram-footer"
+       aria-label="Instagram Universo Dharani">
+
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+        <circle cx="12" cy="12" r="4"></circle>
+        <circle cx="18" cy="6" r="1"></circle>
+      </svg>
+
+      <span>@universodharani</span>
+
+    </a>
+
+  </div>
+
+</footer>
+	
 </body>
 </html>
 
