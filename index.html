@@ -1622,6 +1622,16 @@ padding-left: clamp(20px, 3vw, 40px);
   font-size: 15px;
 }
 
+.checkout-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.oculto {
+  display: none;
+}
+	  
 /* ===== CARRITO LATERAL MEJORADO ===== */
 
 .carrito-lateral-item {
@@ -1956,10 +1966,10 @@ padding-left: clamp(20px, 3vw, 40px);
         <option value="envio">Envío a domicilio</option>
       </select>
 
-      <div id="direccion-box" style="display:none">
-        <label>Dirección</label>
-        <input type="text" id="cliente-direccion">
-      </div>
+     <div id="direccion-box" class="checkout-campo oculto">
+  <label for="cliente-direccion">Dirección</label>
+  <input type="text" id="cliente-direccion">
+</div>
 
       <label>Método de pago</label>
       <select id="cliente-pago">
@@ -2289,13 +2299,13 @@ document.addEventListener("click", function(e) {
 /* Dirección */
 function toggleDireccion() {
 
-  let entrega = document.getElementById("cliente-entrega").value;
-  let box = document.getElementById("direccion-box");
+  const entrega = document.getElementById("cliente-entrega").value;
+  const box = document.getElementById("direccion-box");
 
   if (entrega === "envio") {
-    box.style.display = "block";
+    box.classList.remove("oculto");
   } else {
-    box.style.display = "none";
+    box.classList.add("oculto");
   }
 }
 
