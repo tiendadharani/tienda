@@ -1999,37 +1999,43 @@ async function cargarProductosDesdeCSV() {
   const response = await fetch("data/productos.csv");
   const data = await response.text();
 
-  const filas = data.trim().split("\n").slice(1);
+  const resultado = Papa.parse(data, {
+    header: true,
+    skipEmptyLines: true
+  });
 
-  productos = filas.map(fila => {
+  productos = resultado.data.map(fila => {
 
-    const columnas = fila.split(",");
+    const opciones = [];
 
-    const opciones = construirOpciones(columnas);
+    for (let i = 1; i <= 5; i++) {
+      const opcion = fila["opcion_" + i];
+      const precio = fila["precio_" + i];
 
-    if (opciones.length === 0) {
-      console.warn("Producto sin opciones:", columnas[1]);
-      return null; // 👈 no romper todo
+      if (opcion && precio) {
+        opciones.push({
+          peso: opcion.trim(),
+          precio: Number(precio)
+        });
+      }
     }
 
     return {
-      id: columnas[0]?.trim(),
-      nombre: columnas[1]?.trim(),
-      categoria: columnas[2]?.trim(),
-      subcategoria: columnas[3]?.trim(),
-      descripcion: columnas[4]?.trim(),
-      descripcionLarga: columnas[5]?.trim(),
-      imagen: "imagenes/" + columnas[6]?.trim(),
+      id: fila.id?.trim(),
+      nombre: fila.nombre?.trim(),
+      categoria: fila.categoria?.trim().toLowerCase(),
+      subcategoria: fila.subcategoria?.trim(),
+      descripcion: fila.descripcion_corta?.trim(),
+      descripcionLarga: fila.descripcion_larga?.trim(),
+      imagen: "imagenes/" + fila.imagen?.trim(),
       opciones: opciones
     };
+  });
 
-  }).filter(p => p !== null); // 👈 elimina productos rotos
-
-  console.log("Productos cargados:", productos);
+  console.log("Productos cargados correctamente:", productos);
 
   renderProductos();
 }
-
 function construirOpciones(columnas) {
   let opciones = [];
 
@@ -3075,6 +3081,7 @@ document.addEventListener("DOMContentLoaded", function() {
   </div>
 </div>
 
+	<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 </body>
 </html>
