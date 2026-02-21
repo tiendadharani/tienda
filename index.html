@@ -1992,61 +1992,32 @@ padding-left: clamp(20px, 3vw, 40px);
 
 
 <script>
+	
+let productos = [];
 
-const productos = [
-  {
-  id: "boldo",
-  nombre: "Boldo",
-  categoria: "hierbas",
-  subcategoria: "Digestivas y Hepáticas",
-  descripcion: "Potente estimulante hepático y digestivo.",
-  descripcionLarga: `
-    <p>
-      Favorece la función del hígado, estimula la secreción biliar 
-      y ayuda en digestiones pesadas, grasas o lentas.
-      Ideal para sensación de empacho o hígado “cargado”.
-    </p>
+async function cargarProductosDesdeCSV() {
+  const response = await fetch("data/productos.csv");
+  const data = await response.text();
 
-    <p>
-      <strong>Uso:</strong> Infusión suave (1 cdita por taza).
-      No más de 1–2 tazas por día y evitar uso prolongado.
-    </p>
-  `,
-  imagen: "img/HIERBAS/boldo.webp",
-  opciones: [
-    { peso: "25g", precio: 460 },
-    { peso: "50g", precio: 860 },
-    { peso: "100g", precio: 1610 }
-  ]
-},
+  const filas = data.split("\n").slice(1); // salta encabezado
 
+  productos = filas.map(fila => {
+    const columnas = fila.split(",");
 
-  {
-    id: "carqueja",
-    nombre: "Carqueja",
-    categoria: "hierbas",
-    subcategoria: "Digestivas y Hepáticas",
-    descripcion: "Depurativa hepática y digestiva amarga.",
-	  descripcionLarga: `
-    <p>
-      Estimula hígado y vesícula, mejora digestión lenta, ayuda en retención de líquidos
-	  y procesos depurativos. 
-	  Muy usada en cambios de estación.
-      </p>
+    return {
+      id: columnas[0],
+      nombre: columnas[1],
+      categoria: columnas[2],
+      subcategoria: columnas[3],
+      descripcion: columnas[4],
+      descripcionLarga: columnas[5],
+      imagen: "imagenes/" + columnas[6],
+      opciones: construirOpciones(columnas)
+    };
+  });
 
-    <p>
-      <strong>Uso:</strong> Infusión (1 cdita por taza).
-      1 taza antes de las comidas principales.
-    </p>
-  `,
-    imagen: "img/HIERBAS/Carqueja.jpg",
-    opciones: [
-      { peso: "25g", precio: 340 },
-      { peso: "50g", precio: 740 },
-	  { peso: "100g", precio: 1370 }
-    ]
-  }
-];
+  renderProductos();
+}
 
 	
 	
