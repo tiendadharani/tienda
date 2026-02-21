@@ -767,9 +767,9 @@ font-family: "Cormorant Garamond", serif;
   margin: auto;
   padding: 12px 20px;
 
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
   gap: 15px;
 }
 
@@ -1720,8 +1720,8 @@ padding-left: clamp(20px, 3vw, 40px);
 .footer-dharani {
   background: #3f6b5a;
   color: white;
-  padding: 25px 20px;
-  margin-top: 60px;
+  padding: 20px 20px;
+  margin-top: 30px;
 }
 
 .footer-contenido {
@@ -1757,6 +1757,12 @@ padding-left: clamp(20px, 3vw, 40px);
 .instagram-footer:hover {
   opacity: 0.8;
 }	  
+
+@media (max-width: 768px) {
+  .footer-dharani {
+    display: none;
+  }
+}	  
 	  
   </style>
 </head>
@@ -1773,6 +1779,19 @@ padding-left: clamp(20px, 3vw, 40px);
     <!-- Logo -->
     <img src="img/logo/logo1.png" class="logo" onclick="irAlInicio()" style="cursor:pointer;">
 
+ <a href="https://instagram.com/universodharani" 
+   target="_blank" 
+   class="instagram-header"
+   aria-label="Instagram Universo Dharani">
+
+  <svg viewBox="0 0 24 24" fill="none" stroke="#3f6b5a" stroke-width="2">
+    <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+    <circle cx="12" cy="12" r="4"></circle>
+    <circle cx="18" cy="6" r="1"></circle>
+  </svg>
+
+</a>
+	  
     <!-- Buscador desktop -->
     <div class="buscador buscador-desktop">
       🔍
@@ -1788,18 +1807,7 @@ padding-left: clamp(20px, 3vw, 40px);
     <span id="carrito-cantidad-desktop">0</span>
     <span id="carrito-total-desktop">$0</span>
 	
-		  <a href="https://instagram.com/universodharani" 
-   target="_blank" 
-   class="instagram-header"
-   aria-label="Instagram Universo Dharani">
-
-  <svg viewBox="0 0 24 24" fill="none" stroke="#3f6b5a" stroke-width="2">
-    <rect x="2" y="2" width="20" height="20" rx="5"></rect>
-    <circle cx="12" cy="12" r="4"></circle>
-    <circle cx="18" cy="6" r="1"></circle>
-  </svg>
-
-</a>
+		 
   </div>
   </div>
 
