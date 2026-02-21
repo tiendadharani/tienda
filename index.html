@@ -1999,24 +1999,44 @@ async function cargarProductosDesdeCSV() {
   const response = await fetch("data/productos.csv");
   const data = await response.text();
 
-  const filas = data.split("\n").slice(1); // salta encabezado
+  const filas = data.split("\n").slice(1);
 
-  productos = filas.map(fila => {
-    const columnas = fila.split(",");
+  productos = filas
+    .filter(fila => fila.trim() !== "")
+    .map(fila => {
+      const columnas = fila.split(",");
 
-    return {
-      id: columnas[0],
-      nombre: columnas[1],
-      categoria: columnas[2],
-      subcategoria: columnas[3],
-      descripcion: columnas[4],
-      descripcionLarga: columnas[5],
-      imagen: "imagenes/" + columnas[6],
-      opciones: construirOpciones(columnas)
-    };
-  });
+      return {
+        id: columnas[0],
+        nombre: columnas[1],
+        categoria: columnas[2],
+        subcategoria: columnas[3],
+        descripcion: columnas[4],
+        descripcionLarga: columnas[5],
+        imagen: "imagenes/" + columnas[6],
+        opciones: construirOpciones(columnas)
+      };
+    });
 
   renderProductos();
+}
+
+function construirOpciones(columnas) {
+  let opciones = [];
+
+  for (let i = 8; i < columnas.length; i += 2) {
+    const opcion = columnas[i];
+    const precio = columnas[i + 1];
+
+    if (opcion && precio) {
+      opciones.push({
+        peso: opcion,
+        precio: Number(precio)
+      });
+    }
+  }
+
+  return opciones;
 }
 
 	
@@ -3024,7 +3044,7 @@ btnAgregar.addEventListener("click", () => {
 
 	
 document.addEventListener("DOMContentLoaded", function() {
-  renderProductos();
+  cargarProductosDesdeCSV();
 });
 
 </script>
