@@ -1999,25 +1999,34 @@ async function cargarProductosDesdeCSV() {
   const response = await fetch("data/productos.csv");
   const data = await response.text();
 
-  const filas = data.split("\n").slice(1);
+  const filas = data.trim().split("\n").slice(1);
 
-  productos = filas
-    .filter(fila => fila.trim() !== "")
-    .map(fila => {
-      const columnas = fila.split(",");
+  productos = filas.map(fila => {
 
-      return {
-        id: columnas[0],
-        nombre: columnas[1],
-        categoria: columnas[2],
-        subcategoria: columnas[3],
-        descripcion: columnas[4],
-        descripcionLarga: columnas[5],
-        imagen: "imagenes/" + columnas[6],
-        opciones: construirOpciones(columnas)
-      };
-    });
-console.log(productos);
+    const columnas = fila.split(",");
+
+    const opciones = construirOpciones(columnas);
+
+    if (opciones.length === 0) {
+      console.warn("Producto sin opciones:", columnas[1]);
+      return null; // 👈 no romper todo
+    }
+
+    return {
+      id: columnas[0]?.trim(),
+      nombre: columnas[1]?.trim(),
+      categoria: columnas[2]?.trim(),
+      subcategoria: columnas[3]?.trim(),
+      descripcion: columnas[4]?.trim(),
+      descripcionLarga: columnas[5]?.trim(),
+      imagen: "imagenes/" + columnas[6]?.trim(),
+      opciones: opciones
+    };
+
+  }).filter(p => p !== null); // 👈 elimina productos rotos
+
+  console.log("Productos cargados:", productos);
+
   renderProductos();
 }
 
