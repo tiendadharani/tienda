@@ -1741,6 +1741,13 @@ padding-left: clamp(20px, 3vw, 40px);
   letter-spacing: 0.3px;
 }
 
+.corazon {
+  color: #d8a83a;
+  font-size: 16px;
+  position: relative;
+  top: 1px; /* lo baja apenas para alinearlo mejor */
+}	
+	
   .footer-derecha svg {
     width: 20px;
     height: 20px;
@@ -3199,7 +3206,9 @@ if (hash) {
   <div class="footer-contenido">
 
     <div class="footer-izquierda">
-      Universo Dharani®  |  Diseñado con ♡ por M. Fernanda Muñoz
+      Universo Dharani®  |  Diseñado con 
+		<span class="corazon">♡</span> 
+		por M. Fernanda Muñoz
 	  document.getElementById("anio").textContent = new Date().getFullYear();
     </div>
 
