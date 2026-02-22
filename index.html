@@ -764,7 +764,7 @@ font-family: "Cormorant Garamond", serif;
   padding: 12px 20px;
 
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto auto 1fr auto;
   align-items: center;
   gap: 20px;
 }
@@ -779,6 +779,13 @@ font-family: "Cormorant Garamond", serif;
   width: 100%;
 }
 
+.acciones-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  justify-self: end;
+}
+	  
 .instagram-header {
   justify-self: end;
   margin-right: 10px;
@@ -861,11 +868,17 @@ font-family: "Cormorant Garamond", serif;
 }
 
 @media (max-width: 900px) {
+
+  .header-top {
+    grid-template-columns: auto 1fr auto;
+  }
+
   .logo {
     height: 60px;
-	justify-self: center;
-    margin-left: 0;  
+    justify-self: center;
+    margin-left: 0;
   }
+
 }
 	  
 /* ===== HEADER LIMPIO ===== */
@@ -2825,9 +2838,7 @@ document.querySelectorAll(".submenu span").forEach(item => {
 
 	<script>
 
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("activo");
-}
+
 
 function toggleSubmenu(e) {
   e.preventDefault();
