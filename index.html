@@ -2588,22 +2588,7 @@ function mostrar(id, agregarHistorial = true) {
   }
 }
 
-	function mostrar(id, agregarHistorial = true) {
-
-  const categoria = document.getElementById(id);
-  if (!categoria) return;
-
-  document.querySelectorAll('.categoria').forEach(c => {
-    c.classList.remove("visible");
-  });
-
-  categoria.classList.add("visible");
-
-  // 👇 Actualiza la URL sin recargar
-  if (agregarHistorial) {
-    history.pushState({ seccion: id }, "", "#" + id);
-  }
-}
+	
 	
   // 🔍 Buscador
  // 🔍 Buscadores
