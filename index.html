@@ -925,17 +925,21 @@ font-family: "Cormorant Garamond", serif;
 
 /* ===== BUSCADOR MOBILE ESTILO LIMPIO ===== */
 
-.buscador-mobile.limpio {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #e3e3e3;
-  padding: 12px 0;
-  margin-bottom: 18px;
+@media (max-width: 900px) {
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  .buscador-mobile.limpio {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #e3e3e3;
+    padding: 12px 0;
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
 }
 
 .buscador-mobile input {
