@@ -612,6 +612,9 @@ will-change: opacity, transform;
   height: 85px;
   width: auto;
   display: block;
+  margin: auto;
+
+  justify-self: center;
 
 }
 
@@ -757,43 +760,17 @@ font-family: "Cormorant Garamond", serif;
 
 /* Fila superior */
 
-
 .header-top {
   max-width: 1200px;
   margin: auto;
   padding: 12px 20px;
 
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
 }
 
-.logo {
-  justify-self: start;
-}
-
-.buscador-desktop {
-   max-width: 420px;
-  width: 100%;
-}
-
-.acciones-header {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  justify-self: end;
-}
-	  
-.instagram-header {
-  justify-self: end;
-  margin-right: 10px;
-}
-
-.carrito-desktop {
-  justify-self: end;
-}
-	  
 /* Buscador en header */
 
 .header-top .buscador {
@@ -804,17 +781,23 @@ font-family: "Cormorant Garamond", serif;
 
 	  
 
-.menu {
+.menu-barra .menu {
   max-width: 1200px;
   margin: auto;
   padding: 10px 20px;
 
   display: flex;
-  gap: 30px;
+  gap: 25px;
   align-items: center;
 }
-	  
 
+.menu-barra a,
+.menu-barra span {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
 
 
 .submenu-contenido a {
@@ -854,7 +837,7 @@ font-family: "Cormorant Garamond", serif;
 @media (max-width: 900px) {
 
   .header-top {
-	  grid-template-columns: auto 1fr auto;
+    flex-wrap: wrap;
   }
 
   .header-top .buscador {
@@ -865,16 +848,6 @@ font-family: "Cormorant Garamond", serif;
 
 }
 
-@media (max-width: 900px) {
-
-  .logo {
-    height: 60px;
-    justify-self: center;
-   
-  }
-
-}
-	  
 /* ===== HEADER LIMPIO ===== */
 
 .menu-btn {
@@ -1464,7 +1437,6 @@ padding-left: clamp(20px, 3vw, 40px);
   cursor: pointer;
   font-weight: 600;
   color: #3f6b5a;
-  justify-self: end;	 
 }
 
 .carrito-desktop svg {
@@ -1478,12 +1450,21 @@ padding-left: clamp(20px, 3vw, 40px);
   }
 }
 
-	
+	.header-top {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 20px;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+}
 
 .instagram-header {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 15px;
 }
 
 .instagram-header svg {
@@ -1500,9 +1481,10 @@ padding-left: clamp(20px, 3vw, 40px);
 
 
 .buscador-desktop {
+  flex: 1;
   max-width: 420px;
-  width: 100%;
- 
+  justify-self: center;
+	
 }
 
 	  #carrito-cantidad-desktop {
@@ -1779,19 +1761,6 @@ padding-left: clamp(20px, 3vw, 40px);
     display: none;
   }
 }	  
-
-.acciones-header {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  justify-self: end;
-}
-
-@media (max-width: 900px) {
-  .instagram-header {
-    display: none;
-  }
-}	  
 	  
   </style>
 </head>
@@ -1802,39 +1771,44 @@ padding-left: clamp(20px, 3vw, 40px);
 
   <div class="header-top">
 
-  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <!-- Hamburguesa -->
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-  <img src="img/logo/logo1.png"
-       class="logo"
-       onclick="irAlInicio()"
-       style="cursor:pointer;">
+    <!-- Logo -->
+    <img src="img/logo/logo1.png" class="logo" onclick="irAlInicio()" style="cursor:pointer;">
 
-  <div class="buscador buscador-desktop">
-    🔍
-    <input type="text" id="buscador" placeholder="Buscar producto...">
-  </div>
+ <a href="https://instagram.com/universodharani" 
+   target="_blank" 
+   class="instagram-header"
+   aria-label="Instagram Universo Dharani">
 
-  <div class="acciones-header">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#3f6b5a" stroke-width="2">
+    <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+    <circle cx="12" cy="12" r="4"></circle>
+    <circle cx="18" cy="6" r="1"></circle>
+  </svg>
 
-    <a href="https://instagram.com/universodharani"
-       target="_blank"
-       class="instagram-header"
-       aria-label="Instagram Universo Dharani">
-      <!-- svg -->
-    </a>
-
-    <div class="carrito-desktop" onclick="toggleCarrito()">
-      <!-- svg carrito -->
+</a>
+	  
+    <!-- Buscador desktop -->
+    <div class="buscador buscador-desktop">
+      🔍
+      <input type="text" id="buscador" placeholder="Buscar producto...">
     </div>
 
+	  <div class="carrito-desktop" onclick="toggleCarrito()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#3f6b5a" stroke-width="2">
+      <circle cx="9" cy="21" r="1"></circle>
+      <circle cx="20" cy="21" r="1"></circle>
+      <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
+    </svg>
+    <span id="carrito-cantidad-desktop">0</span>
+    <span id="carrito-total-desktop">$0</span>
+	
+		 
+  </div>
   </div>
 
-</div>
-
-	
-    
-
-	
   <!-- Menú -->
   <nav class="menu" id="menu">
 
@@ -2817,7 +2791,13 @@ function toggleMenu() {
   
 
 <script>
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+}
 
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("activo");
+}
 
 /* Submenu mobile */
 
@@ -2832,7 +2812,9 @@ document.querySelectorAll(".submenu span").forEach(item => {
 
 	<script>
 
-
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("activo");
+}
 
 function toggleSubmenu(e) {
   e.preventDefault();
