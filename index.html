@@ -1765,6 +1765,40 @@ padding-left: clamp(20px, 3vw, 40px);
   }
 }
 
+.menu-footer-mobile {
+  margin-top: auto;
+  padding-top: 25px;
+  border-top: 1px solid #eee;
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.menu-footer-texto {
+  font-size: 13px;
+  color: #3f6b5a;
+  line-height: 1.6;
+}
+
+.menu-footer-texto .corazon {
+  color: #d8a83a;
+  font-size: 15px;
+  position: relative;
+  top: 1px;
+}
+
+.menu-footer-instagram svg {
+  width: 20px;
+  height: 20px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.menu-footer-instagram:hover svg {
+  opacity: 0.7;
+  transform: translateY(-2px);
+}	  
   
   </style>
 </head>
@@ -1838,7 +1872,31 @@ padding-left: clamp(20px, 3vw, 40px);
 
     <a onclick="mostrar('ofertas')">Ofertas</a>
 
-	
+	<!-- Firma mobile -->
+<div class="menu-footer-mobile">
+
+  <div class="menu-footer-texto">
+    <div>Universo Dharani®</div>
+    <div>
+      Diseñado con 
+      <span class="corazon">♡</span> 
+      por M. Fernanda Muñoz
+    </div>
+  </div>
+
+  <a href="https://instagram.com/universodharani"
+     target="_blank"
+     class="menu-footer-instagram">
+
+    <svg viewBox="0 0 24 24" fill="none" stroke="#3f6b5a" stroke-width="2">
+      <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+      <circle cx="12" cy="12" r="4"></circle>
+      <circle cx="18" cy="6" r="1"></circle>
+    </svg>
+
+  </a>
+
+</div>
 	  
   </nav>
    <div id="overlay" onclick="toggleMenu()"></div>  
