@@ -53,10 +53,14 @@
   background: #f5f5f5;
   margin: 0;
 
-  padding-bottom: 110px; /* espacio para la barra flotante */
+  padding-bottom: 0; 
 }
 
-
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 70px;
+  }
+}
 
     header {
       background: #5a8f7b;
@@ -1719,7 +1723,7 @@ padding-left: clamp(20px, 3vw, 40px);
     background: white;
     border-top: 1px solid #eee;
     padding: 16px 20px;
-    margin-top: 80px;
+    margin-top: 0;
   }
 
   .footer-contenido {
@@ -1731,11 +1735,11 @@ padding-left: clamp(20px, 3vw, 40px);
     align-items: center;
   }
 
-  .footer-izquierda {
-    font-size: 14px;
-    color: #6b6b6b;
-    letter-spacing: 0.3px;
-  }
+.footer-izquierda {
+  font-size: 14px;
+  color: #3f6b5a; /* mismo verde que el logo IG */
+  letter-spacing: 0.3px;
+}
 
   .footer-derecha svg {
     width: 20px;
