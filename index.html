@@ -1717,38 +1717,42 @@ padding-left: clamp(20px, 3vw, 40px);
   color: #3f6b5a;
 }
 
-@media (min-width: 901px) {
+/* Por defecto NO se muestra */
+.footer-desktop {
+  display: none;
+}
 
+/* Solo visible en desktop */
+@media (min-width: 901px) {
   .footer-desktop {
+    display: block;
     background: white;
     border-top: 1px solid #eee;
     padding: 16px 20px;
     margin-top: 0;
-	display: block;  
   }
 
   .footer-contenido {
     max-width: 1200px;
     margin: 0 auto;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-.footer-izquierda {
-  font-size: 14px;
-  color: #3f6b5a; /* mismo verde que el logo IG */
-  letter-spacing: 0.3px;
-}
+  .footer-izquierda {
+    font-size: 14px;
+    color: #3f6b5a;
+    letter-spacing: 0.3px;
+  }
 
-.corazon {
-  color: #d8a83a;
-  font-size: 16px;
-  position: relative;
-  top: 1px; /* lo baja apenas para alinearlo mejor */
-}	
-	
+  .corazon {
+    color: #d8a83a;
+    font-size: 16px;
+    position: relative;
+    top: 1px;
+  }
+
   .footer-derecha svg {
     width: 20px;
     height: 20px;
@@ -1759,12 +1763,9 @@ padding-left: clamp(20px, 3vw, 40px);
     opacity: 0.7;
     transform: translateY(-2px);
   }
+}
 
-}	  
-
-.footer-desktop {
-  display: none;
-}	  
+  
   </style>
 </head>
 
