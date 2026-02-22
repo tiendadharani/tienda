@@ -926,20 +926,33 @@ font-family: "Cormorant Garamond", serif;
 /* ===== BUSCADOR MOBILE ESTILO LIMPIO ===== */
 
 .buscador-mobile.limpio {
-  background: none;
-  box-shadow: none;
-  border-radius: 0;
-
-  border-bottom: 1px solid #ddd;
-
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #e3e3e3;
   padding: 12px 0;
-  margin-bottom: 10px;
+  margin-bottom: 18px;
 
-  font-size: 18px;
-
+  display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
 }
+
+.buscador-mobile input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  width: 100%;
+  color: #3f6b5a;
+}
+
+.icono-busqueda {
+  width: 18px;
+  height: 18px;
+  opacity: 0.6;
+}
+	  
 
 	  
 
@@ -1737,10 +1750,13 @@ padding-left: clamp(20px, 3vw, 40px);
 
     <!-- Buscador mobile -->
   <div class="buscador buscador-mobile limpio">
-  <input type="text" id="buscador-mobile" placeholder="Búsqueda de productos">
-  <span class="icono">🔍</span>
-</div>
+  <input type="text" id="buscador-mobile" placeholder="Buscar producto...">
 
+  <svg class="icono-busqueda" viewBox="0 0 24 24" fill="none" stroke="#3f6b5a" stroke-width="2">
+    <circle cx="11" cy="11" r="7"></circle>
+    <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+  </svg>
+</div>
 	  
    <a href="#" onclick="volverAlInicio(); return false;">Inicio</a>
 
