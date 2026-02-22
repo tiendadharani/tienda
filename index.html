@@ -612,6 +612,7 @@ will-change: opacity, transform;
   height: 85px;
   width: auto;
   display: block;
+margin-left: 10px;	
 }
 
 
@@ -763,8 +764,9 @@ font-family: "Cormorant Garamond", serif;
   padding: 12px 20px;
 
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto auto 1fr auto;
   align-items: center;
+  gap: 20px;
 }
 
 .logo {
@@ -857,6 +859,12 @@ font-family: "Cormorant Garamond", serif;
 
 }
 
+@media (max-width: 900px) {
+  .logo {
+    height: 60px;
+  }
+}
+	  
 /* ===== HEADER LIMPIO ===== */
 
 .menu-btn {
@@ -1768,6 +1776,12 @@ padding-left: clamp(20px, 3vw, 40px);
   gap: 18px;
   justify-self: end;
 }
+
+@media (max-width: 900px) {
+  .instagram-header {
+    display: none;
+  }
+}	  
 	  
   </style>
 </head>
@@ -1778,25 +1792,34 @@ padding-left: clamp(20px, 3vw, 40px);
 
   <div class="header-top">
 
-    <!-- Hamburguesa -->
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-    <!-- Logo -->
-    <img src="img/logo/logo1.png" class="logo" onclick="irAlInicio()" style="cursor:pointer;">
+  <img src="img/logo/logo1.png"
+       class="logo"
+       onclick="irAlInicio()"
+       style="cursor:pointer;">
 
- <a href="https://instagram.com/universodharani" 
-   target="_blank" 
-   class="instagram-header"
-   aria-label="Instagram Universo Dharani">
+  <div class="buscador buscador-desktop">
+    🔍
+    <input type="text" id="buscador" placeholder="Buscar producto...">
+  </div>
 
-  <svg viewBox="0 0 24 24" fill="none" stroke="#3f6b5a" stroke-width="2">
-    <rect x="2" y="2" width="20" height="20" rx="5"></rect>
-    <circle cx="12" cy="12" r="4"></circle>
-    <circle cx="18" cy="6" r="1"></circle>
-  </svg>
+  <div class="acciones-header">
 
-</a>
+    <a href="https://instagram.com/universodharani"
+       target="_blank"
+       class="instagram-header"
+       aria-label="Instagram Universo Dharani">
+      <!-- svg -->
+    </a>
 
+    <div class="carrito-desktop" onclick="toggleCarrito()">
+      <!-- svg carrito -->
+    </div>
+
+  </div>
+
+</div>
 
 	
     <!-- Buscador desktop -->
@@ -1818,10 +1841,7 @@ padding-left: clamp(20px, 3vw, 40px);
   </div>
   </div>
 
-<div class="acciones-header">
-  <a ... class="instagram-header">...</a>
-  <div class="carrito-desktop">...</div>
-</div>
+
 	
   <!-- Menú -->
   <nav class="menu" id="menu">
@@ -2805,13 +2825,7 @@ function toggleMenu() {
   
 
 <script>
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("active");
-}
 
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("activo");
-}
 
 /* Submenu mobile */
 
