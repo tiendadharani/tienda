@@ -2215,7 +2215,35 @@ async function cargarProductosDesdeCSV() {
   console.log("Productos cargados correctamente:", productos);
 
   renderProductos();
+  actualizarMenuCategorias();	
 }
+
+ 
+
+function actualizarMenuCategorias() {
+
+  const categoriasConProductos = new Set(
+    productos.map(p => p.categoria)
+  );
+
+  document.querySelectorAll(".submenu-lista a").forEach(link => {
+
+    const onclick = link.getAttribute("onclick");
+    if (!onclick) return;
+
+    const match = onclick.match(/'([^']+)'/);
+    if (!match) return;
+
+    const idSeccion = match[1].toLowerCase();
+
+    if (!categoriasConProductos.has(idSeccion)) {
+      link.style.display = "none";
+    }
+
+  });
+}
+
+	
 function construirOpciones(columnas) {
   let opciones = [];
 
