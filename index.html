@@ -994,7 +994,7 @@ font-family: "Cormorant Garamond", serif;
   transition: transform 0.3s ease;
   z-index: 9999;
 
-  overflow-y: auto;
+  overflow-y: visible;
 }
 
   .menu > a,
@@ -1793,16 +1793,15 @@ padding-left: clamp(20px, 3vw, 40px);
 @media (max-width: 1000px) {
 
   .menu-footer-mobile {
-     margin-top: calc(auto - 10px);   
-    padding-top: 18px;
-    border-top: 1px solid #eee;
+  margin-top: 40px; /* separación fija */
+  padding-top: 18px;
+  border-top: 1px solid #eee;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* 🔥 centra todo */
-    gap: 16px;
-  }
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
 }
 	  
 .menu-footer-texto {
