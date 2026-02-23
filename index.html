@@ -3055,6 +3055,11 @@ function irASeccion(seccion, e) {
 
   // 🔥 DESPUÉS mostrar sección
   mostrar(seccion);
+
+	window.scrollTo({
+  top: 0,
+  behavior: 'smooth'
+});
 }
 
 function abrirProducto(id) {
