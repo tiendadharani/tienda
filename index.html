@@ -2196,6 +2196,7 @@ function actualizarMenuCategorias() {
     productos.map(p => p.categoria)
   );
 
+  // 🔹 1. Revisar links dentro del submenu
   document.querySelectorAll(".submenu-lista a").forEach(link => {
 
     const onclick = link.getAttribute("onclick");
@@ -2211,6 +2212,15 @@ function actualizarMenuCategorias() {
     }
 
   });
+
+  // 🔹 2. Revisar botón Ofertas (está fuera del submenu)
+
+  const linkOfertas = document.querySelector("a[onclick*='ofertas']");
+
+  if (linkOfertas && !categoriasConProductos.has("ofertas")) {
+    linkOfertas.style.display = "none";
+  }
+
 }
 
 	
