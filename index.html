@@ -1789,7 +1789,10 @@ padding-left: clamp(20px, 3vw, 40px);
     transform: translateY(-2px);
   }
 }
-
+	  
+.menu-footer-mobile {
+  display: none;
+}
 
 
 @media (max-width: 1000px) {
@@ -1804,10 +1807,7 @@ padding-left: clamp(20px, 3vw, 40px);
     flex-direction: column;
     gap: 14px;
   }
-	
-.menu-footer-mobile {
-  display: none;
-}
+
 }
 	  
 .menu-footer-texto {
@@ -2869,13 +2869,9 @@ function volverAlInicio() {
   
 
 <script>
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("active");
-}
 
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("activo");
-}
+
+
 
 /* Submenu mobile */
 
@@ -2890,9 +2886,6 @@ document.querySelectorAll(".submenu span").forEach(item => {
 
 	<script>
 
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("activo");
-}
 
 function toggleSubmenu(e) {
   e.preventDefault();
