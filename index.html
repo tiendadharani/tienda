@@ -976,24 +976,26 @@ font-family: "Cormorant Garamond", serif;
 /* ===== MOBILE ===== */
 
 @media (max-width: 1000px) {
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
 
-  .menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 280px;
-    height: 100vh;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 25px;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: 9999;
-    overflow-y: auto;
-	 
-  }
+  height: 100dvh;   /* 🔥 no 100vh */
+  background: white;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 25px 25px 35px 25px;
+
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 9999;
+
+  overflow-y: auto;
+}
 
   .menu > a,
   .menu > .submenu {
@@ -1791,21 +1793,23 @@ padding-left: clamp(20px, 3vw, 40px);
 @media (max-width: 1000px) {
 
   .menu-footer-mobile {
-    display: flex;
-	flex-direction: column;
-	gap: 14px;
-	  
-    margin-top: 30px;
-    padding-top: 20px;
+    margin-top: auto;   /* 🔥 ahora sí lo empuja abajo */
+    padding-top: 25px;
     border-top: 1px solid #eee;
 
-   }
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 🔥 centra todo */
+    gap: 18px;
+  }
+
 }
 	  
 .menu-footer-texto {
   font-size: 13px;
   color: #3f6b5a;
   line-height: 1.6;
+  text-align: center;
 }
 
 .menu-footer-texto .corazon {
