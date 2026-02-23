@@ -986,7 +986,7 @@ font-family: "Cormorant Garamond", serif;
     background: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 25px;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
@@ -1792,15 +1792,16 @@ padding-left: clamp(20px, 3vw, 40px);
 
   .menu-footer-mobile {
     display: flex;
+	flex-direction: column;
+	gap: 14px;
+	  
     margin-top: auto;
-    padding-top: 10px;
+    padding-top: 20px;
     border-top: 1px solid #eee;
 
-    width: 100%;
-    flex-direction: column;
-    gap: 14px;
-  }
-
+   flex-shrink: 0;
+   
+}
 }
 	  
 .menu-footer-texto {
