@@ -907,8 +907,15 @@ font-family: "Cormorant Garamond", serif;
   white-space: nowrap;
 }
 
-.submenu:hover .submenu-lista {
+/* Primer nivel */
+.submenu:hover > .submenu-lista {
   display: block;
+}
+
+/* Segundo nivel */
+.submenu-item:hover > .submenu-lista {
+  display: block;
+}
 }
 
 .submenu-item {
@@ -2843,18 +2850,18 @@ function buscarProductos(texto) {
 
 function filtrarPorSubcategoria(seccion, subcategoria) {
 
-  const categoriaAnterior = productos;
-
   const productosFiltrados = productos.filter(p =>
     p.categoria === seccion &&
     normalizar(p.subcategoria) === normalizar(subcategoria)
   );
 
-  productos = productosFiltrados;
+  const contenedor = document.getElementById("contenedor-" + seccion);
+  contenedor.innerHTML = "";
 
-  renderProductos();
+  productosFiltrados.forEach(producto => {
+    renderProductoIndividual(producto, contenedor);
+  });
 
-  productos = categoriaAnterior;
 }
 
 
