@@ -1965,6 +1965,10 @@ padding-left: clamp(20px, 3vw, 40px);
     padding-left: 15px;
   }
 }
+	  .submenu-lista {
+  position: relative;
+}
+
 	  
   </style>
 </head>
@@ -2868,20 +2872,22 @@ function buscarProductos(texto) {
 
 function filtrarPorSubcategoria(seccion, subcategoria) {
 
+  const contenedor = document.getElementById("contenedor-" + seccion);
+  contenedor.innerHTML = "";
+
   const productosFiltrados = productos.filter(p =>
     p.categoria === seccion &&
     normalizar(p.subcategoria) === normalizar(subcategoria)
   );
 
-  const contenedor = document.getElementById("contenedor-" + seccion);
-  contenedor.innerHTML = "";
-
   productosFiltrados.forEach(producto => {
-    renderProductoIndividual(producto, contenedor);
+
+    const tarjeta = crearTarjetaDesdeProducto(producto);
+    contenedor.appendChild(tarjeta);
+
   });
 
 }
-
 
 document.addEventListener("DOMContentLoaded", () => {
 
