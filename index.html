@@ -2077,7 +2077,7 @@ padding-left: clamp(20px, 3vw, 40px);
 
     <div class="carrusel-categorias">
 
-      <div class="card-categoria" onclick="irASeccion('almacen','frutos_secos')">
+      <div class="card-categoria" onclick="irASeccion('almacen','frutos secos')">
         <img src="img/frutos.jpg" alt="Frutos Secos">
         <span>Frutos Secos</span>
       </div>
@@ -2679,12 +2679,7 @@ function normalizarTexto(texto) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
-function normalizar(texto) {
-  return texto
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
-}
+
   
 function normalizar(texto) {
   return texto
@@ -2848,21 +2843,19 @@ function buscarProductos(texto) {
 
 function filtrarPorSubcategoria(seccion, subcategoria) {
 
+  const categoriaAnterior = productos;
+
   const productosFiltrados = productos.filter(p =>
     p.categoria === seccion &&
     normalizar(p.subcategoria) === normalizar(subcategoria)
   );
 
-  const contenedor = document.getElementById("contenedor-" + seccion);
-  contenedor.innerHTML = "";
+  productos = productosFiltrados;
 
-  productosFiltrados.forEach(producto => {
-    crearTarjetaProducto(producto, contenedor);
-  });
+  renderProductos();
 
+  productos = categoriaAnterior;
 }
-
-
 
 
 document.addEventListener("DOMContentLoaded", () => {
