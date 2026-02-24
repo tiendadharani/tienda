@@ -2506,7 +2506,7 @@ function mostrarCarrito() {
       </div>
     `;
 
-    lista.appendChild(li);
+    contenedor.appendChild(tarjeta);
   });
 
   document.getElementById("total").textContent = "$" + total;
@@ -2744,45 +2744,46 @@ function buscarProductos(texto) {
       const tarjeta = document.createElement("div");
       tarjeta.classList.add("tarjeta-producto");
 
-      tarjeta.innerHTML = `
-        <h3 class="nombre-producto">${producto.nombre}</h3>
+    tarjeta.innerHTML = `
+  <h3 class="nombre-producto">${producto.nombre}</h3>
 
-        <div class="producto-imagen-container">
-          <img src="${producto.imagen}" class="producto-imagen">
-        </div>
+  <div class="producto-imagen-container">
+    <img src="${producto.imagen}" class="producto-imagen">
+  </div>
 
-        <p class="descripcion">${producto.descripcion}</p>
+  <p class="descripcion">${producto.descripcion}</p>
 
-        <div class="pesos">
-          ${producto.opciones.map((op, i) => `
-            <button class="peso-btn ${i === 0 ? 'active' : ''}" data-precio="${op.precio}">
-              ${op.peso}
-            </button>
-          `).join("")}
-        </div>
+  <div class="pesos">
+    ${producto.opciones.map((op, i) => `
+      <button class="peso-btn ${i === 0 ? 'active' : ''}" data-precio="${op.precio}">
+        ${op.peso}
+      </button>
+    `).join("")}
+  </div>
 
-        <div class="precio">
-          $<span class="precio-valor">${producto.opciones[0].precio}</span>
-        </div>
+  <div class="precio">
+    $<span class="precio-valor">${producto.opciones[0].precio}</span>
+  </div>
 
-        <div class="footer-compra">
-          <div class="cantidad-control">
-            <button class="cantidad-btn menos">−</button>
-            <span class="cantidad-valor">1</span>
-            <button class="cantidad-btn mas">+</button>
-          </div>
+  <div class="footer-compra">
+    <div class="cantidad-control">
+      <button class="cantidad-btn menos">−</button>
+      <span class="cantidad-valor">1</span>
+      <button class="cantidad-btn mas">+</button>
+    </div>
 
-          <button class="btn-agregar-icono">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-              <circle cx="9" cy="21" r="1"></circle>
-              <circle cx="20" cy="21" r="1"></circle>
-              <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
-            </svg>
-          </button>
-        </div>
-      `;
+    <button class="btn-agregar-icono">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+        <circle cx="9" cy="21" r="1"></circle>
+        <circle cx="20" cy="21" r="1"></circle>
+        <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
+      </svg>
+    </button>
+  </div>
+`;
 
-      lista.appendChild(tarjeta);
+      contenedor.appendChild(tarjeta);
+	
 
       // 🔧 Ahora agregamos los mismos eventos que en renderProductos
 
@@ -3110,26 +3111,25 @@ function irASeccion(seccion, subcategoria = null, e = null) {
   const menu = document.getElementById("menu");
   const overlay = document.getElementById("overlay");
 
-  menu.classList.remove("activo");
-  overlay.classList.remove("visible");
-
-  document.querySelectorAll(".submenu").forEach(sub => {
-    sub.classList.remove("activo");
-  });
+  if (menu) menu.classList.remove("activo");
+  if (overlay) overlay.classList.remove("visible");
 
   mostrar(seccion);
-
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
 
   if (subcategoria) {
     filtrarPorSubcategoria(seccion, subcategoria);
   } else {
     renderProductos();
   }
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
+
+
+ 
 
 function abrirProducto(id) {
 
