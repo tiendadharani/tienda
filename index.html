@@ -910,6 +910,24 @@ font-family: "Cormorant Garamond", serif;
 .submenu:hover .submenu-lista {
   display: block;
 }
+
+.submenu-item {
+  position: relative;
+}
+
+.submenu-item > .submenu-lista {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+}
+
+@media (max-width: 1000px) {
+  .submenu-item > .submenu-lista {
+    position: static;
+    padding-left: 15px;
+  }
+}	  
 	  
 @media (max-width: 1000px) {
 
@@ -1981,7 +1999,16 @@ padding-left: clamp(20px, 3vw, 40px);
 
   <div class="submenu-lista">
 
-  <a href="#" onclick="irASeccion('almacen'); return false;">Almacén Natural</a>
+<div class="submenu-item">
+  <span onclick="toggleSubmenu(event)">Almacén Natural ▸</span>
+  <div class="submenu-lista">
+    <a href="#" onclick="irASeccion('almacen','harinas'); return false;">Harinas</a>
+    <a href="#" onclick="irASeccion('almacen','frutos secos'); return false;">Frutos Secos</a>
+    <a href="#" onclick="irASeccion('almacen','semillas'); return false;">Semillas</a>
+    <a href="#" onclick="irASeccion('almacen','cereales'); return false;">Cereales</a>
+    <a href="#" onclick="irASeccion('almacen','legumbres'); return false;">Legumbres</a>
+  </div>
+</div>
   <a href="#" onclick="irASeccion('hierbas'); return false;">Hierbas</a>
   <a href="#" onclick="irASeccion('tes'); return false;">Tés</a>
   <a href="#" onclick="irASeccion('condimentos'); return false;">Condimentos</a>
@@ -2819,7 +2846,21 @@ function buscarProductos(texto) {
   }
 }
 
+function filtrarPorSubcategoria(seccion, subcategoria) {
 
+  const productosFiltrados = productos.filter(p =>
+    p.categoria === seccion &&
+    normalizar(p.subcategoria) === normalizar(subcategoria)
+  );
+
+  const contenedor = document.getElementById("contenedor-" + seccion);
+  contenedor.innerHTML = "";
+
+  productosFiltrados.forEach(producto => {
+    crearTarjetaProducto(producto, contenedor);
+  });
+
+}
 
 
 
@@ -3035,7 +3076,7 @@ function toggleSubmenu(e) {
   submenu.classList.toggle("activo");
 }
 
-function irASeccion(seccion, e) {
+function irASeccion(seccion, subcategoria = null, e = null) {
 
   if (e) {
     e.preventDefault();
@@ -3045,7 +3086,6 @@ function irASeccion(seccion, e) {
   const menu = document.getElementById("menu");
   const overlay = document.getElementById("overlay");
 
-  // 🔥 PRIMERO cerrar menú
   menu.classList.remove("activo");
   overlay.classList.remove("visible");
 
@@ -3053,13 +3093,18 @@ function irASeccion(seccion, e) {
     sub.classList.remove("activo");
   });
 
-  // 🔥 DESPUÉS mostrar sección
   mostrar(seccion);
 
-	window.scrollTo({
-  top: 0,
-  behavior: 'smooth'
-});
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
+  if (subcategoria) {
+    filtrarPorSubcategoria(seccion, subcategoria);
+  } else {
+    renderProductos();
+  }
 }
 
 function abrirProducto(id) {
