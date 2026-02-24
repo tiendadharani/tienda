@@ -879,8 +879,7 @@ font-family: "Cormorant Garamond", serif;
 
 
 
-/* Submenu */
-
+/* Submenu base */
 .submenu {
   position: relative;
 }
@@ -892,19 +891,13 @@ font-family: "Cormorant Garamond", serif;
   left: 0;
 
   background: white;
-  min-width: 200px;
+  min-width: 220px;
 
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  border-radius: 10px;
+  border-radius: 12px;
 
   padding: 10px 0;
-  z-index: 999;
-}
-
-.submenu-lista a {
-  display: block;
-  padding: 10px 16px;
-  white-space: nowrap;
+  z-index: 9999;
 }
 
 /* Primer nivel */
@@ -912,21 +905,28 @@ font-family: "Cormorant Garamond", serif;
   display: block;
 }
 
-/* Segundo nivel */
-.submenu-item:hover > .submenu-lista {
-  display: block;
-}
-}
-
+/* Sub-submenu */
 .submenu-item {
   position: relative;
 }
 
-.submenu-item > .submenu-lista {
+.subsubmenu-lista {
   display: none;
   position: absolute;
   left: 100%;
   top: 0;
+
+  background: white;
+  min-width: 220px;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  border-radius: 12px;
+
+  padding: 10px 0;
+}
+
+.submenu-item:hover > .subsubmenu-lista {
+  display: block;
 }
 
 @media (max-width: 1000px) {
@@ -2882,8 +2882,8 @@ function filtrarPorSubcategoria(seccion, subcategoria) {
 
   productosFiltrados.forEach(producto => {
 
-    const tarjeta = crearTarjetaDesdeProducto(producto);
-    contenedor.appendChild(tarjeta);
+    const tarjeta = document.createElement("div");
+tarjeta.classList.add("tarjeta-producto");
 
   });
 
