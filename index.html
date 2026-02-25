@@ -294,12 +294,10 @@
 
   /* Categoría */
   .categoria,
-  .categoria.visible {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
+.categoria.visible {
+  display: grid;
+  gap: 28px;
+}
 
 
 
@@ -1052,38 +1050,29 @@ display: flex;;
   display: block;
 }
 
-/* ===== MOBILE ===== */
-
+/* MOBILE */
 @media (max-width: 600px) {
-
-  .categoria {
-    padding-left: 12px;
-    padding-right: 12px;
+  .categoria.visible {
+    grid-template-columns: 1fr;
   }
-
 }
 
 
-/* ===== TABLET ===== */
-
+/* TABLET */
 @media (min-width: 601px) and (max-width: 1000px) {
-
   .categoria.visible {
     grid-template-columns: repeat(2, 1fr);
   }
-
 }
 
-/* ===== DESKTOP ===== */
-
+/* DESKTOP */
 @media (min-width: 1001px) {
-
   .categoria.visible {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
-
 }
 
+	  
 @media (min-width: 1001px) {
 
   .categoria .producto p {
