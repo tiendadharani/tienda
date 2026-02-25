@@ -2952,6 +2952,8 @@ function buscarProductos(texto) {
 
 function filtrarPorSubcategoria(seccion, subcategoria) {
 
+	mostrar(seccion); // 👈 esto faltaba
+	
   const contenedor = document.getElementById("contenedor-" + seccion);
   contenedor.innerHTML = "";
 
@@ -3137,21 +3139,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* Mostrar categorías */
-function mostrar(id, agregarHistorial = true) {
+function mostrar(id) {
 
-  const categoria = document.getElementById(id);
-  if (!categoria) return;
-
-  document.querySelectorAll('.categoria').forEach(c => {
-    c.classList.remove("visible");
+  // Ocultar todas las categorías
+  document.querySelectorAll(".categoria").forEach(cat => {
+    cat.classList.remove("visible");
   });
 
-  categoria.classList.add("visible");
-
-  // 👇 Actualiza la URL sin recargar
-  if (agregarHistorial) {
-    history.pushState({ seccion: id }, "", "#" + id);
+  // Ocultar resultados búsqueda
+  const resultados = document.getElementById("resultados-busqueda");
+  if (resultados) {
+    resultados.classList.remove("visible");
   }
+
+  // Mostrar solo la sección solicitada
+  const seccion = document.getElementById(id);
+  if (seccion) {
+    seccion.classList.add("visible");
+  }
+
+  window.scrollTo(0, 0);
 }
 
 	
