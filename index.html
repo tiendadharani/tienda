@@ -891,18 +891,18 @@ font-family: "Cormorant Garamond", serif;
   left: 0;
 
   background: white;
-  min-width: 220px;
+  min-width: 240px;
 
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   border-radius: 12px;
+  padding: 8px 0;
 
-  padding: 10px 0;
-  z-index: 9999;
+  flex-direction: column;   /* 🔥 importante */
 }
 
 /* Primer nivel */
 .submenu:hover > .submenu-lista {
-  display: block;
+display: flex;;
 }
 
 /* Sub-submenu */
@@ -917,18 +917,19 @@ font-family: "Cormorant Garamond", serif;
   top: 0;
 
   background: white;
-  min-width: 220px;
+  min-width: 240px;
 
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   border-radius: 12px;
+  padding: 8px 0;
 
-  padding: 10px 0;
+  flex-direction: column;   /* 🔥 importante */
 }
 
 .submenu-item:hover > .subsubmenu-lista {
-  display: block;
+  display: flex;
 }
-
+	  
 @media (max-width: 1000px) {
   .submenu-item > .submenu-lista {
     position: static;
@@ -1966,7 +1967,17 @@ padding-left: clamp(20px, 3vw, 40px);
   }
 }
 	  
+.submenu-item > span {
+  display: block;           /* 🔥 CLAVE */
+  padding: 10px 14px;
+  cursor: pointer;
+  color: #3f6b5a;
+  font-weight: 500;
+}
 
+.submenu-item > span:hover {
+  background: #f2f2f2;
+}	  
 	  
   </style>
 </head>
