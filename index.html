@@ -1969,12 +1969,14 @@ padding-left: clamp(20px, 3vw, 40px);
   background: #f2f2f2;
 }	  
 
-	  .submenu-lista > a,
+.submenu-lista > a,
 .submenu-item > a {
   display: block;
   padding: 10px 14px;
   color: #3f6b5a;
-  font-weight: 500;
+  font-weight: 700; 
+  font-family: "Cormorant Garamond", serif;
+  letter-spacing: 0.4px;
   text-decoration: none;
 }
 
@@ -2406,8 +2408,14 @@ function actualizarMenuCategorias() {
     productos.map(p => p.categoria)
   );
 
-  // 🔹 1. Revisar links dentro del submenu
-  document.querySelectorAll(".submenu-lista a").forEach(link => {
+  const subcategoriasAlmacen = new Set(
+    productos
+      .filter(p => p.categoria === "almacen")
+      .map(p => normalizar(p.subcategoria))
+  );
+
+  // 🔹 1. Revisar categorías principales
+  document.querySelectorAll(".submenu-lista > a").forEach(link => {
 
     const onclick = link.getAttribute("onclick");
     if (!onclick) return;
@@ -2423,14 +2431,29 @@ function actualizarMenuCategorias() {
 
   });
 
-  // 🔹 2. Revisar botón Ofertas (está fuera del submenu)
+  // 🔹 2. Revisar subcategorías de Almacén
+  document.querySelectorAll(".subsubmenu-lista a").forEach(link => {
 
+    const onclick = link.getAttribute("onclick");
+    if (!onclick) return;
+
+    const match = onclick.match(/'almacen','([^']+)'/);
+    if (!match) return;
+
+    const subcat = normalizar(match[1]);
+
+    if (!subcategoriasAlmacen.has(subcat)) {
+      link.style.display = "none";
+    }
+
+  });
+
+  // 🔹 3. Revisar Ofertas
   const linkOfertas = document.querySelector("a[onclick*='ofertas']");
-
   if (linkOfertas && !categoriasConProductos.has("ofertas")) {
     linkOfertas.style.display = "none";
   }
-
+}
 }
 
 	
