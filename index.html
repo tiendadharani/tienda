@@ -1949,16 +1949,6 @@ padding-left: clamp(20px, 3vw, 40px);
   }
 }
 
-.subsubmenu-lista {
-  display: none;
-  position: absolute;
-  left: 100%;
-  top: 0;
-}
-
-.submenu-item:hover > .subsubmenu-lista {
-  display: block;
-}
 
 @media (max-width: 1000px) {
   .subsubmenu-lista {
@@ -1978,6 +1968,20 @@ padding-left: clamp(20px, 3vw, 40px);
 .submenu-item > span:hover {
   background: #f2f2f2;
 }	  
+
+	  .submenu-lista > a,
+.submenu-item > a {
+  display: block;
+  padding: 10px 14px;
+  color: #3f6b5a;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.submenu-lista > a:hover,
+.submenu-item > a:hover {
+  background: #f2f2f2;
+}
 	  
   </style>
 </head>
@@ -2038,7 +2042,9 @@ padding-left: clamp(20px, 3vw, 40px);
   <div class="submenu-lista">
 
 <div class="submenu-item">
-  <span onclick="toggleSubmenu(event)">Almacén Natural</span>
+  <a href="#" class="submenu-link" onclick="return false;">
+  Almacén Natural
+</a>
   <div class="subsubmenu-lista">
     <a href="#" onclick="irASeccion('almacen','harinas'); return false;">Harinas</a>
     <a href="#" onclick="irASeccion('almacen','frutos secos'); return false;">Frutos Secos</a>
@@ -2047,6 +2053,8 @@ padding-left: clamp(20px, 3vw, 40px);
     <a href="#" onclick="irASeccion('almacen','legumbres'); return false;">Legumbres</a>
   </div>
 </div>
+
+	  
   <a href="#" onclick="irASeccion('hierbas'); return false;">Hierbas</a>
   <a href="#" onclick="irASeccion('tes'); return false;">Tés</a>
   <a href="#" onclick="irASeccion('condimentos'); return false;">Condimentos</a>
