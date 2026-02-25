@@ -1957,17 +1957,7 @@ padding-left: clamp(20px, 3vw, 40px);
   }
 }
 	  
-.submenu-item > span {
-  display: block;           /* 🔥 CLAVE */
-  padding: 10px 14px;
-  cursor: pointer;
-  color: #3f6b5a;
-  font-weight: 500;
-}
-
-.submenu-item > span:hover {
-  background: #f2f2f2;
-}	  
+	  
 
 .submenu-lista > a,
 .submenu-item > a {
@@ -1981,6 +1971,31 @@ padding-left: clamp(20px, 3vw, 40px);
 }
 
 .submenu-lista > a:hover,
+.submenu-item > a:hover {
+  background: #f2f2f2;
+}
+
+.submenu-lista,
+.subsubmenu-lista {
+  display: none;
+  flex-direction: column;
+  gap: 4px; /* mismo espaciado */
+}
+
+.submenu-lista a,
+.subsubmenu-lista a,
+.submenu-item > a {
+  display: block;
+  padding: 12px 18px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #3f6b5a;
+  text-decoration: none;
+}
+
+.submenu-lista a:hover,
+.subsubmenu-lista a:hover,
 .submenu-item > a:hover {
   background: #f2f2f2;
 }
@@ -2414,8 +2429,10 @@ function actualizarMenuCategorias() {
       .map(p => normalizar(p.subcategoria))
   );
 
-  // 🔹 1. Revisar categorías principales
+  // 🔹 Categorías principales
   document.querySelectorAll(".submenu-lista > a").forEach(link => {
+
+    link.style.display = "block"; // reset
 
     const onclick = link.getAttribute("onclick");
     if (!onclick) return;
@@ -2428,11 +2445,12 @@ function actualizarMenuCategorias() {
     if (!categoriasConProductos.has(idSeccion)) {
       link.style.display = "none";
     }
-
   });
 
-  // 🔹 2. Revisar subcategorías de Almacén
+  // 🔹 Subcategorías almacén
   document.querySelectorAll(".subsubmenu-lista a").forEach(link => {
+
+    link.style.display = "block"; // reset
 
     const onclick = link.getAttribute("onclick");
     if (!onclick) return;
@@ -2445,16 +2463,28 @@ function actualizarMenuCategorias() {
     if (!subcategoriasAlmacen.has(subcat)) {
       link.style.display = "none";
     }
-
   });
 
-  // 🔹 3. Revisar Ofertas
+  // 🔹 Ocultar Almacén completo si no tiene subcategorías visibles
+  const almacenItem = document.querySelector(".submenu-item");
+  if (almacenItem) {
+
+    const subLinks = almacenItem.querySelectorAll(".subsubmenu-lista a");
+    const algunoVisible = Array.from(subLinks).some(link =>
+      link.style.display !== "none"
+    );
+
+    almacenItem.style.display = algunoVisible ? "block" : "none";
+  }
+
+  // 🔹 Ofertas
   const linkOfertas = document.querySelector("a[onclick*='ofertas']");
-  if (linkOfertas && !categoriasConProductos.has("ofertas")) {
-    linkOfertas.style.display = "none";
+  if (linkOfertas) {
+    linkOfertas.style.display =
+      categoriasConProductos.has("ofertas") ? "block" : "none";
   }
 }
-}
+
 
 	
 function construirOpciones(columnas) {
