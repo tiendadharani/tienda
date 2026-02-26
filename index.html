@@ -158,55 +158,28 @@
   display: grid;
 }
 
-#contenedor-tes,
-#contenedor-condimentos,
-#contenedor-aromas,
-#contenedor-terapias,
-#contenedor-panificados,
-#contenedor-regaleria,
-#contenedor-ofertas {
+.contenedor-productos {
   display: grid;
   gap: 28px;
 }
-
+	  
 /* MOBILE */
 @media (max-width: 600px) {
-  #contenedor-almacen,
-  #contenedor-tes,
-  #contenedor-condimentos,
-  #contenedor-aromas,
-  #contenedor-terapias,
-  #contenedor-panificados,
-  #contenedor-regaleria,
-  #contenedor-ofertas {
+  .contenedor-productos {
     grid-template-columns: 1fr;
   }
 }
 
-/* TABLET */
+/* TABLET / NOTEBOOK REDUCIDA */
 @media (min-width: 601px) and (max-width: 1000px) {
-  #contenedor-almacen,
-  #contenedor-tes,
-  #contenedor-condimentos,
-  #contenedor-aromas,
-  #contenedor-terapias,
-  #contenedor-panificados,
-  #contenedor-regaleria,
-  #contenedor-ofertas {
+  .contenedor-productos {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* DESKTOP */
 @media (min-width: 1001px) {
-  #contenedor-almacen,
-  #contenedor-tes,
-  #contenedor-condimentos,
-  #contenedor-aromas,
-  #contenedor-terapias,
-  #contenedor-panificados,
-  #contenedor-regaleria,
-  #contenedor-ofertas {
+  .contenedor-productos {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
 }
@@ -729,10 +702,7 @@ letter-spacing: 0.5px;
   width: 100%;
 }
 
-.contenedor-productos {
-  display: grid;
-  gap: 28px;
-}
+
 
 
 /* MOBILE */
