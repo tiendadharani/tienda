@@ -3117,7 +3117,7 @@ function obtenerImagenProducto(idCarrito) {
 		
 function renderProductos() {
 
-  const contenedores = {};
+  const contenedoresSub = {};
 
   productos.forEach(producto => {
 
@@ -3126,19 +3126,41 @@ function renderProductos() {
 
     if (!contenedorCategoria) return;
 
-    const claveSub = producto.categoria + "-" + producto.subcategoria;
+    let contenedorDestino;
 
-    if (!contenedores[claveSub]) {
+    // ✅ SOLO HIERBAS SE DIVIDE VISUALMENTE EN SUBCATEGORÍAS
+    if (producto.categoria === "hierbas") {
 
-      const bloqueSub = document.createElement("div");
-      bloqueSub.innerHTML = `
-        <h3 class="subcategoria">${producto.subcategoria}</h3>
-        <div class="bloque-subcategoria"></div>
-      `;
+      const claveSub = producto.categoria + "-" + producto.subcategoria;
 
-      contenedorCategoria.appendChild(bloqueSub);
-      contenedores[claveSub] = bloqueSub.querySelector(".bloque-subcategoria");
+      if (!contenedoresSub[claveSub]) {
+
+        const titulo = document.createElement("h3");
+        titulo.classList.add("subcategoria");
+        titulo.textContent = producto.subcategoria;
+
+        const linea = document.createElement("div");
+        linea.classList.add("linea-subcategoria");
+
+        const bloque = document.createElement("div");
+        bloque.classList.add("bloque-subcategoria");
+
+        contenedorCategoria.appendChild(titulo);
+        contenedorCategoria.appendChild(linea);
+        contenedorCategoria.appendChild(bloque);
+
+        contenedoresSub[claveSub] = bloque;
+      }
+
+      contenedorDestino = contenedoresSub[claveSub];
+
+    } else {
+
+      // 🟢 TODAS LAS DEMÁS CATEGORÍAS VAN DIRECTO AL GRID
+      contenedorDestino = contenedorCategoria;
     }
+
+    // ===== CREAR TARJETA =====
 
     const tarjeta = document.createElement("div");
     tarjeta.classList.add("tarjeta-producto");
@@ -3171,91 +3193,13 @@ function renderProductos() {
           <button class="cantidad-btn mas">+</button>
         </div>
 
-        <button class="btn-agregar-icono">
-          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-            <circle cx="9" cy="21" r="1"></circle>
-            <circle cx="20" cy="21" r="1"></circle>
-            <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
-          </svg>
-        </button>
+        <button class="btn-agregar-icono">🛒</button>
       </div>
     `;
 
-    contenedores[claveSub].appendChild(tarjeta);
-
-	  tarjeta.querySelector(".nombre-producto")
-  .addEventListener("click", () => abrirProducto(producto.id));
-
-tarjeta.querySelector(".producto-imagen")
-  .addEventListener("click", () => abrirProducto(producto.id));
-
-
-    // ===== INTERACCIONES =====
-
-    let precioActual = producto.opciones[0].precio;
-    let cantidad = 1;
-
-    const precioSpan = tarjeta.querySelector(".precio-valor");
-    const botonesPeso = tarjeta.querySelectorAll(".peso-btn");
-    const btnMas = tarjeta.querySelector(".mas");
-    const btnMenos = tarjeta.querySelector(".menos");
-    const cantidadValor = tarjeta.querySelector(".cantidad-valor");
-    const btnAgregar = tarjeta.querySelector(".btn-agregar-icono");
-
-    botonesPeso.forEach(btn => {
-      btn.addEventListener("click", () => {
-
-        botonesPeso.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-
-        precioActual = Number(btn.dataset.precio);
-        precioSpan.textContent = precioActual;
-      });
-    });
-
-    btnMas.addEventListener("click", () => {
-      cantidad++;
-      cantidadValor.textContent = cantidad;
-    });
-
-    btnMenos.addEventListener("click", () => {
-      if (cantidad > 1) {
-        cantidad--;
-        cantidadValor.textContent = cantidad;
-      }
-    });
-
-  let pesoActual = producto.opciones[0].peso;
-
-botonesPeso.forEach(btn => {
-  btn.addEventListener("click", () => {
-
-    botonesPeso.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    precioActual = Number(btn.dataset.precio);
-    pesoActual = btn.textContent;
-
-    precioSpan.textContent = precioActual;
+    contenedorDestino.appendChild(tarjeta);
   });
-});
-
-btnAgregar.addEventListener("click", () => {
-
-  const idProducto = producto.id + "-" + pesoActual;
-
-  const existente = carrito.find(p => p.id === idProducto);
-
-  if (existente) {
-    existente.cantidad += cantidad;
-  } else {
-    carrito.push({
-      id: idProducto,
-      nombre: `${producto.nombre} (${pesoActual})`,
-      precio: precioActual,
-      cantidad: cantidad
-    });
-  }
+}
 
   mostrarCarrito();
   guardarCarrito();
