@@ -3168,51 +3168,65 @@ function crearTarjetaProducto(producto) {
 		
 function renderProductos() {
 
-  // Limpiar contenedores
+  // 🔹 Limpiar todos los contenedores de categorías
   document.querySelectorAll("[id^='contenedor-']").forEach(c => {
     c.innerHTML = "";
   });
 
-  const categorias = {};
+  const categoriasAgrupadas = {};
 
-  // Agrupar productos
+  // 🔹 Agrupar productos por categoría y subcategoría
   productos.forEach(prod => {
 
-    if (!categorias[prod.categoria]) {
-      categorias[prod.categoria] = {};
+    if (!categoriasAgrupadas[prod.categoria]) {
+      categoriasAgrupadas[prod.categoria] = {};
     }
 
     const sub = prod.subcategoria || "General";
 
-    if (!categorias[prod.categoria][sub]) {
-      categorias[prod.categoria][sub] = [];
+    if (!categoriasAgrupadas[prod.categoria][sub]) {
+      categoriasAgrupadas[prod.categoria][sub] = [];
     }
 
-    categorias[prod.categoria][sub].push(prod);
-
+    categoriasAgrupadas[prod.categoria][sub].push(prod);
   });
 
-  // Renderizar
-  Object.keys(categorias).forEach(cat => {
+  // 🔹 Renderizar cada categoría
+  Object.keys(categoriasAgrupadas).forEach(cat => {
 
-    const contenedor = document.getElementById("contenedor-" + cat);
-    if (!contenedor) return;
+    const contenedorCategoria = document.getElementById("contenedor-" + cat);
+    if (!contenedorCategoria) return;
 
-    Object.keys(categorias[cat]).forEach(sub => {
+    const subcategorias = categoriasAgrupadas[cat];
 
-      const titulo = document.createElement("div");
-      titulo.classList.add("subcategoria");
-      titulo.textContent = sub;
+    Object.keys(subcategorias).forEach(sub => {
 
+      const productosSub = subcategorias[sub];
+
+      // 👉 SOLO mostramos título si la categoría es HIERBAS
+      if (cat === "hierbas") {
+
+        const titulo = document.createElement("h3");
+        titulo.classList.add("subcategoria");
+        titulo.textContent = sub;
+
+        const linea = document.createElement("div");
+        linea.classList.add("linea-subcategoria");
+
+        contenedorCategoria.appendChild(titulo);
+        contenedorCategoria.appendChild(linea);
+      }
+
+      // 🔹 Bloque contenedor de tarjetas
       const bloque = document.createElement("div");
       bloque.classList.add("bloque-subcategoria");
 
-      categorias[cat][sub].forEach(prod => {
-        bloque.appendChild(crearTarjetaProducto(prod));
+      productosSub.forEach(prod => {
+        const tarjeta = crearTarjetaProducto(prod);
+        bloque.appendChild(tarjeta);
       });
 
-      contenedor.appendChild(titulo);
-      contenedor.appendChild(bloque);
+      contenedorCategoria.appendChild(bloque);
 
     });
 
