@@ -156,7 +156,60 @@
   display: grid;
 }
 
+#contenedor-almacen,
+#contenedor-tes,
+#contenedor-condimentos,
+#contenedor-aromas,
+#contenedor-terapias,
+#contenedor-panificados,
+#contenedor-regaleria,
+#contenedor-ofertas {
 
+  display: grid;
+  gap: 28px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  #contenedor-almacen,
+  #contenedor-tes,
+  #contenedor-condimentos,
+  #contenedor-aromas,
+  #contenedor-terapias,
+  #contenedor-panificados,
+  #contenedor-regaleria,
+  #contenedor-ofertas {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* TABLET */
+@media (min-width: 601px) and (max-width: 1000px) {
+  #contenedor-almacen,
+  #contenedor-tes,
+  #contenedor-condimentos,
+  #contenedor-aromas,
+  #contenedor-terapias,
+  #contenedor-panificados,
+  #contenedor-regaleria,
+  #contenedor-ofertas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1001px) {
+  #contenedor-almacen,
+  #contenedor-tes,
+  #contenedor-condimentos,
+  #contenedor-aromas,
+  #contenedor-terapias,
+  #contenedor-panificados,
+  #contenedor-regaleria,
+  #contenedor-ofertas {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
     
 /* Tarjeta producto */
 
