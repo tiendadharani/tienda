@@ -724,42 +724,10 @@ letter-spacing: 0.5px;
 	  
 .bloque-subcategoria {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 300px);
-  gap: 24px;
-
-  justify-content: start;   /* alineadas a la izquierda */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  width: 100%;
 }
-
-
-/* MOBILE */
-@media (max-width: 600px) {
-
-  .bloque-subcategoria {
-    grid-template-columns: 1fr;
-  }
-
-}
-
-/* TABLET */
-@media (min-width: 601px) and (max-width: 1000px) {
-
-  .bloque-subcategoria {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-}
-
-/* DESKTOP */
-@media (min-width: 1001px) {
-
-  .bloque-subcategoria {
-    grid-template-columns: repeat(auto-fit, 300px);
-    justify-content: start;
-    gap: 28px;
-  }
-
-}
-
 
 
 
