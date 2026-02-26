@@ -3168,53 +3168,53 @@ function crearTarjetaProducto(producto) {
 		
 function renderProductos() {
 
-  // 🔥 1. Limpiar todos los contenedores
+  // Limpiar contenedores
   document.querySelectorAll("[id^='contenedor-']").forEach(c => {
     c.innerHTML = "";
   });
 
-  const contenedoresSub = {};
+  const categorias = {};
 
-  productos.forEach(producto => {
+  // Agrupar productos
+  productos.forEach(prod => {
 
-    const contenedorCategoria =
-      document.getElementById("contenedor-" + producto.categoria);
-
-    if (!contenedorCategoria) return;
-
-    let contenedorDestino;
-
-    // 👇 SOLO HIERBAS usa subcategorías visuales
-    if (producto.categoria === "hierbas") {
-
-      const claveSub =
-        producto.categoria + "-" + producto.subcategoria;
-
-      if (!contenedoresSub[claveSub]) {
-
-        const titulo = document.createElement("h3");
-        titulo.classList.add("subcategoria");
-        titulo.textContent = producto.subcategoria;
-
-        const bloque = document.createElement("div");
-        bloque.classList.add("bloque-subcategoria");
-
-        contenedorCategoria.appendChild(titulo);
-        contenedorCategoria.appendChild(bloque);
-
-        contenedoresSub[claveSub] = bloque;
-      }
-
-      contenedorDestino = contenedoresSub[claveSub];
-
-    } else {
-
-      contenedorDestino = contenedorCategoria;
+    if (!categorias[prod.categoria]) {
+      categorias[prod.categoria] = {};
     }
 
-    // 🔥 CREAR TARJETA CORRECTAMENTE
-    const tarjeta = crearTarjetaProducto(producto);
-    contenedorDestino.appendChild(tarjeta);
+    const sub = prod.subcategoria || "General";
+
+    if (!categorias[prod.categoria][sub]) {
+      categorias[prod.categoria][sub] = [];
+    }
+
+    categorias[prod.categoria][sub].push(prod);
+
+  });
+
+  // Renderizar
+  Object.keys(categorias).forEach(cat => {
+
+    const contenedor = document.getElementById("contenedor-" + cat);
+    if (!contenedor) return;
+
+    Object.keys(categorias[cat]).forEach(sub => {
+
+      const titulo = document.createElement("div");
+      titulo.classList.add("subcategoria");
+      titulo.textContent = sub;
+
+      const bloque = document.createElement("div");
+      bloque.classList.add("bloque-subcategoria");
+
+      categorias[cat][sub].forEach(prod => {
+        bloque.appendChild(crearTarjetaProducto(prod));
+      });
+
+      contenedor.appendChild(titulo);
+      contenedor.appendChild(bloque);
+
+    });
 
   });
 
