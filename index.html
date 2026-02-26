@@ -3181,7 +3181,7 @@ function renderProductos() {
 
     let contenedorDestino;
 
-    // ✅ SOLO HIERBAS SE DIVIDE VISUALMENTE EN SUBCATEGORÍAS
+    // ✅ SOLO HIERBAS SE DIVIDE EN SUBCATEGORÍAS
     if (producto.categoria === "hierbas") {
 
       const claveSub = producto.categoria + "-" + producto.subcategoria;
@@ -3209,7 +3209,6 @@ function renderProductos() {
 
     } else {
 
-      // 🟢 TODAS LAS DEMÁS CATEGORÍAS VAN DIRECTO AL GRID
       contenedorDestino = contenedorCategoria;
     }
 
@@ -3229,7 +3228,9 @@ function renderProductos() {
 
       <div class="pesos">
         ${producto.opciones.map((op, i) => `
-          <button class="peso-btn ${i === 0 ? 'active' : ''}" data-precio="${op.precio}">
+          <button class="peso-btn ${i === 0 ? 'active' : ''}"
+                  data-precio="${op.precio}"
+                  data-peso="${op.peso}">
             ${op.peso}
           </button>
         `).join("")}
@@ -3246,12 +3247,91 @@ function renderProductos() {
           <button class="cantidad-btn mas">+</button>
         </div>
 
-        <button class="btn-agregar-icono">🛒</button>
+        <button class="btn-agregar-icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
+          </svg>
+        </button>
       </div>
     `;
 
     contenedorDestino.appendChild(tarjeta);
+
+    // ===== ACTIVAR FUNCIONALIDAD =====
+
+    let precioActual = Number(producto.opciones[0].precio);
+    let pesoActual = producto.opciones[0].peso;
+    let cantidad = 1;
+
+    const precioSpan = tarjeta.querySelector(".precio-valor");
+    const botonesPeso = tarjeta.querySelectorAll(".peso-btn");
+    const btnMas = tarjeta.querySelector(".mas");
+    const btnMenos = tarjeta.querySelector(".menos");
+    const cantidadValor = tarjeta.querySelector(".cantidad-valor");
+    const btnAgregar = tarjeta.querySelector(".btn-agregar-icono");
+
+    // 🔹 Abrir detalle
+    tarjeta.querySelector(".nombre-producto")
+      .addEventListener("click", () => abrirProducto(producto.id));
+
+    tarjeta.querySelector(".producto-imagen")
+      .addEventListener("click", () => abrirProducto(producto.id));
+
+    // 🔹 Cambiar peso
+    botonesPeso.forEach(btn => {
+      btn.addEventListener("click", () => {
+
+        botonesPeso.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        precioActual = Number(btn.dataset.precio);
+        pesoActual = btn.dataset.peso;
+
+        precioSpan.textContent = precioActual;
+      });
+    });
+
+    // 🔹 Cantidad
+    btnMas.addEventListener("click", () => {
+      cantidad++;
+      cantidadValor.textContent = cantidad;
+    });
+
+    btnMenos.addEventListener("click", () => {
+      if (cantidad > 1) {
+        cantidad--;
+        cantidadValor.textContent = cantidad;
+      }
+    });
+
+    // 🔹 Agregar al carrito
+    btnAgregar.addEventListener("click", () => {
+
+      const idProducto = producto.id + "-" + pesoActual;
+
+      const existente = carrito.find(p => p.id === idProducto);
+
+      if (existente) {
+        existente.cantidad += cantidad;
+      } else {
+        carrito.push({
+          id: idProducto,
+          nombre: `${producto.nombre} (${pesoActual})`,
+          precio: precioActual,
+          cantidad: cantidad
+        });
+      }
+
+      mostrarCarrito();
+      guardarCarrito();
+      mostrarToast("🛒 Producto agregado 💚");
+
+    });
+
   });
+
 }
 
 
