@@ -166,7 +166,7 @@
 /* MOBILE */
 @media (max-width: 600px) {
   .contenedor-productos {
-    grid-template-columns: 1fr;
+   grid-template-columns: 1fr;
   }
 }
 
@@ -180,8 +180,7 @@
 /* DESKTOP */
 @media (min-width: 1001px) {
   .contenedor-productos {
-    grid-template-columns: repeat(auto-fit, 280px);
-    justify-content: start;
+   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
 }
     
