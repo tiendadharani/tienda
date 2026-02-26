@@ -3177,21 +3177,27 @@ function crearTarjetaProducto(producto) {
 		
 function renderProductos() {
 
+  // 🔥 1. Limpiar todos los contenedores
+  document.querySelectorAll("[id^='contenedor-']").forEach(c => {
+    c.innerHTML = "";
+  });
+
   const contenedoresSub = {};
 
   productos.forEach(producto => {
 
-    const categoriaId = "contenedor-" + producto.categoria;
-    const contenedorCategoria = document.getElementById(categoriaId);
+    const contenedorCategoria =
+      document.getElementById("contenedor-" + producto.categoria);
 
     if (!contenedorCategoria) return;
 
     let contenedorDestino;
 
-    // ✅ SOLO HIERBAS SE DIVIDE EN SUBCATEGORÍAS
+    // 👇 SOLO HIERBAS usa subcategorías visuales
     if (producto.categoria === "hierbas") {
 
-      const claveSub = producto.categoria + "-" + producto.subcategoria;
+      const claveSub =
+        producto.categoria + "-" + producto.subcategoria;
 
       if (!contenedoresSub[claveSub]) {
 
@@ -3199,14 +3205,10 @@ function renderProductos() {
         titulo.classList.add("subcategoria");
         titulo.textContent = producto.subcategoria;
 
-        const linea = document.createElement("div");
-        linea.classList.add("linea-subcategoria");
-
         const bloque = document.createElement("div");
         bloque.classList.add("bloque-subcategoria");
 
         contenedorCategoria.appendChild(titulo);
-        contenedorCategoria.appendChild(linea);
         contenedorCategoria.appendChild(bloque);
 
         contenedoresSub[claveSub] = bloque;
@@ -3219,24 +3221,13 @@ function renderProductos() {
       contenedorDestino = contenedorCategoria;
     }
 
-    // ===== CREAR TARJETA =====
+    // 🔥 CREAR TARJETA CORRECTAMENTE
+    const tarjeta = crearTarjetaProducto(producto);
+    contenedorDestino.appendChild(tarjeta);
 
-const tarjeta = crearTarjetaProducto(producto);
-contenedorDestino.appendChild(tarjeta);
+  });
 
-
-
-	
-document.addEventListener("DOMContentLoaded", function() {
-  cargarProductosDesdeCSV();
-
-// Mostrar sección según hash si existe
-const hash = window.location.hash.replace("#", "");
-
-if (hash) {
-  mostrar(hash, false);
 }
-});
 
 </script>
 	
