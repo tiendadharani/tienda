@@ -2966,8 +2966,10 @@ function filtrarPorSubcategoria(seccion, subcategoria) {
 
 	mostrar(seccion); // 👈 esto faltaba
 	
-  const contenedor = document.getElementById("contenedor-" + seccion);
-  contenedor.innerHTML = "";
+const contenedor = document.getElementById("contenedor-" + seccion);
+if (!contenedor) return;
+
+contenedor.innerHTML = "";
 
   const productosFiltrados = productos.filter(p =>
     p.categoria === seccion &&
