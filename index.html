@@ -160,29 +160,37 @@
 
 
 	  
-/* Los contenedores reales que reciben tarjetas */
-[id^="contenedor-"] {
+.contenedor-productos {
   display: grid;
   gap: 28px;
+
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  padding-left: clamp(20px, 3vw, 40px);
+  padding-right: clamp(20px, 3vw, 40px);
+
+  box-sizing: border-box;
 }
 
 /* MOBILE */
 @media (max-width: 600px) {
-  [id^="contenedor-"] {
+  .contenedor-productos {
     grid-template-columns: 1fr;
   }
 }
 
 /* TABLET */
 @media (min-width: 601px) and (max-width: 1000px) {
-  [id^="contenedor-"] {
+  .contenedor-productos {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* DESKTOP */
 @media (min-width: 1001px) {
-  [id^="contenedor-"] {
+  .contenedor-productos {
     grid-template-columns: repeat(auto-fill, 280px);
     justify-content: start;
   }
