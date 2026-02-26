@@ -2568,12 +2568,6 @@ function normalizarTexto(texto) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
-function normalizar(texto) {
-  return texto
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
-}
   
 function normalizar(texto) {
   return texto
@@ -2631,11 +2625,8 @@ function buscarProductos(texto) {
 
 
 
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
-
+cargarProductosDesdeCSV(); 
   cargarCarrito();
   ordenarProductos();
 
