@@ -209,7 +209,7 @@
   #contenedor-panificados,
   #contenedor-regaleria,
   #contenedor-ofertas {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
 }
     
@@ -1128,7 +1128,8 @@ padding-left: clamp(20px, 3vw, 40px);
 
   padding: 18px 18px 20px 18px;
 
-  width: 280px;     /* fijo */
+   width: 100%;
+  max-width: 280px;
   margin: 0;        /* 🔥 eliminar auto */
 
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
