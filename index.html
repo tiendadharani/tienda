@@ -146,9 +146,6 @@
   box-sizing: border-box;
 }
 
-.categoria.visible {
-  display: block;
-}
 
 
 	  #resultados-busqueda {
@@ -293,11 +290,26 @@
     overflow-x: hidden;
   }
 
- 
+  /* Contenedor general */
+  .productos {
+    display: block;
+    width: 100%;
+    padding: 0 8px;
+  }
 
- 
+  /* Categoría */
+  .categoria,
+  .categoria.visible {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
 
-
+/* Grid base */
+.categoria.visible {
+  display: block;
+}
 
 
 
@@ -867,7 +879,8 @@ font-family: "Cormorant Garamond", serif;
 
 
 
-/* Submenu base */
+/* Submenu */
+
 .submenu {
   position: relative;
 }
@@ -879,51 +892,24 @@ font-family: "Cormorant Garamond", serif;
   left: 0;
 
   background: white;
-  min-width: 240px;
+  min-width: 200px;
 
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  border-radius: 12px;
-  padding: 8px 0;
+  border-radius: 10px;
 
-  flex-direction: column;   /* 🔥 importante */
+  padding: 10px 0;
+  z-index: 999;
 }
 
-/* Primer nivel */
-.submenu:hover > .submenu-lista {
-display: flex;;
+.submenu-lista a {
+  display: block;
+  padding: 10px 16px;
+  white-space: nowrap;
 }
 
-/* Sub-submenu */
-.submenu-item {
-  position: relative;
+.submenu:hover .submenu-lista {
+  display: block;
 }
-
-.subsubmenu-lista {
-  display: none;
-  position: absolute;
-  left: 100%;
-  top: 0;
-
-  background: white;
-  min-width: 240px;
-
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  border-radius: 12px;
-  padding: 8px 0;
-
-  flex-direction: column;   /* 🔥 importante */
-}
-
-.submenu-item:hover > .subsubmenu-lista {
-  display: flex;
-}
-	  
-@media (max-width: 1000px) {
-  .submenu-item > .submenu-lista {
-    position: static;
-    padding-left: 15px;
-  }
-}	  
 	  
 @media (max-width: 1000px) {
 
@@ -1048,29 +1034,38 @@ display: flex;;
   display: block;
 }
 
-/* MOBILE */
+/* ===== MOBILE ===== */
+
 @media (max-width: 600px) {
-  .categoria.visible {
-    grid-template-columns: 1fr;
+
+  .categoria {
+    padding-left: 12px;
+    padding-right: 12px;
   }
+
 }
 
 
-/* TABLET */
+/* ===== TABLET ===== */
+
 @media (min-width: 601px) and (max-width: 1000px) {
+
   .categoria.visible {
     grid-template-columns: repeat(2, 1fr);
   }
+
 }
 
-/* DESKTOP */
+/* ===== DESKTOP ===== */
+
 @media (min-width: 1001px) {
+
   .categoria.visible {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
   }
+
 }
 
-	  
 @media (min-width: 1001px) {
 
   .categoria .producto p {
@@ -1199,7 +1194,7 @@ padding-left: clamp(20px, 3vw, 40px);
 
   font-size: 26px;
 
-  font-weight: 700;
+  font-weight: 600;
 
   letter-spacing: 0.5px;
 
@@ -1838,206 +1833,7 @@ padding-left: clamp(20px, 3vw, 40px);
   opacity: 0.7;
   transform: translateY(-2px);
 }	  
-
-
-.accesos-rapidos {
-  margin: 60px 0;
-}
-
-.titulo-seccion {
-  text-align: center;
-  font-size: 1.6rem;
-  margin-bottom: 25px;
-  color: #2f4f3f;
-}
-
-.carrusel-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.carrusel-categorias {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  padding: 10px 40px;
-}
-
-.carrusel-categorias::-webkit-scrollbar {
-  display: none;
-}
-
-.card-categoria {
-  flex: 0 0 220px;
-  scroll-snap-align: start;
-  cursor: pointer;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.card-categoria img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 16px;
-}
-
-.card-categoria span {
-  display: block;
-  margin-top: 12px;
-  font-weight: 500;
-  color: #2f4f3f;
-}
-
-.card-categoria:hover {
-  transform: translateY(-6px);
-}
-
-/* Flechas desktop */
-.flecha {
-  background: rgba(255,255,255,0.9);
-  border: none;
-  font-size: 28px;
-  cursor: pointer;
-  position: absolute;
-  z-index: 10;
-  padding: 8px 12px;
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.flecha-izq {
-  left: 5px;
-}
-
-.flecha-der {
-  right: 5px;
-}
-
-/* Mobile: ocultar flechas */
-@media (max-width: 768px) {
-  .flecha {
-    display: none;
-  }
-
-  .carrusel-categorias {
-    padding: 10px 20px;
-  }
-}
-
-
-@media (max-width: 1000px) {
-  .subsubmenu-lista {
-    position: static;
-    padding-left: 15px;
-  }
-}
-	  
-	  
-
-.submenu-lista > a,
-.submenu-item > a {
-  display: block;
-  padding: 10px 14px;
-  color: #3f6b5a;
-  font-weight: 700; 
-  font-family: "Cormorant Garamond", serif;
-  letter-spacing: 0.4px;
-  text-decoration: none;
-}
-
-.submenu-lista > a:hover,
-.submenu-item > a:hover {
-  background: #f2f2f2;
-}
-
-.submenu-lista,
-.subsubmenu-lista {
-  display: none;
-  flex-direction: column;
-  gap: 4px; /* mismo espaciado */
-}
-
-.submenu-lista a,
-.subsubmenu-lista a,
-.submenu-item > a {
-  display: block;
-  padding: 12px 18px;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: #3f6b5a;
-  text-decoration: none;
-}
-
-.submenu-lista a:hover,
-.subsubmenu-lista a:hover,
-.submenu-item > a:hover {
-  background: #f2f2f2;
-}
-
-/* ===== GRID UNIVERSAL PRODUCTOS ===== */
-
-.contenedor-productos {
-  display: grid;
-  gap: 28px;
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-  .contenedor-productos {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* TABLET */
-@media (min-width: 601px) and (max-width: 1000px) {
-  .contenedor-productos {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* DESKTOP */
-@media (min-width: 1001px) {
-  .contenedor-productos {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  }
-}
-
-.linea-subcategoria {
-  height: 1px;
-  background: #dcdcdc;
-  margin: 10px 0 30px 0;
-  width: 100%;
-}
-
-.bloque-subcategoria {
-  display: grid;
-  gap: 30px;
-  margin-bottom: 60px;
-}
-
-@media (min-width: 1001px) {
-  .bloque-subcategoria {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 1000px) and (min-width: 601px) {
-  .bloque-subcategoria {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .bloque-subcategoria {
-    grid-template-columns: 1fr;
-  }
-}
-	  
+  
   </style>
 </head>
 
@@ -2096,20 +1892,7 @@ padding-left: clamp(20px, 3vw, 40px);
 
   <div class="submenu-lista">
 
-<div class="submenu-item">
-  <a href="#" class="submenu-link" onclick="return false;">
-  Almacén Natural
-</a>
-  <div class="subsubmenu-lista">
-    <a href="#" onclick="irASeccion('almacen','harinas'); return false;">Harinas</a>
-    <a href="#" onclick="irASeccion('almacen','frutos secos'); return false;">Frutos Secos</a>
-    <a href="#" onclick="irASeccion('almacen','semillas'); return false;">Semillas</a>
-    <a href="#" onclick="irASeccion('almacen','cereales'); return false;">Cereales</a>
-    <a href="#" onclick="irASeccion('almacen','legumbres'); return false;">Legumbres</a>
-  </div>
-</div>
-
-	  
+  <a href="#" onclick="irASeccion('almacen'); return false;">Almacén Natural</a>
   <a href="#" onclick="irASeccion('hierbas'); return false;">Hierbas</a>
   <a href="#" onclick="irASeccion('tes'); return false;">Tés</a>
   <a href="#" onclick="irASeccion('condimentos'); return false;">Condimentos</a>
@@ -2168,54 +1951,6 @@ padding-left: clamp(20px, 3vw, 40px);
     </div>
   </div>
 
-<section class="accesos-rapidos">
-
-  <h2 class="titulo-seccion">Explorar por categoría</h2>
-
-  <div class="carrusel-wrapper">
-
-    <button class="flecha flecha-izq">&#10094;</button>
-
-    <div class="carrusel-categorias">
-
-      <div class="card-categoria" onclick="irASeccion('almacen','frutos secos')">
-        <img src="img/frutos.jpg" alt="Frutos Secos">
-        <span>Frutos Secos</span>
-      </div>
-
-      <div class="card-categoria" onclick="irASeccion('almacen','harinas')">
-        <img src="img/harinas.jpg" alt="Harinas">
-        <span>Harinas</span>
-      </div>
-
-      <div class="card-categoria" onclick="irASeccion('almacen','semillas')">
-        <img src="img/semillas.jpg" alt="Semillas">
-        <span>Semillas</span>
-      </div>
-
-      <div class="card-categoria" onclick="irASeccion('hierbas')">
-        <img src="img/hierbas.jpg" alt="Hierbas">
-        <span>Hierbas</span>
-      </div>
-
-      <div class="card-categoria" onclick="irASeccion('tes')">
-        <img src="img/tes.jpg" alt="Tés">
-        <span>Tés</span>
-      </div>
-
-      <div class="card-categoria" onclick="irASeccion('aromas')">
-        <img src="img/aromas.jpg" alt="Aromas & Ritual">
-        <span>Aromas & Ritual</span>
-      </div>
-
-    </div>
-
-    <button class="flecha flecha-der">&#10095;</button>
-
-  </div>
-</section>
-
-	
 </div>
 	
 <!-- RESULTADOS DE BUSQUEDA -->
@@ -2227,61 +1962,78 @@ padding-left: clamp(20px, 3vw, 40px);
 <!-- ALMACEN -->
 
 <div class="categoria" id="almacen">
-  <div class="contenedor-productos" id="contenedor-almacen"></div>
+	<div class="contenedor-productos">
+  <div id="contenedor-almacen"></div>
+</div>
 </div>
 	
 <!-- HIERBAS -->
 
 <div class="categoria" id="hierbas">
-  <div class="contenedor-productos" id="contenedor-hierbas"></div>
-</div>	
-
+	<div class="contenedor-productos">
+  <div id="contenedor-hierbas"></div>
+</div>
+</div>
 
 <!-- TES -->
 <div class="categoria" id="tes">
-  <div class="contenedor-productos" id="contenedor-tes"></div>
-</div>	
-
+  <div class="contenedor-productos">
+    <div id="contenedor-tes"></div>
+  </div>
+</div>
 
 <!-- CONDIMENTOS -->
 <div class="categoria" id="condimentos">
-  <div class="contenedor-productos" id="contenedor-condimentos"></div>
-</div>	
-
+  <div class="contenedor-productos">
+    <div id="contenedor-condimentos"></div>
+  </div>
+</div>
 	
 <!-- AROMAS -->
-<div class="categoria" id="aromas">
-  <div class="contenedor-productos" id="contenedor-aromas"></div>
-</div>
 
+<div class="categoria" id="aromas">
+	<div class="contenedor-productos">
+  <div id="contenedor-aromas"></div>
+</div>
+</div>
 	
 <!-- TERAPIAS -->
+
 <div class="categoria" id="terapias">
-  <div class="contenedor-productos" id="contenedor-terapias"></div>
+	<div class="contenedor-productos">
+  <div id="contenedor-terapias"></div>
+</div>
 </div>
 
 
 <!-- PANADERIA -->
-<div class="categoria" id="panaderia">
-  <div class="contenedor-productos" id="contenedor-panaderia"></div>
-</div>
 
+<div class="categoria" id="panificados">
+	<div class="contenedor-productos">
+  <div id="contenedor-panificados"></div>
+</div>
+</div>
 
 
 
 <!-- REGALERIA -->
+
 <div class="categoria" id="regaleria">
-  <div class="contenedor-productos" id="contenedor-regaleria"></div>
+	<div class="contenedor-productos">
+  <div id="contenedor-regaleria"></div>
+</div>
 </div>
 
-
 <!-- OFERTAS -->
+
 <div class="categoria" id="ofertas">
-  <div class="contenedor-productos" id="contenedor-ofertas"></div>
+	<div class="contenedor-productos">
+  <div id="contenedor-ofertas"></div>
+</div>
 </div>
 
   
-
+</section>
 
 <!-- VISTA PRODUCTO INDIVIDUAL -->
 <div class="categoria" id="producto-detalle">
@@ -2444,16 +2196,8 @@ function actualizarMenuCategorias() {
     productos.map(p => p.categoria)
   );
 
-  const subcategoriasAlmacen = new Set(
-    productos
-      .filter(p => p.categoria === "almacen")
-      .map(p => normalizar(p.subcategoria))
-  );
-
-  // 🔹 Categorías principales
-  document.querySelectorAll(".submenu-lista > a").forEach(link => {
-
-    link.style.display = "block"; // reset
+  // 🔹 1. Revisar links dentro del submenu
+  document.querySelectorAll(".submenu-lista a").forEach(link => {
 
     const onclick = link.getAttribute("onclick");
     if (!onclick) return;
@@ -2466,46 +2210,18 @@ function actualizarMenuCategorias() {
     if (!categoriasConProductos.has(idSeccion)) {
       link.style.display = "none";
     }
+
   });
 
-  // 🔹 Subcategorías almacén
-  document.querySelectorAll(".subsubmenu-lista a").forEach(link => {
+  // 🔹 2. Revisar botón Ofertas (está fuera del submenu)
 
-    link.style.display = "block"; // reset
-
-    const onclick = link.getAttribute("onclick");
-    if (!onclick) return;
-
-    const match = onclick.match(/'almacen','([^']+)'/);
-    if (!match) return;
-
-    const subcat = normalizar(match[1]);
-
-    if (!subcategoriasAlmacen.has(subcat)) {
-      link.style.display = "none";
-    }
-  });
-
-  // 🔹 Ocultar Almacén completo si no tiene subcategorías visibles
-  const almacenItem = document.querySelector(".submenu-item");
-  if (almacenItem) {
-
-    const subLinks = almacenItem.querySelectorAll(".subsubmenu-lista a");
-    const algunoVisible = Array.from(subLinks).some(link =>
-      link.style.display !== "none"
-    );
-
-    almacenItem.style.display = algunoVisible ? "block" : "none";
-  }
-
-  // 🔹 Ofertas
   const linkOfertas = document.querySelector("a[onclick*='ofertas']");
-  if (linkOfertas) {
-    linkOfertas.style.display =
-      categoriasConProductos.has("ofertas") ? "block" : "none";
-  }
-}
 
+  if (linkOfertas && !categoriasConProductos.has("ofertas")) {
+    linkOfertas.style.display = "none";
+  }
+
+}
 
 	
 function construirOpciones(columnas) {
@@ -2597,7 +2313,7 @@ function mostrarCarrito() {
       </div>
     `;
 
-   lista.appendChild(li);
+    lista.appendChild(li);
   });
 
   document.getElementById("total").textContent = "$" + total;
@@ -2799,7 +2515,12 @@ function normalizarTexto(texto) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
-
+function normalizar(texto) {
+  return texto
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
   
 function normalizar(texto) {
   return texto
@@ -2835,46 +2556,45 @@ function buscarProductos(texto) {
       const tarjeta = document.createElement("div");
       tarjeta.classList.add("tarjeta-producto");
 
-    tarjeta.innerHTML = `
-  <h3 class="nombre-producto">${producto.nombre}</h3>
+      tarjeta.innerHTML = `
+        <h3 class="nombre-producto">${producto.nombre}</h3>
 
-  <div class="producto-imagen-container">
-    <img src="${producto.imagen}" class="producto-imagen">
-  </div>
+        <div class="producto-imagen-container">
+          <img src="${producto.imagen}" class="producto-imagen">
+        </div>
 
-  <p class="descripcion">${producto.descripcion}</p>
+        <p class="descripcion">${producto.descripcion}</p>
 
-  <div class="pesos">
-    ${producto.opciones.map((op, i) => `
-      <button class="peso-btn ${i === 0 ? 'active' : ''}" data-precio="${op.precio}">
-        ${op.peso}
-      </button>
-    `).join("")}
-  </div>
+        <div class="pesos">
+          ${producto.opciones.map((op, i) => `
+            <button class="peso-btn ${i === 0 ? 'active' : ''}" data-precio="${op.precio}">
+              ${op.peso}
+            </button>
+          `).join("")}
+        </div>
 
-  <div class="precio">
-    $<span class="precio-valor">${producto.opciones[0].precio}</span>
-  </div>
+        <div class="precio">
+          $<span class="precio-valor">${producto.opciones[0].precio}</span>
+        </div>
 
-  <div class="footer-compra">
-    <div class="cantidad-control">
-      <button class="cantidad-btn menos">−</button>
-      <span class="cantidad-valor">1</span>
-      <button class="cantidad-btn mas">+</button>
-    </div>
+        <div class="footer-compra">
+          <div class="cantidad-control">
+            <button class="cantidad-btn menos">−</button>
+            <span class="cantidad-valor">1</span>
+            <button class="cantidad-btn mas">+</button>
+          </div>
 
-    <button class="btn-agregar-icono">
-      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-        <circle cx="9" cy="21" r="1"></circle>
-        <circle cx="20" cy="21" r="1"></circle>
-        <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
-      </svg>
-    </button>
-  </div>
-`;
+          <button class="btn-agregar-icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
+            </svg>
+          </button>
+        </div>
+      `;
 
-      contenedor.appendChild(tarjeta);
-	
+      lista.appendChild(tarjeta);
 
       // 🔧 Ahora agregamos los mismos eventos que en renderProductos
 
@@ -2962,136 +2682,10 @@ function buscarProductos(texto) {
   }
 }
 
-function filtrarPorSubcategoria(seccion, subcategoria) {
 
-	mostrar(seccion); // 👈 esto faltaba
-	
-const contenedor = document.getElementById("contenedor-" + seccion);
-if (!contenedor) return;
 
-contenedor.innerHTML = "";
 
-  const productosFiltrados = productos.filter(p =>
-    p.categoria === seccion &&
-    normalizar(p.subcategoria) === normalizar(subcategoria)
-  );
 
-  if (productosFiltrados.length === 0) {
-    contenedor.innerHTML = "<p>No hay productos en esta categoría.</p>";
-    return;
-  }
-
-  productosFiltrados.forEach(producto => {
-
-    const tarjeta = document.createElement("div");
-    tarjeta.classList.add("tarjeta-producto");
-
-    tarjeta.innerHTML = `
-      <h3 class="nombre-producto">${producto.nombre}</h3>
-
-      <div class="producto-imagen-container">
-        <img src="${producto.imagen}" class="producto-imagen">
-      </div>
-
-      <p class="descripcion">${producto.descripcion}</p>
-
-      <div class="pesos">
-        ${producto.opciones.map((op, i) => `
-          <button class="peso-btn ${i === 0 ? 'active' : ''}" data-precio="${op.precio}">
-            ${op.peso}
-          </button>
-        `).join("")}
-      </div>
-
-      <div class="precio">
-        $<span class="precio-valor">${producto.opciones[0].precio}</span>
-      </div>
-
-      <div class="footer-compra">
-        <div class="cantidad-control">
-          <button class="cantidad-btn menos">−</button>
-          <span class="cantidad-valor">1</span>
-          <button class="cantidad-btn mas">+</button>
-        </div>
-
-        <button class="btn-agregar-icono">
-          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-            <circle cx="9" cy="21" r="1"></circle>
-            <circle cx="20" cy="21" r="1"></circle>
-            <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
-          </svg>
-        </button>
-      </div>
-    `;
-
-    contenedor.appendChild(tarjeta);
-
-    // Eventos
-    let precioActual = producto.opciones[0].precio;
-    let pesoActual = producto.opciones[0].peso;
-    let cantidad = 1;
-
-    const precioSpan = tarjeta.querySelector(".precio-valor");
-    const botonesPeso = tarjeta.querySelectorAll(".peso-btn");
-    const btnMas = tarjeta.querySelector(".mas");
-    const btnMenos = tarjeta.querySelector(".menos");
-    const cantidadValor = tarjeta.querySelector(".cantidad-valor");
-    const btnAgregar = tarjeta.querySelector(".btn-agregar-icono");
-
-    tarjeta.querySelector(".nombre-producto")
-      .addEventListener("click", () => abrirProducto(producto.id));
-
-    tarjeta.querySelector(".producto-imagen")
-      .addEventListener("click", () => abrirProducto(producto.id));
-
-    botonesPeso.forEach(btn => {
-      btn.addEventListener("click", () => {
-        botonesPeso.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-
-        precioActual = Number(btn.dataset.precio);
-        pesoActual = btn.textContent;
-        precioSpan.textContent = precioActual;
-      });
-    });
-
-    btnMas.addEventListener("click", () => {
-      cantidad++;
-      cantidadValor.textContent = cantidad;
-    });
-
-    btnMenos.addEventListener("click", () => {
-      if (cantidad > 1) {
-        cantidad--;
-        cantidadValor.textContent = cantidad;
-      }
-    });
-
-    btnAgregar.addEventListener("click", () => {
-      const idProducto = producto.id + "-" + pesoActual;
-
-      const existente = carrito.find(p => p.id === idProducto);
-
-      if (existente) {
-        existente.cantidad += cantidad;
-      } else {
-        carrito.push({
-          id: idProducto,
-          nombre: `${producto.nombre} (${pesoActual})`,
-          precio: precioActual,
-          cantidad: cantidad
-        });
-      }
-
-      mostrarCarrito();
-      guardarCarrito();
-      mostrarToast("🛒 Producto agregado 💚");
-    });
-
-  });
-
-  mostrar(seccion);
-}
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -3153,26 +2747,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* Mostrar categorías */
-function mostrar(id) {
+function mostrar(id, agregarHistorial = true) {
 
-  // Ocultar todas las categorías
-  document.querySelectorAll(".categoria").forEach(cat => {
-    cat.classList.remove("visible");
+  const categoria = document.getElementById(id);
+  if (!categoria) return;
+
+  document.querySelectorAll('.categoria').forEach(c => {
+    c.classList.remove("visible");
   });
 
-  // Ocultar resultados búsqueda
-  const resultados = document.getElementById("resultados-busqueda");
-  if (resultados) {
-    resultados.classList.remove("visible");
-  }
+  categoria.classList.add("visible");
 
-  // Mostrar solo la sección solicitada
-  const seccion = document.getElementById(id);
-  if (seccion) {
-    seccion.classList.add("visible");
+  // 👇 Actualiza la URL sin recargar
+  if (agregarHistorial) {
+    history.pushState({ seccion: id }, "", "#" + id);
   }
-
-  window.scrollTo(0, 0);
 }
 
 	
@@ -3287,6 +2876,15 @@ function volverAlInicio() {
 
 
 
+
+/* Submenu mobile */
+
+document.querySelectorAll(".submenu span").forEach(item => {
+  item.addEventListener("click", () => {
+    item.parentElement.classList.toggle("activo");
+  });
+});
+
 	
 </script>
 
@@ -3300,7 +2898,7 @@ function toggleSubmenu(e) {
   submenu.classList.toggle("activo");
 }
 
-function irASeccion(seccion, subcategoria = null, e = null) {
+function irASeccion(seccion, e) {
 
   if (e) {
     e.preventDefault();
@@ -3310,25 +2908,17 @@ function irASeccion(seccion, subcategoria = null, e = null) {
   const menu = document.getElementById("menu");
   const overlay = document.getElementById("overlay");
 
-  if (menu) menu.classList.remove("activo");
-  if (overlay) overlay.classList.remove("visible");
+  // 🔥 PRIMERO cerrar menú
+  menu.classList.remove("activo");
+  overlay.classList.remove("visible");
 
-  mostrar(seccion);
-
-  if (subcategoria) {
-    filtrarPorSubcategoria(seccion, subcategoria);
-  } else {
-    renderProductos();
-  }
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+  document.querySelectorAll(".submenu").forEach(sub => {
+    sub.classList.remove("activo");
   });
+
+  // 🔥 DESPUÉS mostrar sección
+  mostrar(seccion);
 }
-
-
- 
 
 function abrirProducto(id) {
 
@@ -3527,12 +3117,7 @@ function obtenerImagenProducto(idCarrito) {
 		
 function renderProductos() {
 
-  // 🔥 LIMPIAR TODOS LOS CONTENEDORES PRIMERO
-  document.querySelectorAll(".categoria").forEach(cat => {
-    cat.innerHTML = "";
-  });
-
-  const contenedoresSub = {};
+  const contenedores = {};
 
   productos.forEach(producto => {
 
@@ -3541,41 +3126,19 @@ function renderProductos() {
 
     if (!contenedorCategoria) return;
 
-    let contenedorDestino;
+    const claveSub = producto.categoria + "-" + producto.subcategoria;
 
-    // 🌿 SOLO HIERBAS SE DIVIDE EN SUBCATEGORÍAS VISUALES
-    if (producto.categoria === "hierbas") {
+    if (!contenedores[claveSub]) {
 
-      const claveSub = producto.categoria + "-" + producto.subcategoria;
+      const bloqueSub = document.createElement("div");
+      bloqueSub.innerHTML = `
+        <h3 class="subcategoria">${producto.subcategoria}</h3>
+        <div class="bloque-subcategoria"></div>
+      `;
 
-      if (!contenedoresSub[claveSub]) {
-
-        const titulo = document.createElement("h3");
-        titulo.classList.add("subcategoria");
-        titulo.textContent = producto.subcategoria;
-
-        const linea = document.createElement("div");
-        linea.classList.add("linea-subcategoria");
-
-        const bloque = document.createElement("div");
-        bloque.classList.add("bloque-subcategoria");
-
-        contenedorCategoria.appendChild(titulo);
-        contenedorCategoria.appendChild(linea);
-        contenedorCategoria.appendChild(bloque);
-
-        contenedoresSub[claveSub] = bloque;
-      }
-
-      contenedorDestino = contenedoresSub[claveSub];
-
-    } else {
-
-      // 🟢 EL RESTO VA DIRECTO AL CONTENEDOR
-      contenedorDestino = contenedorCategoria;
+      contenedorCategoria.appendChild(bloqueSub);
+      contenedores[claveSub] = bloqueSub.querySelector(".bloque-subcategoria");
     }
-
-    // ===== CREAR TARJETA =====
 
     const tarjeta = document.createElement("div");
     tarjeta.classList.add("tarjeta-producto");
@@ -3608,11 +3171,99 @@ function renderProductos() {
           <button class="cantidad-btn mas">+</button>
         </div>
 
-        <button class="btn-agregar-icono">🛒</button>
+        <button class="btn-agregar-icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
+          </svg>
+        </button>
       </div>
     `;
 
-    contenedorDestino.appendChild(tarjeta);
+    contenedores[claveSub].appendChild(tarjeta);
+
+	  tarjeta.querySelector(".nombre-producto")
+  .addEventListener("click", () => abrirProducto(producto.id));
+
+tarjeta.querySelector(".producto-imagen")
+  .addEventListener("click", () => abrirProducto(producto.id));
+
+
+    // ===== INTERACCIONES =====
+
+    let precioActual = producto.opciones[0].precio;
+    let cantidad = 1;
+
+    const precioSpan = tarjeta.querySelector(".precio-valor");
+    const botonesPeso = tarjeta.querySelectorAll(".peso-btn");
+    const btnMas = tarjeta.querySelector(".mas");
+    const btnMenos = tarjeta.querySelector(".menos");
+    const cantidadValor = tarjeta.querySelector(".cantidad-valor");
+    const btnAgregar = tarjeta.querySelector(".btn-agregar-icono");
+
+    botonesPeso.forEach(btn => {
+      btn.addEventListener("click", () => {
+
+        botonesPeso.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        precioActual = Number(btn.dataset.precio);
+        precioSpan.textContent = precioActual;
+      });
+    });
+
+    btnMas.addEventListener("click", () => {
+      cantidad++;
+      cantidadValor.textContent = cantidad;
+    });
+
+    btnMenos.addEventListener("click", () => {
+      if (cantidad > 1) {
+        cantidad--;
+        cantidadValor.textContent = cantidad;
+      }
+    });
+
+  let pesoActual = producto.opciones[0].peso;
+
+botonesPeso.forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    botonesPeso.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    precioActual = Number(btn.dataset.precio);
+    pesoActual = btn.textContent;
+
+    precioSpan.textContent = precioActual;
+  });
+});
+
+btnAgregar.addEventListener("click", () => {
+
+  const idProducto = producto.id + "-" + pesoActual;
+
+  const existente = carrito.find(p => p.id === idProducto);
+
+  if (existente) {
+    existente.cantidad += cantidad;
+  } else {
+    carrito.push({
+      id: idProducto,
+      nombre: `${producto.nombre} (${pesoActual})`,
+      precio: precioActual,
+      cantidad: cantidad
+    });
+  }
+
+  mostrarCarrito();
+  guardarCarrito();
+  mostrarToast("🛒 Producto agregado 💚");
+
+});
+
+
   });
 }
 
@@ -3672,24 +3323,6 @@ if (hash) {
 	
 <script>
   document.getElementById("anio").textContent = new Date().getFullYear();
-
-
-const carrusel = document.querySelector('.carrusel-categorias');
-const flechaIzq = document.querySelector('.flecha-izq');
-const flechaDer = document.querySelector('.flecha-der');
-
-if (flechaIzq && flechaDer && carrusel) {
-
-  flechaIzq.addEventListener('click', () => {
-    carrusel.scrollBy({ left: -300, behavior: 'smooth' });
-  });
-
-  flechaDer.addEventListener('click', () => {
-    carrusel.scrollBy({ left: 300, behavior: 'smooth' });
-  });
-
-}
-	
 </script>
 	
 </body>
