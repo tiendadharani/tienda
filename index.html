@@ -219,7 +219,9 @@
 
 
   
-  
+  html {
+  scroll-behavior: smooth;
+}
 
   body, html {
     width: 100%;
@@ -2434,7 +2436,13 @@ function mostrar(id, agregarHistorial = true) {
 
   categoria.classList.add("visible");
 
-  // 👇 Actualiza la URL sin recargar
+  // 🔥 SCROLL AUTOMÁTICO ARRIBA
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+  // Actualiza URL
   if (agregarHistorial) {
     history.pushState({ seccion: id }, "", "#" + id);
   }
