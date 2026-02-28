@@ -270,9 +270,19 @@
   padding: 10px 6px;
   border-radius: 14px;
 }
+ 
 
-  
-}
+#resultados-busqueda h2 {
+  max-width: 1400px;
+  margin: 40px auto 20px auto;
+  padding-left: clamp(20px, 3vw, 40px);
+  padding-right: clamp(20px, 3vw, 40px);
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: #3f6b5a;
+}	  
 
 /* ===== CARRITO DESPLEGABLE ===== */
 
@@ -1749,7 +1759,9 @@ font-family: "Cormorant Garamond", serif;
 <!-- RESULTADOS DE BUSQUEDA -->
 <div id="resultados-busqueda" class="categoria">
   <h2>Resultados de búsqueda</h2>
-  <div id="lista-resultados"></div>
+  <div class="contenedor-productos">
+    <div id="lista-resultados" class="bloque-subcategoria"></div>
+  </div>
 </div>
 
 <!-- ALMACEN -->
