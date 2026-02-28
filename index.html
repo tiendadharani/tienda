@@ -2510,34 +2510,39 @@ function mostrar(id, agregarHistorial = true) {
 
 
 
-function mostrarSubcategoria(categoria, subcategoria) {
+function mostrarSubcategoria(cat, sub) {
 
-  // Primero mostramos la categoría normalmente
-  mostrar(categoria);
+  // 🔹 Mostrar la categoría padre
+  document.querySelectorAll(".categoria").forEach(c => {
+    c.classList.remove("visible");
+  });
 
-  setTimeout(() => {
+  const categoriaPadre = document.getElementById(cat);
+  if (categoriaPadre) {
+    categoriaPadre.classList.add("visible");
+  }
 
-    const contenedor = document.getElementById("contenedor-" + categoria);
-    if (!contenedor) return;
+  // 🔹 Ocultar todos los bloques de esa categoría
+  document.querySelectorAll(".bloque-subcategoria").forEach(b => {
+    if (b.dataset.categoria === cat) {
+      b.style.display = "none";
+    }
+  });
 
-    const bloques = contenedor.querySelectorAll(".bloque-subcategoria");
+  // 🔹 Mostrar solo el bloque seleccionado
+  const bloqueSeleccionado = document.querySelector(
+    `.bloque-subcategoria[data-categoria="${cat}"][data-subcategoria="${sub.toLowerCase().trim()}"]`
+  );
 
-    bloques.forEach(bloque => {
-      const titulo = bloque.querySelector(".subcategoria-titulo");
+  if (bloqueSeleccionado) {
+    bloqueSeleccionado.style.display = "grid";
+  }
 
-      if (titulo && titulo.textContent.trim() === subcategoria) {
-        bloque.style.display = "grid";
-      } else {
-        bloque.style.display = "none";
-      }
-    });
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-
-  }, 50);
+  // 🔹 Scroll arriba suave
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
 	
 	
