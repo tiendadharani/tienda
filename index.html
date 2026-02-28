@@ -2031,7 +2031,7 @@ async function cargarProductosDesdeCSV() {
       id: fila.id?.trim(),
       nombre: fila.nombre?.trim(),
       categoria: fila.categoria?.trim().toLowerCase(),
-      subcategoria: fila.subcategoria?.trim(),
+      subcategoria: fila.subcategoria?.trim().toLowerCase(),
       descripcion: fila.descripcion_corta?.trim(),
       descripcionLarga: fila.descripcion_larga?.trim(),
       imagen: "imagenes/" + fila.imagen?.trim(),
@@ -3055,8 +3055,12 @@ function renderProductos() {
       }
 
       // 🔹 Bloque contenedor de tarjetas
-      const bloque = document.createElement("div");
-      bloque.classList.add("bloque-subcategoria");
+ const bloque = document.createElement("div");
+bloque.classList.add("bloque-subcategoria");
+
+// 🔥 Identificación estructural
+bloque.dataset.categoria = cat;
+bloque.dataset.subcategoria = sub.toLowerCase().trim();
 
       productosSub.forEach(prod => {
         const tarjeta = crearTarjetaProducto(prod);
