@@ -2051,44 +2051,28 @@ async function cargarProductosDesdeCSV() {
 function actualizarMenuCategorias() {
 
   const categoriasConProductos = new Set(
-    productos.map(p => p.categoria)
+    productos.map(p => p.categoria.toLowerCase())
   );
 
-  // Ocultar links simples
-  document.querySelectorAll(".submenu-lista > a").forEach(link => {
+  // TODOS los enlaces que llaman a irASeccion
+  document.querySelectorAll("[onclick*='irASeccion']").forEach(link => {
 
-    const onclick = link.getAttribute("onclick");
-    if (!onclick) return;
-
-    const match = onclick.match(/'([^']+)'/);
+    const match = link.getAttribute("onclick")?.match(/'([^']+)'/);
     if (!match) return;
 
-    const idSeccion = match[1].toLowerCase();
+    const seccion = match[1].toLowerCase();
 
-    if (!categoriasConProductos.has(idSeccion)) {
-      link.style.display = "none";
+    if (!categoriasConProductos.has(seccion)) {
+      link.closest(".submenu-item")?.style.setProperty("display", "none");
+      if (!link.closest(".submenu-item")) {
+        link.style.display = "none";
+      }
     } else {
       link.style.display = "block";
     }
   });
 
-  // Ocultar submenu-item completos
-  document.querySelectorAll(".submenu-item").forEach(item => {
-
-    const enlace = item.querySelector("a");
-    if (!enlace) return;
-
-    const match = enlace.getAttribute("onclick")?.match(/'([^']+)'/);
-    if (!match) return;
-
-    const idSeccion = match[1].toLowerCase();
-
-    if (!categoriasConProductos.has(idSeccion)) {
-      item.style.display = "none";
-    }
-  });
-
-  // Ofertas
+  // OFERTAS
   const linkOfertas = document.querySelector("a[onclick*='ofertas']");
   if (linkOfertas && !categoriasConProductos.has("ofertas")) {
     linkOfertas.style.display = "none";
