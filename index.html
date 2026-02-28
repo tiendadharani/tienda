@@ -2054,8 +2054,8 @@ function actualizarMenuCategorias() {
     productos.map(p => p.categoria)
   );
 
-  // 🔹 1. Revisar links dentro del submenu
-  document.querySelectorAll(".submenu-lista a").forEach(link => {
+  // Ocultar links simples
+  document.querySelectorAll(".submenu-lista > a").forEach(link => {
 
     const onclick = link.getAttribute("onclick");
     if (!onclick) return;
@@ -2067,18 +2067,32 @@ function actualizarMenuCategorias() {
 
     if (!categoriasConProductos.has(idSeccion)) {
       link.style.display = "none";
+    } else {
+      link.style.display = "block";
     }
-
   });
 
-  // 🔹 2. Revisar botón Ofertas (está fuera del submenu)
+  // Ocultar submenu-item completos
+  document.querySelectorAll(".submenu-item").forEach(item => {
 
+    const enlace = item.querySelector("a");
+    if (!enlace) return;
+
+    const match = enlace.getAttribute("onclick")?.match(/'([^']+)'/);
+    if (!match) return;
+
+    const idSeccion = match[1].toLowerCase();
+
+    if (!categoriasConProductos.has(idSeccion)) {
+      item.style.display = "none";
+    }
+  });
+
+  // Ofertas
   const linkOfertas = document.querySelector("a[onclick*='ofertas']");
-
   if (linkOfertas && !categoriasConProductos.has("ofertas")) {
     linkOfertas.style.display = "none";
   }
-
 }
 
 	
@@ -3077,42 +3091,33 @@ generarSubmenus();
 
 function construirSubmenus() {
 
-  const submenus = {
-    almacen: document.getElementById("submenu-almacen"),
-    aromas: document.getElementById("submenu-aromas"),
-    terapias: document.getElementById("submenu-terapias")
-  };
+  const categoriasPadre = ["almacen", "aromas", "terapias"];
 
-  // Limpiar
-  Object.values(submenus).forEach(menu => {
-    if (menu) menu.innerHTML = "";
-  });
+  categoriasPadre.forEach(cat => {
 
-  // Agrupar subcategorías por categoría
-  const mapa = {};
-
-  productos.forEach(prod => {
-
-    if (!mapa[prod.categoria]) {
-      mapa[prod.categoria] = new Set();
-    }
-
-    if (prod.subcategoria) {
-      mapa[prod.categoria].add(prod.subcategoria);
-    }
-
-  });
-
-  // Construir cada submenu dinámico
-  Object.keys(submenus).forEach(cat => {
-
-    const contenedor = submenus[cat];
+    const contenedor = document.getElementById("submenu-" + cat);
     if (!contenedor) return;
 
-    const subs = mapa[cat];
-    if (!subs || subs.size === 0) return;
+    contenedor.innerHTML = "";
 
-    subs.forEach(sub => {
+    const subcategorias = new Set(
+      productos
+        .filter(p => p.categoria === cat && p.subcategoria)
+        .map(p => p.subcategoria)
+    );
+
+    if (subcategorias.size === 0) {
+      // 🔥 Si no hay subcategorías, ocultamos el submenu padre
+      const itemPadre = contenedor.closest(".submenu-item");
+      if (itemPadre) itemPadre.style.display = "none";
+      return;
+    }
+
+    // 🔥 Mostrar el submenu padre
+    const itemPadre = contenedor.closest(".submenu-item");
+    if (itemPadre) itemPadre.style.display = "block";
+
+    subcategorias.forEach(sub => {
 
       const link = document.createElement("a");
       link.href = "#";
@@ -3124,11 +3129,9 @@ function construirSubmenus() {
       };
 
       contenedor.appendChild(link);
-
     });
 
   });
-
 }
 		
 
