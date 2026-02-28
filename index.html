@@ -3121,7 +3121,10 @@ function construirSubmenus() {
 
       const link = document.createElement("a");
       link.href = "#";
-      link.textContent = sub;
+      link.textContent = sub
+  .split(" ")
+  .map(p => p.charAt(0).toUpperCase() + p.slice(1))
+  .join(" ");
 
       link.onclick = function(e) {
         e.preventDefault();
