@@ -160,7 +160,7 @@
 
 
 	  
-.contenedor-productos {
+[id^="contenedor-"] {
   display: grid;
   gap: 28px;
 
@@ -176,21 +176,21 @@
 
 /* MOBILE */
 @media (max-width: 600px) {
-  .contenedor-productos {
+  [id^="contenedor-"] {
     grid-template-columns: 1fr;
   }
 }
 
 /* TABLET */
 @media (min-width: 601px) and (max-width: 1000px) {
-  .contenedor-productos {
+  [id^="contenedor-"] {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* DESKTOP */
 @media (min-width: 1001px) {
-  .contenedor-productos {
+  [id^="contenedor-"] {
     grid-template-columns: repeat(auto-fill, 280px);
     justify-content: start;
   }
