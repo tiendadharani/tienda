@@ -3028,6 +3028,18 @@ function crearTarjetaProducto(producto) {
 
   return tarjeta;
 }
+
+
+
+function capitalizarPalabras(texto) {
+  return texto
+    .toLowerCase()
+    .split(" ")
+    .map(p => p.charAt(0).toUpperCase() + p.slice(1))
+    .join(" ");
+}		
+
+
 		
 		
 function renderProductos() {
@@ -3072,7 +3084,7 @@ function renderProductos() {
 
         const titulo = document.createElement("h3");
         titulo.classList.add("subcategoria");
-        titulo.textContent = sub;
+        titulo.textContent = capitalizarPalabras(sub);
 
         const linea = document.createElement("div");
         linea.classList.add("linea-subcategoria");
