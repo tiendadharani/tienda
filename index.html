@@ -3086,7 +3086,10 @@ function construirSubmenus() {
 
     const subcategorias = new Set(
       productos
-        .filter(p => p.categoria === cat && p.subcategoria)
+       .filter(p => 
+  p.categoria?.toLowerCase().trim() === cat &&
+  p.subcategoria
+)
         .map(p => p.subcategoria)
     );
 
