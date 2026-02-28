@@ -1647,13 +1647,20 @@ font-family: "Cormorant Garamond", serif;
 .submenu-dinamico {
   display: none;
   flex-direction: column;
+
   background: white;
   position: absolute;
   left: 100%;
   top: 0;
-  min-width: 200px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  padding: 10px 0;
+
+  min-width: 220px;
+
+  padding: 12px 0;
+
+  border-radius: 14px;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+
   z-index: 1000;
 }
 
@@ -1675,6 +1682,14 @@ font-family: "Cormorant Garamond", serif;
 
 .submenu-dinamico a:hover {
   background: #f5f5f5;
+}
+.submenu-dinamico a:first-child:hover {
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+.submenu-dinamico a:last-child:hover {
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
 }
 	  
   </style>
