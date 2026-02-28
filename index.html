@@ -69,38 +69,7 @@
       padding: 20px;
     }
 
-    .productos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-
-   .producto {
-  padding: 18px;
-  margin-bottom: 10px;
-}
-
-
-    .producto img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .producto button {
-      background: #5a8f7b;
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .producto button:hover {
-      background: #3f6b5a;
-    }
-
-    .carrito {
+     .carrito {
       background: white;
       margin: 20px;
       padding: 20px;
@@ -327,13 +296,6 @@
     overflow-x: hidden;
   }
 
-  /* Contenedor general */
-  .productos {
-    display: block;
-    width: 100%;
-    padding: 0 8px;
-  }
-
   /* Categoría */
   .categoria,
   .categoria.visible {
@@ -347,8 +309,7 @@
 
   /* Tarjetas */
   .categoria .producto {
-    width: 100%;
-    margin: 0;
+   margin: 0;
     padding: 8px 6px;
   }
 
@@ -1059,17 +1020,14 @@ font-family: "Cormorant Garamond", serif;
 
 .tarjeta-producto {
   background: white;
-border-radius: 14px;
-padding: 17px 17px 19px 17px;
-max-width: 280px;
-width: 100%;
-margin: 0;
-box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-text-align: center;
-display: flex;
+  border-radius: 14px;
+  padding: 17px;
+  max-width: 280px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  display: flex;
   flex-direction: column;
   gap: 10px;
-
 }
 
 
