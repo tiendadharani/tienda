@@ -1636,7 +1636,40 @@ font-family: "Cormorant Garamond", serif;
   opacity: 0.7;
   transform: translateY(-2px);
 }	  
-  
+
+
+.submenu-item {
+  position: relative;
+}
+
+.submenu-dinamico {
+  display: none;
+  flex-direction: column;
+  background: white;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  min-width: 200px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.submenu-item:hover .submenu-dinamico {
+  display: flex;
+}
+
+.submenu-dinamico a {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #3f6b5a;
+  font-size: 14px;
+}
+
+.submenu-dinamico a:hover {
+  background: #f5f5f5;
+}
+	  
   </style>
 </head>
 
@@ -1695,12 +1728,31 @@ font-family: "Cormorant Garamond", serif;
 
   <div class="submenu-lista">
 
-  <a href="#" onclick="irASeccion('almacen'); return false;">Almacén Natural</a>
+  <div class="submenu-item">
+  <a href="#" onclick="irASeccion('almacen'); return false;">
+    Almacén Natural ▸
+  </a>
+  <div class="submenu-dinamico" id="submenu-almacen"></div>
+</div>
   <a href="#" onclick="irASeccion('hierbas'); return false;">Hierbas</a>
   <a href="#" onclick="irASeccion('tes'); return false;">Tés</a>
   <a href="#" onclick="irASeccion('condimentos'); return false;">Condimentos</a>
-  <a href="#" onclick="irASeccion('aromas'); return false;">Aromas & Ritual</a>
-  <a href="#" onclick="irASeccion('terapias'); return false;">Terapias Naturales</a>
+ 
+	  <div class="submenu-item">
+  <a href="#" onclick="irASeccion('aromas'); return false;">
+    Aromas & Ritual ▸
+  </a>
+  <div class="submenu-dinamico" id="submenu-aromas"></div>
+</div>
+
+ <div class="submenu-item">
+  <a href="#" onclick="irASeccion('terapias'); return false;">
+    Terapias Naturales ▸
+  </a>
+  <div class="submenu-dinamico" id="submenu-terapias"></div>
+</div>
+
+	  
   <a href="#" onclick="irASeccion('panificados'); return false;">Panificados</a>
   <a href="#" onclick="irASeccion('regaleria'); return false;">Regalería</a>
 
@@ -2433,9 +2485,6 @@ cargarProductosDesdeCSV();
 
 
 
-
-
-
 /* Mostrar categorías */
 function mostrar(id, agregarHistorial = true) {
 
@@ -2460,6 +2509,37 @@ function mostrar(id, agregarHistorial = true) {
   }
 }
 
+
+
+function mostrarSubcategoria(categoria, subcategoria) {
+
+  // Primero mostramos la categoría normalmente
+  mostrar(categoria);
+
+  setTimeout(() => {
+
+    const contenedor = document.getElementById("contenedor-" + categoria);
+    if (!contenedor) return;
+
+    const bloques = contenedor.querySelectorAll(".bloque-subcategoria");
+
+    bloques.forEach(bloque => {
+      const titulo = bloque.querySelector(".subcategoria-titulo");
+
+      if (titulo && titulo.textContent.trim() === subcategoria) {
+        bloque.style.display = "grid";
+      } else {
+        bloque.style.display = "none";
+      }
+    });
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }, 50);
+}
 	
 	
   // 🔍 Buscador
@@ -2989,9 +3069,50 @@ function renderProductos() {
     });
 
   });
-
+generarSubmenus();
 }
 
+function generarSubmenus() {
+
+  const categoriasObjetivo = ["almacen", "aromas", "terapias"];
+
+  categoriasObjetivo.forEach(cat => {
+
+    if (!categoriasAgrupadas[cat]) return;
+
+    const subcategorias = Object.keys(categoriasAgrupadas[cat]);
+
+    const contenedor = document.getElementById("submenu-" + cat);
+    if (!contenedor) return;
+
+    contenedor.innerHTML = "";
+
+    subcategorias.forEach(sub => {
+
+      const enlace = document.createElement("a");
+      enlace.href = "#";
+      enlace.textContent = sub;
+
+      enlace.onclick = function(e) {
+        e.preventDefault();
+        irASeccion(cat);
+        setTimeout(() => {
+          const titulos = document.querySelectorAll(".subcategoria");
+          titulos.forEach(t => {
+            if (t.textContent.trim() === sub) {
+              t.scrollIntoView({ behavior: "smooth" });
+            }
+          });
+        }, 100);
+      };
+
+      contenedor.appendChild(enlace);
+
+    });
+
+  });
+}
+		
 </script>
 	
 <div id="barra-carrito-mobile" class="barra-carrito-mobile">
