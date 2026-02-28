@@ -2042,7 +2042,8 @@ async function cargarProductosDesdeCSV() {
   console.log("Productos cargados correctamente:", productos);
 
   renderProductos();
-  actualizarMenuCategorias();	
+  actualizarMenuCategorias();
+	construirSubmenus();
 }
 
  
@@ -3072,6 +3073,67 @@ function renderProductos() {
 generarSubmenus();
 }
 
+
+
+function construirSubmenus() {
+
+  const submenus = {
+    almacen: document.getElementById("submenu-almacen"),
+    aromas: document.getElementById("submenu-aromas"),
+    terapias: document.getElementById("submenu-terapias")
+  };
+
+  // Limpiar
+  Object.values(submenus).forEach(menu => {
+    if (menu) menu.innerHTML = "";
+  });
+
+  // Agrupar subcategorías por categoría
+  const mapa = {};
+
+  productos.forEach(prod => {
+
+    if (!mapa[prod.categoria]) {
+      mapa[prod.categoria] = new Set();
+    }
+
+    if (prod.subcategoria) {
+      mapa[prod.categoria].add(prod.subcategoria);
+    }
+
+  });
+
+  // Construir cada submenu dinámico
+  Object.keys(submenus).forEach(cat => {
+
+    const contenedor = submenus[cat];
+    if (!contenedor) return;
+
+    const subs = mapa[cat];
+    if (!subs || subs.size === 0) return;
+
+    subs.forEach(sub => {
+
+      const link = document.createElement("a");
+      link.href = "#";
+      link.textContent = sub;
+
+      link.onclick = function(e) {
+        e.preventDefault();
+        mostrarSubcategoria(cat, sub);
+      };
+
+      contenedor.appendChild(link);
+
+    });
+
+  });
+
+}
+		
+
+
+		
 function generarSubmenus() {
 
   const categoriasObjetivo = ["almacen", "aromas", "terapias"];
