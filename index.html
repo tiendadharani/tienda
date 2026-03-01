@@ -2918,6 +2918,11 @@ function obtenerImagenProducto(idCarrito) {
 
 function crearTarjetaProducto(producto) {
 
+if (!producto.opciones || producto.opciones.length === 0) {
+  console.warn("⚠ Producto sin opciones válidas:", producto);
+  return document.createElement("div"); // evita que rompa todo
+}
+	
   const tarjeta = document.createElement("div");
   tarjeta.classList.add("tarjeta-producto");
 
