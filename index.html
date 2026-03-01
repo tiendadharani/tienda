@@ -853,6 +853,14 @@ font-family: "Cormorant Garamond", serif;
     transform: translateX(0);
   }
 
+/* Mostrar lista principal cuando está activo */
+  .submenu.activo .submenu-lista {
+    display: block;
+    position: relative;
+    box-shadow: none;
+    padding-left: 10px;
+  }
+	
 }
 
 @media (max-width: 1000px) {
@@ -909,15 +917,12 @@ font-family: "Cormorant Garamond", serif;
     position: relative;
   }
 
-  .submenu-dinamico {
-    position: relative;
-    left: 0;
-    top: 0;
-    width: 100%;
+ .submenu-dinamico {
     display: none;
     box-shadow: none;
     padding: 8px 0 0 10px;
     margin-top: 6px;
+  }
   }
 
   .submenu-item.activo .submenu-dinamico {
