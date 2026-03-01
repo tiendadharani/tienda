@@ -907,6 +907,9 @@ font-family: "Cormorant Garamond", serif;
 
   .submenu-dinamico {
     position: static;
+    left: auto;          /* 🔥 CLAVE */
+    top: auto;           /* 🔥 seguridad */
+    width: 100%;         /* ocupa todo el panel */
     display: none;
     box-shadow: none;
     padding: 0;
@@ -915,9 +918,10 @@ font-family: "Cormorant Garamond", serif;
 
   .submenu-item.activo .submenu-dinamico {
     display: flex;
+    flex-direction: column;
   }
 
-}	  
+}
 
 
 .tarjeta-producto {
