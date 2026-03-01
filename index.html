@@ -1783,9 +1783,9 @@ font-family: "Cormorant Garamond", serif;
   <div class="submenu-lista">
 
   <div class="submenu-item">
-  <a href="#" onclick="irASeccion('almacen'); return false;">
-    Almacén Natural ▸
-  </a>
+  <a href="#" onclick="handleSubmenuClick(event, 'almacen')">
+  Almacén Natural ▸
+</a>
   <div class="submenu-dinamico" id="submenu-almacen"></div>
 </div>
   <a href="#" onclick="irASeccion('hierbas'); return false;">Hierbas</a>
@@ -2756,6 +2756,32 @@ function irASeccion(seccion, e) {
   mostrar(seccion);
 }
 
+
+function handleSubmenuClick(e, seccion) {
+
+  if (window.innerWidth <= 1000) {
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    const item = e.currentTarget.closest(".submenu-item");
+
+    // cerrar otros
+    document.querySelectorAll(".submenu-item").forEach(i => {
+      if (i !== item) i.classList.remove("activo");
+    });
+
+    item.classList.toggle("activo");
+
+  } else {
+
+    irASeccion(seccion, e);
+
+  }
+}
+
+		
+		
 function abrirProducto(id) {
 
   const producto = productos.find(p => p.id === id);
