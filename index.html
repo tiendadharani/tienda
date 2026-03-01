@@ -854,11 +854,14 @@ font-family: "Cormorant Garamond", serif;
   }
 
 /* Mostrar lista principal cuando está activo */
-  .submenu.activo .submenu-lista {
+  .submenu-lista {
+    display: none;
+  }
+
+  .submenu.activo > .submenu-lista {
     display: block;
     position: relative;
     box-shadow: none;
-    padding-left: 10px;
   }
 	
 }
