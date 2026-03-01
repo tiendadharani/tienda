@@ -2732,25 +2732,7 @@ function toggleSubmenu(e) {
   submenu.classList.toggle("activo");
 }
 
-document.querySelectorAll(".submenu-item > a").forEach(link => {
-  link.addEventListener("click", function(e) {
 
-    if (window.innerWidth <= 1000) {
-
-      e.preventDefault();
-
-      const item = this.parentElement;
-
-      // cerrar otros
-      document.querySelectorAll(".submenu-item").forEach(i => {
-        if (i !== item) i.classList.remove("activo");
-      });
-
-      item.classList.toggle("activo");
-    }
-
-  });
-});
 		
 function irASeccion(seccion, e) {
 
@@ -3268,6 +3250,38 @@ function generarSubmenus() {
 
   });
 }
+
+// ===== SUBMENU MOBILE CORRECTO =====
+
+document.querySelectorAll(".submenu-item > a").forEach(link => {
+
+  link.addEventListener("click", function(e) {
+
+    if (window.innerWidth <= 1000) {
+
+      const item = this.parentElement;
+      const submenu = item.querySelector(".submenu-dinamico");
+
+      // Si este item tiene submenu dinámico
+      if (submenu) {
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        // cerrar otros
+        document.querySelectorAll(".submenu-item").forEach(i => {
+          if (i !== item) i.classList.remove("activo");
+        });
+
+        item.classList.toggle("activo");
+
+      }
+
+    }
+
+  });
+
+});
 		
 </script>
 	
