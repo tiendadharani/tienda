@@ -899,19 +899,25 @@ font-family: "Cormorant Garamond", serif;
     padding-left: 12px;
     padding-right: 12px;
   }
-
-.submenu-dinamico {
-    position: static;      /* 🔥 deja de flotar */
-    left: auto;
-    top: auto;
-    width: 100%;
-    margin-top: 8px;
-    box-shadow: none;
-  }
 	
 }
 
 
+@media (max-width: 1000px) {
+
+  .submenu-dinamico {
+    position: static;
+    display: none;
+    box-shadow: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+
+  .submenu-item.activo .submenu-dinamico {
+    display: flex;
+  }
+
+}	  
 
 
 .tarjeta-producto {
@@ -2719,6 +2725,26 @@ function toggleSubmenu(e) {
   submenu.classList.toggle("activo");
 }
 
+document.querySelectorAll(".submenu-item > a").forEach(link => {
+  link.addEventListener("click", function(e) {
+
+    if (window.innerWidth <= 1000) {
+
+      e.preventDefault();
+
+      const item = this.parentElement;
+
+      // cerrar otros
+      document.querySelectorAll(".submenu-item").forEach(i => {
+        if (i !== item) i.classList.remove("activo");
+      });
+
+      item.classList.toggle("activo");
+    }
+
+  });
+});
+		
 function irASeccion(seccion, e) {
 
   if (e) {
