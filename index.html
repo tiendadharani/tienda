@@ -910,20 +910,14 @@ font-family: "Cormorant Garamond", serif;
   }
 
   .submenu-dinamico {
-    position: relative;   /* 🔥 no absolute */
+    position: relative;
     left: 0;
     top: 0;
-
     width: 100%;
     display: none;
-
     box-shadow: none;
     padding: 8px 0 0 10px;
     margin-top: 6px;
-  }
-
-  .submenu-item:hover .submenu-dinamico {
-    display: none;  /* 🔥 anulamos hover desktop */
   }
 
   .submenu-item.activo .submenu-dinamico {
@@ -1682,29 +1676,29 @@ font-family: "Cormorant Garamond", serif;
   position: relative;
 }
 
-.submenu-dinamico {
-  display: none;
-  flex-direction: column;
+@media (min-width: 1001px) {
 
-  background: white;
-  position: absolute;
-  left: 100%;
-  top: 0;
+  .submenu-dinamico {
+    display: none;
+    flex-direction: column;
 
-  min-width: 220px;
+    background: white;
+    position: absolute;
+    left: 100%;
+    top: 0;
 
-  padding: 12px 0;
+    min-width: 220px;
+    padding: 12px 0;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    z-index: 1000;
+  }
 
-  border-radius: 14px;
+  .submenu-item:hover .submenu-dinamico,
+  .submenu-dinamico:hover {
+    display: flex;
+  }
 
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-
-  z-index: 1000;
-}
-
-.submenu-item:hover .submenu-dinamico,
-.submenu-dinamico:hover {
-  display: flex;
 }
 
 .submenu-dinamico a {
