@@ -905,17 +905,25 @@ font-family: "Cormorant Garamond", serif;
 
 @media (max-width: 1000px) {
 
+  .submenu-item {
+    position: relative;
+  }
+
   .submenu-dinamico {
-    position: static;
+    position: relative;   /* 🔥 no absolute */
+    left: 0;
+    top: 0;
+
     width: 100%;
     display: none;
+
     box-shadow: none;
-    padding: 0;
-    margin-top: 10px;
+    padding: 8px 0 0 10px;
+    margin-top: 6px;
   }
 
   .submenu-item:hover .submenu-dinamico {
-    display: none;
+    display: none;  /* 🔥 anulamos hover desktop */
   }
 
   .submenu-item.activo .submenu-dinamico {
@@ -924,7 +932,6 @@ font-family: "Cormorant Garamond", serif;
   }
 
 }
-
 
 .tarjeta-producto {
   background: white;
