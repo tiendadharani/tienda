@@ -907,13 +907,15 @@ font-family: "Cormorant Garamond", serif;
 
   .submenu-dinamico {
     position: static;
-    left: auto;          /* 🔥 CLAVE */
-    top: auto;           /* 🔥 seguridad */
-    width: 100%;         /* ocupa todo el panel */
+    width: 100%;
     display: none;
     box-shadow: none;
     padding: 0;
     margin-top: 10px;
+  }
+
+  .submenu-item:hover .submenu-dinamico {
+    display: none;
   }
 
   .submenu-item.activo .submenu-dinamico {
