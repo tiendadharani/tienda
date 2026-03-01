@@ -884,13 +884,20 @@ font-family: "Cormorant Garamond", serif;
 /* ===== MOBILE ===== */
 
 @media (max-width: 600px) {
-.tarjeta-producto {
-    max-width: 550px;
-    margin: 0 auto;
+
+  .contenedor-productos {
+    padding: 0 16px;
   }
-  .categoria {
-    padding-left: 12px;
-    padding-right: 12px;
+
+  .bloque-subcategoria {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .tarjeta-producto {
+    width: 100%;
+    max-width: 100%;
   }
 
 }
