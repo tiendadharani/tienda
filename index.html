@@ -754,10 +754,7 @@ font-family: "Cormorant Garamond", serif;
   white-space: nowrap;
 }
 
-.submenu:hover .submenu-lista {
-  display: block;
-}
-	  
+  
 @media (max-width: 1000px) {
 
   .buscador-desktop {
@@ -1644,6 +1641,28 @@ font-family: "Cormorant Garamond", serif;
   position: relative;
 }
 
+
+/* ===== SUBMENU DINAMICO DESKTOP ===== */
+
+.submenu-dinamico {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+
+  background: white;
+  min-width: 220px;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  border-radius: 10px;
+
+  padding: 10px 0;
+
+  flex-direction: column; /* 🔥 ESTO SOLUCIONA LO HORIZONTAL */
+  z-index: 999;
+}
+
+	  
 /* ===== FIX SUBMENU MOBILE ===== */
 
 @media (max-width: 1000px) {
@@ -1673,9 +1692,10 @@ font-family: "Cormorant Garamond", serif;
 
 }
 
-.submenu-item:hover .submenu-dinamico,
-.submenu-dinamico:hover {
-  display: flex;
+@media (min-width: 1001px) {
+  .submenu-item:hover .submenu-dinamico {
+    display: flex;
+  }
 }
 
 .submenu-dinamico a {
