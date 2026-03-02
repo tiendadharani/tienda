@@ -1644,24 +1644,32 @@ font-family: "Cormorant Garamond", serif;
   position: relative;
 }
 
-.submenu-dinamico {
-  display: none;
-  flex-direction: column;
+/* ===== FIX SUBMENU MOBILE ===== */
 
-  background: white;
-  position: absolute;
-  left: 100%;
-  top: 0;
+@media (max-width: 1000px) {
 
-  min-width: 220px;
+  .submenu-dinamico {
+    position: relative;   /* ya no absoluto */
+    left: 0;
+    top: 0;
 
-  padding: 12px 0;
+    width: 100%;
+    margin-top: 10px;
 
-  border-radius: 14px;
+    box-shadow: none;
+    border-radius: 0;
 
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    padding-left: 10px;   /* leve indentación visual */
+  }
 
-  z-index: 1000;
+  .submenu-item:hover .submenu-dinamico {
+    display: none;  /* desactivamos hover en mobile */
+  }
+
+  .submenu-item.activo .submenu-dinamico {
+    display: flex;  /* se abre cuando agreguemos clase */
+  }
+
 }
 
 .submenu-item:hover .submenu-dinamico,
@@ -2700,6 +2708,27 @@ function toggleSubmenu(e) {
   submenu.classList.toggle("activo");
 }
 
+/* Submenu dinámico mobile */
+
+document.querySelectorAll(".submenu-item > a").forEach(link => {
+
+  link.addEventListener("click", function(e) {
+
+    if (window.innerWidth <= 1000) {
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const item = this.parentElement;
+
+      item.classList.toggle("activo");
+
+    }
+
+  });
+
+});
+		
 function irASeccion(seccion, e) {
 
   if (e) {
