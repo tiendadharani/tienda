@@ -748,6 +748,16 @@ font-family: "Cormorant Garamond", serif;
   z-index: 999;
 }
 
+/* Mostrar submenu en mobile al hacer click */
+@media (max-width: 1000px) {
+  .submenu.activo .submenu-lista {
+    display: block;
+    position: relative;
+    box-shadow: none;
+    border-radius: 0;
+  }
+}	  
+
 .submenu-lista a {
   display: block;
   padding: 10px 16px;
