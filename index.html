@@ -2718,13 +2718,7 @@ function volverAlInicio() {
 
 
 
-/* Submenu mobile */
 
-document.querySelectorAll(".submenu span").forEach(item => {
-  item.addEventListener("click", () => {
-    item.parentElement.classList.toggle("activo");
-  });
-});
 
 	
 </script>
@@ -2745,16 +2739,19 @@ document.querySelectorAll(".submenu-item > a").forEach(link => {
 
   link.addEventListener("click", function(e) {
 
-    if (window.innerWidth <= 1000) {
+    if (window.innerWidth > 1000) return;
 
-      e.preventDefault();
-      e.stopPropagation();
+    e.preventDefault();
+    e.stopPropagation();
 
-      const item = this.parentElement;
+    const item = this.parentElement;
 
-      item.classList.toggle("activo");
+    // Cerrar otros abiertos
+    document.querySelectorAll(".submenu-item").forEach(el => {
+      if (el !== item) el.classList.remove("activo");
+    });
 
-    }
+    item.classList.toggle("activo");
 
   });
 
