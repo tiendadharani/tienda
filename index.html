@@ -2580,6 +2580,19 @@ function mostrarSubcategoria(cat, sub) {
     top: 0,
     behavior: "smooth"
   });
+
+  // 🔥 Cerrar menú mobile al seleccionar subcategoría
+  const menu = document.getElementById("menu");
+  const overlay = document.getElementById("overlay");
+
+  if (menu) menu.classList.remove("activo");
+  if (overlay) overlay.classList.remove("visible");
+
+  // Cerrar submenus abiertos
+  document.querySelectorAll(".submenu").forEach(submenu => {
+    submenu.classList.remove("activo");
+  });
+	
 }
 	
 	
