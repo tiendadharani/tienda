@@ -748,23 +748,16 @@ font-family: "Cormorant Garamond", serif;
   z-index: 999;
 }
 
-/* Mostrar submenu en mobile al hacer click */
-@media (max-width: 1000px) {
-  .submenu.activo .submenu-lista {
-    display: block;
-    position: relative;
-    box-shadow: none;
-    border-radius: 0;
-  }
-}	  
-
 .submenu-lista a {
   display: block;
   padding: 10px 16px;
   white-space: nowrap;
 }
 
-  
+.submenu:hover .submenu-lista {
+  display: block;
+}
+	  
 @media (max-width: 1000px) {
 
   .buscador-desktop {
@@ -848,7 +841,7 @@ font-family: "Cormorant Garamond", serif;
   transition: transform 0.3s ease;
   z-index: 9999;
 
-  overflow-y: auto;
+  overflow-y: visible;
 }
 
   .menu > a,
@@ -1651,61 +1644,29 @@ font-family: "Cormorant Garamond", serif;
   position: relative;
 }
 
-
-/* ===== SUBMENU DINAMICO DESKTOP ===== */
-
 .submenu-dinamico {
   display: none;
-  position: absolute;
-  top: 0;
-  left: 100%;
+  flex-direction: column;
 
   background: white;
+  position: absolute;
+  left: 100%;
+  top: 0;
+
   min-width: 220px;
 
+  padding: 12px 0;
+
+  border-radius: 14px;
+
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  border-radius: 10px;
 
-  padding: 10px 0;
-
-  flex-direction: column; /* 🔥 ESTO SOLUCIONA LO HORIZONTAL */
-  z-index: 999;
+  z-index: 1000;
 }
 
-	  
-/* ===== FIX SUBMENU MOBILE ===== */
-
-@media (max-width: 1000px) {
-
-  .submenu-dinamico {
-    position: relative;   /* ya no absoluto */
-    left: 0;
-    top: 0;
-
-    width: 100%;
-    margin-top: 10px;
-
-    box-shadow: none;
-    border-radius: 0;
-
-    padding-left: 10px;   /* leve indentación visual */
-  }
-
-  .submenu-item:hover .submenu-dinamico {
-    display: none;  /* desactivamos hover en mobile */
-  }
-
- .submenu-item.activo .submenu-dinamico {
-    display: flex;
-    flex-direction: column; 
-  }
-
-}
-
-@media (min-width: 1001px) {
-  .submenu-item:hover .submenu-dinamico {
-    display: flex;
-  }
+.submenu-item:hover .submenu-dinamico,
+.submenu-dinamico:hover {
+  display: flex;
 }
 
 .submenu-dinamico a {
@@ -1790,7 +1751,7 @@ font-family: "Cormorant Garamond", serif;
   <div class="submenu-lista">
 
   <div class="submenu-item">
-  <a href="#">
+  <a href="#" onclick="irASeccion('almacen'); return false;">
     Almacén Natural ▸
   </a>
   <div class="submenu-dinamico" id="submenu-almacen"></div>
@@ -2718,7 +2679,13 @@ function volverAlInicio() {
 
 
 
+/* Submenu mobile */
 
+document.querySelectorAll(".submenu span").forEach(item => {
+  item.addEventListener("click", () => {
+    item.parentElement.classList.toggle("activo");
+  });
+});
 
 	
 </script>
@@ -2733,30 +2700,6 @@ function toggleSubmenu(e) {
   submenu.classList.toggle("activo");
 }
 
-/* Submenu dinámico mobile */
-
-document.querySelectorAll(".submenu-item > a").forEach(link => {
-
-  link.addEventListener("click", function(e) {
-
-    if (window.innerWidth > 1000) return;
-
-    e.preventDefault();
-    e.stopPropagation();
-
-    const item = this.parentElement;
-
-    // Cerrar otros abiertos
-    document.querySelectorAll(".submenu-item").forEach(el => {
-      if (el !== item) el.classList.remove("activo");
-    });
-
-    item.classList.toggle("activo");
-
-  });
-
-});
-		
 function irASeccion(seccion, e) {
 
   if (e) {
@@ -3085,18 +3028,6 @@ function crearTarjetaProducto(producto) {
 
   return tarjeta;
 }
-
-
-
-function capitalizarPalabras(texto) {
-  return texto
-    .toLowerCase()
-    .split(" ")
-    .map(p => p.charAt(0).toUpperCase() + p.slice(1))
-    .join(" ");
-}		
-
-
 		
 		
 function renderProductos() {
@@ -3141,7 +3072,7 @@ function renderProductos() {
 
         const titulo = document.createElement("h3");
         titulo.classList.add("subcategoria");
-        titulo.textContent = capitalizarPalabras(sub);
+        titulo.textContent = sub;
 
         const linea = document.createElement("div");
         linea.classList.add("linea-subcategoria");
@@ -3322,5 +3253,4 @@ function generarSubmenus() {
 
 </body>
 </html>
-
 
