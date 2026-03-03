@@ -1766,7 +1766,7 @@ font-family: "Cormorant Garamond", serif;
   <div class="submenu-lista">
 
   <div class="submenu-item">
-  <a href="#" onclick="irASeccion('almacen'); return false;">
+<a href="#" onclick="toggleSubSubmenu(event, this)">
     Almacén Natural ▸
   </a>
   <div class="submenu-dinamico" id="submenu-almacen"></div>
@@ -1776,14 +1776,14 @@ font-family: "Cormorant Garamond", serif;
   <a href="#" onclick="irASeccion('condimentos'); return false;">Condimentos</a>
  
 	  <div class="submenu-item">
-  <a href="#" onclick="irASeccion('aromas'); return false;">
+ <a href="#" onclick="toggleSubSubmenu(event, this)">
     Aromas & Ritual ▸
   </a>
   <div class="submenu-dinamico" id="submenu-aromas"></div>
 </div>
 
  <div class="submenu-item">
-  <a href="#" onclick="irASeccion('terapias'); return false;">
+ <a href="#" onclick="toggleSubSubmenu(event, this)">
     Terapias Naturales ▸
   </a>
   <div class="submenu-dinamico" id="submenu-terapias"></div>
@@ -3214,6 +3214,32 @@ function generarSubmenus() {
 
   });
 }
+
+function toggleSubSubmenu(e, elemento) {
+
+  if (window.innerWidth > 600) return; // SOLO celular
+
+  e.preventDefault();
+  e.stopPropagation();
+
+  const item = elemento.closest(".submenu-item");
+  const submenu = item.querySelector(".submenu-dinamico");
+
+  if (!submenu) return;
+
+  const visible = submenu.style.display === "flex";
+
+  // cerrar todos
+  document.querySelectorAll(".submenu-dinamico").forEach(sm => {
+    sm.style.display = "none";
+  });
+
+  // abrir solo si no estaba abierto
+  if (!visible) {
+    submenu.style.display = "flex";
+  }
+}
+
 		
 </script>
 	
