@@ -2985,6 +2985,7 @@ function crearTarjetaProducto(producto) {
     producto.categoria === "aromas"
       ? `
         <select class="selector-aroma">
+		 <option disabled selected>Elegí un aroma</option>
           ${producto.opciones.map(op => `
             <option value="${op.peso}" data-precio="${op.precio}">
               ${op.peso}
