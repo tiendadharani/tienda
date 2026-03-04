@@ -207,6 +207,8 @@
   background: white;
   cursor: pointer;
 
+	height: auto;
+
 }
 
 	  
@@ -2986,14 +2988,14 @@ function crearTarjetaProducto(producto) {
   ${
     producto.categoria === "aromas"
       ? `
-        <select class="selector-aroma">
-		 <option disabled selected>Elegí un aroma</option>
-          ${producto.opciones.map(op => `
-            <option value="${op.peso}" data-precio="${op.precio}">
-              ${op.peso}
-            </option>
-          `).join("")}
-        </select>
+        <select class="selector-aroma" size="9">
+  <option disabled selected>Elegí un aroma</option>
+  ${producto.opciones.map(op => `
+    <option value="${op.peso}" data-precio="${op.precio}">
+      ${op.peso}
+    </option>
+  `).join("")}
+</select>
       `
       : `
         <div class="pesos">
