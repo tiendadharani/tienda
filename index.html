@@ -2048,21 +2048,25 @@ async function cargarProductosDesdeCSV() {
     skipEmptyLines: true
   });
 
-  productos = resultado.data.map(fila => {
+ productos = resultado.data
+  .map(fila => {
 
     const opciones = [];
 
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 9; i++) {
       const opcion = fila["opcion_" + i];
       const precio = fila["precio_" + i];
 
-      if (opcion && precio) {
+      if (opcion) {
         opciones.push({
           peso: opcion.trim(),
           precio: Number(precio)
         });
       }
     }
+
+    // 👇 PROTECCIÓN
+    if (opciones.length === 0) return null;
 
     return {
       id: fila.id?.trim(),
@@ -2074,7 +2078,10 @@ async function cargarProductosDesdeCSV() {
       imagen: "imagenes/" + fila.imagen?.trim(),
       opciones: opciones
     };
-  });
+
+  })
+  .filter(p => p !== null);
+	
 
   console.log("Productos cargados correctamente:", productos);
 
@@ -2124,13 +2131,14 @@ function construirOpciones(columnas) {
     const opcion = columnas[i];
     const precio = columnas[i + 1];
 
-    if (opcion && precio) {
-      opciones.push({
-        peso: opcion,
-        precio: Number(precio)
-      });
-    }
-  }
+   if (opcion) {
+
+  opciones.push({
+    peso: opcion.trim(),
+    precio: precio ? Number(precio) : null
+  });
+
+}
 
   return opciones;
 }
@@ -2820,7 +2828,7 @@ function abrirProducto(id) {
   const btnMenos = contenedor.querySelector(".cantidad-btn.menos");
   const btnAgregar = contenedor.querySelector(".btn-agregar-icono");
 
-  let precioActual = Number(producto.opciones[0].precio);
+let precioActual = Number(producto.opciones[0]?.precio || 0);
   let pesoActual = producto.opciones[0].peso;
   let cantidad = 1;
 
@@ -2969,7 +2977,7 @@ function crearTarjetaProducto(producto) {
     </div>
 
     <div class="precio">
-      $<span class="precio-valor">${producto.opciones[0].precio}</span>
+     $<span class="precio-valor">${producto.opciones[0]?.precio ?? "SIN STOCK"}</span>
     </div>
 
     <div class="footer-compra">
@@ -2991,8 +2999,8 @@ function crearTarjetaProducto(producto) {
 
   // === EVENTOS ===
 
-  let precioActual = producto.opciones[0].precio;
-  let pesoActual = producto.opciones[0].peso;
+ let precioActual = producto.opciones[0]?.precio || 0;
+let pesoActual = producto.opciones[0]?.peso || "";
   let cantidad = 1;
 
   const precioSpan = tarjeta.querySelector(".precio-valor");
@@ -3032,6 +3040,12 @@ function crearTarjetaProducto(producto) {
     }
   });
 
+	if (!producto.opciones[0]?.precio) {
+  btnAgregar.disabled = true;
+  btnAgregar.style.opacity = "0.4";
+  btnAgregar.style.cursor = "not-allowed";
+}
+	
   btnAgregar.addEventListener("click", () => {
 
     const idProducto = producto.id + "-" + pesoActual;
