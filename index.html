@@ -1706,6 +1706,17 @@ font-family: "Cormorant Garamond", serif;
   }
 
 }
+
+.selector-opciones{
+  width:100%;
+  padding:8px;
+  border-radius:10px;
+  border:2px solid #5b8f7b;
+  font-weight:600;
+  color:#3f6b5a;
+  background:white;
+}
+
 	  
   </style>
 </head>
@@ -2785,15 +2796,25 @@ function abrirProducto(id) {
           ${producto.descripcionLarga || producto.descripcion}
         </div>
 
-        <div class="pesos">
-          ${producto.opciones.map((op, i) => `
-            <button class="peso-btn ${i === 0 ? 'active' : ''}" 
-                    data-precio="${op.precio}"
-                    data-peso="${op.peso}">
-              ${op.peso}
-            </button>
-          `).join("")}
-        </div>
+       ${producto.opciones.length > 5 ? `
+  <select class="selector-opciones">
+    ${producto.opciones.map((op,i)=>`
+      <option value="${op.precio}" data-peso="${op.peso}">
+        ${op.peso}
+      </option>
+    `).join("")}
+  </select>
+` : `
+  <div class="pesos">
+    ${producto.opciones.map((op, i) => `
+      <button class="peso-btn ${i === 0 ? 'active' : ''}" 
+              data-precio="${op.precio}"
+              data-peso="${op.peso}">
+        ${op.peso}
+      </button>
+    `).join("")}
+  </div>
+`}
 
         <div class="precio">
         $<span class="precio-valor">${producto.opciones[0]?.precio ?? "SIN STOCK"}</span>
@@ -3005,6 +3026,16 @@ let pesoActual = producto.opciones[0]?.peso || "";
 
   const precioSpan = tarjeta.querySelector(".precio-valor");
   const botonesPeso = tarjeta.querySelectorAll(".peso-btn");
+const selector = tarjeta.querySelector(".selector-opciones");
+
+if(selector){
+  selector.addEventListener("change", function(){
+    precioActual = Number(this.value);
+    pesoActual = this.options[this.selectedIndex].dataset.peso;
+    precioSpan.textContent = precioActual;
+  });
+}
+	
   const btnMas = tarjeta.querySelector(".mas");
   const btnMenos = tarjeta.querySelector(".menos");
   const cantidadValor = tarjeta.querySelector(".cantidad-valor");
