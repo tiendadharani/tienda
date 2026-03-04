@@ -193,30 +193,6 @@
   font-size: 14px;
 }
 
-.selector-aroma {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0 15px;
-
-  border-radius: 10px;
-  border: 1px solid #d6d6d6;
-
-  font-size: 15px;
-  color: #3f6b5a;
-
-  background: white;
-  cursor: pointer;
-
-	height: auto;
-
-}
-
-	  
-.selector-aroma:focus {
-  outline: none;
-  border-color: #5b8f7b;
-}
-	  
 .btn,
 .btn-agregar-icono {
   background: #5a8f7b;
@@ -237,9 +213,7 @@
   border-radius: 12px;
 }
 
-.selector-aroma option[disabled] {
-  color: #999;
-}
+
 
    /* === FIX SCROLL HORIZONTAL MOBILE === */
 
@@ -2984,35 +2958,15 @@ function crearTarjetaProducto(producto) {
 
     <p class="descripcion">${producto.descripcion}</p>
 
-  <div class="selector-opciones">
-  ${
-    producto.categoria === "aromas"
-  ? `
-    <select class="selector-aroma">
-
-      <option disabled selected>Elegí un aroma</option>
-
-      ${producto.opciones.map(op => `
-        <option value="${op.peso}" data-precio="${op.precio}">
+    <div class="pesos">
+      ${producto.opciones.map((op, i) => `
+        <button class="peso-btn ${i === 0 ? 'active' : ''}" 
+                data-precio="${op.precio}"
+                data-peso="${op.peso}">
           ${op.peso}
-        </option>
+        </button>
       `).join("")}
-
-    </select>
-      `
-      : `
-        <div class="pesos">
-          ${producto.opciones.map((op, i) => `
-            <button class="peso-btn ${i === 0 ? 'active' : ''}" 
-                    data-precio="${op.precio}"
-                    data-peso="${op.peso}">
-              ${op.peso}
-            </button>
-          `).join("")}
-        </div>
-      `
-  }
-</div>
+    </div>
 
     <div class="precio">
       $<span class="precio-valor">${producto.opciones[0].precio}</span>
@@ -3048,25 +3002,6 @@ function crearTarjetaProducto(producto) {
   const cantidadValor = tarjeta.querySelector(".cantidad-valor");
   const btnAgregar = tarjeta.querySelector(".btn-agregar-icono");
 
-const selectorAroma = tarjeta.querySelector(".selector-aroma");
-
-if (selectorAroma) {
-
-  precioActual = Number(selectorAroma.selectedOptions[0].dataset.precio);
-  pesoActual = selectorAroma.value;
-
-  selectorAroma.addEventListener("change", () => {
-
-    const opcion = selectorAroma.selectedOptions[0];
-
-    precioActual = Number(opcion.dataset.precio);
-    pesoActual = opcion.value;
-
-    precioSpan.textContent = precioActual;
-  });
-
-}
-	
   tarjeta.querySelector(".nombre-producto")
     .addEventListener("click", () => abrirProducto(producto.id));
 
@@ -3372,4 +3307,3 @@ function toggleSubSubmenu(e, elemento) {
 
 </body>
 </html>
-
