@@ -2795,7 +2795,7 @@ function abrirProducto(id) {
         </div>
 
         <div class="precio">
-          $<span class="precio-valor">${producto.opciones[0].precio}</span>
+        $<span class="precio-valor">${producto.opciones[0]?.precio ?? "SIN STOCK"}</span>
         </div>
 
         <div class="footer-compra">
@@ -2845,18 +2845,17 @@ let precioActual = Number(producto.opciones[0]?.precio || 0);
   });
 
   // Cantidad
-  btnMas.addEventListener("click", () => {
-    cantidad++;
-    cantidadSpan.textContent = cantidad;
-  });
+ btnMas.addEventListener("click", () => {
+  cantidad++;
+  cantidadValor.textContent = cantidad;
+});
 
-  btnMenos.addEventListener("click", () => {
-    if (cantidad > 1) {
-      cantidad--;
-      cantidadSpan.textContent = cantidad;
-    }
-  });
-
+btnMenos.addEventListener("click", () => {
+  if (cantidad > 1) {
+    cantidad--;
+    cantidadValor.textContent = cantidad;
+  }
+});
   // Agregar al carrito
   btnAgregar.addEventListener("click", () => {
 
