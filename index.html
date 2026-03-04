@@ -2128,17 +2128,18 @@ function construirOpciones(columnas) {
   let opciones = [];
 
   for (let i = 8; i < columnas.length; i += 2) {
+
     const opcion = columnas[i];
     const precio = columnas[i + 1];
 
-   if (opcion) {
+    if (opcion) {
+      opciones.push({
+        peso: opcion.trim(),
+        precio: precio ? Number(precio) : null
+      });
+    }
 
-  opciones.push({
-    peso: opcion.trim(),
-    precio: precio ? Number(precio) : null
-  });
-
-}
+  }
 
   return opciones;
 }
