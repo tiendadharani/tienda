@@ -1816,10 +1816,10 @@ font-family: "Cormorant Garamond", serif;
 .categoria-flecha {
 
   position: absolute;
-  top: 40%;
+  top: 50%;
+  transform: translateY(-50%);
 
   background: white;
-
   border: none;
 
   width: 36px;
@@ -1836,9 +1836,21 @@ font-family: "Cormorant Garamond", serif;
   z-index: 5;
 }
 
-.flecha-izq { left: -10px; }
-.flecha-der { right: -10px; }	  
-	  
+.flecha-izq { left: -18px; }
+.flecha-der { right: -18px; }	  
+
+@media (max-width: 768px){
+
+  .categoria-flecha{
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+
+  .flecha-izq { left: -8px; }
+  .flecha-der { right: -8px; }
+
+}	  
 	  
   </style>
 </head>
