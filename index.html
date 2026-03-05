@@ -2120,16 +2120,19 @@ async function cargarProductosDesdeCSV() {
 
     const opciones = [];
 
-    for (let i = 1; i <= 9; i++) {
-      const opcion = fila["opcion_" + i];
-      const precio = fila["precio_" + i];
+   for (let i = 1; i <= 50; i++) {
 
-      if (opcion) {
-        opciones.push({
-          peso: opcion.trim(),
-          precio: Number(precio)
-        });
-      }
+  const opcion = fila["opcion_" + i];
+  const precio = fila["precio_" + i];
+
+  if (!opcion) break;
+
+  opciones.push({
+    peso: opcion.trim(),
+    precio: Number(precio)
+  });
+
+}
     }
 
     // 👇 PROTECCIÓN
