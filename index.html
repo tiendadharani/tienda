@@ -1492,9 +1492,10 @@ font-family: "Cormorant Garamond", serif;
 }
 
 .carrito-lateral-nombre {
-  font-weight: 600;
+  font-weight: 400;
   font-size: 15px;
   margin-bottom: 6px;
+	color: #3f6b5a;
 }
 
 .carrito-lateral-controles {
@@ -2214,7 +2215,7 @@ function mostrarCarrito() {
 
         <div class="carrito-lateral-precio">
           $${subtotal}
-          <button onclick="eliminarProducto(${index})">✕</button>
+         <button onclick="eliminarProducto(${index}, event)">✕</button>
         </div>
 
       </div>
@@ -2646,8 +2647,14 @@ function restarProducto(i) {
   guardarCarrito();
 }
 
-function eliminarProducto(i) {
+function eliminarProducto(i, event) {
+
+  if(event){
+    event.stopPropagation();
+  }
+
   carrito.splice(i, 1);
+
   mostrarCarrito();
   guardarCarrito();
 }
