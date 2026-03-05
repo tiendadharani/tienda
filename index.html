@@ -1717,16 +1717,21 @@ font-family: "Cormorant Garamond", serif;
   gap:6px;
   width:100%;
   overflow:hidden;
+  min-width:0;
 }
 
-.selector-aromas-scroll{
+.selector-aromas-scroll {
   display:flex;
   gap:10px;
   overflow-x:auto;
   scroll-behavior:smooth;
+
+max-width:100%;
+  flex:1;
+  min-width:0;	
 }
 
-.selector-aromas-scroll::-webkit-scrollbar{
+.selector-aromas-scroll::-webkit-scrollbar {
   display:none;
 }
 
