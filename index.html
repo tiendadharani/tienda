@@ -1759,6 +1759,8 @@ font-family: "Cormorant Garamond", serif;
   cursor: pointer;
   font-weight: 600;
   white-space: nowrap;
+	font-size:13px;
+  padding:6px 12px;
 
   transition: all 0.2s ease;
 }
@@ -1783,9 +1785,16 @@ font-family: "Cormorant Garamond", serif;
   gap:10px;
   overflow-x:auto;
   scroll-behavior:smooth;
-  flex:1;
+
+  max-width:100%;
 }
 
+	  .selector-aromas-carrusel{
+  width:100%;
+  max-width:100%;
+  overflow:hidden;
+}
+	  
 .selector-aromas-scroll::-webkit-scrollbar{
   display:none;
 }
@@ -2990,7 +2999,23 @@ ${op.peso}
 
 
 /* ===== CARRUSEL AROMAS ===== */
+const aromaBtns = contenedor.querySelectorAll(".aroma-chip");
 
+aromaBtns.forEach(btn => {
+
+  btn.addEventListener("click", () => {
+
+    aromaBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    precioActual = Number(btn.dataset.precio);
+    pesoActual = btn.dataset.aroma;
+
+    precioSpan.textContent = precioActual;
+
+  });
+
+});
 const scrollContainer = contenedor.querySelector(".selector-aromas-scroll");
 const btnIzq = contenedor.querySelector(".aroma-flecha.izquierda");
 const btnDer = contenedor.querySelector(".aroma-flecha.derecha");
