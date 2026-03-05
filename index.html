@@ -2885,7 +2885,7 @@ ${op.peso}
   const precioSpan = contenedor.querySelector(".precio-valor");
   const pesoBtns = contenedor.querySelectorAll(".peso-btn");
 	
-	const selectorAroma = tarjeta.querySelector(".selector-aroma");
+	const selectorAroma = contenedor.querySelector(".selector-aroma");
 
 if (selectorAroma) {
 
@@ -2927,13 +2927,13 @@ let precioActual = Number(producto.opciones[0]?.precio || 0);
   // Cantidad
  btnMas.addEventListener("click", () => {
   cantidad++;
-  cantidadValor.textContent = cantidad;
+  cantidadValor.textContent = cantidadSpan;
 });
 
 btnMenos.addEventListener("click", () => {
   if (cantidad > 1) {
     cantidad--;
-    cantidadValor.textContent = cantidad;
+    cantidadValor.textContent = cantidadSpan;
   }
 });
   // Agregar al carrito
@@ -3151,13 +3151,13 @@ if (selectorAroma) {
 }
   btnMas.addEventListener("click", () => {
     cantidad++;
-    cantidadValor.textContent = cantidad;
+    cantidadValor.textContent = cantidadSpan;
   });
 
   btnMenos.addEventListener("click", () => {
     if (cantidad > 1) {
       cantidad--;
-      cantidadValor.textContent = cantidad;
+      cantidadValor.textContent = cantidadSpan;
     }
   });
 
