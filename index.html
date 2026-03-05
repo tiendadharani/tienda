@@ -1711,7 +1711,7 @@ font-family: "Cormorant Garamond", serif;
 
 
 
-.selector-aromas-carrusel{
+.selector-aromas-carrusel {
   display:flex;
   align-items:center;
   gap:6px;
@@ -2980,6 +2980,7 @@ aromaBtns.forEach(btn => {
 
 
 const scrollContainer = contenedor.querySelector(".selector-aromas-scroll");
+if(!scrollContainer) return;
 const btnIzq = contenedor.querySelector(".aroma-flecha.izquierda");
 const btnDer = contenedor.querySelector(".aroma-flecha.derecha");
 
