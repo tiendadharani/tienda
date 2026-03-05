@@ -2973,27 +2973,6 @@ aromaBtns.forEach(btn => {
 
 });
 
-const scrollContainer = contenedor.querySelector(".selector-aromas-scroll");
-const btnIzq = contenedor.querySelector(".aroma-flecha.izquierda");
-const btnDer = contenedor.querySelector(".aroma-flecha.derecha");
-
-if (scrollContainer && btnIzq && btnDer) {
-
-  btnIzq.addEventListener("click", () => {
-    scrollContainer.scrollBy({
-      left: -200,
-      behavior: "smooth"
-    });
-  });
-
-  btnDer.addEventListener("click", () => {
-    scrollContainer.scrollBy({
-      left: 200,
-      behavior: "smooth"
-    });
-  });
-
-}
 
 const scrollContainer = contenedor.querySelector(".selector-aromas-scroll");
 const btnIzq = contenedor.querySelector(".aroma-flecha.izquierda");
@@ -3017,9 +2996,6 @@ if(scrollContainer && btnIzq && btnDer){
 
 }
 	
-let precioActual = Number(producto.opciones[0]?.precio || 0);
-  let pesoActual = producto.opciones[0].peso;
-  let cantidad = 1;
 
   // Selector de peso
   pesoBtns.forEach(btn => {
