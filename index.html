@@ -1738,6 +1738,7 @@ font-family: "Cormorant Garamond", serif;
   margin: 35px auto;
 
   position: relative;
+	 padding: 0 10px; /* evita que las flechas se corten */
 }
 
 .categorias-scroll {
@@ -1749,6 +1750,8 @@ font-family: "Cormorant Garamond", serif;
   scroll-behavior: smooth;
 
   padding: 10px 10px 20px;
+
+  position: relative; /* 🔥 CLAVE */
 
 }
 
@@ -1816,6 +1819,7 @@ font-family: "Cormorant Garamond", serif;
 .categoria-flecha {
 
   position: absolute;
+
   top: 50%;
   transform: translateY(-50%);
 
@@ -1833,11 +1837,11 @@ font-family: "Cormorant Garamond", serif;
 
   font-size: 20px;
 
-  z-index: 5;
+  z-index: 20;
 }
 
-.flecha-izq { left: -18px; }
-.flecha-der { right: -18px; }	  
+.flecha-izq { left: 0; }
+.flecha-der { right: 0; }	  
 
 @media (max-width: 768px){
 
