@@ -1708,77 +1708,6 @@ font-family: "Cormorant Garamond", serif;
 
 }
 
-
-
-
-
-.selector-aromas-carrusel {
-  display:flex;
-  align-items:center;
-  gap:6px;
-  width:100%;
-  overflow:hidden;
-  min-width:0;
-}
-
-.selector-aromas-scroll {
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
-  scroll-behavior:smooth;
-	min-width:0;
-
-max-width:100%;
-  flex:1;
-  min-width:0;	
-}
-
-.selector-aromas-scroll::-webkit-scrollbar {
-  display:none;
-}
-
-.aroma-chip {
-  flex:0 0 auto;
-  border:2px solid #5b8f7b;
-  background:white;
-  color:#5b8f7b;
-  padding:6px 12px;
-  border-radius:20px;
-  cursor:pointer;
-  font-weight:600;
-  white-space:nowrap;
-  font-size:13px;
-  transition:all 0.2s ease;
-}
-
-.aroma-chip:hover {
-  background:rgba(91,143,123,0.1);
-}
-
-.aroma-chip.active {
-  background:#5b8f7b;
-  color:white;
-}
-
-.aroma-flecha {
-  border:none;
-  background:#5b8f7b;
-  color:white;
-  width:32px;
-  height:32px;
-  border-radius:50%;
-  cursor:pointer;
-  font-size:18px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-	flex-shrink:0;
-}
-
-.aroma-flecha:hover {
-  background:#4a7665;
-}
-
 	  
   </style>
 </head>
@@ -3150,6 +3079,7 @@ function crearTarjetaProducto(producto) {
   tarjeta.classList.add("tarjeta-producto");
 
   tarjeta.innerHTML = `
+
     <h3 class="nombre-producto">${producto.nombre}</h3>
 
     <div class="producto-imagen-container">
@@ -3158,51 +3088,20 @@ function crearTarjetaProducto(producto) {
 
     <p class="descripcion">${producto.descripcion}</p>
 
-   ${
-producto.categoria === "aromas"
-? `
-<div class="selector-aromas-carrusel">
-
-<button class="aroma-flecha izquierda">‹</button>
-
-<div class="selector-aromas-scroll">
-
-${producto.opciones.map((op,i) => `
-
-<button class="aroma-chip ${i === 0 ? "active" : ""}"
-data-precio="${op.precio}"
-data-aroma="${op.peso}">
-
-${op.peso}
-
-</button>
-
-`).join("")}
-
-</div>
-
-<button class="aroma-flecha derecha">›</button>
-
-</div>
-`
-: `
-<div class="pesos">
-  ${producto.opciones.map((op, i) => `
-    <button class="peso-btn ${i === 0 ? 'active' : ''}" 
-            data-precio="${op.precio}"
-            data-peso="${op.peso}">
-      ${op.peso}
-    </button>
-  `).join("")}
-</div>
-`
-}
+    <select class="selector-opciones">
+      ${producto.opciones.map(op => `
+        <option value="${op.precio}" data-peso="${op.peso}">
+          ${op.peso}
+        </option>
+      `).join("")}
+    </select>
 
     <div class="precio">
-     $<span class="precio-valor">${producto.opciones[0]?.precio ?? "SIN STOCK"}</span>
+      $<span class="precio-valor">${producto.opciones[0]?.precio ?? "SIN STOCK"}</span>
     </div>
 
     <div class="footer-compra">
+
       <div class="cantidad-control">
         <button class="cantidad-btn menos">−</button>
         <span class="cantidad-valor">1</span>
@@ -3216,109 +3115,97 @@ ${op.peso}
           <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L23 6H6"></path>
         </svg>
       </button>
+
     </div>
   `;
 
-  // === EVENTOS ===
 
- let precioActual = producto.opciones[0]?.precio || 0;
-let pesoActual = producto.opciones[0]?.peso || "";
+  // ===== VARIABLES =====
+
+  let precioActual = producto.opciones[0]?.precio || 0;
+  let pesoActual = producto.opciones[0]?.peso || "";
   let cantidad = 1;
 
+
   const precioSpan = tarjeta.querySelector(".precio-valor");
-  const botonesPeso = tarjeta.querySelectorAll(".peso-btn");
-const selectorAroma = tarjeta.querySelector(".selector-aroma");
-  
-const selector = tarjeta.querySelector(".selector-opciones");
+  const selector = tarjeta.querySelector(".selector-opciones");
 
 if(selector){
-  selector.addEventListener("change", function(){
-    precioActual = Number(this.value);
-    pesoActual = this.options[this.selectedIndex].dataset.peso;
-    precioSpan.textContent = precioActual;
-  });
+
+selector.addEventListener("change", function(){
+
+precioActual = Number(this.value);
+
+pesoActual = this.options[this.selectedIndex].dataset.peso;
+
+precioSpan.textContent = precioActual;
+
+});
+
 }
-	
-  const btnMas = tarjeta.querySelector(".mas");
+
   const btnMenos = tarjeta.querySelector(".menos");
-  const cantidadValor = tarjeta.querySelector(".cantidad-valor");
+  const btnMas = tarjeta.querySelector(".mas");
+  const cantidadSpan = tarjeta.querySelector(".cantidad-valor");
   const btnAgregar = tarjeta.querySelector(".btn-agregar-icono");
 
-  tarjeta.querySelector(".nombre-producto")
-    .addEventListener("click", () => abrirProducto(producto.id));
 
-  tarjeta.querySelector(".producto-imagen")
-    .addEventListener("click", () => abrirProducto(producto.id));
+  // ===== CAMBIO DE OPCIÓN =====
 
-  botonesPeso.forEach(btn => {
-    btn.addEventListener("click", () => {
+  if(selector){
 
-      botonesPeso.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
+    selector.addEventListener("change", function(){
 
-      precioActual = Number(btn.dataset.precio);
-      pesoActual = btn.dataset.peso;
+      const opcion = this.options[this.selectedIndex];
+
+      precioActual = Number(opcion.value);
+      pesoActual = opcion.dataset.peso;
+
       precioSpan.textContent = precioActual;
+
     });
-  });
-if (selectorAroma) {
 
-  precioActual = Number(selectorAroma.selectedOptions[0].dataset.precio);
-  pesoActual = selectorAroma.value;
+  }
 
-  selectorAroma.addEventListener("change", () => {
 
-    const opcion = selectorAroma.selectedOptions[0];
+  // ===== CONTROL CANTIDAD =====
 
-    precioActual = Number(opcion.dataset.precio);
-    pesoActual = opcion.value;
-
-    precioSpan.textContent = precioActual;
-
-  });
-
-}
   btnMas.addEventListener("click", () => {
+
     cantidad++;
     cantidadSpan.textContent = cantidad;
+
   });
 
   btnMenos.addEventListener("click", () => {
-    if (cantidad > 1) {
+
+    if(cantidad > 1){
       cantidad--;
       cantidadSpan.textContent = cantidad;
     }
+
   });
 
-	if (!producto.opciones[0]?.precio) {
-  btnAgregar.disabled = true;
-  btnAgregar.style.opacity = "0.4";
-  btnAgregar.style.cursor = "not-allowed";
-}
-	
+
+  // ===== AGREGAR AL CARRITO =====
+
   btnAgregar.addEventListener("click", () => {
 
-    const idProducto = producto.id + "-" + pesoActual;
+    agregarAlCarrito({
 
-    const existente = carrito.find(p => p.id === idProducto);
+      id: producto.id + "-" + pesoActual,
+      nombre: producto.nombre + " " + pesoActual,
+      precio: precioActual,
+      cantidad: cantidad,
+      imagen: producto.imagen
 
-    if (existente) {
-      existente.cantidad += cantidad;
-    } else {
-      carrito.push({
-        id: idProducto,
-        nombre: `${producto.nombre} (${pesoActual})`,
-        precio: precioActual,
-        cantidad: cantidad
-      });
-    }
+    });
 
-    mostrarCarrito();
-    guardarCarrito();
-    mostrarToast("🛒 Producto agregado 💚");
   });
 
+
   return tarjeta;
+
 }
 		
 		
