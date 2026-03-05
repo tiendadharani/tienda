@@ -1735,16 +1735,31 @@ font-family: "Cormorant Garamond", serif;
 .categorias-destacadas {
 
   max-width: 1200px;
-  margin: 30px auto;
+  margin: 35px auto;
 
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-  gap: 20px;
-
-  padding: 0 20px;
+  position: relative;
 }
 
-.categoria-card {
+.categorias-scroll {
+
+  display: flex;
+  gap: 18px;
+
+  overflow-x: auto;
+  scroll-behavior: smooth;
+
+  padding: 10px 10px 20px;
+
+}
+
+.categorias-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+	  .categoria-card {
+
+  min-width: 180px;
+  max-width: 180px;
 
   background: white;
 
@@ -1759,6 +1774,8 @@ font-family: "Cormorant Garamond", serif;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 
   transition: transform .18s ease, box-shadow .18s ease;
+
+  flex-shrink: 0;
 }
 
 .categoria-card:hover {
@@ -1771,7 +1788,6 @@ font-family: "Cormorant Garamond", serif;
 .categoria-card img {
 
   width: 100%;
-
   height: 140px;
 
   object-fit: cover;
@@ -1781,21 +1797,47 @@ font-family: "Cormorant Garamond", serif;
 
   font-family: "Cormorant Garamond", serif;
 
-  font-size: 20px;
+  font-size: 18px;
 
-  margin: 12px 0 4px;
+  margin: 10px 0 3px;
 
   color: #3f6b5a;
 }
 
 .categoria-card p {
 
-  font-size: 14px;
+  font-size: 13px;
 
   color: #777;
 
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
+
+.categoria-flecha {
+
+  position: absolute;
+  top: 40%;
+
+  background: white;
+
+  border: none;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+
+  cursor: pointer;
+
+  font-size: 20px;
+
+  z-index: 5;
+}
+
+.flecha-izq { left: -10px; }
+.flecha-der { right: -10px; }	  
 	  
 	  
   </style>
@@ -1936,6 +1978,10 @@ font-family: "Cormorant Garamond", serif;
 
 <div class="categorias-destacadas">
 
+<button class="categoria-flecha flecha-izq" onclick="scrollCategorias(-300)">‹</button>
+
+<div class="categorias-scroll" id="categorias-scroll">
+
   <div class="categoria-card" onclick="irASeccion('almacen')">
     <img src="img/categorias/cereales.jpg">
     <h3>Cereales</h3>
@@ -1965,6 +2011,10 @@ font-family: "Cormorant Garamond", serif;
     <h3>Tés</h3>
     <p id="count-tes"></p>
   </div>
+
+</div>
+
+<button class="categoria-flecha flecha-der" onclick="scrollCategorias(300)">›</button>
 
 </div>
 
@@ -2301,7 +2351,16 @@ document.addEventListener("click", function(e) {
 
 });
 
+function scrollCategorias(valor){
 
+  const contenedor = document.getElementById("categorias-scroll");
+
+  contenedor.scrollBy({
+    left: valor,
+    behavior: "smooth"
+  });
+
+}
 	
 
 /* Mostrar carrito */
