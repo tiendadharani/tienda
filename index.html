@@ -908,6 +908,14 @@ font-family: "Cormorant Garamond", serif;
 	min-width:0;
 }
 
+.tarjeta-producto {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.tarjeta-producto:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}	  
 
 .pesos {
   display: flex;
@@ -1038,11 +1046,14 @@ font-family: "Cormorant Garamond", serif;
 .producto-imagen {
 
   width: 130px;
-
   height: 130px;
-
   object-fit: contain;
 
+	 transition: transform 0.25s ease;
+}
+
+.tarjeta-producto:hover .producto-imagen {
+  transform: scale(1.05);
 }
 
 /* =========================
