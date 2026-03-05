@@ -1753,10 +1753,10 @@ font-family: "Cormorant Garamond", serif;
   overflow-x: auto;
   scroll-behavior: smooth;
 
-  padding: 15px 25px 25px;
+  padding: 15px 25px;
 
   position: relative; /* 🔥 CLAVE */
-
+scroll-snap-type: x mandatory;
 }
 
 .categorias-scroll::-webkit-scrollbar {
@@ -1783,6 +1783,8 @@ font-family: "Cormorant Garamond", serif;
   transition: transform .18s ease, box-shadow .18s ease;
 
   flex-shrink: 0;
+scroll-snap-align: start;
+		  
 }
 
 .categoria-card:hover {
@@ -1824,7 +1826,7 @@ font-family: "Cormorant Garamond", serif;
 
   position: absolute;
 
-  top: 75px;          /* altura real del carrusel */
+  top: 50%;
   transform: translateY(-50%);
 
   background: white;
@@ -1841,11 +1843,13 @@ font-family: "Cormorant Garamond", serif;
 
   font-size: 20px;
 
-  z-index: 20;
+  z-index: 30;
 }
 
 .flecha-izq { left: -18px; }
-.flecha-der { right: -18px; }	  
+.flecha-der { right: -18px; }
+
+ 
 
 @media (max-width: 768px){
 
