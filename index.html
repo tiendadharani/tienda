@@ -904,6 +904,7 @@ font-family: "Cormorant Garamond", serif;
   flex-direction: column;
   gap: 10px;
   box-sizing: border-box;
+	min-width:0;
 }
 
 
@@ -1725,6 +1726,7 @@ font-family: "Cormorant Garamond", serif;
   gap:10px;
   overflow-x:auto;
   scroll-behavior:smooth;
+	min-width:0;
 
 max-width:100%;
   flex:1;
@@ -2950,7 +2952,22 @@ ${op.peso}
 
   const precioSpan = contenedor.querySelector(".precio-valor");
   const pesoBtns = contenedor.querySelectorAll(".peso-btn");
-	
+	const selectOpciones = contenedor.querySelector(".selector-opciones");
+
+if(selectOpciones){
+
+  selectOpciones.addEventListener("change", () => {
+
+    const opcion = selectOpciones.options[selectOpciones.selectedIndex];
+
+    precioActual = Number(opcion.value);
+    pesoActual = opcion.dataset.peso;
+
+    precioSpan.textContent = precioActual;
+
+  });
+
+}
   const cantidadSpan = contenedor.querySelector(".cantidad-valor");
   const btnMas = contenedor.querySelector(".cantidad-btn.mas");
   const btnMenos = contenedor.querySelector(".cantidad-btn.menos");
@@ -2984,24 +3001,7 @@ const scrollContainer = contenedor.querySelector(".selector-aromas-scroll");
 
 if(scrollContainer){
 
-  const btnIzq = contenedor.querySelector(".aroma-flecha.izquierda");
-  const btnDer = contenedor.querySelector(".aroma-flecha.derecha");
 
-  btnIzq.addEventListener("click", () => {
-    scrollContainer.scrollBy({
-      left: -200,
-      behavior: "smooth"
-    });
-  });
-
-  btnDer.addEventListener("click", () => {
-    scrollContainer.scrollBy({
-      left: 200,
-      behavior: "smooth"
-    });
-  });
-
-}
 const btnIzq = contenedor.querySelector(".aroma-flecha.izquierda");
 const btnDer = contenedor.querySelector(".aroma-flecha.derecha");
 
