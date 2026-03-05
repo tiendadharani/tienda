@@ -1741,8 +1741,12 @@ font-family: "Cormorant Garamond", serif;
   max-width: 1200px;
   margin: 35px auto;
 
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
   position: relative;
-	 padding: 0 10px; /* evita que las flechas se corten */
+
 }
 
 .categorias-scroll {
@@ -1751,12 +1755,10 @@ font-family: "Cormorant Garamond", serif;
   gap: 20px;
 
   overflow-x: auto;
-  scroll-behavior: smooth;
 
   padding: 15px 25px;
 
-  position: relative; /* 🔥 CLAVE */
-scroll-snap-type: x mandatory;
+  width: 100%;
 }
 
 .categorias-scroll::-webkit-scrollbar {
