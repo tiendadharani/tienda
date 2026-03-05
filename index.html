@@ -2982,30 +2982,12 @@ ${op.peso}
   const precioSpan = contenedor.querySelector(".precio-valor");
   const pesoBtns = contenedor.querySelectorAll(".peso-btn");
 	
-	const selectorAroma = contenedor.querySelector(".selector-aroma");
-
-if (selectorAroma) {
-
-  precioActual = Number(selectorAroma.selectedOptions[0].dataset.precio);
-  pesoActual = selectorAroma.value;
-
-  selectorAroma.addEventListener("change", () => {
-
-    const opcion = selectorAroma.selectedOptions[0];
-
-    precioActual = Number(opcion.dataset.precio);
-    pesoActual = opcion.value;
-
-    precioSpan.textContent = precioActual;
-  });
-
-}
   const cantidadSpan = contenedor.querySelector(".cantidad-valor");
   const btnMas = contenedor.querySelector(".cantidad-btn.mas");
   const btnMenos = contenedor.querySelector(".cantidad-btn.menos");
   const btnAgregar = contenedor.querySelector(".btn-agregar-icono");
 
-const btnAgregar = contenedor.querySelector(".btn-agregar-icono");
+
 
 /* ===== CARRUSEL AROMAS ===== */
 
