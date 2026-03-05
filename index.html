@@ -3083,7 +3083,7 @@ function crearTarjetaProducto(producto) {
     <h3 class="nombre-producto">${producto.nombre}</h3>
 
     <div class="producto-imagen-container">
-      <img src="${producto.imagen}" class="producto-imagen">
+     <img src="${producto.imagen}" class="producto-imagen" onclick="abrirProducto('${producto.id}')">
     </div>
 
     <p class="descripcion">${producto.descripcion}</p>
@@ -3191,17 +3191,30 @@ precioSpan.textContent = precioActual;
 
   btnAgregar.addEventListener("click", () => {
 
-    agregarAlCarrito({
+  const idProducto = producto.id + "-" + pesoActual;
 
-      id: producto.id + "-" + pesoActual,
-      nombre: producto.nombre + " " + pesoActual,
+  const existente = carrito.find(p => p.id === idProducto);
+
+  if (existente) {
+
+    existente.cantidad += cantidad;
+
+  } else {
+
+    carrito.push({
+      id: idProducto,
+      nombre: `${producto.nombre} (${pesoActual})`,
       precio: precioActual,
-      cantidad: cantidad,
-      imagen: producto.imagen
-
+      cantidad: cantidad
     });
 
-  });
+  }
+
+  mostrarCarrito();
+  guardarCarrito();
+  mostrarToast("🛒 Producto agregado 💚");
+
+});
 
 
   return tarjeta;
