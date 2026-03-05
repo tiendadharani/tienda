@@ -1729,6 +1729,50 @@ font-family: "Cormorant Garamond", serif;
   max-height:200px;
   overflow-y:auto;
 }
+
+.selector-aromas-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 6px 0;
+  margin: 10px 0;
+
+  scroll-snap-type: x mandatory;
+}
+
+.selector-aromas-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.selector-aromas-scroll::-webkit-scrollbar-thumb {
+  background: #5b8f7b;
+  border-radius: 10px;
+}
+
+.aroma-chip {
+  flex: 0 0 auto;
+  border: 2px solid #5b8f7b;
+  background: white;
+  color: #5b8f7b;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap;
+
+  transition: all 0.2s ease;
+}
+
+.aroma-chip:hover {
+  background: rgba(91,143,123,0.1);
+}
+
+.aroma-chip.active {
+  background: #5b8f7b;
+  color: white;
+}
+
+
 	  
   </style>
 </head>
@@ -2823,17 +2867,21 @@ ${producto.categoria === "aromas"
 
 ? `
 
-<select class="selector-aroma">
+<div class="selector-aromas-scroll">
 
-${producto.opciones.map(op => `
+${producto.opciones.map((op,i) => `
 
-<option value="${op.peso}" data-precio="${op.precio}">
+<button class="aroma-chip ${i === 0 ? "active" : ""}"
+data-precio="${op.precio}"
+data-aroma="${op.peso}">
+
 ${op.peso}
-</option>
+
+</button>
 
 `).join("")}
 
-</select>
+</div>
 
 `
 
@@ -3051,13 +3099,21 @@ function crearTarjetaProducto(producto) {
    ${
 producto.categoria === "aromas"
 ? `
-<select class="selector-aroma">
-  ${producto.opciones.map(op => `
-    <option value="${op.peso}" data-precio="${op.precio}">
-      ${op.peso}
-    </option>
-  `).join("")}
-</select>
+<div class="selector-aromas-scroll">
+
+${producto.opciones.map((op,i) => `
+
+<button class="aroma-chip ${i === 0 ? "active" : ""}"
+data-precio="${op.precio}"
+data-aroma="${op.peso}">
+
+${op.peso}
+
+</button>
+
+`).join("")}
+
+</div>
 `
 : `
 <div class="pesos">
