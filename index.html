@@ -1734,16 +1734,19 @@ font-family: "Cormorant Garamond", serif;
 }
 
 <!-- CATEGORIAS DESTACADAS -->
+	  
 .categorias-destacadas {
 
-  max-width: 1200px;
+ max-width: 1200px;
   margin: 35px auto;
-
   padding: 0 10px;
 
   display: flex;
   align-items: center;
+
   position: relative;
+
+  height: 240px; /* 👈 agregar esto */
 
 }
 
@@ -1751,12 +1754,10 @@ font-family: "Cormorant Garamond", serif;
 
   display: flex;
   gap: 20px;
-
   overflow-x: auto;
-
   padding: 15px 25px;
-
   width: 100%;
+  align-items: stretch;	
 }
 
 .categorias-scroll::-webkit-scrollbar {
