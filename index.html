@@ -2271,14 +2271,16 @@ async function cargarProductosDesdeCSV() {
    for (let i = 1; i <= 50; i++) {
 
   const opcion = fila["opcion_" + i];
-  const precio = fila["precio_" + i];
+const precio = fila["precio_" + i];
+const imagen = fila["imagen_" + i];
 
   if (!opcion) break;
 
-  opciones.push({
-    peso: opcion.trim(),
-    precio: Number(precio)
-  });
+opciones.push({
+  peso: opcion.trim(),
+  precio: Number(precio),
+  imagen: imagen ? "imagenes/" + imagen.trim() : null
+});
  
 
 }
@@ -3045,7 +3047,8 @@ ${producto.opciones.map((op,i) => `
 
 <button class="aroma-chip ${i === 0 ? "active" : ""}"
 data-precio="${op.precio}"
-data-aroma="${op.peso}">
+data-aroma="${op.peso}"
+data-imagen="${op.imagen || producto.imagen}">
 
 ${op.peso}
 
@@ -3151,10 +3154,18 @@ aromaBtns.forEach(btn => {
 
     precioSpan.textContent = precioActual;
 
+    // 🔥 CAMBIAR IMAGEN SEGÚN AROMA
+    const nuevaImagen = btn.dataset.imagen;
+
+    const img = contenedor.querySelector(".detalle-imagen img");
+
+    if (img && nuevaImagen) {
+      img.src = nuevaImagen;
+    }
+
   });
 
 });
-
 
 const scrollContainer = contenedor.querySelector(".selector-aromas-scroll");
 
