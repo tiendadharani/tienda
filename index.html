@@ -2987,9 +2987,12 @@ function abrirProducto(id) {
           ${producto.descripcionLarga || producto.descripcion}
         </div>
 
-     <select class="selector-opciones">
+    <select class="selector-opciones">
   ${producto.opciones.map(op => `
-    <option value="${op.precio}" data-peso="${op.peso}">
+    <option 
+      value="${op.precio}" 
+      data-peso="${op.peso}"
+      data-imagen="${op.imagen || producto.imagen}">
       ${op.peso}
     </option>
   `).join("")}
