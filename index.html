@@ -3050,23 +3050,20 @@ let cantidad = 1;
 
 /* ===== CARRUSEL AROMAS ===== */
 
-const aromaBtns = contenedor.querySelectorAll(".aroma-chip");
+const selector = contenedor.querySelector(".selector-opciones");
 
-aromaBtns.forEach(btn => {
+if (selector) {
 
-  btn.addEventListener("click", () => {
+  selector.addEventListener("change", function () {
 
-    aromaBtns.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
+    const opcionSeleccionada = selector.options[selector.selectedIndex];
 
-    precioActual = Number(btn.dataset.precio);
-    pesoActual = btn.dataset.aroma;
+    precioActual = Number(opcionSeleccionada.value);
+    pesoActual = opcionSeleccionada.dataset.peso;
 
     precioSpan.textContent = precioActual;
 
-    // 🔥 CAMBIAR IMAGEN SEGÚN AROMA
-    const nuevaImagen = btn.dataset.imagen;
-
+    const nuevaImagen = opcionSeleccionada.dataset.imagen;
     const img = contenedor.querySelector(".detalle-imagen img");
 
     if (img && nuevaImagen) {
@@ -3075,7 +3072,9 @@ aromaBtns.forEach(btn => {
 
   });
 
-});
+}
+
+
 
 const scrollContainer = contenedor.querySelector(".selector-aromas-scroll");
 
