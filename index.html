@@ -2271,16 +2271,14 @@ async function cargarProductosDesdeCSV() {
    for (let i = 1; i <= 50; i++) {
 
   const opcion = fila["opcion_" + i];
-const precio = fila["precio_" + i];
-const imagen = fila["imagen_" + i];
+  const precio = fila["precio_" + i];
 
   if (!opcion) break;
 
-opciones.push({
-  peso: opcion.trim(),
-  precio: Number(precio),
-  imagen: imagen ? "imagenes/" + imagen.trim() : null
-});
+  opciones.push({
+    peso: opcion.trim(),
+    precio: Number(precio)
+  });
  
 
 }
@@ -3033,22 +3031,33 @@ function abrirProducto(id) {
 ` : `
 <div class="selector-opciones">
 
-<select class="selector-opciones">
+${producto.categoria === "aromas"
 
-${producto.opciones.map(op => `
+? `
 
-<option
-value="${op.precio}"
-data-peso="${op.peso}"
-data-imagen="${op.imagen || producto.imagen}">
+<div class="selector-aromas-carrusel">
+
+<button class="aroma-flecha izquierda">‹</button>
+
+<div class="selector-aromas-scroll">
+
+${producto.opciones.map((op,i) => `
+
+<button class="aroma-chip ${i === 0 ? "active" : ""}"
+data-precio="${op.precio}"
+data-aroma="${op.peso}">
 
 ${op.peso}
 
-</option>
+</button>
 
 `).join("")}
 
-</select>
+</div>
+
+<button class="aroma-flecha derecha">›</button>
+
+</div>
 
 `
 
@@ -3126,29 +3135,6 @@ let precioActual = Number(producto.opciones[0]?.precio || 0);
 let pesoActual = producto.opciones[0].peso;
 let cantidad = 1;
 
-
-const selector = contenedor.querySelector(".selector-opciones");
-
-if(selector){
-
-const precioSpan = contenedor.querySelector(".precio-valor");
-const img = contenedor.querySelector(".detalle-imagen img");
-
-selector.addEventListener("change", function(){
-
-const opcion = selector.options[selector.selectedIndex];
-
-precioSpan.textContent = opcion.value;
-
-if(img && opcion.dataset.imagen){
-img.src = opcion.dataset.imagen;
-}
-
-});
-
-}
-
-
 /* ===== CARRUSEL AROMAS ===== */
 
 const aromaBtns = contenedor.querySelectorAll(".aroma-chip");
@@ -3165,17 +3151,10 @@ aromaBtns.forEach(btn => {
 
     precioSpan.textContent = precioActual;
 
-    // 👇 CAMBIO DE IMAGEN
-    const img = contenedor.querySelector(".producto-imagen");
-    const nuevaImagen = btn.dataset.imagen;
-
-    if (img && nuevaImagen) {
-      img.src = nuevaImagen;
-    }
-
   });
 
 });
+
 
 const scrollContainer = contenedor.querySelector(".selector-aromas-scroll");
 
@@ -3741,6 +3720,12 @@ function toggleSubSubmenu(e, elemento) {
 	
 </body>
 </html>
+
+
+
+</body>
+</html>
+
 
 
 
