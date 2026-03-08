@@ -916,36 +916,6 @@ font-family: "Cormorant Garamond", serif;
   box-shadow: 0 10px 22px rgba(0,0,0,0.12);
 }	  
 
-.pesos {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 6px 0;
-}
-
-.peso-btn {
-  border: 2px solid #5b8f7b;
-  background: white;
-  padding: 6px 16px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 600;
-  color: #5b8f7b;
-  transition: all 0.2s ease;
-}
-
-.peso-btn:hover {
-  background: rgba(91,143,123,0.08);
-}
-
-.peso-btn.active {
-
-  background: #5b8f7b;
-  color: white;
-
-}
-
-
 
 .precio {
  font-family: "Roboto", sans-serif;
@@ -1184,11 +1154,6 @@ font-family: "Cormorant Garamond", serif;
   width: 100%;
 }
 
-.detalle-info .pesos,
-.detalle-info .precio,
-.detalle-info .footer-compra {
-  justify-content: center;
-}
 
 .detalle-info .precio {
   font-size: 22px;
@@ -3022,68 +2987,13 @@ function abrirProducto(id) {
           ${producto.descripcionLarga || producto.descripcion}
         </div>
 
-      ${producto.opciones.length > 5 ? `
-<select class="selector-opciones">
+     <select class="selector-opciones">
   ${producto.opciones.map(op => `
     <option value="${op.precio}" data-peso="${op.peso}">
       ${op.peso}
     </option>
   `).join("")}
 </select>
-` : `
-<div class="selector-opciones">
-
-${producto.categoria === "aromas"
-
-? `
-
-<div class="selector-aromas-carrusel">
-
-<button class="aroma-flecha izquierda">‹</button>
-
-<div class="selector-aromas-scroll">
-
-${producto.opciones.map((op,i) => `
-
-<button class="aroma-chip ${i === 0 ? "active" : ""}"
-data-precio="${op.precio}"
-data-aroma="${op.peso}"
-data-imagen="${op.imagen || producto.imagen}">
-
-${op.peso}
-
-</button>
-
-`).join("")}
-
-</div>
-
-<button class="aroma-flecha derecha">›</button>
-
-</div>
-
-`
-
-: `
-
-<div class="pesos">
-
-${producto.opciones.map((op, i) => `
-
-<button class="peso-btn ${i === 0 ? 'active' : ''}" 
-data-precio="${op.precio}"
-data-peso="${op.peso}">
-${op.peso}
-</button>
-
-`).join("")}
-
-</div>
-
-`}
-
-</div>
-`}
 
         <div class="precio">
         $<span class="precio-valor">${producto.opciones[0]?.precio ?? "SIN STOCK"}</span>
@@ -3733,9 +3643,6 @@ function toggleSubSubmenu(e, elemento) {
 </html>
 
 
-
-</body>
-</html>
 
 
 
