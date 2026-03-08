@@ -1992,6 +1992,7 @@ scroll-snap-align: start;
       <img src="img/banners/banner2.png" class="slide">
       <img src="img/banners/banner3.png" class="slide">
       <img src="img/banners/banner4.png" class="slide">
+	  <img src="img/banners/banner5.png" class="slide">
     </div>
   </div>
 
@@ -2001,14 +2002,33 @@ scroll-snap-align: start;
 
 <div class="categorias-scroll" id="categorias-scroll">
 
-  <div class="categoria-card" onclick="irASeccion('almacen')">
-    <img src="img/categorias/cereales.png">
-    <h3>Almacén Natural</h3>
-    <p id="count-almacen"></p>
-  </div>
+  <div class="categoria-card" onclick="mostrarSubcategoria('almacen','frutos secos')">
+  <img src="img/categorias/frutos secos.png">
+  <h3>Frutos secos</h3>
+</div>
+
+<div class="categoria-card" onclick="mostrarSubcategoria('almacen','harinas')">
+  <img src="img/categorias/harinas.png">
+  <h3>Harinas</h3>
+</div>
+
+<div class="categoria-card" onclick="mostrarSubcategoria('almacen','desayuno y snacks')">
+  <img src="img/categorias/desayuno.png">
+  <h3>Desayuno y Snacks</h3>
+</div>
+
+<div class="categoria-card" onclick="mostrarSubcategoria('terapias','brumas')">
+  <img src="img/categorias/bruma.png">
+  <h3>Brumas</h3>
+</div>
+
+<div class="categoria-card" onclick="mostrarSubcategoria('terapias','aceites esenciales')">
+  <img src="img/categorias/aromaterapia.png">
+  <h3>Aceites esenciales</h3>
+</div>
 
   <div class="categoria-card" onclick="irASeccion('aromas')">
-    <img src="img/categorias/sahumerios.png">
+    <img src="img/categorias/aromas.png">
     <h3>Aromas & Ritual</h3>
     <p id="count-aromas"></p>
   </div>
@@ -2251,14 +2271,16 @@ async function cargarProductosDesdeCSV() {
    for (let i = 1; i <= 50; i++) {
 
   const opcion = fila["opcion_" + i];
-  const precio = fila["precio_" + i];
+const precio = fila["precio_" + i];
+const imagen = fila["imagen_" + i];
 
   if (!opcion) break;
 
-  opciones.push({
-    peso: opcion.trim(),
-    precio: Number(precio)
-  });
+opciones.push({
+  peso: opcion.trim(),
+  precio: Number(precio),
+  imagen: imagen ? "imagenes/" + imagen.trim() : null
+});
  
 
 }
@@ -3025,7 +3047,8 @@ ${producto.opciones.map((op,i) => `
 
 <button class="aroma-chip ${i === 0 ? "active" : ""}"
 data-precio="${op.precio}"
-data-aroma="${op.peso}">
+data-aroma="${op.peso}"
+data-imagen="${op.imagen || producto.imagen}">
 
 ${op.peso}
 
@@ -3131,10 +3154,18 @@ aromaBtns.forEach(btn => {
 
     precioSpan.textContent = precioActual;
 
+    // 🔥 CAMBIAR IMAGEN SEGÚN AROMA
+    const nuevaImagen = btn.dataset.imagen;
+
+    const img = contenedor.querySelector(".detalle-imagen img");
+
+    if (img && nuevaImagen) {
+      img.src = nuevaImagen;
+    }
+
   });
 
 });
-
 
 const scrollContainer = contenedor.querySelector(".selector-aromas-scroll");
 
@@ -3700,6 +3731,12 @@ function toggleSubSubmenu(e, elemento) {
 	
 </body>
 </html>
+
+
+
+</body>
+</html>
+
 
 
 
