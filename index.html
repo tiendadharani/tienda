@@ -3033,34 +3033,22 @@ function abrirProducto(id) {
 ` : `
 <div class="selector-opciones">
 
-${producto.categoria === "aromas"
+<select class="selector-opciones">
 
-? `
+${producto.opciones.map(op => `
 
-<div class="selector-aromas-carrusel">
-
-<button class="aroma-flecha izquierda">‹</button>
-
-<div class="selector-aromas-scroll">
-
-${producto.opciones.map((op,i) => `
-
-<button class="aroma-chip ${i === 0 ? "active" : ""}"
-data-precio="${op.precio}"
-data-aroma="${op.peso}"
+<option
+value="${op.precio}"
+data-peso="${op.peso}"
 data-imagen="${op.imagen || producto.imagen}">
 
 ${op.peso}
 
-</button>
+</option>
 
 `).join("")}
 
-</div>
-
-<button class="aroma-flecha derecha">›</button>
-
-</div>
+</select>
 
 `
 
@@ -3137,6 +3125,29 @@ if(selectOpciones){
 let precioActual = Number(producto.opciones[0]?.precio || 0);
 let pesoActual = producto.opciones[0].peso;
 let cantidad = 1;
+
+
+const selector = contenedor.querySelector(".selector-opciones");
+
+if(selector){
+
+const precioSpan = contenedor.querySelector(".precio-valor");
+const img = contenedor.querySelector(".detalle-imagen img");
+
+selector.addEventListener("change", function(){
+
+const opcion = selector.options[selector.selectedIndex];
+
+precioSpan.textContent = opcion.value;
+
+if(img && opcion.dataset.imagen){
+img.src = opcion.dataset.imagen;
+}
+
+});
+
+}
+
 
 /* ===== CARRUSEL AROMAS ===== */
 
