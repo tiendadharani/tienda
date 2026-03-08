@@ -3154,10 +3154,9 @@ aromaBtns.forEach(btn => {
 
     precioSpan.textContent = precioActual;
 
-    // 🔥 CAMBIAR IMAGEN SEGÚN AROMA
+    // 👇 CAMBIO DE IMAGEN
+    const img = contenedor.querySelector(".producto-imagen");
     const nuevaImagen = btn.dataset.imagen;
-
-    const img = contenedor.querySelector(".detalle-imagen img");
 
     if (img && nuevaImagen) {
       img.src = nuevaImagen;
